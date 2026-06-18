@@ -20,4 +20,16 @@
 9. Change or disable the seeded local admin password before exposing `/admin`.
 10. Paste Google AdSense code only through the Chinese ad placement admin.
 
+## Publishing Operations Setup
+
+- In `/admin/settings`, set the production site name, SEO title suffix, default meta description, and optional GA4 Measurement ID or AdSense Publisher ID.
+- Keep analytics and ads disabled until the production domain is verified in Google tools and the public IDs have been reviewed.
+- In `/admin/media`, upload only authorized JPG, PNG, or WebP assets, and write clear English alt text for each public image.
+- In `/admin/ads`, keep ad placements disabled by default. Review the page position and pasted ad code before enabling any placement.
+- GA4 Measurement IDs and AdSense Publisher IDs are public frontend identifiers, not passwords or private keys. Never commit Google account passwords, cookies, private keys, or secret ad account credentials.
+
+## Free And Low-Cost Deployment
+
+Free hosting or shared low-cost space can work for testing. For production SEO and AdSense review, use a stable domain, HTTPS, a persistent database, and durable media storage.
+
 Do not commit `.env`, credentials, cookies, private user data, or real ad account secrets.

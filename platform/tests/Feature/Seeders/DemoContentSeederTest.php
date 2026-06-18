@@ -9,6 +9,7 @@ use App\Models\Destination;
 use App\Models\HomepageModule;
 use App\Models\HomepageModuleItem;
 use App\Models\ServiceLink;
+use App\Models\SiteSetting;
 use App\Models\TravelCategory;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -100,6 +101,21 @@ class DemoContentSeederTest extends TestCase
 
         $this->assertGreaterThanOrEqual(2, ArticleFaq::query()->where('is_enabled', true)->count());
         $this->assertGreaterThanOrEqual(6, HomepageModuleItem::query()->where('is_enabled', true)->count());
+
+        $settings = SiteSetting::query()->findOrFail(1);
+
+        $this->assertSame('Japan Travel Guide', $settings->site_name);
+        $this->assertSame('Japan Travel Guide', $settings->seo_title_suffix);
+        $this->assertSame('Independent planning guides for Japan travelers.', $settings->tagline);
+        $this->assertSame(
+            'Independent planning guides, regional hubs, and useful travel tools for English-speaking Japan travelers.',
+            $settings->default_meta_description,
+        );
+        $this->assertNull($settings->ga4_measurement_id);
+        $this->assertNull($settings->adsense_publisher_id);
+        $this->assertFalse($settings->analytics_enabled);
+        $this->assertFalse($settings->ads_enabled);
+        $this->assertFalse($settings->organization_schema_enabled);
     }
 
     public function test_database_seeder_is_idempotent_for_phase_one_demo_content(): void
@@ -176,6 +192,7 @@ class DemoContentSeederTest extends TestCase
             'homepage_modules' => HomepageModule::count(),
             'homepage_module_items' => HomepageModuleItem::count(),
             'article_faqs' => ArticleFaq::count(),
+            'site_settings' => SiteSetting::count(),
         ];
     }
 }

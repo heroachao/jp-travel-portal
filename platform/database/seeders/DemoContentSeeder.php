@@ -9,6 +9,7 @@ use App\Models\Destination;
 use App\Models\HomepageModule;
 use App\Models\HomepageModuleItem;
 use App\Models\ServiceLink;
+use App\Models\SiteSetting;
 use App\Models\Tag;
 use App\Models\Topic;
 use App\Models\TravelCategory;
@@ -19,6 +20,24 @@ class DemoContentSeeder extends Seeder
 {
     public function run(): void
     {
+        SiteSetting::updateOrCreate(
+            ['id' => 1],
+            [
+                'site_name' => 'Japan Travel Guide',
+                'seo_title_suffix' => 'Japan Travel Guide',
+                'tagline' => 'Independent planning guides for Japan travelers.',
+                'default_meta_description' => 'Independent planning guides, regional hubs, and useful travel tools for English-speaking Japan travelers.',
+                'ga4_measurement_id' => null,
+                'adsense_publisher_id' => null,
+                'analytics_enabled' => false,
+                'ads_enabled' => false,
+                'organization_schema_enabled' => false,
+                'contact_email' => null,
+                'social_links' => null,
+                'robots_extra_rules' => null,
+            ]
+        );
+
         $author = User::where('email', 'admin@example.com')->firstOrFail();
 
         $tokyo = Destination::updateOrCreate(
