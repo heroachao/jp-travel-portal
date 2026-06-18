@@ -5,6 +5,7 @@ namespace Tests\Feature\Public;
 use App\Enums\ArticleStatus;
 use App\Models\AdPlacement;
 use App\Models\Article;
+use App\Models\SiteSetting;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -15,6 +16,11 @@ class AdRenderingTest extends TestCase
 
     public function test_enabled_ad_placement_renders_in_article(): void
     {
+        SiteSetting::query()->create([
+            'id' => 1,
+            'ads_enabled' => true,
+        ]);
+
         AdPlacement::factory()->create([
             'key' => 'article-body-middle',
             'code' => '<ins class="adsbygoogle"></ins>',
@@ -34,8 +40,38 @@ class AdRenderingTest extends TestCase
             ->assertSee('adsbygoogle', false);
     }
 
+    public function test_site_level_ads_toggle_blocks_enabled_placement(): void
+    {
+        SiteSetting::query()->create([
+            'id' => 1,
+            'ads_enabled' => false,
+        ]);
+
+        AdPlacement::factory()->create([
+            'key' => 'article-body-middle',
+            'code' => '<ins class="adsbygoogle"></ins>',
+            'is_enabled' => true,
+        ]);
+
+        $article = Article::factory()->create([
+            'author_id' => User::factory(),
+            'slug' => 'site-ads-disabled',
+            'status' => ArticleStatus::Published,
+            'published_at' => now(),
+        ]);
+
+        $this->get(route('articles.show', $article))
+            ->assertOk()
+            ->assertDontSee('data-ad-key="article-body-middle"', false);
+    }
+
     public function test_disabled_ad_placement_renders_no_empty_slot(): void
     {
+        SiteSetting::query()->create([
+            'id' => 1,
+            'ads_enabled' => true,
+        ]);
+
         AdPlacement::factory()->create([
             'key' => 'article-body-middle',
             'code' => '<ins class="adsbygoogle"></ins>',

@@ -1,6 +1,10 @@
 @php
+    $siteSettings = app(\App\Services\Settings\SiteSettings::class)->current();
     $layoutHeaderServiceLinks = \App\Models\ServiceLink::query()->enabled()->placement('header')->ordered()->get();
     $layoutFooterServiceLinks = \App\Models\ServiceLink::query()->enabled()->placement('footer')->ordered()->get();
+    $layoutFooterDescription = $siteSettings->tagline
+        ?: ($siteSettings->default_meta_description
+            ?: 'Independent planning guides, regional hubs, and useful travel tools for English-speaking Japan travelers.');
     $layoutRegions = \App\Models\Destination::query()
         ->channel()
         ->where('is_indexable', true)
@@ -27,6 +31,18 @@
     <meta property="og:title" content="{{ $meta->ogTitle ?? $meta->title }}">
     @if($meta->ogDescription ?? $meta->description)<meta property="og:description" content="{{ $meta->ogDescription ?? $meta->description }}">@endif
     @if($meta->ogImage)<meta property="og:image" content="{{ $meta->ogImage }}">@endif
+    @if($siteSettings->analytics_enabled && filled($siteSettings->ga4_measurement_id))
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ $siteSettings->ga4_measurement_id }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{ $siteSettings->ga4_measurement_id }}');
+        </script>
+    @endif
+    @if($siteSettings->ads_enabled && filled($siteSettings->adsense_publisher_id))
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ $siteSettings->adsense_publisher_id }}" crossorigin="anonymous"></script>
+    @endif
     @unless(app()->environment('testing'))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endunless
@@ -42,7 +58,7 @@
             </nav>
         </div>
         <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-            <a class="font-serif text-xl font-bold" href="{{ route('home') }}">Japan Travel Guide</a>
+            <a class="font-serif text-xl font-bold" href="{{ route('home') }}">{{ $siteSettings->site_name }}</a>
             <div class="flex gap-5 text-sm font-medium">
                 <a href="{{ route('regions.index') }}">Regions</a>
                 <a href="{{ route('articles.index') }}">Articles</a>
@@ -69,8 +85,8 @@
     <footer class="mt-16 border-t bg-white">
         <div class="mx-auto grid max-w-6xl gap-6 px-5 py-8 text-sm text-slate-600 md:grid-cols-3">
             <div>
-                <p class="font-semibold text-slate-950">Japan Travel Guide</p>
-                <p class="mt-2">Independent planning guides, regional hubs, and useful travel tools for English-speaking Japan travelers.</p>
+                <p class="font-semibold text-slate-950">{{ $siteSettings->site_name }}</p>
+                <p class="mt-2">{{ $layoutFooterDescription }}</p>
             </div>
             <div class="flex flex-wrap gap-3">
                 <a href="{{ route('regions.index') }}">Regions</a>
