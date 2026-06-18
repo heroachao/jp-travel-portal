@@ -77,43 +77,49 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endunless
 </head>
-<body class="bg-stone-50 text-slate-950 antialiased">
-    <header class="border-b bg-white">
-        <div class="border-b bg-slate-950 text-white">
-            <nav class="mx-auto flex max-w-6xl gap-4 overflow-x-auto px-5 py-2 text-xs font-semibold">
-                <a href="{{ route('articles.index') }}">Guide</a>
+<body class="public-shell text-slate-950 antialiased">
+    <header class="public-header">
+        <div class="public-header-main">
+            <a class="public-brand" href="{{ route('home') }}" aria-label="{{ $siteSettings->site_name }}">
+                <span class="public-brand-mark">JP</span>
+                <span><b>japan</b><strong>travel</strong></span>
+            </a>
+            <form action="{{ route('search') }}" class="public-search" role="search">
+                <input name="q" placeholder="Search Tokyo rail, Kyoto food, JR Pass">
+                <button aria-label="Search">Search</button>
+            </form>
+            <nav class="public-actions" aria-label="Primary links">
+                <a href="{{ route('articles.index') }}">News</a>
+                <a href="{{ route('regions.index') }}">Regions</a>
+                <a href="{{ route('search') }}">Tools</a>
+            </nav>
+        </div>
+        <div class="public-channel-bar">
+            <nav class="public-channel-nav" aria-label="Japan travel channels">
+                <a class="is-active" href="{{ route('home') }}">My Trip</a>
+                <a href="{{ route('articles.index') }}">News</a>
+                @foreach($layoutCategories as $category)
+                    <a href="{{ route('categories.show', $category) }}">{{ $category->display_name ?: $category->title }}</a>
+                @endforeach
                 @foreach($layoutHeaderServiceLinks as $link)
                     <a href="{{ $link->url }}" target="_blank" rel="nofollow noopener sponsored" @if($link->tracking_key) data-service-key="{{ $link->tracking_key }}" @endif>{{ $link->label }}</a>
                 @endforeach
             </nav>
         </div>
-        <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-            <a class="font-serif text-xl font-bold" href="{{ route('home') }}">{{ $siteSettings->site_name }}</a>
-            <div class="flex gap-5 text-sm font-medium">
-                <a href="{{ route('regions.index') }}">Regions</a>
-                <a href="{{ route('articles.index') }}">Articles</a>
-                <a href="{{ route('search') }}">Search</a>
-            </div>
-        </nav>
-        <div class="mx-auto flex max-w-6xl gap-4 overflow-x-auto px-5 pb-3 text-sm">
-            <a class="font-semibold" href="{{ route('regions.index') }}">National</a>
-            @foreach($layoutRegions as $region)
-                <a href="{{ route('regions.show', $region) }}">{{ $region->display_name ?: $region->name }}</a>
-            @endforeach
-        </div>
-        <div class="border-t">
-            <nav class="mx-auto flex max-w-6xl gap-4 overflow-x-auto px-5 py-3 text-sm font-medium">
-                @foreach($layoutCategories as $category)
-                    <a href="{{ route('categories.show', $category) }}">{{ $category->display_name ?: $category->title }}</a>
+        <div class="public-region-strip">
+            <nav class="public-region-nav" aria-label="Region shortcuts">
+                <a href="{{ route('regions.index') }}">All Japan</a>
+                @foreach($layoutRegions as $region)
+                    <a href="{{ route('regions.show', $region) }}">{{ $region->display_name ?: $region->name }}</a>
                 @endforeach
             </nav>
         </div>
     </header>
-    <main>
+    <main class="public-main">
         @yield('content')
     </main>
-    <footer class="mt-16 border-t bg-white">
-        <div class="mx-auto grid max-w-6xl gap-6 px-5 py-8 text-sm text-slate-600 md:grid-cols-3">
+    <footer class="public-footer">
+        <div class="mx-auto grid max-w-7xl gap-6 px-5 py-8 text-sm text-slate-600 md:grid-cols-3">
             <div>
                 <p class="font-semibold text-slate-950">{{ $siteSettings->site_name }}</p>
                 <p class="mt-2">{{ $layoutFooterDescription }}</p>

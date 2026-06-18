@@ -1,9 +1,13 @@
 @extends('layouts.public')
 
 @section('content')
-    <section class="mx-auto max-w-5xl px-5 py-12">
-        <h1 class="text-4xl font-bold">Search Japan Travel Guides</h1>
-        <form method="get" action="{{ route('search') }}" class="mt-6 grid gap-3 rounded border bg-white p-4 md:grid-cols-6">
+    <section class="mx-auto max-w-7xl px-4 py-8">
+        <div class="public-card p-6">
+            <p class="public-kicker">Travel Tools</p>
+            <h1 class="mt-2 text-4xl font-black tracking-tight">Search Japan Travel Guides</h1>
+            <p class="mt-3 max-w-2xl text-slate-600">Filter by region, category, tag, popularity, and service availability.</p>
+        </div>
+        <form method="get" action="{{ route('search') }}" class="public-card mt-5 grid gap-3 p-4 md:grid-cols-6">
             <input name="q" value="{{ $q }}" class="rounded border px-3 py-2 md:col-span-2" placeholder="Keyword">
             <select name="region" class="rounded border px-3 py-2">
                 <option value="">All regions</option>
@@ -35,13 +39,16 @@
             </label>
             <button class="rounded bg-slate-950 px-4 py-2 font-semibold text-white md:col-span-1">Search</button>
         </form>
-        <div class="mt-8 grid gap-4">
+        <div class="mt-5 grid gap-3">
             @foreach($articles as $article)
-                <a class="rounded border bg-white p-4" href="{{ route('articles.show', $article) }}">
-                    <h2 class="font-semibold">{{ $article->title }}</h2>
-                    @if($article->excerpt)
-                        <p class="mt-2 text-sm text-slate-600">{{ $article->excerpt }}</p>
-                    @endif
+                <a class="public-row-story public-card" href="{{ route('articles.show', $article) }}">
+                    <span>{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                    <div>
+                        <h2>{{ $article->title }}</h2>
+                        @if($article->excerpt)
+                            <p>{{ $article->excerpt }}</p>
+                        @endif
+                    </div>
                 </a>
             @endforeach
         </div>

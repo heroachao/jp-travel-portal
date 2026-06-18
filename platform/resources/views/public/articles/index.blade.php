@@ -1,13 +1,19 @@
 @extends('layouts.public')
 
 @section('content')
-    <section class="mx-auto max-w-6xl px-5 py-12">
-        <h1 class="text-4xl font-bold">Japan Travel Articles</h1>
-        <div class="mt-8 grid gap-4 md:grid-cols-2">
+    <section class="mx-auto max-w-7xl px-4 py-8">
+        <div class="public-card p-6">
+            <p class="public-kicker">Guide Feed</p>
+            <h1 class="mt-2 text-4xl font-black tracking-tight">Japan Travel Articles</h1>
+            <p class="mt-3 max-w-2xl text-slate-600">Fresh planning notes, destination explainers, route ideas, and practical travel tools for Japan trips.</p>
+        </div>
+        <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             @foreach($articles as $article)
-                <a class="rounded-lg border bg-white p-5" href="{{ route('articles.show', $article) }}">
-                    <h2 class="font-semibold">{{ $article->title }}</h2>
-                    <p class="mt-2 text-sm text-slate-600">{{ $article->excerpt }}</p>
+                <a class="public-story-card" href="{{ route('articles.show', $article) }}">
+                    <span class="public-story-thumb"></span>
+                    <small>{{ $article->published_at?->format('M j, Y') }}</small>
+                    <h2>{{ $article->title }}</h2>
+                    <p>{{ $article->excerpt }}</p>
                 </a>
             @endforeach
         </div>

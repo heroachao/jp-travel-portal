@@ -1,16 +1,19 @@
 @extends('layouts.public')
 
 @section('content')
-    <section class="mx-auto max-w-6xl px-5 py-12">
-        <h1 class="text-4xl font-bold">Japan Regions</h1>
-        <p class="mt-4 max-w-3xl text-lg text-slate-600">Browse regional travel channels for practical Japan trip planning.</p>
+    <section class="mx-auto max-w-7xl px-4 py-8">
+        <div class="public-card p-6">
+            <p class="public-kicker">Region Standings</p>
+            <h1 class="mt-2 text-4xl font-black tracking-tight">Japan Regions</h1>
+            <p class="mt-3 max-w-3xl text-lg text-slate-600">Browse regional travel channels for practical Japan trip planning.</p>
+        </div>
 
-        <div class="mt-8 grid gap-4 md:grid-cols-3">
+        <div class="mt-5 grid gap-4 md:grid-cols-3">
             @forelse($regions as $region)
-                <a class="rounded-lg border bg-white p-5" href="{{ route('regions.show', $region) }}">
-                    <h2 class="font-semibold">{{ $region->display_name ?: $region->name }}</h2>
+                <a class="public-tool-link" href="{{ route('regions.show', $region) }}">
+                    <strong>{{ $region->display_name ?: $region->name }}</strong>
                     @if($region->excerpt)
-                        <p class="mt-2 text-sm text-slate-600">{{ $region->excerpt }}</p>
+                        <span>{{ $region->excerpt }}</span>
                     @endif
                 </a>
             @empty
