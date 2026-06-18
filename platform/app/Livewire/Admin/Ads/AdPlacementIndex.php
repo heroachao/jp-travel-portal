@@ -27,6 +27,8 @@ class AdPlacementIndex extends Component
 
     public function edit(int $id): void
     {
+        abort_unless(auth()->user()?->can('admin.access'), 403);
+
         $placement = AdPlacement::findOrFail($id);
         $this->placementId = $placement->id;
         $this->key = $placement->key;

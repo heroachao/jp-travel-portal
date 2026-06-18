@@ -43,6 +43,20 @@ class AdPlacementAdminTest extends TestCase
         $this->assertFalse($placement->is_enabled);
     }
 
+    public function test_database_creates_disabled_ad_placements_by_default(): void
+    {
+        $placement = AdPlacement::create([
+            'key' => 'database-default-placement',
+            'name' => '数据库默认停用广告',
+            'page_type' => 'article',
+            'position' => 'body_middle',
+        ]);
+
+        $placement->refresh();
+
+        $this->assertFalse($placement->is_enabled);
+    }
+
     public function test_admin_can_create_disabled_ad_placement_with_notes_and_resets_form_disabled(): void
     {
         $this->actingAs($this->superAdmin());
@@ -148,6 +162,20 @@ class AdPlacementAdminTest extends TestCase
         $this->assertDatabaseMissing('ad_placements', [
             'key' => 'unauthorized-placement',
         ]);
+    }
+
+    public function test_non_admin_cannot_directly_edit_ad_placement_via_livewire_action(): void
+    {
+        $placement = AdPlacement::factory()->create([
+            'code' => '<ins class="adsbygoogle"></ins>',
+            'notes' => '敏感内部备注',
+        ]);
+        $this->seed(RoleSeeder::class);
+        $this->actingAs(User::factory()->create());
+
+        Livewire::test(AdPlacementIndex::class)
+            ->call('edit', $placement->id)
+            ->assertForbidden();
     }
 
     public function test_non_admin_cannot_directly_delete_ad_placement_via_livewire_action(): void
