@@ -35,7 +35,7 @@ class DestinationController extends Controller
                 route('regions.show', $destination),
             ),
             'destination' => $destination,
-            'articles' => $destination->articles()->published()->latest('published_at')->paginate(12),
+            'articles' => $destination->articles()->published()->latest('published_at')->paginate(240),
         ]);
     }
 

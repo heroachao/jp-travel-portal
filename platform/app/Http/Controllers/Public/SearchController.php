@@ -95,7 +95,7 @@ class SearchController extends Controller
             'regions' => $regions,
             'categories' => $categories,
             'tags' => $tags,
-            'articles' => $articles->paginate(12)->withQueryString(),
+            'articles' => $articles->paginate(240)->withQueryString(),
         ]);
     }
 }
