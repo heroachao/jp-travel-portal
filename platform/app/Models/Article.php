@@ -25,8 +25,14 @@ class Article extends Model
         'slug',
         'excerpt',
         'body',
+        'source_name',
+        'source_url',
         'status',
         'published_at',
+        'display_updated_at',
+        'reading_time_minutes',
+        'popularity_score',
+        'has_coupon',
         'scheduled_for',
         'rejection_reason',
         'seo_title',
@@ -44,6 +50,10 @@ class Article extends Model
         return [
             'status' => ArticleStatus::class,
             'published_at' => 'datetime',
+            'display_updated_at' => 'datetime',
+            'reading_time_minutes' => 'integer',
+            'popularity_score' => 'integer',
+            'has_coupon' => 'boolean',
             'scheduled_for' => 'datetime',
             'is_indexable' => 'boolean',
         ];
@@ -77,6 +87,16 @@ class Article extends Model
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    public function travelCategories(): BelongsToMany
+    {
+        return $this->belongsToMany(TravelCategory::class)->withPivot('sort_order')->withTimestamps();
+    }
+
+    public function faqs(): HasMany
+    {
+        return $this->hasMany(ArticleFaq::class)->ordered();
     }
 
     public function versions(): HasMany
