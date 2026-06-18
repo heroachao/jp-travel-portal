@@ -15,23 +15,28 @@ class HomeController extends Controller
 {
     public function __invoke(): View
     {
+        $publishedArticleCount = Article::published()->count();
+
         return view('public.home', [
             'meta' => new MetaPayload(
                 'Japan Travel Guide | Practical Itineraries, Destinations, and Tips',
                 'Independent Japan travel guides, destination hubs, itineraries, and practical planning notes.',
                 url()->current(),
             ),
-            'articles' => Article::published()->latest('published_at')->limit(6)->get(),
+            'articleCount' => $publishedArticleCount,
+            'articles' => Article::published()->latest('published_at')->limit(12)->get(),
             'serviceLinks' => ServiceLink::query()->enabled()->placement('header')->ordered()->get(),
             'regionChannels' => Destination::query()
                 ->channel()
                 ->where('is_indexable', true)
+                ->withCount(['articles as published_articles_count' => fn ($query) => $query->published()])
                 ->ordered()
                 ->limit(12)
                 ->get(),
             'travelCategories' => TravelCategory::query()
                 ->visible()
                 ->where('is_indexable', true)
+                ->withCount(['articles as published_articles_count' => fn ($query) => $query->published()])
                 ->ordered()
                 ->limit(12)
                 ->get(),

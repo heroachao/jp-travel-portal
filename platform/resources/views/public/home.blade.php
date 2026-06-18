@@ -3,8 +3,9 @@
 @section('content')
     @php
         $leadArticle = $articles->first();
-        $secondaryArticles = $articles->skip(1)->take(3);
-        $latestRail = $articles->take(4);
+        $secondaryArticles = $articles->skip(1)->take(6);
+        $latestRail = $articles->take(7);
+        $routeDesk = $articles->skip(7)->take(5);
         $moduleItemCard = function ($moduleItem): ?array {
             $item = $moduleItem->item;
 
@@ -70,16 +71,33 @@
                 <span>Live Planner</span>
                 <b>{{ $regionChannels->count() }}</b>
                 <small>regions ready</small>
+                <div class="public-score-list">
+                    @foreach($regionChannels->take(3) as $destination)
+                        <em>{{ $destination->display_name ?: $destination->name }}</em>
+                    @endforeach
+                </div>
             </div>
             <div class="public-score-card">
                 <span>Guide Feed</span>
-                <b>{{ $articles->count() }}</b>
-                <small>fresh stories</small>
+                <b>{{ $articleCount }}</b>
+                <small>published stories</small>
+                <div class="public-score-list">
+                    @foreach($latestRail->take(3) as $article)
+                        <em>{{ $article->title }}</em>
+                    @endforeach
+                </div>
             </div>
             <div class="public-score-card">
                 <span>Trip Tools</span>
                 <b>{{ $serviceLinks->count() }}</b>
                 <small>service links</small>
+                <div class="public-score-list">
+                    @forelse($serviceLinks->take(3) as $link)
+                        <em>{{ $link->label }}</em>
+                    @empty
+                        <em>Guide Search</em>
+                    @endforelse
+                </div>
             </div>
         </div>
 
@@ -141,7 +159,7 @@
                 <h2>Featured Guides</h2>
                 <a href="{{ route('articles.index') }}">Read more</a>
             </div>
-            <div class="grid gap-4 md:grid-cols-3">
+            <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 @forelse($secondaryArticles as $article)
                     <a class="public-story-card" href="{{ route('articles.show', $article) }}">
                         <span class="public-story-thumb"></span>
@@ -160,6 +178,29 @@
                     @endforeach
                 @endforelse
             </div>
+
+            @if($routeDesk->isNotEmpty())
+                <section class="public-card public-route-desk">
+                    <div class="public-section-heading">
+                        <div>
+                            <h2>Route Desk</h2>
+                            <p>More planning angles to keep exploring Japan by region, season, and transport style.</p>
+                        </div>
+                        <a href="{{ route('articles.index') }}">Open feed</a>
+                    </div>
+                    <div class="mt-4 grid gap-3 md:grid-cols-2">
+                        @foreach($routeDesk as $article)
+                            <a class="public-route-row" href="{{ route('articles.show', $article) }}">
+                                <span>{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                                <div>
+                                    <strong>{{ $article->title }}</strong>
+                                    <small>{{ $article->published_at?->format('M j') }} @if($article->reading_time_minutes) / {{ $article->reading_time_minutes }} min @endif</small>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                </section>
+            @endif
 
             <div class="public-card">
                 <div class="public-section-heading">
@@ -221,7 +262,7 @@
                         <a class="public-ranking-row" href="{{ route('regions.show', $destination) }}">
                             <span>{{ $loop->iteration }}</span>
                             <strong>{{ $destination->display_name ?: $destination->name }}</strong>
-                            <small>{{ $destination->type }}</small>
+                            <small>{{ $destination->published_articles_count }} {{ \Illuminate\Support\Str::plural('guide', $destination->published_articles_count) }}</small>
                         </a>
                     @endforeach
                 </div>
@@ -252,7 +293,10 @@
                 </div>
                 <div class="mt-3 flex flex-wrap gap-2">
                     @foreach($travelCategories as $category)
-                        <a class="public-tag-pill" href="{{ route('categories.show', $category) }}">{{ $category->display_name ?: $category->title }}</a>
+                        <a class="public-tag-pill" href="{{ route('categories.show', $category) }}">
+                            {{ $category->display_name ?: $category->title }}
+                            <small>{{ $category->published_articles_count }}</small>
+                        </a>
                     @endforeach
                 </div>
             </section>
