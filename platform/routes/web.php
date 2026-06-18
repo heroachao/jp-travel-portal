@@ -7,6 +7,9 @@ Route::get('/articles', [\App\Http\Controllers\Public\ArticleController::class, 
 Route::get('/articles/{article:slug}', [\App\Http\Controllers\Public\ArticleController::class, 'show'])->name('articles.show');
 Route::get('/destinations', [\App\Http\Controllers\Public\DestinationController::class, 'index'])->name('destinations.index');
 Route::get('/destinations/{destination:slug}', [\App\Http\Controllers\Public\DestinationController::class, 'show'])->name('destinations.show');
+Route::get('/regions', [\App\Http\Controllers\Public\DestinationController::class, 'regions'])->name('regions.index');
+Route::get('/regions/{destination:slug}', [\App\Http\Controllers\Public\DestinationController::class, 'region'])->name('regions.show');
+Route::get('/categories/{category:slug}', [\App\Http\Controllers\Public\TravelCategoryController::class, 'show'])->name('categories.show');
 Route::get('/topics/{topic:slug}', [\App\Http\Controllers\Public\TopicController::class, 'show'])->name('topics.show');
 Route::get('/tags/{tag:slug}', [\App\Http\Controllers\Public\TagController::class, 'show'])->name('tags.show');
 Route::get('/search', \App\Http\Controllers\Public\SearchController::class)->name('search');
