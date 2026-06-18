@@ -5,6 +5,7 @@ namespace Tests\Feature\Admin;
 use App\Livewire\Admin\HomepageModules\HomepageModuleIndex;
 use App\Livewire\Admin\ServiceLinks\ServiceLinkIndex;
 use App\Livewire\Admin\TravelCategories\TravelCategoryIndex;
+use App\Models\Article;
 use App\Models\HomepageModule;
 use App\Models\HomepageModuleItem;
 use App\Models\ServiceLink;
@@ -128,6 +129,30 @@ class MediaPortalAdminTest extends TestCase
         $this->assertDatabaseHas('travel_categories', [
             'id' => $child->id,
             'parent_id' => $parent->id,
+        ]);
+    }
+
+    public function test_editor_cannot_delete_travel_category_with_article(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $category = TravelCategory::factory()->create();
+        $article = Article::factory()->create([
+            'author_id' => $editor->id,
+        ]);
+        $category->articles()->attach($article->id, ['sort_order' => 1]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(TravelCategoryIndex::class)
+            ->call('delete', $category->id)
+            ->assertHasErrors(['delete']);
+
+        $this->assertNotSoftDeleted('travel_categories', ['id' => $category->id]);
+        $this->assertDatabaseHas('article_travel_category', [
+            'article_id' => $article->id,
+            'travel_category_id' => $category->id,
         ]);
     }
 
