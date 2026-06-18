@@ -18,6 +18,9 @@
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.destinations.index') }}">目的地管理</a>
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.topics.index') }}">专题管理</a>
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.tags.index') }}">标签管理</a>
+                <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.travel-categories.index') }}">分类频道</a>
+                <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.service-links.index') }}">服务入口</a>
+                <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.homepage-modules.index') }}">首页模块</a>
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.ads.index') }}">广告管理</a>
             </nav>
         </aside>

@@ -36,5 +36,8 @@ Route::middleware(['auth', 'admin', 'admin.log'])
         Route::get('/destinations', \App\Livewire\Admin\Destinations\DestinationIndex::class)->name('destinations.index');
         Route::get('/topics', \App\Livewire\Admin\Topics\TopicIndex::class)->name('topics.index');
         Route::get('/tags', \App\Livewire\Admin\Tags\TagIndex::class)->name('tags.index');
+        Route::get('/travel-categories', \App\Livewire\Admin\TravelCategories\TravelCategoryIndex::class)->name('travel-categories.index');
+        Route::get('/service-links', \App\Livewire\Admin\ServiceLinks\ServiceLinkIndex::class)->name('service-links.index');
+        Route::get('/homepage-modules', \App\Livewire\Admin\HomepageModules\HomepageModuleIndex::class)->name('homepage-modules.index');
         Route::get('/ads', \App\Livewire\Admin\Ads\AdPlacementIndex::class)->name('ads.index');
     });
