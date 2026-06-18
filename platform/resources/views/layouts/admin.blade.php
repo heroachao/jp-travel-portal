@@ -22,6 +22,7 @@
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.service-links.index') }}">服务入口</a>
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.homepage-modules.index') }}">首页模块</a>
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.ads.index') }}">广告管理</a>
+                <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.media.index') }}">媒体库</a>
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.settings.index') }}">站点设置</a>
             </nav>
         </aside>

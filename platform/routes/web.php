@@ -43,5 +43,6 @@ Route::middleware(['auth', 'admin', 'admin.log'])
         Route::get('/service-links', \App\Livewire\Admin\ServiceLinks\ServiceLinkIndex::class)->name('service-links.index');
         Route::get('/homepage-modules', \App\Livewire\Admin\HomepageModules\HomepageModuleIndex::class)->name('homepage-modules.index');
         Route::get('/ads', \App\Livewire\Admin\Ads\AdPlacementIndex::class)->name('ads.index');
+        Route::get('/media', \App\Livewire\Admin\Media\MediaAssetIndex::class)->name('media.index');
         Route::get('/settings', \App\Livewire\Admin\Settings\SiteSettingsForm::class)->name('settings.index');
     });

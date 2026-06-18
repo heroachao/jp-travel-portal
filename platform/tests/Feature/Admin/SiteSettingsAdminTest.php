@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Services\Settings\SiteSettings;
 use Database\Seeders\RoleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -210,7 +209,7 @@ class SiteSettingsAdminTest extends TestCase
             ->assertSee('社交链接 JSON');
     }
 
-    public function test_admin_dashboard_sidebar_links_to_site_settings_without_media_route(): void
+    public function test_admin_dashboard_sidebar_links_to_site_settings(): void
     {
         $this->seed(RoleSeeder::class);
         $admin = User::factory()->create();
@@ -220,11 +219,5 @@ class SiteSettingsAdminTest extends TestCase
             ->get(route('admin.dashboard'))
             ->assertOk()
             ->assertSee('href="'.route('admin.settings.index').'"', false);
-
-        $this->assertFalse(Route::has('admin.media.index'));
-
-        $this->actingAs($admin)
-            ->get('/admin/media')
-            ->assertNotFound();
     }
 }
