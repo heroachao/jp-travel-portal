@@ -112,7 +112,7 @@ class ArticleAdminTest extends TestCase
             ->set('slug', 'kyoto-image-guide')
             ->set('excerpt', 'A Kyoto article with selected media.')
             ->set('body', '<p>Bring good walking shoes.</p>')
-            ->set('cover_media_id', $cover->id)
+            ->set('cover_media_id', (string) $cover->id)
             ->set('og_media_id', $og->id)
             ->call('save')
             ->assertRedirect();
@@ -178,6 +178,52 @@ class ArticleAdminTest extends TestCase
             ->assertSet('og_media_id', $og->id);
     }
 
+    public function test_editor_article_form_keeps_old_selected_media_in_select_options(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $oldTimestamp = now()->subDays(30);
+        $newTimestamp = now();
+        $oldCover = MediaAsset::factory()->create([
+            'alt_text' => 'Very old cover image',
+            'path' => 'media/2026/04/very-old-cover.jpg',
+            'created_at' => $oldTimestamp,
+            'updated_at' => $oldTimestamp,
+        ]);
+        $oldOg = MediaAsset::factory()->create([
+            'alt_text' => '',
+            'path' => 'media/2026/04/very-old-og.jpg',
+            'created_at' => $oldTimestamp->copy()->addSecond(),
+            'updated_at' => $oldTimestamp->copy()->addSecond(),
+        ]);
+
+        foreach (range(1, 101) as $index) {
+            MediaAsset::factory()->create([
+                'alt_text' => "New media option {$index}",
+                'path' => "media/2026/06/new-media-option-{$index}.jpg",
+                'created_at' => $newTimestamp->copy()->addSeconds($index),
+                'updated_at' => $newTimestamp->copy()->addSeconds($index),
+            ]);
+        }
+
+        $article = Article::factory()->create([
+            'author_id' => $editor->id,
+            'cover_media_id' => $oldCover->id,
+            'og_media_id' => $oldOg->id,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class, ['article' => $article])
+            ->assertSet('cover_media_id', $oldCover->id)
+            ->assertSet('og_media_id', $oldOg->id)
+            ->assertSee('Very old cover image')
+            ->assertSee('media/2026/04/very-old-og.jpg')
+            ->assertSeeHtml('<option value="'.$oldCover->id.'">Very old cover image</option>')
+            ->assertSeeHtml('<option value="'.$oldOg->id.'">media/2026/04/very-old-og.jpg</option>');
+    }
+
     public function test_editor_cannot_save_invalid_article_media_ids(): void
     {
         $this->seed(RoleSeeder::class);
@@ -200,6 +246,31 @@ class ArticleAdminTest extends TestCase
 
         $this->assertDatabaseMissing('articles', [
             'slug' => 'invalid-media-article',
+        ]);
+    }
+
+    public function test_editor_cannot_save_malformed_article_media_id_strings(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class)
+            ->set('title', 'Malformed Media Article')
+            ->set('slug', 'malformed-media-article')
+            ->set('body', '<p>Body</p>')
+            ->set('cover_media_id', 'not-an-id')
+            ->set('og_media_id', 'still-not-an-id')
+            ->call('save')
+            ->assertHasErrors([
+                'cover_media_id' => 'integer',
+                'og_media_id' => 'integer',
+            ]);
+
+        $this->assertDatabaseMissing('articles', [
+            'slug' => 'malformed-media-article',
         ]);
     }
 

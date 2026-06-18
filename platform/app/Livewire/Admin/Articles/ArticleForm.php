@@ -8,6 +8,7 @@ use App\Models\MediaAsset;
 use App\Models\TravelCategory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -37,9 +38,9 @@ class ArticleForm extends Component
 
     public bool $has_coupon = false;
 
-    public ?int $cover_media_id = null;
+    public int|string|null $cover_media_id = null;
 
-    public ?int $og_media_id = null;
+    public int|string|null $og_media_id = null;
 
     public ?string $seo_title = null;
 
@@ -217,13 +218,23 @@ class ArticleForm extends Component
             ->latest()
             ->limit(100)
             ->get();
+        $selectedMediaIds = collect([$this->cover_media_id, $this->og_media_id])
+            ->filter(fn (mixed $id): bool => $id !== null && $id !== '')
+            ->filter(fn (mixed $id): bool => filter_var($id, FILTER_VALIDATE_INT) !== false)
+            ->map(fn (int|string $id): int => (int) $id)
+            ->unique()
+            ->values();
 
-        $selectedCoverMedia = $this->cover_media_id
-            ? ($mediaOptions->firstWhere('id', $this->cover_media_id) ?? MediaAsset::find($this->cover_media_id))
-            : null;
-        $selectedOgMedia = $this->og_media_id
-            ? ($mediaOptions->firstWhere('id', $this->og_media_id) ?? MediaAsset::find($this->og_media_id))
-            : null;
+        if ($selectedMediaIds->isNotEmpty()) {
+            $mediaOptions = $mediaOptions
+                ->merge(MediaAsset::query()->whereKey($selectedMediaIds)->get())
+                ->unique('id')
+                ->sortByDesc('created_at')
+                ->values();
+        }
+
+        $selectedCoverMedia = $this->selectedMediaFromOptions($mediaOptions, $this->cover_media_id);
+        $selectedOgMedia = $this->selectedMediaFromOptions($mediaOptions, $this->og_media_id);
 
         return view('livewire.admin.articles.article-form', [
             'categoryOptions' => TravelCategory::query()->ordered()->get(),
@@ -244,13 +255,18 @@ class ArticleForm extends Component
     {
         if ($this->{$property} === '') {
             $this->{$property} = null;
+        }
+    }
 
-            return;
+    private function selectedMediaFromOptions(Collection $mediaOptions, int|string|null $mediaId): ?MediaAsset
+    {
+        if ($mediaId === null || $mediaId === '' || filter_var($mediaId, FILTER_VALIDATE_INT) === false) {
+            return null;
         }
 
-        if ($this->{$property} !== null) {
-            $this->{$property} = (int) $this->{$property};
-        }
+        $mediaId = (int) $mediaId;
+
+        return $mediaOptions->first(fn (MediaAsset $media): bool => $media->id === $mediaId);
     }
 
     private function normalizeFaqRows(array $faqs): array
