@@ -10,6 +10,8 @@ Route::get('/destinations/{destination:slug}', [\App\Http\Controllers\Public\Des
 Route::get('/topics/{topic:slug}', [\App\Http\Controllers\Public\TopicController::class, 'show'])->name('topics.show');
 Route::get('/tags/{tag:slug}', [\App\Http\Controllers\Public\TagController::class, 'show'])->name('tags.show');
 Route::get('/search', \App\Http\Controllers\Public\SearchController::class)->name('search');
+Route::get('/sitemap.xml', \App\Http\Controllers\Public\SitemapController::class)->name('sitemap');
+Route::get('/robots.txt', \App\Http\Controllers\Public\RobotsController::class)->name('robots');
 
 Route::view('/health', 'health')->name('health');
 

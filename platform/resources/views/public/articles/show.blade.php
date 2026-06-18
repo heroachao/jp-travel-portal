@@ -17,6 +17,7 @@
             @endforeach
         </div>
         <div class="content-prose mt-8">
+            @ad('article-body-middle')
             {!! $article->body !!}
         </div>
     </article>
