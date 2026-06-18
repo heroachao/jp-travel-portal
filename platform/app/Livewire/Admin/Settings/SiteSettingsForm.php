@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Settings;
 
 use App\Services\Settings\SiteSettings;
 use Illuminate\Contracts\View\View;
+use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 class SiteSettingsForm extends Component
@@ -54,13 +55,15 @@ class SiteSettingsForm extends Component
 
     public function save(SiteSettings $settings): void
     {
+        $this->normalizeNullableStrings();
+
         $data = $this->validate([
             'site_name' => ['required', 'string', 'max:120'],
             'seo_title_suffix' => ['required', 'string', 'max:120'],
             'tagline' => ['nullable', 'string', 'max:160'],
             'default_meta_description' => ['nullable', 'string', 'max:255'],
-            'ga4_measurement_id' => ['nullable', 'regex:/^G-[A-Z0-9]+$/'],
-            'adsense_publisher_id' => ['nullable', 'regex:/^ca-pub-[0-9]+$/'],
+            'ga4_measurement_id' => ['nullable', 'string', 'max:255', 'regex:/^G-[A-Z0-9]+$/'],
+            'adsense_publisher_id' => ['nullable', 'string', 'max:255', 'regex:/^ca-pub-[0-9]+$/'],
             'contact_email' => ['nullable', 'email', 'max:255'],
             'social_links' => ['nullable', 'json'],
             'robots_extra_rules' => ['nullable', 'string', 'max:2000'],
@@ -75,6 +78,30 @@ class SiteSettingsForm extends Component
         session()->flash('status', '站点设置已保存');
     }
 
+    private function normalizeNullableStrings(): void
+    {
+        foreach ([
+            'tagline',
+            'default_meta_description',
+            'ga4_measurement_id',
+            'adsense_publisher_id',
+            'contact_email',
+            'social_links',
+            'robots_extra_rules',
+        ] as $field) {
+            $this->{$field} = $this->nullableText($this->{$field});
+        }
+    }
+
+    private function nullableText(?string $value): ?string
+    {
+        if ($value === null || trim($value) === '') {
+            return null;
+        }
+
+        return $value;
+    }
+
     private function decodeSocialLinks(?string $json): ?array
     {
         if ($json === null || trim($json) === '') {
@@ -83,7 +110,13 @@ class SiteSettingsForm extends Component
 
         $decoded = json_decode($json, true);
 
-        return is_array($decoded) ? $decoded : null;
+        if (! is_array($decoded)) {
+            throw ValidationException::withMessages([
+                'social_links' => '社交链接必须是 JSON 对象或数组。',
+            ]);
+        }
+
+        return $decoded;
     }
 
     public function render(): View

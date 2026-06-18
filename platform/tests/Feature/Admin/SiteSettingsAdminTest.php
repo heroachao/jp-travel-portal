@@ -101,6 +101,83 @@ class SiteSettingsAdminTest extends TestCase
             ]);
     }
 
+    public function test_site_settings_rejects_overlong_tracking_ids(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $admin = User::factory()->create();
+        $admin->assignRole('super-admin');
+        $this->actingAs($admin);
+
+        Livewire::test(SiteSettingsForm::class)
+            ->set('site_name', 'Japan Travel Guide')
+            ->set('seo_title_suffix', 'Japan Travel Guide')
+            ->set('ga4_measurement_id', 'G-'.str_repeat('A', 254))
+            ->set('adsense_publisher_id', 'ca-pub-'.str_repeat('1', 249))
+            ->call('save')
+            ->assertHasErrors([
+                'ga4_measurement_id',
+                'adsense_publisher_id',
+            ]);
+    }
+
+    public function test_site_settings_rejects_scalar_json_social_links(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $admin = User::factory()->create();
+        $admin->assignRole('super-admin');
+        $this->actingAs($admin);
+
+        Livewire::test(SiteSettingsForm::class)
+            ->set('site_name', 'Japan Travel Guide')
+            ->set('seo_title_suffix', 'Japan Travel Guide')
+            ->set('social_links', '"https://x.com/example"')
+            ->call('save')
+            ->assertHasErrors(['social_links']);
+    }
+
+    public function test_site_settings_clears_optional_strings_to_null(): void
+    {
+        SiteSetting::query()->create([
+            'id' => 1,
+            'site_name' => 'Japan Travel Guide',
+            'seo_title_suffix' => 'Japan Travel Guide',
+            'tagline' => 'Rail-first Japan planning.',
+            'default_meta_description' => 'Independent Japan travel planning guides.',
+            'ga4_measurement_id' => 'G-ABC123DEF4',
+            'adsense_publisher_id' => 'ca-pub-1234567890123456',
+            'contact_email' => 'hello@example.com',
+            'social_links' => ['x' => 'https://x.com/japanrail'],
+            'robots_extra_rules' => 'Disallow: /private',
+        ]);
+
+        $this->seed(RoleSeeder::class);
+        $admin = User::factory()->create();
+        $admin->assignRole('super-admin');
+        $this->actingAs($admin);
+
+        Livewire::test(SiteSettingsForm::class)
+            ->set('tagline', '')
+            ->set('default_meta_description', '')
+            ->set('ga4_measurement_id', '')
+            ->set('adsense_publisher_id', '')
+            ->set('contact_email', '')
+            ->set('social_links', '')
+            ->set('robots_extra_rules', '')
+            ->call('save')
+            ->assertHasNoErrors();
+
+        $this->assertDatabaseHas('site_settings', [
+            'id' => 1,
+            'tagline' => null,
+            'default_meta_description' => null,
+            'ga4_measurement_id' => null,
+            'adsense_publisher_id' => null,
+            'contact_email' => null,
+            'social_links' => null,
+            'robots_extra_rules' => null,
+        ]);
+    }
+
     public function test_admin_can_open_site_settings_page(): void
     {
         $this->seed(RoleSeeder::class);
