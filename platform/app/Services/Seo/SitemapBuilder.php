@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Destination;
 use App\Models\Tag;
 use App\Models\Topic;
+use App\Models\TravelCategory;
 use Illuminate\Support\Collection;
 use SimpleXMLElement;
 
@@ -16,6 +17,7 @@ class SitemapBuilder
         $urls = collect()
             ->merge($this->articleUrls())
             ->merge($this->destinationUrls())
+            ->merge($this->categoryUrls())
             ->merge($this->topicUrls())
             ->merge($this->tagUrls());
 
@@ -48,10 +50,23 @@ class SitemapBuilder
     {
         return Destination::query()
             ->where('is_indexable', true)
+            ->where('is_channel', true)
             ->get()
             ->map(fn (Destination $destination) => [
-                'loc' => route('destinations.show', $destination),
+                'loc' => route('regions.show', $destination),
                 'lastmod' => $destination->updated_at?->toAtomString(),
+            ]);
+    }
+
+    private function categoryUrls(): Collection
+    {
+        return TravelCategory::query()
+            ->where('is_indexable', true)
+            ->where('is_visible', true)
+            ->get()
+            ->map(fn (TravelCategory $category) => [
+                'loc' => route('categories.show', $category),
+                'lastmod' => $category->updated_at?->toAtomString(),
             ]);
     }
 
