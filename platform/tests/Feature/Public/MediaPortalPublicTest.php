@@ -4,7 +4,10 @@ namespace Tests\Feature\Public;
 
 use App\Enums\ArticleStatus;
 use App\Models\Article;
+use App\Models\ArticleFaq;
 use App\Models\Destination;
+use App\Models\HomepageModule;
+use App\Models\ServiceLink;
 use App\Models\TravelCategory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -284,5 +287,163 @@ class MediaPortalPublicTest extends TestCase
             ->assertSee('Published Planning Guide')
             ->assertDontSee('Draft Planning Guide')
             ->assertDontSee('Future Planning Guide');
+    }
+
+    public function test_homepage_renders_service_region_category_and_module_data(): void
+    {
+        ServiceLink::factory()->create([
+            'label' => 'Rail Tickets',
+            'type' => 'rail',
+            'placement' => 'header',
+            'url' => 'https://example.com/rail',
+            'is_enabled' => true,
+            'sort_order' => 1,
+        ]);
+        ServiceLink::factory()->create([
+            'label' => 'Hidden Hotel Deals',
+            'placement' => 'header',
+            'is_enabled' => false,
+        ]);
+        ServiceLink::factory()->create([
+            'label' => 'Footer Planning Desk',
+            'placement' => 'footer',
+            'url' => 'https://example.com/footer-planning',
+            'is_enabled' => true,
+            'sort_order' => 1,
+        ]);
+
+        Destination::factory()->create([
+            'name' => 'Kansai',
+            'display_name' => 'Kansai',
+            'slug' => 'kansai',
+            'is_channel' => true,
+            'is_indexable' => true,
+            'sort_order' => 1,
+        ]);
+        Destination::factory()->create([
+            'name' => 'Private Hokkaido',
+            'slug' => 'private-hokkaido',
+            'is_channel' => true,
+            'is_indexable' => false,
+            'sort_order' => 2,
+        ]);
+        Destination::factory()->create([
+            'name' => 'Ueno Local Spot',
+            'slug' => 'ueno-local-spot',
+            'is_channel' => false,
+            'is_indexable' => true,
+            'sort_order' => 3,
+        ]);
+
+        TravelCategory::factory()->create([
+            'title' => 'Food',
+            'display_name' => 'Food',
+            'slug' => 'food',
+            'is_visible' => true,
+            'sort_order' => 1,
+        ]);
+        TravelCategory::factory()->create([
+            'title' => 'Hidden Experiences',
+            'slug' => 'hidden-experiences',
+            'is_visible' => false,
+            'sort_order' => 2,
+        ]);
+
+        HomepageModule::factory()->create([
+            'placement_key' => 'home-featured',
+            'type' => 'featured_articles',
+            'title' => 'Featured Guides',
+            'is_enabled' => true,
+            'sort_order' => 1,
+        ]);
+        HomepageModule::factory()->create([
+            'placement_key' => 'home-hidden',
+            'type' => 'featured_articles',
+            'title' => 'Hidden Homepage Module',
+            'is_enabled' => false,
+            'sort_order' => 2,
+        ]);
+
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('Rail Tickets')
+            ->assertSee('rel="nofollow noopener sponsored"', false)
+            ->assertSee('Footer Planning Desk')
+            ->assertSee('Kansai')
+            ->assertSee('Food')
+            ->assertSee('Featured Guides')
+            ->assertDontSee('Hidden Hotel Deals')
+            ->assertDontSee('Private Hokkaido')
+            ->assertDontSee('Ueno Local Spot')
+            ->assertDontSee('Hidden Experiences')
+            ->assertDontSee('Hidden Homepage Module');
+    }
+
+    public function test_article_page_renders_faq_source_and_category_links(): void
+    {
+        $article = Article::factory()->create([
+            'author_id' => User::factory(),
+            'title' => 'Tokyo Rail Basics',
+            'slug' => 'tokyo-rail-basics',
+            'status' => ArticleStatus::Published,
+            'published_at' => now()->subDay(),
+            'display_updated_at' => now(),
+            'reading_time_minutes' => 7,
+            'source_name' => 'Tokyo Metro Source',
+            'source_url' => 'https://www.tokyometro.jp/en/',
+        ]);
+        $category = TravelCategory::factory()->create([
+            'title' => 'Transport',
+            'display_name' => 'Transport',
+            'slug' => 'transport',
+            'is_visible' => true,
+        ]);
+        $article->travelCategories()->attach($category, ['sort_order' => 1]);
+
+        ArticleFaq::factory()->for($article)->create([
+            'question' => 'Can I use Suica in Tokyo?',
+            'answer' => '<p>Yes, for most short city trips.</p>',
+            'is_enabled' => true,
+            'sort_order' => 1,
+        ]);
+        ArticleFaq::factory()->for($article)->create([
+            'question' => 'Hidden FAQ Question?',
+            'answer' => '<p>This answer should not render.</p>',
+            'is_enabled' => false,
+            'sort_order' => 2,
+        ]);
+
+        $this->get(route('articles.show', $article))
+            ->assertOk()
+            ->assertSee('Tokyo Metro Source')
+            ->assertSee('href="https://www.tokyometro.jp/en/"', false)
+            ->assertSee('rel="nofollow noopener"', false)
+            ->assertSee('Transport')
+            ->assertSee('7 min read')
+            ->assertSee('Can I use Suica in Tokyo?')
+            ->assertSee('Yes, for most short city trips.', false)
+            ->assertSee('application/ld+json', false)
+            ->assertSee('"@type":"FAQPage"', false)
+            ->assertSee('Can I use Suica in Tokyo?', false)
+            ->assertDontSee('Hidden FAQ Question?')
+            ->assertDontSee('This answer should not render', false);
+    }
+
+    public function test_article_source_without_url_renders_plain_text_without_empty_link(): void
+    {
+        $article = Article::factory()->create([
+            'author_id' => User::factory(),
+            'title' => 'Nara Walking Notes',
+            'slug' => 'nara-walking-notes',
+            'status' => ArticleStatus::Published,
+            'published_at' => now(),
+            'source_name' => 'Local Tourism Board',
+            'source_url' => null,
+        ]);
+
+        $this->get(route('articles.show', $article))
+            ->assertOk()
+            ->assertSee('Local Tourism Board')
+            ->assertDontSee('href="#"', false);
     }
 }

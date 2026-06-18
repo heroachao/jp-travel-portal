@@ -21,7 +21,29 @@ class ArticleController extends Controller
     {
         abort_unless($article->status->value === 'published' && $article->published_at?->lte(now()), 404);
 
-        $article->load(['destinations', 'topics', 'tags']);
+        $article->load([
+            'destinations' => fn ($query) => $query->where('is_indexable', true)->ordered(),
+            'topics' => fn ($query) => $query->where('is_indexable', true)->orderBy('title'),
+            'tags' => fn ($query) => $query->orderBy('name'),
+            'travelCategories' => fn ($query) => $query->visible(),
+            'enabledFaqs',
+        ]);
+
+        $faqJsonLd = $article->enabledFaqs->isEmpty() ? null : [
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => $article->enabledFaqs
+                ->map(fn ($faq) => [
+                    '@type' => 'Question',
+                    'name' => $faq->question,
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => trim(strip_tags($faq->answer)),
+                    ],
+                ])
+                ->values()
+                ->all(),
+        ];
 
         return view('public.articles.show', [
             'meta' => new MetaPayload(
@@ -34,6 +56,7 @@ class ArticleController extends Controller
                 $article->is_indexable,
             ),
             'article' => $article,
+            'faqJsonLd' => $faqJsonLd,
         ]);
     }
 }
