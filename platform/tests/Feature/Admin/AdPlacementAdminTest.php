@@ -101,6 +101,26 @@ class AdPlacementAdminTest extends TestCase
         $this->assertTrue($placement->is_enabled);
     }
 
+    public function test_ad_operator_can_manage_ad_placements(): void
+    {
+        $this->actingAs($this->userWithRole('ad-operator'));
+
+        Livewire::test(AdPlacementIndex::class)
+            ->set('key', 'ad-operator-placement')
+            ->set('name', '广告操作员广告位')
+            ->set('page_type', 'article')
+            ->set('position', 'body_middle')
+            ->set('code', '<ins class="adsbygoogle"></ins>')
+            ->set('is_enabled', true)
+            ->call('save')
+            ->assertHasNoErrors();
+
+        $this->assertDatabaseHas('ad_placements', [
+            'key' => 'ad-operator-placement',
+            'is_enabled' => true,
+        ]);
+    }
+
     public function test_edit_loads_notes_and_enabled_state_then_can_update_notes_and_disable(): void
     {
         $placement = AdPlacement::factory()->create([
@@ -178,6 +198,41 @@ class AdPlacementAdminTest extends TestCase
             ->assertForbidden();
     }
 
+    public function test_editor_and_seo_operator_cannot_manage_ad_placements(): void
+    {
+        foreach (['editor', 'seo-operator'] as $role) {
+            $placement = AdPlacement::factory()->create([
+                'key' => 'restricted-'.$role,
+                'code' => '<ins class="adsbygoogle"></ins>',
+                'notes' => '敏感内部备注',
+            ]);
+            $this->actingAs($this->userWithRole($role));
+
+            Livewire::test(AdPlacementIndex::class)
+                ->set('key', 'blocked-'.$role)
+                ->set('name', 'Blocked')
+                ->set('page_type', 'article')
+                ->set('position', 'body_middle')
+                ->call('save')
+                ->assertForbidden();
+
+            Livewire::test(AdPlacementIndex::class)
+                ->call('edit', $placement->id)
+                ->assertForbidden();
+
+            Livewire::test(AdPlacementIndex::class)
+                ->call('delete', $placement->id)
+                ->assertForbidden();
+
+            $this->assertDatabaseHas('ad_placements', [
+                'id' => $placement->id,
+            ]);
+            $this->assertDatabaseMissing('ad_placements', [
+                'key' => 'blocked-'.$role,
+            ]);
+        }
+    }
+
     public function test_non_admin_cannot_directly_delete_ad_placement_via_livewire_action(): void
     {
         $placement = AdPlacement::factory()->create();
@@ -195,11 +250,16 @@ class AdPlacementAdminTest extends TestCase
 
     private function superAdmin(): User
     {
+        return $this->userWithRole('super-admin');
+    }
+
+    private function userWithRole(string $role): User
+    {
         $this->seed(RoleSeeder::class);
 
-        $admin = User::factory()->create();
-        $admin->assignRole('super-admin');
+        $user = User::factory()->create();
+        $user->assignRole($role);
 
-        return $admin;
+        return $user;
     }
 }

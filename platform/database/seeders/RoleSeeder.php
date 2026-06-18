@@ -23,6 +23,7 @@ class RoleSeeder extends Seeder
             'articles.publish',
             'seo.manage',
             'ads.manage',
+            'settings.manage',
             'users.manage',
             'system.logs',
         ];

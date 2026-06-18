@@ -55,7 +55,7 @@ class SiteSettingsForm extends Component
 
     public function save(SiteSettings $settings): void
     {
-        abort_unless(auth()->user()?->can('admin.access'), 403);
+        abort_unless(auth()->user()?->can('settings.manage'), 403);
 
         $this->normalizeNullableStrings();
 
@@ -64,8 +64,8 @@ class SiteSettingsForm extends Component
             'seo_title_suffix' => ['required', 'string', 'max:120'],
             'tagline' => ['nullable', 'string', 'max:160'],
             'default_meta_description' => ['nullable', 'string', 'max:255'],
-            'ga4_measurement_id' => ['nullable', 'string', 'max:255', 'regex:/^G-[A-Z0-9]+$/'],
-            'adsense_publisher_id' => ['nullable', 'string', 'max:255', 'regex:/^ca-pub-[0-9]+$/'],
+            'ga4_measurement_id' => ['nullable', 'string', 'max:255', 'regex:/^G-[A-Z0-9]{8,16}$/'],
+            'adsense_publisher_id' => ['nullable', 'string', 'max:255', 'regex:/^ca-pub-[0-9]{16}$/'],
             'contact_email' => ['nullable', 'email', 'max:255'],
             'social_links' => ['nullable', 'json'],
             'robots_extra_rules' => ['nullable', 'string', 'max:2000'],

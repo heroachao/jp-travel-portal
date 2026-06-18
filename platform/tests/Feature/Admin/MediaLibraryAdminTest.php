@@ -39,7 +39,7 @@ class MediaLibraryAdminTest extends TestCase
         Livewire::test(MediaAssetIndex::class)
             ->set('file', UploadedFile::fake()->image('kyoto.jpg', 1200, 800))
             ->set('alt_text', '京都伏见稻荷鸟居')
-            ->set('source_note', '内部摄影素材')
+            ->set('source_note', 'Photo by Japan Travel Guide demo team.')
             ->call('upload')
             ->assertHasNoErrors()
             ->assertSee('图片已上传');
@@ -47,7 +47,7 @@ class MediaLibraryAdminTest extends TestCase
         $asset = MediaAsset::query()->where('alt_text', '京都伏见稻荷鸟居')->firstOrFail();
 
         Storage::disk('public')->assertExists($asset->path);
-        $this->assertSame('内部摄影素材', $asset->source_note);
+        $this->assertSame('Photo by Japan Travel Guide demo team.', $asset->source_note);
         $this->assertSame($admin->id, $asset->uploaded_by);
         $this->assertSame('public', $asset->disk);
     }

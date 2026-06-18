@@ -27,8 +27,8 @@
                 @error('alt_text')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
             </div>
             <div>
-                <label class="block text-sm font-medium" for="media_source_note">来源备注</label>
-                <input id="media_source_note" wire:model="source_note" class="mt-2 w-full rounded border px-3 py-2 text-sm" placeholder="授权来源或内部备注">
+                <label class="block text-sm font-medium" for="media_source_note">公开来源/授权说明</label>
+                <input id="media_source_note" wire:model="source_note" class="mt-2 w-full rounded border px-3 py-2 text-sm" placeholder="公开署名、版权方或授权说明">
                 @error('source_note')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
             </div>
         </div>

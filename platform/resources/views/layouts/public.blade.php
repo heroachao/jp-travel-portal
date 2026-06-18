@@ -5,6 +5,33 @@
     $layoutFooterDescription = $siteSettings->tagline
         ?: ($siteSettings->default_meta_description
             ?: 'Independent planning guides, regional hubs, and useful travel tools for English-speaking Japan travelers.');
+    $layoutTitle = $meta->title;
+    if (filled($siteSettings->seo_title_suffix) && ! str_contains($layoutTitle, $siteSettings->seo_title_suffix)) {
+        $layoutTitle .= ' | '.$siteSettings->seo_title_suffix;
+    }
+    $layoutDescription = $meta->description ?: $siteSettings->default_meta_description;
+    $organizationJsonLd = null;
+    if ($siteSettings->organization_schema_enabled) {
+        $organizationJsonLd = [
+            '@context' => 'https://schema.org',
+            '@type' => 'Organization',
+            'name' => $siteSettings->site_name,
+            'url' => route('home'),
+        ];
+
+        if (filled($siteSettings->contact_email)) {
+            $organizationJsonLd['email'] = $siteSettings->contact_email;
+        }
+
+        $sameAs = collect($siteSettings->social_links ?? [])
+            ->filter(fn ($url) => is_string($url) && str_starts_with($url, 'http'))
+            ->values()
+            ->all();
+
+        if ($sameAs !== []) {
+            $organizationJsonLd['sameAs'] = $sameAs;
+        }
+    }
     $layoutRegions = \App\Models\Destination::query()
         ->channel()
         ->where('is_indexable', true)
@@ -24,13 +51,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $meta->title }}</title>
-    @if($meta->description)<meta name="description" content="{{ $meta->description }}">@endif
+    <title>{{ $layoutTitle }}</title>
+    @if($layoutDescription)<meta name="description" content="{{ $layoutDescription }}">@endif
     <link rel="canonical" href="{{ $meta->canonical }}">
     @unless($meta->indexable)<meta name="robots" content="noindex,nofollow">@endunless
-    <meta property="og:title" content="{{ $meta->ogTitle ?? $meta->title }}">
-    @if($meta->ogDescription ?? $meta->description)<meta property="og:description" content="{{ $meta->ogDescription ?? $meta->description }}">@endif
+    <meta property="og:title" content="{{ $meta->ogTitle ?? $layoutTitle }}">
+    @if($meta->ogDescription ?? $layoutDescription)<meta property="og:description" content="{{ $meta->ogDescription ?? $layoutDescription }}">@endif
     @if($meta->ogImage)<meta property="og:image" content="{{ $meta->ogImage }}">@endif
+    @if($organizationJsonLd)
+        <script type="application/ld+json">{!! json_encode($organizationJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) !!}</script>
+    @endif
     @if($siteSettings->analytics_enabled && filled($siteSettings->ga4_measurement_id))
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ $siteSettings->ga4_measurement_id }}"></script>
         <script>

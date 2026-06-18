@@ -94,6 +94,26 @@ class SiteSettingsAdminTest extends TestCase
         ]);
     }
 
+    public function test_non_settings_manager_roles_cannot_save_site_settings(): void
+    {
+        foreach (['chief-editor', 'editor', 'seo-operator', 'ad-operator'] as $role) {
+            $this->seed(RoleSeeder::class);
+            $user = User::factory()->create();
+            $user->assignRole($role);
+            $this->actingAs($user);
+
+            Livewire::test(SiteSettingsForm::class)
+                ->set('site_name', 'Unauthorized '.$role)
+                ->set('seo_title_suffix', 'Unauthorized '.$role)
+                ->call('save')
+                ->assertForbidden();
+
+            $this->assertDatabaseMissing('site_settings', [
+                'site_name' => 'Unauthorized '.$role,
+            ]);
+        }
+    }
+
     public function test_site_settings_reject_invalid_public_configuration_values(): void
     {
         $this->seed(RoleSeeder::class);
@@ -104,8 +124,8 @@ class SiteSettingsAdminTest extends TestCase
         Livewire::test(SiteSettingsForm::class)
             ->set('site_name', 'Japan Travel Guide')
             ->set('seo_title_suffix', 'Japan Travel Guide')
-            ->set('ga4_measurement_id', 'UA-OLD-ID')
-            ->set('adsense_publisher_id', 'pub-123')
+            ->set('ga4_measurement_id', 'G-ABC')
+            ->set('adsense_publisher_id', 'ca-pub-1')
             ->set('contact_email', 'not-an-email')
             ->set('social_links', '{"x":')
             ->call('save')

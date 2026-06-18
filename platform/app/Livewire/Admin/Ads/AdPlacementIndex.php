@@ -27,7 +27,7 @@ class AdPlacementIndex extends Component
 
     public function edit(int $id): void
     {
-        abort_unless(auth()->user()?->can('admin.access'), 403);
+        abort_unless(auth()->user()?->can('ads.manage'), 403);
 
         $placement = AdPlacement::findOrFail($id);
         $this->placementId = $placement->id;
@@ -42,7 +42,7 @@ class AdPlacementIndex extends Component
 
     public function save(): void
     {
-        abort_unless(auth()->user()?->can('admin.access'), 403);
+        abort_unless(auth()->user()?->can('ads.manage'), 403);
 
         $data = $this->validate([
             'key' => ['required', 'alpha_dash:ascii', 'max:120', Rule::unique('ad_placements', 'key')->ignore($this->placementId)],
@@ -63,7 +63,7 @@ class AdPlacementIndex extends Component
 
     public function delete(int $id): void
     {
-        abort_unless(auth()->user()?->can('admin.access'), 403);
+        abort_unless(auth()->user()?->can('ads.manage'), 403);
 
         AdPlacement::findOrFail($id)->delete();
         session()->flash('status', '广告位已删除');
