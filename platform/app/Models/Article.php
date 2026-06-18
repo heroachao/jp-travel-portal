@@ -91,12 +91,21 @@ class Article extends Model
 
     public function travelCategories(): BelongsToMany
     {
-        return $this->belongsToMany(TravelCategory::class)->withPivot('sort_order')->withTimestamps();
+        return $this->belongsToMany(TravelCategory::class)
+            ->withPivot('sort_order')
+            ->withTimestamps()
+            ->orderByPivot('sort_order')
+            ->orderBy('travel_categories.id');
     }
 
     public function faqs(): HasMany
     {
         return $this->hasMany(ArticleFaq::class)->ordered();
+    }
+
+    public function enabledFaqs(): HasMany
+    {
+        return $this->hasMany(ArticleFaq::class)->enabled()->ordered();
     }
 
     public function versions(): HasMany

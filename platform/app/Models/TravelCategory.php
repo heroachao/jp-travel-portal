@@ -52,7 +52,11 @@ class TravelCategory extends Model
 
     public function articles(): BelongsToMany
     {
-        return $this->belongsToMany(Article::class)->withPivot('sort_order')->withTimestamps();
+        return $this->belongsToMany(Article::class)
+            ->withPivot('sort_order')
+            ->withTimestamps()
+            ->orderByPivot('sort_order')
+            ->orderBy('articles.id');
     }
 
     public function scopeVisible(Builder $query): Builder

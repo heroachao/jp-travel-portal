@@ -54,6 +54,6 @@ class HomepageModuleItem extends Model
 
     public function scopeOrdered(Builder $query): Builder
     {
-        return $query->orderBy('sort_order')->orderBy('label');
+        return $query->orderBy('sort_order')->orderBy('id');
     }
 }
