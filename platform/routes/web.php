@@ -22,4 +22,8 @@ Route::middleware(['auth', 'admin'])
     ->name('admin.')
     ->group(function (): void {
         Route::view('/', 'admin.dashboard')->name('dashboard');
+        Route::get('/articles', \App\Livewire\Admin\Articles\ArticleIndex::class)->name('articles.index');
+        Route::get('/articles/create', \App\Livewire\Admin\Articles\ArticleForm::class)->name('articles.create');
+        Route::get('/articles/{article}/edit', \App\Livewire\Admin\Articles\ArticleForm::class)->name('articles.edit');
+        Route::get('/articles/{article}/review', \App\Livewire\Admin\Articles\ReviewPanel::class)->name('articles.review');
     });

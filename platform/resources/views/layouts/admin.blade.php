@@ -14,6 +14,7 @@
             <a href="{{ route('admin.dashboard') }}" class="block text-lg font-semibold">日本旅游发布系统</a>
             <nav class="mt-8 space-y-2 text-sm">
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.dashboard') }}">工作台</a>
+                <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.articles.index') }}">文章管理</a>
             </nav>
         </aside>
         <main class="flex-1 p-8">
