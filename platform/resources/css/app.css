@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer components {
+    .content-prose {
+        line-height: 1.8;
+    }
+
+    .content-prose p {
+        margin-block: 1rem;
+    }
+
+    .content-prose h2,
+    .content-prose h3,
+    .content-prose h4 {
+        margin-block: 2rem 0.75rem;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .content-prose a {
+        color: #065f46;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .admin-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        background: #fff;
+        padding: 1.25rem;
+        box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+    }
+}

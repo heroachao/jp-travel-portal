@@ -1,0 +1,56 @@
+<?php
+
+namespace Tests\Feature\Public;
+
+use App\Enums\ArticleStatus;
+use App\Models\AdPlacement;
+use App\Models\Article;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class AdRenderingTest extends TestCase
+{
+    use RefreshDatabase;
+
+    public function test_enabled_ad_placement_renders_in_article(): void
+    {
+        AdPlacement::factory()->create([
+            'key' => 'article-body-middle',
+            'code' => '<ins class="adsbygoogle"></ins>',
+            'is_enabled' => true,
+        ]);
+
+        $article = Article::factory()->create([
+            'author_id' => User::factory(),
+            'slug' => 'ad-ready-article',
+            'status' => ArticleStatus::Published,
+            'published_at' => now(),
+        ]);
+
+        $this->get(route('articles.show', $article))
+            ->assertOk()
+            ->assertSee('data-ad-key="article-body-middle"', false)
+            ->assertSee('adsbygoogle', false);
+    }
+
+    public function test_disabled_ad_placement_renders_no_empty_slot(): void
+    {
+        AdPlacement::factory()->create([
+            'key' => 'article-body-middle',
+            'code' => '<ins class="adsbygoogle"></ins>',
+            'is_enabled' => false,
+        ]);
+
+        $article = Article::factory()->create([
+            'author_id' => User::factory(),
+            'slug' => 'no-ad-slot',
+            'status' => ArticleStatus::Published,
+            'published_at' => now(),
+        ]);
+
+        $this->get(route('articles.show', $article))
+            ->assertOk()
+            ->assertDontSee('data-ad-key="article-body-middle"', false);
+    }
+}
