@@ -76,6 +76,10 @@ class DestinationIndex extends Component
             return;
         }
 
+        if ($data['body'] !== null) {
+            $data['body'] = clean($data['body']);
+        }
+
         Destination::updateOrCreate(['id' => $this->destinationId], $data);
         session()->flash('status', '目的地已保存');
         $this->resetForm();
@@ -83,7 +87,16 @@ class DestinationIndex extends Component
 
     public function delete(int $id): void
     {
-        Destination::findOrFail($id)->delete();
+        $destination = Destination::withCount('children')->findOrFail($id);
+
+        if ($destination->children_count > 0) {
+            $this->addError('delete', '该地区下还有子地区，不能删除');
+
+            return;
+        }
+
+        $this->resetErrorBag('delete');
+        $destination->delete();
     }
 
     public function render(): View

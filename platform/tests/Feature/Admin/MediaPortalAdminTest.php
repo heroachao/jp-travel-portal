@@ -298,6 +298,32 @@ class MediaPortalAdminTest extends TestCase
         ]);
     }
 
+    public function test_editor_can_set_destination_parent_to_valid_parent(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $parent = Destination::factory()->create([
+            'name' => 'Japan',
+            'parent_id' => null,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(DestinationIndex::class)
+            ->set('parent_id', $parent->id)
+            ->set('type', 'city')
+            ->set('name', 'Tokyo')
+            ->set('slug', 'tokyo')
+            ->call('save')
+            ->assertHasNoErrors();
+
+        $this->assertDatabaseHas('destinations', [
+            'slug' => 'tokyo',
+            'parent_id' => $parent->id,
+        ]);
+    }
+
     public function test_editor_cannot_set_destination_parent_to_descendant(): void
     {
         $this->seed(RoleSeeder::class);
@@ -331,6 +357,70 @@ class MediaPortalAdminTest extends TestCase
             'id' => $parent->id,
             'parent_id' => null,
         ]);
+    }
+
+    public function test_editor_sanitizes_destination_body_from_chinese_admin(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(DestinationIndex::class)
+            ->set('type', 'region')
+            ->set('name', 'Tokyo')
+            ->set('slug', 'tokyo-xss')
+            ->set('body', '<script>alert(1)</script><p>Safe</p>')
+            ->call('save')
+            ->assertHasNoErrors();
+
+        $body = Destination::where('slug', 'tokyo-xss')->firstOrFail()->body;
+
+        $this->assertStringNotContainsString('<script>', $body);
+        $this->assertStringContainsString('<p>Safe</p>', $body);
+    }
+
+    public function test_editor_cannot_delete_destination_with_child(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $parent = Destination::factory()->create();
+        $child = Destination::factory()->create(['parent_id' => $parent->id]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(DestinationIndex::class)
+            ->call('delete', $parent->id)
+            ->assertHasErrors(['delete']);
+
+        $this->assertNotSoftDeleted('destinations', ['id' => $parent->id]);
+        $this->assertDatabaseHas('destinations', [
+            'id' => $child->id,
+            'parent_id' => $parent->id,
+        ]);
+    }
+
+    public function test_editor_can_delete_empty_destination_and_clear_previous_delete_error(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $blockedParent = Destination::factory()->create();
+        Destination::factory()->create(['parent_id' => $blockedParent->id]);
+        $emptyDestination = Destination::factory()->create();
+
+        $this->actingAs($editor);
+
+        Livewire::test(DestinationIndex::class)
+            ->call('delete', $blockedParent->id)
+            ->assertHasErrors(['delete'])
+            ->call('delete', $emptyDestination->id)
+            ->assertHasNoErrors(['delete']);
+
+        $this->assertNotSoftDeleted('destinations', ['id' => $blockedParent->id]);
+        $this->assertSoftDeleted('destinations', ['id' => $emptyDestination->id]);
     }
 
     public function test_editor_can_create_service_link_from_chinese_admin(): void
