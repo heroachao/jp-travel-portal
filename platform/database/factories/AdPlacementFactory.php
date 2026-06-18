@@ -23,7 +23,7 @@ class AdPlacementFactory extends Factory
             'page_type' => 'article',
             'position' => 'body_middle',
             'code' => '<ins class="adsbygoogle"></ins>',
-            'is_enabled' => true,
+            'is_enabled' => false,
             'notes' => 'Demo placement.',
         ];
     }
