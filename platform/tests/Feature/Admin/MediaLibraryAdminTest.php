@@ -4,7 +4,9 @@ namespace Tests\Feature\Admin;
 
 use App\Livewire\Admin\Media\MediaAssetIndex;
 use App\Models\Article;
+use App\Models\Destination;
 use App\Models\MediaAsset;
+use App\Models\Topic;
 use App\Models\User;
 use Database\Seeders\RoleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -50,6 +52,22 @@ class MediaLibraryAdminTest extends TestCase
         $this->assertSame('public', $asset->disk);
     }
 
+    public function test_admin_cannot_upload_image_with_unreadable_dimensions(): void
+    {
+        Storage::fake('public');
+        $this->actingAs($this->superAdmin());
+
+        Livewire::test(MediaAssetIndex::class)
+            ->set('file', UploadedFile::fake()->create('fake.jpg', 1, 'image/jpeg'))
+            ->set('alt_text', '坏图片')
+            ->call('upload')
+            ->assertHasErrors(['file']);
+
+        $this->assertDatabaseMissing('media_assets', [
+            'alt_text' => '坏图片',
+        ]);
+    }
+
     public function test_non_admin_cannot_directly_upload_via_livewire_action(): void
     {
         Storage::fake('public');
@@ -69,27 +87,48 @@ class MediaLibraryAdminTest extends TestCase
 
     public function test_admin_cannot_delete_media_used_as_article_cover(): void
     {
-        Storage::fake('public');
         $admin = $this->superAdmin();
-        $asset = MediaAsset::factory()->create([
-            'uploaded_by' => $admin->id,
-            'path' => 'media/2026/06/used-cover.jpg',
-        ]);
-        Storage::disk('public')->put($asset->path, 'cover-bytes');
+        $asset = $this->storedAsset($admin, 'media/2026/06/used-cover.jpg');
         Article::factory()->create([
             'author_id' => $admin->id,
             'cover_media_id' => $asset->id,
         ]);
-        $this->actingAs($admin);
 
-        Livewire::test(MediaAssetIndex::class)
-            ->call('delete', $asset->id)
-            ->assertSee('图片正在被内容使用，不能删除');
+        $this->assertAdminDeleteIsBlockedForReferencedAsset($admin, $asset);
+    }
 
-        $this->assertDatabaseHas('media_assets', [
-            'id' => $asset->id,
+    public function test_admin_cannot_delete_media_used_as_article_og_image(): void
+    {
+        $admin = $this->superAdmin();
+        $asset = $this->storedAsset($admin, 'media/2026/06/used-og.jpg');
+        Article::factory()->create([
+            'author_id' => $admin->id,
+            'og_media_id' => $asset->id,
         ]);
-        Storage::disk('public')->assertExists($asset->path);
+
+        $this->assertAdminDeleteIsBlockedForReferencedAsset($admin, $asset);
+    }
+
+    public function test_admin_cannot_delete_media_used_as_topic_cover(): void
+    {
+        $admin = $this->superAdmin();
+        $asset = $this->storedAsset($admin, 'media/2026/06/topic-cover.jpg');
+        Topic::factory()->create([
+            'cover_media_id' => $asset->id,
+        ]);
+
+        $this->assertAdminDeleteIsBlockedForReferencedAsset($admin, $asset);
+    }
+
+    public function test_admin_cannot_delete_media_used_as_destination_cover(): void
+    {
+        $admin = $this->superAdmin();
+        $asset = $this->storedAsset($admin, 'media/2026/06/destination-cover.jpg');
+        Destination::factory()->create([
+            'cover_media_id' => $asset->id,
+        ]);
+
+        $this->assertAdminDeleteIsBlockedForReferencedAsset($admin, $asset);
     }
 
     public function test_admin_can_delete_unreferenced_media(): void
@@ -111,6 +150,22 @@ class MediaLibraryAdminTest extends TestCase
             'id' => $asset->id,
         ]);
         Storage::disk('public')->assertMissing($asset->path);
+    }
+
+    public function test_non_admin_cannot_directly_delete_media_via_livewire_action(): void
+    {
+        $admin = $this->superAdmin();
+        $asset = $this->storedAsset($admin, 'media/2026/06/protected.jpg');
+        $this->actingAs(User::factory()->create());
+
+        Livewire::test(MediaAssetIndex::class)
+            ->call('delete', $asset->id)
+            ->assertForbidden();
+
+        $this->assertDatabaseHas('media_assets', [
+            'id' => $asset->id,
+        ]);
+        Storage::disk('public')->assertExists($asset->path);
     }
 
     public function test_admin_can_search_media_by_alt_and_path(): void
@@ -145,5 +200,32 @@ class MediaLibraryAdminTest extends TestCase
         $admin->assignRole('super-admin');
 
         return $admin;
+    }
+
+    private function storedAsset(User $admin, string $path): MediaAsset
+    {
+        Storage::fake('public');
+
+        $asset = MediaAsset::factory()->create([
+            'uploaded_by' => $admin->id,
+            'path' => $path,
+        ]);
+        Storage::disk('public')->put($asset->path, 'image-bytes');
+
+        return $asset;
+    }
+
+    private function assertAdminDeleteIsBlockedForReferencedAsset(User $admin, MediaAsset $asset): void
+    {
+        $this->actingAs($admin);
+
+        Livewire::test(MediaAssetIndex::class)
+            ->call('delete', $asset->id)
+            ->assertSee('图片正在被内容使用，不能删除');
+
+        $this->assertDatabaseHas('media_assets', [
+            'id' => $asset->id,
+        ]);
+        Storage::disk('public')->assertExists($asset->path);
     }
 }

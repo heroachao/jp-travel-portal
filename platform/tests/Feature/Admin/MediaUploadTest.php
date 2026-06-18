@@ -42,4 +42,28 @@ class MediaUploadTest extends TestCase
             null
         );
     }
+
+    public function test_safe_image_upload_rejects_images_that_cannot_be_parsed(): void
+    {
+        Storage::fake('public');
+        $user = User::factory()->create();
+
+        try {
+            app(SafeImageUpload::class)->store(
+                UploadedFile::fake()->create('fake.jpg', 1, 'image/jpeg'),
+                $user,
+                'Broken image',
+                null
+            );
+
+            $this->fail('Expected image dimension validation to fail.');
+        } catch (ValidationException $exception) {
+            $this->assertArrayHasKey('file', $exception->errors());
+        }
+
+        $this->assertDatabaseMissing('media_assets', [
+            'alt_text' => 'Broken image',
+        ]);
+        Storage::disk('public')->assertMissing('media');
+    }
 }

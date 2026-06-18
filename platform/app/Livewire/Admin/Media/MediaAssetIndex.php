@@ -8,6 +8,7 @@ use App\Models\MediaAsset;
 use App\Models\Topic;
 use App\Services\Media\SafeImageUpload;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -55,16 +56,33 @@ class MediaAssetIndex extends Component
     {
         abort_unless(auth()->user()?->can('admin.access'), 403);
 
-        $asset = MediaAsset::findOrFail($id);
+        $fileToDelete = DB::transaction(function () use ($id): ?array {
+            $asset = MediaAsset::query()
+                ->whereKey($id)
+                ->lockForUpdate()
+                ->firstOrFail();
 
-        if ($this->isReferenced($asset)) {
+            if ($this->isReferenced($asset)) {
+                return null;
+            }
+
+            $fileToDelete = [
+                'disk' => $asset->disk,
+                'path' => $asset->path,
+            ];
+
+            $asset->delete();
+
+            return $fileToDelete;
+        });
+
+        if ($fileToDelete === null) {
             session()->flash('error', '图片正在被内容使用，不能删除');
 
             return;
         }
 
-        Storage::disk($asset->disk)->delete($asset->path);
-        $asset->delete();
+        Storage::disk($fileToDelete['disk'])->delete($fileToDelete['path']);
         session()->flash('status', '图片已删除');
     }
 
