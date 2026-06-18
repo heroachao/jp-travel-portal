@@ -18,4 +18,9 @@ class Tag extends Model
     {
         return $this->belongsToMany(Article::class)->withTimestamps();
     }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 }

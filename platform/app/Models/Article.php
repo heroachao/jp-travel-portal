@@ -91,4 +91,9 @@ class Article extends Model
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now());
     }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 }

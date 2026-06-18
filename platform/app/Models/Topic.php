@@ -47,4 +47,9 @@ class Topic extends Model
     {
         return $this->belongsToMany(Destination::class)->withTimestamps();
     }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 }
