@@ -55,6 +55,8 @@ class SiteSettingsForm extends Component
 
     public function save(SiteSettings $settings): void
     {
+        abort_unless(auth()->user()?->can('admin.access'), 403);
+
         $this->normalizeNullableStrings();
 
         $data = $this->validate([

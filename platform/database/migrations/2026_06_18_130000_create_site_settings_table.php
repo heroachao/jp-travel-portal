@@ -12,14 +12,9 @@ return new class extends Migration
             $table->id();
             $table->string('site_name')->default('Japan Travel Guide');
             $table->string('seo_title_suffix')->default('Japan Travel Guide');
-            $table->string('tagline')->nullable();
             $table->text('default_meta_description')->nullable();
             $table->string('ga4_measurement_id')->nullable();
             $table->string('adsense_publisher_id')->nullable();
-            $table->boolean('organization_schema_enabled')->default(false);
-            $table->string('contact_email')->nullable();
-            $table->json('social_links')->nullable();
-            $table->text('robots_extra_rules')->nullable();
             $table->boolean('analytics_enabled')->default(false);
             $table->boolean('ads_enabled')->default(false);
             $table->timestamps();

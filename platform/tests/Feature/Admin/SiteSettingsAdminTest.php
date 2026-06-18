@@ -78,6 +78,23 @@ class SiteSettingsAdminTest extends TestCase
         ], $settings->social_links);
     }
 
+    public function test_non_admin_cannot_directly_save_site_settings_via_livewire_action(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        Livewire::test(SiteSettingsForm::class)
+            ->set('site_name', 'Unauthorized Site')
+            ->set('seo_title_suffix', 'Unauthorized Site')
+            ->call('save')
+            ->assertForbidden();
+
+        $this->assertDatabaseMissing('site_settings', [
+            'site_name' => 'Unauthorized Site',
+        ]);
+    }
+
     public function test_site_settings_reject_invalid_public_configuration_values(): void
     {
         $this->seed(RoleSeeder::class);
