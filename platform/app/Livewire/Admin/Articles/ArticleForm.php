@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\TravelCategory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
@@ -62,8 +63,8 @@ class ArticleForm extends Component
         $this->source_url = $article->source_url;
         $this->display_updated_at = $article->display_updated_at?->format('Y-m-d\TH:i');
         $this->reading_time_minutes = $article->reading_time_minutes;
-        $this->popularity_score = $article->popularity_score;
-        $this->has_coupon = $article->has_coupon;
+        $this->popularity_score = $article->popularity_score ?? 0;
+        $this->has_coupon = (bool) ($article->has_coupon ?? false);
         $this->seo_title = $article->seo_title;
         $this->meta_description = $article->meta_description;
         $this->canonical_url = $article->canonical_url;
@@ -103,6 +104,7 @@ class ArticleForm extends Component
             'selectedCategoryIds' => ['array'],
             'selectedCategoryIds.*' => ['integer', Rule::exists('travel_categories', 'id')->whereNull('deleted_at')],
             'faqs' => ['array', 'max:20'],
+            'faqs.*' => ['array'],
             'faqs.*.question' => ['nullable', 'string', 'max:255'],
             'faqs.*.answer' => ['nullable', 'string'],
             'faqs.*.sort_order' => ['nullable', 'integer', 'min:0', 'max:9999'],
@@ -115,6 +117,31 @@ class ArticleForm extends Component
         if ($this->display_updated_at === '') {
             $this->display_updated_at = null;
         }
+
+        $this->withValidator(function ($validator): void {
+            $validator->after(function ($validator): void {
+                foreach ($this->faqs as $index => $faq) {
+                    if (! is_array($faq)) {
+                        continue;
+                    }
+
+                    $question = trim((string) ($faq['question'] ?? ''));
+                    $answer = trim((string) ($faq['answer'] ?? ''));
+
+                    if ($question === '' && $answer === '') {
+                        continue;
+                    }
+
+                    if ($question === '') {
+                        $validator->errors()->add("faqs.$index.question", 'FAQ 问题不能为空');
+                    }
+
+                    if ($answer === '') {
+                        $validator->errors()->add("faqs.$index.answer", 'FAQ 答案不能为空');
+                    }
+                }
+            });
+        });
 
         $data = $this->validate();
         $categoryIds = collect($data['selectedCategoryIds'] ?? [])
@@ -134,13 +161,17 @@ class ArticleForm extends Component
         $data['author_id'] = $existing?->author_id ?? auth()->id();
         $data['status'] = $existing?->status ?? ArticleStatus::Draft;
 
-        $article = Article::updateOrCreate(['id' => $this->articleId], $data);
-        $article->travelCategories()->sync($categoryIds);
-        $article->faqs()->delete();
+        $article = DB::transaction(function () use ($data, $categoryIds, $faqRows): Article {
+            $article = Article::updateOrCreate(['id' => $this->articleId], $data);
+            $article->travelCategories()->sync($categoryIds);
+            $article->faqs()->delete();
 
-        foreach ($faqRows as $faqRow) {
-            $article->faqs()->create($faqRow);
-        }
+            foreach ($faqRows as $faqRow) {
+                $article->faqs()->create($faqRow);
+            }
+
+            return $article;
+        });
 
         session()->flash('status', '文章已保存');
 
@@ -175,14 +206,17 @@ class ArticleForm extends Component
     private function normalizeFaqRows(array $faqs): array
     {
         return collect($faqs)
-            ->map(function (array $faq, int $index): ?array {
-                $question = trim((string) ($faq['question'] ?? ''));
-
-                if ($question === '') {
+            ->map(function (mixed $faq, int $index): ?array {
+                if (! is_array($faq)) {
                     return null;
                 }
 
+                $question = trim((string) ($faq['question'] ?? ''));
                 $answer = (string) ($faq['answer'] ?? '');
+
+                if ($question === '' && trim($answer) === '') {
+                    return null;
+                }
 
                 return [
                     'question' => $question,

@@ -43,6 +43,7 @@ class ArticleAdminTest extends TestCase
         $this->seed(RoleSeeder::class);
         $editor = User::factory()->create();
         $editor->assignRole('editor');
+        $displayUpdatedAt = now()->setSeconds(0)->setMicrosecond(0);
         $category = TravelCategory::factory()->create([
             'title' => 'Transport',
             'slug' => 'transport',
@@ -57,6 +58,7 @@ class ArticleAdminTest extends TestCase
             ->set('body', '<p>Use IC cards for most city trips.</p>')
             ->set('source_name', 'Tokyo Metro')
             ->set('source_url', 'https://www.tokyometro.jp/')
+            ->set('display_updated_at', $displayUpdatedAt->format('Y-m-d\TH:i'))
             ->set('reading_time_minutes', 5)
             ->set('popularity_score', 25)
             ->set('has_coupon', true)
@@ -74,6 +76,12 @@ class ArticleAdminTest extends TestCase
 
         $article = Article::where('slug', 'tokyo-rail-basics')->firstOrFail();
 
+        $this->assertSame('Tokyo Metro', $article->source_name);
+        $this->assertSame('https://www.tokyometro.jp/', $article->source_url);
+        $this->assertTrue($article->display_updated_at->equalTo($displayUpdatedAt));
+        $this->assertSame(5, $article->reading_time_minutes);
+        $this->assertSame(25, $article->popularity_score);
+        $this->assertTrue($article->has_coupon);
         $this->assertTrue($article->travelCategories()->whereKey($category->id)->exists());
         $this->assertDatabaseHas('article_faqs', [
             'article_id' => $article->id,
@@ -101,6 +109,89 @@ class ArticleAdminTest extends TestCase
 
         $this->assertDatabaseMissing('articles', [
             'slug' => 'unsafe-source-url',
+        ]);
+    }
+
+    public function test_editor_cannot_save_answer_only_article_faq_row(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class)
+            ->set('title', 'Answer Only FAQ')
+            ->set('slug', 'answer-only-faq')
+            ->set('body', '<p>Body</p>')
+            ->set('faqs', [
+                [
+                    'question' => '',
+                    'answer' => '<p>This answer needs a question.</p>',
+                    'sort_order' => 1,
+                    'is_enabled' => true,
+                ],
+            ])
+            ->call('save')
+            ->assertHasErrors(['faqs.0.question']);
+
+        $this->assertDatabaseMissing('articles', [
+            'slug' => 'answer-only-faq',
+        ]);
+        $this->assertDatabaseMissing('article_faqs', [
+            'answer' => '<p>This answer needs a question.</p>',
+        ]);
+    }
+
+    public function test_editor_cannot_save_question_only_article_faq_row(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class)
+            ->set('title', 'Question Only FAQ')
+            ->set('slug', 'question-only-faq')
+            ->set('body', '<p>Body</p>')
+            ->set('faqs', [
+                [
+                    'question' => 'This question needs an answer?',
+                    'answer' => '',
+                    'sort_order' => 1,
+                    'is_enabled' => true,
+                ],
+            ])
+            ->call('save')
+            ->assertHasErrors(['faqs.0.answer']);
+
+        $this->assertDatabaseMissing('articles', [
+            'slug' => 'question-only-faq',
+        ]);
+        $this->assertDatabaseMissing('article_faqs', [
+            'question' => 'This question needs an answer?',
+        ]);
+    }
+
+    public function test_editor_cannot_save_malformed_article_faq_row(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class)
+            ->set('title', 'Malformed FAQ')
+            ->set('slug', 'malformed-faq')
+            ->set('body', '<p>Body</p>')
+            ->set('faqs', ['not-a-faq-row'])
+            ->call('save')
+            ->assertHasErrors(['faqs.0']);
+
+        $this->assertDatabaseMissing('articles', [
+            'slug' => 'malformed-faq',
         ]);
     }
 
@@ -133,12 +224,64 @@ class ArticleAdminTest extends TestCase
         $this->assertStringContainsString('<p>Safe FAQ</p>', $faq->answer);
     }
 
+    public function test_editor_can_replace_article_faqs_and_clear_categories(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $article = Article::factory()->create([
+            'author_id' => $editor->id,
+            'title' => 'Existing FAQ Guide',
+            'slug' => 'existing-faq-guide',
+        ]);
+        $category = TravelCategory::factory()->create([
+            'title' => 'Transport',
+            'slug' => 'transport',
+        ]);
+        $article->travelCategories()->attach($category->id, ['sort_order' => 0]);
+        ArticleFaq::factory()->for($article)->create([
+            'question' => 'Old question?',
+            'answer' => '<p>Old answer.</p>',
+            'sort_order' => 1,
+            'is_enabled' => true,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class, ['article' => $article])
+            ->set('selectedCategoryIds', [])
+            ->set('faqs', [
+                [
+                    'question' => 'New question?',
+                    'answer' => '<p>New answer.</p>',
+                    'sort_order' => 3,
+                    'is_enabled' => false,
+                ],
+            ])
+            ->call('save')
+            ->assertRedirect();
+
+        $article->refresh();
+
+        $this->assertFalse($article->travelCategories()->whereKey($category->id)->exists());
+        $this->assertDatabaseMissing('article_faqs', [
+            'article_id' => $article->id,
+            'question' => 'Old question?',
+        ]);
+        $this->assertDatabaseHas('article_faqs', [
+            'article_id' => $article->id,
+            'question' => 'New question?',
+            'sort_order' => 3,
+            'is_enabled' => false,
+        ]);
+    }
+
     public function test_editor_article_form_loads_existing_categories_and_faqs(): void
     {
         $this->seed(RoleSeeder::class);
         $editor = User::factory()->create();
         $editor->assignRole('editor');
-        $displayUpdatedAt = now()->setSeconds(0);
+        $displayUpdatedAt = now()->setSeconds(0)->setMicrosecond(0);
         $article = Article::factory()->create([
             'author_id' => $editor->id,
             'title' => 'Existing Tokyo Rail Guide',
