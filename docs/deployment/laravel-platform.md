@@ -32,4 +32,6 @@
 
 Free hosting or shared low-cost space can work for testing. For production SEO and AdSense review, use a stable domain, HTTPS, a persistent database, and durable media storage.
 
+For the online admin system, use the Docker deployment files in `platform/` and follow `platform/docs/backend-deployment.md`.
+
 Do not commit `.env`, credentials, cookies, private user data, or real ad account secrets.

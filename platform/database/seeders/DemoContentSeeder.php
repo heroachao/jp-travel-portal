@@ -39,7 +39,7 @@ class DemoContentSeeder extends Seeder
             ]
         );
 
-        $author = User::where('email', 'admin@example.com')->firstOrFail();
+        $author = User::where('email', config('admin.initial_email', 'admin@example.com'))->firstOrFail();
 
         $tokyo = Destination::updateOrCreate(
             ['slug' => 'tokyo'],

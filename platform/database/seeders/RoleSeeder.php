@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use RuntimeException;
 use Spatie\Permission\PermissionRegistrar;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -46,9 +47,17 @@ class RoleSeeder extends Seeder
                 ->syncPermissions($permissionModels->only($rolePermissions)->values()->all());
         }
 
+        $adminEmail = config('admin.initial_email', 'admin@example.com');
+        $adminName = config('admin.initial_name', '超级管理员');
+        $adminPassword = config('admin.initial_password') ?: null;
+
+        if (app()->environment('production') && $adminPassword === null) {
+            throw new RuntimeException('ADMIN_PASSWORD must be set before seeding the production admin account.');
+        }
+
         $admin = User::firstOrCreate(
-            ['email' => 'admin@example.com'],
-            ['name' => '超级管理员', 'password' => Hash::make('ChangeMe123!')]
+            ['email' => $adminEmail],
+            ['name' => $adminName, 'password' => Hash::make($adminPassword ?: 'ChangeMe123!')]
         );
 
         $admin->assignRole('super-admin');
