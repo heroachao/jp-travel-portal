@@ -30,15 +30,15 @@ class SearchController extends Controller
             ->where('is_indexable', true)
             ->ordered()
             ->get();
-        $categories = TravelCategory::query()->visible()->ordered()->get();
+        $categories = TravelCategory::query()
+            ->visible()
+            ->where('is_indexable', true)
+            ->ordered()
+            ->get();
         $tags = Tag::query()->orderBy('name')->get();
 
         if (! $regions->contains('slug', $region)) {
             $region = '';
-        }
-
-        if (! $categories->contains('slug', $category)) {
-            $category = '';
         }
 
         if (! $tags->contains('slug', $tag)) {
@@ -56,7 +56,8 @@ class SearchController extends Controller
                 ->where('is_indexable', true)))
             ->when($category !== '', fn ($builder) => $builder->whereHas('travelCategories', fn ($inner) => $inner
                 ->where('slug', $category)
-                ->where('is_visible', true)))
+                ->where('is_visible', true)
+                ->where('is_indexable', true)))
             ->when($tag !== '', fn ($builder) => $builder->whereHas('tags', fn ($inner) => $inner->where('slug', $tag)))
             ->when($coupon, fn ($builder) => $builder->where('has_coupon', true));
 

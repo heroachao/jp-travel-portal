@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\ArticleFaq;
 use App\Models\Destination;
 use App\Models\HomepageModule;
+use App\Models\HomepageModuleItem;
 use App\Models\ServiceLink;
 use App\Models\TravelCategory;
 use App\Models\User;
@@ -348,6 +349,14 @@ class MediaPortalPublicTest extends TestCase
             'is_visible' => false,
             'sort_order' => 2,
         ]);
+        TravelCategory::factory()->create([
+            'title' => 'Private Noindex Category',
+            'display_name' => 'Private Noindex Category',
+            'slug' => 'private-noindex-category',
+            'is_visible' => true,
+            'is_indexable' => false,
+            'sort_order' => 3,
+        ]);
 
         HomepageModule::factory()->create([
             'placement_key' => 'home-featured',
@@ -376,7 +385,151 @@ class MediaPortalPublicTest extends TestCase
             ->assertDontSee('Private Hokkaido')
             ->assertDontSee('Ueno Local Spot')
             ->assertDontSee('Hidden Experiences')
+            ->assertDontSee('Private Noindex Category')
             ->assertDontSee('Hidden Homepage Module');
+    }
+
+    public function test_homepage_module_items_render_public_targets_and_skip_disabled_or_unpublished_items(): void
+    {
+        $module = HomepageModule::factory()->create([
+            'placement_key' => 'home-module-items',
+            'type' => 'featured_articles',
+            'title' => 'Curated Planning Set',
+            'is_enabled' => true,
+            'sort_order' => 1,
+        ]);
+        $publishedArticle = Article::factory()->create([
+            'author_id' => User::factory(),
+            'title' => 'Module Rail Feature',
+            'slug' => 'module-rail-feature',
+            'status' => ArticleStatus::Published,
+            'published_at' => now()->subDay(),
+        ]);
+        $draftArticle = Article::factory()->create([
+            'author_id' => User::factory(),
+            'title' => 'Draft Module Feature',
+            'slug' => 'draft-module-feature',
+            'status' => ArticleStatus::Draft,
+            'published_at' => null,
+        ]);
+        $region = Destination::factory()->create([
+            'name' => 'Module Kansai Channel',
+            'slug' => 'module-kansai-channel',
+            'is_channel' => true,
+            'is_indexable' => true,
+        ]);
+        $noindexDestination = Destination::factory()->create([
+            'name' => 'Module Private Destination',
+            'slug' => 'module-private-destination',
+            'is_channel' => true,
+            'is_indexable' => false,
+        ]);
+        $category = TravelCategory::factory()->create([
+            'title' => 'Module Transport Category',
+            'display_name' => 'Module Transport Category',
+            'slug' => 'module-transport-category',
+            'is_visible' => true,
+            'is_indexable' => true,
+        ]);
+        $noindexCategory = TravelCategory::factory()->create([
+            'title' => 'Module Noindex Category',
+            'display_name' => 'Module Noindex Category',
+            'slug' => 'module-noindex-category',
+            'is_visible' => true,
+            'is_indexable' => false,
+        ]);
+        $serviceLink = ServiceLink::factory()->create([
+            'label' => 'Module Rail Service',
+            'url' => 'https://example.com/module-rail',
+            'is_enabled' => true,
+        ]);
+        $disabledServiceLink = ServiceLink::factory()->create([
+            'label' => 'Module Disabled Service',
+            'url' => 'https://example.com/module-disabled',
+            'is_enabled' => false,
+        ]);
+
+        HomepageModuleItem::factory()->for($module)->create([
+            'item_type' => Article::class,
+            'item_id' => $publishedArticle->id,
+            'label' => 'Module Rail Feature Label',
+            'summary' => 'Curated rail module summary.',
+            'sort_order' => 1,
+            'is_enabled' => true,
+        ]);
+        HomepageModuleItem::factory()->for($module)->create([
+            'item_type' => Destination::class,
+            'item_id' => $region->id,
+            'label' => 'Module Kansai Channel Label',
+            'summary' => 'Regional module summary.',
+            'sort_order' => 2,
+            'is_enabled' => true,
+        ]);
+        HomepageModuleItem::factory()->for($module)->create([
+            'item_type' => TravelCategory::class,
+            'item_id' => $category->id,
+            'label' => 'Module Transport Category Label',
+            'summary' => 'Category module summary.',
+            'sort_order' => 3,
+            'is_enabled' => true,
+        ]);
+        HomepageModuleItem::factory()->for($module)->create([
+            'item_type' => ServiceLink::class,
+            'item_id' => $serviceLink->id,
+            'label' => 'Module Rail Service Label',
+            'summary' => 'External service module summary.',
+            'sort_order' => 4,
+            'is_enabled' => true,
+        ]);
+        HomepageModuleItem::factory()->for($module)->create([
+            'item_type' => Article::class,
+            'item_id' => $publishedArticle->id,
+            'label' => 'Disabled Module Item',
+            'is_enabled' => false,
+        ]);
+        HomepageModuleItem::factory()->for($module)->create([
+            'item_type' => Article::class,
+            'item_id' => $draftArticle->id,
+            'label' => 'Draft Module Item',
+            'is_enabled' => true,
+        ]);
+        HomepageModuleItem::factory()->for($module)->create([
+            'item_type' => Destination::class,
+            'item_id' => $noindexDestination->id,
+            'label' => 'Noindex Destination Module Item',
+            'is_enabled' => true,
+        ]);
+        HomepageModuleItem::factory()->for($module)->create([
+            'item_type' => TravelCategory::class,
+            'item_id' => $noindexCategory->id,
+            'label' => 'Noindex Category Module Item',
+            'is_enabled' => true,
+        ]);
+        HomepageModuleItem::factory()->for($module)->create([
+            'item_type' => ServiceLink::class,
+            'item_id' => $disabledServiceLink->id,
+            'label' => 'Disabled Service Module Item',
+            'is_enabled' => true,
+        ]);
+
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('Curated Planning Set')
+            ->assertSee('Module Rail Feature Label')
+            ->assertSee('Curated rail module summary.')
+            ->assertSee('href="http://localhost/articles/module-rail-feature"', false)
+            ->assertSee('Module Kansai Channel Label')
+            ->assertSee('href="http://localhost/regions/module-kansai-channel"', false)
+            ->assertSee('Module Transport Category Label')
+            ->assertSee('href="http://localhost/categories/module-transport-category"', false)
+            ->assertSee('Module Rail Service Label')
+            ->assertSee('href="https://example.com/module-rail"', false)
+            ->assertSee('rel="nofollow noopener sponsored"', false)
+            ->assertDontSee('Disabled Module Item')
+            ->assertDontSee('Draft Module Item')
+            ->assertDontSee('Noindex Destination Module Item')
+            ->assertDontSee('Noindex Category Module Item')
+            ->assertDontSee('Disabled Service Module Item');
     }
 
     public function test_article_page_renders_faq_source_and_category_links(): void
@@ -427,6 +580,29 @@ class MediaPortalPublicTest extends TestCase
             ->assertSee('Can I use Suica in Tokyo?', false)
             ->assertDontSee('Hidden FAQ Question?')
             ->assertDontSee('This answer should not render', false);
+    }
+
+    public function test_article_faq_json_ld_escapes_script_closing_sequences(): void
+    {
+        $article = Article::factory()->create([
+            'author_id' => User::factory(),
+            'title' => 'Safe FAQ JSON',
+            'slug' => 'safe-faq-json',
+            'status' => ArticleStatus::Published,
+            'published_at' => now(),
+        ]);
+
+        ArticleFaq::factory()->for($article)->create([
+            'question' => 'Can a </script> sequence close JSON-LD?',
+            'answer' => '<p>No, JSON encoding keeps it inside data.</p>',
+            'is_enabled' => true,
+        ]);
+
+        $this->get(route('articles.show', $article))
+            ->assertOk()
+            ->assertSee('Can a &lt;/script&gt; sequence close JSON-LD?', false)
+            ->assertSee('Can a \\u003C/script\\u003E sequence close JSON-LD?', false)
+            ->assertDontSee('Can a </script> sequence close JSON-LD?', false);
     }
 
     public function test_article_source_without_url_renders_plain_text_without_empty_link(): void

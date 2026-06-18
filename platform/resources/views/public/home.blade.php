@@ -1,6 +1,66 @@
 @extends('layouts.public')
 
 @section('content')
+    @php
+        $moduleItemCard = function ($moduleItem): ?array {
+            $item = $moduleItem->item;
+
+            if ($item instanceof \App\Models\Article) {
+                if ($item->status !== \App\Enums\ArticleStatus::Published || ! $item->published_at?->lte(now())) {
+                    return null;
+                }
+
+                return [
+                    'url' => route('articles.show', $item),
+                    'label' => $moduleItem->label ?: $item->title,
+                    'summary' => $moduleItem->summary ?: $item->excerpt,
+                    'external' => false,
+                ];
+            }
+
+            if ($item instanceof \App\Models\Destination) {
+                if (! $item->is_indexable) {
+                    return null;
+                }
+
+                return [
+                    'url' => route($item->is_channel ? 'regions.show' : 'destinations.show', $item),
+                    'label' => $moduleItem->label ?: ($item->display_name ?: $item->name),
+                    'summary' => $moduleItem->summary ?: $item->excerpt,
+                    'external' => false,
+                ];
+            }
+
+            if ($item instanceof \App\Models\TravelCategory) {
+                if (! $item->is_visible || ! $item->is_indexable) {
+                    return null;
+                }
+
+                return [
+                    'url' => route('categories.show', $item),
+                    'label' => $moduleItem->label ?: ($item->display_name ?: $item->title),
+                    'summary' => $moduleItem->summary ?: $item->excerpt,
+                    'external' => false,
+                ];
+            }
+
+            if ($item instanceof \App\Models\ServiceLink) {
+                if (! $item->is_enabled) {
+                    return null;
+                }
+
+                return [
+                    'url' => $item->url,
+                    'label' => $moduleItem->label ?: $item->label,
+                    'summary' => $moduleItem->summary,
+                    'external' => true,
+                ];
+            }
+
+            return null;
+        };
+    @endphp
+
     <section class="mx-auto max-w-6xl px-5 py-12">
         <p class="text-sm font-semibold uppercase tracking-wide text-emerald-800">Independent Japan Travel</p>
         <h1 class="mt-3 max-w-3xl text-5xl font-bold leading-tight">Plan Japan with regional guides, practical tools, and fresh travel ideas.</h1>
@@ -66,6 +126,23 @@
                     <h2 class="text-xl font-semibold">{{ $module->title }}</h2>
                     @if($module->subtitle)
                         <p class="mt-2 text-sm text-slate-600">{{ $module->subtitle }}</p>
+                    @endif
+                    @php
+                        $publicModuleItems = $module->items
+                            ->map(fn ($moduleItem) => $moduleItemCard($moduleItem))
+                            ->filter();
+                    @endphp
+                    @if($publicModuleItems->isNotEmpty())
+                        <div class="mt-5 grid gap-3">
+                            @foreach($publicModuleItems as $card)
+                                <a class="rounded border px-4 py-3 hover:border-emerald-700" href="{{ $card['url'] }}" @if($card['external']) target="_blank" rel="nofollow noopener sponsored" @endif>
+                                    <h3 class="font-semibold">{{ $card['label'] }}</h3>
+                                    @if($card['summary'])
+                                        <p class="mt-2 text-sm text-slate-600">{{ $card['summary'] }}</p>
+                                    @endif
+                                </a>
+                            @endforeach
+                        </div>
                     @endif
                 </section>
             @endforeach

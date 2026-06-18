@@ -9,6 +9,7 @@
         ->get();
     $layoutCategories = \App\Models\TravelCategory::query()
         ->visible()
+        ->where('is_indexable', true)
         ->ordered()
         ->limit(8)
         ->get();

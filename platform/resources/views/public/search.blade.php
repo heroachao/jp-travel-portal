@@ -45,6 +45,6 @@
                 </a>
             @endforeach
         </div>
-        <div class="mt-8">{{ $articles->withQueryString()->links() }}</div>
+        <div class="mt-8">{{ $articles->links() }}</div>
     </section>
 @endsection

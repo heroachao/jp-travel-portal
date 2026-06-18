@@ -102,6 +102,13 @@ class SearchFilterTest extends TestCase
             'slug' => 'hidden-category',
             'is_visible' => false,
         ]);
+        TravelCategory::factory()->create([
+            'title' => 'Visible Noindex Category',
+            'display_name' => 'Visible Noindex Category',
+            'slug' => 'visible-noindex-category',
+            'is_visible' => true,
+            'is_indexable' => false,
+        ]);
 
         $this->get('/search')
             ->assertOk()
@@ -109,7 +116,42 @@ class SearchFilterTest extends TestCase
             ->assertSee('Visible Transport')
             ->assertDontSee('Private Hokkaido')
             ->assertDontSee('Ueno Local Spot')
-            ->assertDontSee('Hidden Category');
+            ->assertDontSee('Hidden Category')
+            ->assertDontSee('Visible Noindex Category');
+    }
+
+    public function test_noindex_category_slug_cannot_filter_search_results(): void
+    {
+        $noindexCategory = TravelCategory::factory()->create([
+            'title' => 'Private Search Category',
+            'display_name' => 'Private Search Category',
+            'slug' => 'private-search-category',
+            'is_visible' => true,
+            'is_indexable' => false,
+        ]);
+        $publicCategory = TravelCategory::factory()->create([
+            'title' => 'Public Search Category',
+            'display_name' => 'Public Search Category',
+            'slug' => 'public-search-category',
+            'is_visible' => true,
+            'is_indexable' => true,
+        ]);
+
+        $privateArticle = $this->publishedArticle([
+            'title' => 'Noindex Category Result',
+            'slug' => 'noindex-category-result',
+        ]);
+        $privateArticle->travelCategories()->attach($noindexCategory, ['sort_order' => 1]);
+
+        $publicArticle = $this->publishedArticle([
+            'title' => 'Public Category Result',
+            'slug' => 'public-category-result',
+        ]);
+        $publicArticle->travelCategories()->attach($publicCategory, ['sort_order' => 1]);
+
+        $this->get('/search?category=private-search-category')
+            ->assertOk()
+            ->assertDontSee('Noindex Category Result');
     }
 
     public function test_popular_sort_orders_by_score_then_publication_date(): void
