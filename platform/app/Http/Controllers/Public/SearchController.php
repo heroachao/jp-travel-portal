@@ -41,6 +41,10 @@ class SearchController extends Controller
             $region = '';
         }
 
+        if (! $categories->contains('slug', $category)) {
+            $category = '';
+        }
+
         if (! $tags->contains('slug', $tag)) {
             $tag = '';
         }

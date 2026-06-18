@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Destinations;
 
 use App\Models\Destination;
+use App\Models\HomepageModuleItem;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -91,6 +92,15 @@ class DestinationIndex extends Component
 
         if ($destination->children_count > 0) {
             $this->addError('delete', '该地区下还有子地区，不能删除');
+
+            return;
+        }
+
+        if (HomepageModuleItem::query()
+            ->where('item_type', Destination::class)
+            ->where('item_id', $destination->id)
+            ->exists()) {
+            $this->addError('delete', '该地区已被首页模块使用，不能删除');
 
             return;
         }

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\ServiceLinks;
 
+use App\Models\HomepageModuleItem;
 use App\Models\ServiceLink;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
@@ -61,7 +62,19 @@ class ServiceLinkIndex extends Component
 
     public function delete(int $id): void
     {
-        ServiceLink::findOrFail($id)->delete();
+        $serviceLink = ServiceLink::findOrFail($id);
+
+        if (HomepageModuleItem::query()
+            ->where('item_type', ServiceLink::class)
+            ->where('item_id', $serviceLink->id)
+            ->exists()) {
+            $this->addError('delete', '该服务入口已被首页模块使用，不能删除');
+
+            return;
+        }
+
+        $this->resetErrorBag('delete');
+        $serviceLink->delete();
     }
 
     public function render(): View

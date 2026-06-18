@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\TravelCategories;
 
+use App\Models\HomepageModuleItem;
 use App\Models\TravelCategory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
@@ -87,6 +88,15 @@ class TravelCategoryIndex extends Component
 
         if ($category->children_count > 0 || $category->articles_count > 0) {
             $this->addError('delete', '分类频道已有子级或文章，不能删除');
+
+            return;
+        }
+
+        if (HomepageModuleItem::query()
+            ->where('item_type', TravelCategory::class)
+            ->where('item_id', $category->id)
+            ->exists()) {
+            $this->addError('delete', '该分类频道已被首页模块使用，不能删除');
 
             return;
         }

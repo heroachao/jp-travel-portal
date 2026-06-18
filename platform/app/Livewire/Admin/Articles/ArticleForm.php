@@ -99,7 +99,7 @@ class ArticleForm extends Component
             'has_coupon' => ['boolean'],
             'seo_title' => ['nullable', 'string', 'max:180'],
             'meta_description' => ['nullable', 'string', 'max:260'],
-            'canonical_url' => ['nullable', 'url', 'max:255'],
+            'canonical_url' => ['nullable', 'url:http,https', 'max:255'],
             'is_indexable' => ['boolean'],
             'selectedCategoryIds' => ['array'],
             'selectedCategoryIds.*' => ['integer', Rule::exists('travel_categories', 'id')->whereNull('deleted_at')],
@@ -155,6 +155,10 @@ class ArticleForm extends Component
 
         if (($data['display_updated_at'] ?? null) === '') {
             $data['display_updated_at'] = null;
+        }
+
+        if ($data['body'] !== null) {
+            $data['body'] = clean($data['body']);
         }
 
         $existing = $this->articleId ? Article::findOrFail($this->articleId) : null;

@@ -221,6 +221,31 @@ class MediaPortalAdminTest extends TestCase
         ]);
     }
 
+    public function test_editor_cannot_delete_travel_category_referenced_by_homepage_module_item(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $category = TravelCategory::factory()->create();
+        $item = HomepageModuleItem::factory()->create([
+            'item_type' => TravelCategory::class,
+            'item_id' => $category->id,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(TravelCategoryIndex::class)
+            ->call('delete', $category->id)
+            ->assertHasErrors(['delete']);
+
+        $this->assertNotSoftDeleted('travel_categories', ['id' => $category->id]);
+        $this->assertDatabaseHas('homepage_module_items', [
+            'id' => $item->id,
+            'item_type' => TravelCategory::class,
+            'item_id' => $category->id,
+        ]);
+    }
+
     public function test_editor_can_delete_empty_travel_category_and_clear_previous_delete_error(): void
     {
         $this->seed(RoleSeeder::class);
@@ -430,6 +455,31 @@ class MediaPortalAdminTest extends TestCase
         ]);
     }
 
+    public function test_editor_cannot_delete_destination_referenced_by_homepage_module_item(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $destination = Destination::factory()->create();
+        $item = HomepageModuleItem::factory()->create([
+            'item_type' => Destination::class,
+            'item_id' => $destination->id,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(DestinationIndex::class)
+            ->call('delete', $destination->id)
+            ->assertHasErrors(['delete']);
+
+        $this->assertNotSoftDeleted('destinations', ['id' => $destination->id]);
+        $this->assertDatabaseHas('homepage_module_items', [
+            'id' => $item->id,
+            'item_type' => Destination::class,
+            'item_id' => $destination->id,
+        ]);
+    }
+
     public function test_editor_can_delete_empty_destination_and_clear_previous_delete_error(): void
     {
         $this->seed(RoleSeeder::class);
@@ -504,6 +554,31 @@ class MediaPortalAdminTest extends TestCase
         $this->assertDatabaseMissing('service_links', [
             'label' => 'JR Pass 预约',
             'url' => 'ftp://example.com/rail',
+        ]);
+    }
+
+    public function test_editor_cannot_delete_service_link_referenced_by_homepage_module_item(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $serviceLink = ServiceLink::factory()->create();
+        $item = HomepageModuleItem::factory()->create([
+            'item_type' => ServiceLink::class,
+            'item_id' => $serviceLink->id,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(ServiceLinkIndex::class)
+            ->call('delete', $serviceLink->id)
+            ->assertHasErrors(['delete']);
+
+        $this->assertDatabaseHas('service_links', ['id' => $serviceLink->id]);
+        $this->assertDatabaseHas('homepage_module_items', [
+            'id' => $item->id,
+            'item_type' => ServiceLink::class,
+            'item_id' => $serviceLink->id,
         ]);
     }
 

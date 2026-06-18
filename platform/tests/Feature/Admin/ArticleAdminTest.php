@@ -112,6 +112,27 @@ class ArticleAdminTest extends TestCase
         ]);
     }
 
+    public function test_editor_cannot_use_non_http_canonical_url_for_article(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class)
+            ->set('title', 'Unsafe Canonical URL')
+            ->set('slug', 'unsafe-canonical-url')
+            ->set('body', '<p>Body</p>')
+            ->set('canonical_url', 'ftp://example.com/post')
+            ->call('save')
+            ->assertHasErrors(['canonical_url']);
+
+        $this->assertDatabaseMissing('articles', [
+            'slug' => 'unsafe-canonical-url',
+        ]);
+    }
+
     public function test_editor_cannot_save_answer_only_article_faq_row(): void
     {
         $this->seed(RoleSeeder::class);
@@ -222,6 +243,27 @@ class ArticleAdminTest extends TestCase
 
         $this->assertStringNotContainsString('<script>', $faq->answer);
         $this->assertStringContainsString('<p>Safe FAQ</p>', $faq->answer);
+    }
+
+    public function test_editor_sanitizes_article_body_before_raw_rendering(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class)
+            ->set('title', 'Tokyo Article Body Safety')
+            ->set('slug', 'tokyo-article-body-safety')
+            ->set('body', '<script>alert(1)</script><p>Safe article body.</p>')
+            ->call('save')
+            ->assertRedirect();
+
+        $body = Article::where('slug', 'tokyo-article-body-safety')->firstOrFail()->body;
+
+        $this->assertStringNotContainsString('<script>', $body);
+        $this->assertStringContainsString('<p>Safe article body.</p>', $body);
     }
 
     public function test_editor_can_replace_article_faqs_and_clear_categories(): void

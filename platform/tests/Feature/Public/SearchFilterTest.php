@@ -120,7 +120,7 @@ class SearchFilterTest extends TestCase
             ->assertDontSee('Visible Noindex Category');
     }
 
-    public function test_noindex_category_slug_cannot_filter_search_results(): void
+    public function test_noindex_category_slug_is_reset_before_filtering_search_results(): void
     {
         $noindexCategory = TravelCategory::factory()->create([
             'title' => 'Private Search Category',
@@ -138,20 +138,21 @@ class SearchFilterTest extends TestCase
         ]);
 
         $privateArticle = $this->publishedArticle([
-            'title' => 'Noindex Category Result',
-            'slug' => 'noindex-category-result',
+            'title' => 'Noindex Category Rail Result',
+            'slug' => 'noindex-category-rail-result',
         ]);
         $privateArticle->travelCategories()->attach($noindexCategory, ['sort_order' => 1]);
 
         $publicArticle = $this->publishedArticle([
-            'title' => 'Public Category Result',
-            'slug' => 'public-category-result',
+            'title' => 'Public Category Rail Result',
+            'slug' => 'public-category-rail-result',
         ]);
         $publicArticle->travelCategories()->attach($publicCategory, ['sort_order' => 1]);
 
-        $this->get('/search?category=private-search-category')
+        $this->get('/search?q=rail&category=private-search-category')
             ->assertOk()
-            ->assertDontSee('Noindex Category Result');
+            ->assertSee('Noindex Category Rail Result')
+            ->assertSee('Public Category Rail Result');
     }
 
     public function test_popular_sort_orders_by_score_then_publication_date(): void
