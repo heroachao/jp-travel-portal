@@ -129,6 +129,42 @@ class DemoContentSeederTest extends TestCase
         $this->assertSame($counts, $this->phaseOneContentCounts());
     }
 
+    public function test_database_seeder_preserves_existing_site_settings(): void
+    {
+        SiteSetting::create([
+            'id' => 1,
+            'site_name' => 'Configured Japan Portal',
+            'seo_title_suffix' => 'Configured Portal',
+            'tagline' => 'Configured tagline.',
+            'default_meta_description' => 'Configured default description.',
+            'ga4_measurement_id' => 'G-CONFIGURED1',
+            'adsense_publisher_id' => 'ca-pub-1234567890123456',
+            'analytics_enabled' => true,
+            'ads_enabled' => true,
+            'organization_schema_enabled' => true,
+            'contact_email' => 'hello@example.com',
+            'social_links' => ['x' => 'https://x.com/configured'],
+            'robots_extra_rules' => 'Disallow: /configured-private',
+        ]);
+
+        $this->seed(DatabaseSeeder::class);
+
+        $settings = SiteSetting::findOrFail(1);
+
+        $this->assertSame('Configured Japan Portal', $settings->site_name);
+        $this->assertSame('Configured Portal', $settings->seo_title_suffix);
+        $this->assertSame('Configured tagline.', $settings->tagline);
+        $this->assertSame('Configured default description.', $settings->default_meta_description);
+        $this->assertSame('G-CONFIGURED1', $settings->ga4_measurement_id);
+        $this->assertSame('ca-pub-1234567890123456', $settings->adsense_publisher_id);
+        $this->assertTrue($settings->analytics_enabled);
+        $this->assertTrue($settings->ads_enabled);
+        $this->assertTrue($settings->organization_schema_enabled);
+        $this->assertSame('hello@example.com', $settings->contact_email);
+        $this->assertSame(['x' => 'https://x.com/configured'], $settings->social_links);
+        $this->assertSame('Disallow: /configured-private', $settings->robots_extra_rules);
+    }
+
     /**
      * @param  list<string>  $expectedSlugs
      */

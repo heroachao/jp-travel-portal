@@ -20,7 +20,7 @@ class DemoContentSeeder extends Seeder
 {
     public function run(): void
     {
-        SiteSetting::updateOrCreate(
+        SiteSetting::firstOrCreate(
             ['id' => 1],
             [
                 'site_name' => 'Japan Travel Guide',
