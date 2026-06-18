@@ -238,8 +238,13 @@ class MediaPortalAdminTest extends TestCase
             ->assertHasNoErrors();
 
         $this->assertDatabaseHas('destinations', [
+            'type' => 'region',
             'slug' => 'tokyo',
             'display_name' => 'Tokyo Region',
+            'body' => '<p>Tokyo works best when planned by neighborhood and rail line.</p>',
+            'seo_title' => 'Tokyo Travel Guide',
+            'meta_description' => 'Plan Tokyo travel by neighborhood, transport, food, and season.',
+            'is_indexable' => true,
             'is_channel' => true,
             'sort_order' => 3,
         ]);
