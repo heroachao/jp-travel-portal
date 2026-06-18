@@ -87,6 +87,7 @@ class TravelCategoryIndex extends Component
             return;
         }
 
+        $this->resetErrorBag('delete');
         $category->delete();
     }
 

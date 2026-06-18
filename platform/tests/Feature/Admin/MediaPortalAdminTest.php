@@ -111,6 +111,41 @@ class MediaPortalAdminTest extends TestCase
         ]);
     }
 
+    public function test_editor_cannot_set_travel_category_parent_to_grandchild(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $parent = TravelCategory::factory()->create([
+            'title' => '日本全境',
+            'parent_id' => null,
+        ]);
+        $child = TravelCategory::factory()->create([
+            'title' => '东京',
+            'parent_id' => $parent->id,
+        ]);
+        $grandchild = TravelCategory::factory()->create([
+            'title' => '上野',
+            'parent_id' => $child->id,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(TravelCategoryIndex::class)
+            ->call('edit', $parent->id)
+            ->assertViewHas('parentOptions', fn ($parentOptions) => $parentOptions
+                ->whereIn('id', [$parent->id, $child->id, $grandchild->id])
+                ->isEmpty())
+            ->set('parent_id', $grandchild->id)
+            ->call('save')
+            ->assertHasErrors(['parent_id']);
+
+        $this->assertDatabaseHas('travel_categories', [
+            'id' => $parent->id,
+            'parent_id' => null,
+        ]);
+    }
+
     public function test_editor_cannot_delete_travel_category_with_child(): void
     {
         $this->seed(RoleSeeder::class);
@@ -154,6 +189,27 @@ class MediaPortalAdminTest extends TestCase
             'article_id' => $article->id,
             'travel_category_id' => $category->id,
         ]);
+    }
+
+    public function test_editor_can_delete_empty_travel_category_and_clear_previous_delete_error(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $blockedParent = TravelCategory::factory()->create();
+        TravelCategory::factory()->create(['parent_id' => $blockedParent->id]);
+        $emptyCategory = TravelCategory::factory()->create();
+
+        $this->actingAs($editor);
+
+        Livewire::test(TravelCategoryIndex::class)
+            ->call('delete', $blockedParent->id)
+            ->assertHasErrors(['delete'])
+            ->call('delete', $emptyCategory->id)
+            ->assertHasNoErrors(['delete']);
+
+        $this->assertNotSoftDeleted('travel_categories', ['id' => $blockedParent->id]);
+        $this->assertSoftDeleted('travel_categories', ['id' => $emptyCategory->id]);
     }
 
     public function test_editor_can_create_service_link_from_chinese_admin(): void
@@ -261,6 +317,29 @@ class MediaPortalAdminTest extends TestCase
             'id' => $item->id,
             'homepage_module_id' => $module->id,
         ]);
+    }
+
+    public function test_editor_can_delete_empty_homepage_module_and_clear_previous_delete_error(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $blockedModule = HomepageModule::factory()->create();
+        HomepageModuleItem::factory()->create([
+            'homepage_module_id' => $blockedModule->id,
+        ]);
+        $emptyModule = HomepageModule::factory()->create();
+
+        $this->actingAs($editor);
+
+        Livewire::test(HomepageModuleIndex::class)
+            ->call('delete', $blockedModule->id)
+            ->assertHasErrors(['delete'])
+            ->call('delete', $emptyModule->id)
+            ->assertHasNoErrors(['delete']);
+
+        $this->assertDatabaseHas('homepage_modules', ['id' => $blockedModule->id]);
+        $this->assertDatabaseMissing('homepage_modules', ['id' => $emptyModule->id]);
     }
 
     public function test_admin_navigation_links_to_media_portal_screens(): void

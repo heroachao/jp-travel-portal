@@ -61,6 +61,7 @@ class HomepageModuleIndex extends Component
             return;
         }
 
+        $this->resetErrorBag('delete');
         $module->delete();
     }
 
