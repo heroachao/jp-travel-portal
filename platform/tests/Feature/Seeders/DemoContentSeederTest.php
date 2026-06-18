@@ -46,11 +46,9 @@ class DemoContentSeederTest extends TestCase
             'okinawa',
         ];
 
-        $this->assertGreaterThanOrEqual(8, TravelCategory::count());
+        $actualCategorySlugs = TravelCategory::query()->orderBy('slug')->pluck('slug')->all();
 
-        $actualCategorySlugs = TravelCategory::query()->pluck('slug')->all();
-
-        $this->assertEmpty(array_diff($expectedCategorySlugs, $actualCategorySlugs));
+        $this->assertEqualsCanonicalizing($expectedCategorySlugs, $actualCategorySlugs);
 
         $actualChannelDestinationSlugs = Destination::query()
             ->where('is_channel', true)
