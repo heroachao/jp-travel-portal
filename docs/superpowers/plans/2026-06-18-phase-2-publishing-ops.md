@@ -8,6 +8,8 @@
 
 **Tech Stack:** Laravel, Livewire, Eloquent, Blade, PHPUnit feature tests, existing Tailwind/Vite assets, SQLite test database.
 
+**Addendum 2026-06-18:** Task 1/2 site settings were expanded to include tagline, organization schema toggle, contact email, social links JSON, and extra robots.txt rules while preserving `ga4_measurement_id`, `adsense_publisher_id`, and `seo_title_suffix` for Task 3.
+
 ---
 
 ## File Structure
