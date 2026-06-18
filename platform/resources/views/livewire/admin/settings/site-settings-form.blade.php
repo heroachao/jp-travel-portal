@@ -39,14 +39,27 @@
             <div>
                 <label class="block text-sm font-medium" for="ga4_measurement_id">Google Analytics 4 衡量 ID</label>
                 <input id="ga4_measurement_id" wire:model="ga4_measurement_id" placeholder="G-ABC123DEF4" class="mt-2 w-full rounded border px-3 py-2">
-                <p class="mt-1 text-xs text-slate-500">格式示例：G-ABC123DEF4。只有启用统计输出后才会在前台加载。</p>
+                <p class="mt-1 text-xs text-slate-500">统计访问人数、页面浏览、访问来源、停留和访问深度。只有启用统计输出后才会在前台加载。</p>
                 @error('ga4_measurement_id')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
             </div>
+            <div>
+                <label class="block text-sm font-medium" for="google_site_verification">Google Search Console 验证码</label>
+                <input id="google_site_verification" wire:model="google_site_verification" placeholder="粘贴 meta 标签 content 内容" class="mt-2 w-full rounded border px-3 py-2">
+                <p class="mt-1 text-xs text-slate-500">用于验证网站所有权，验证后可查看 Google 搜索词、展现、点击率和排名。</p>
+                @error('google_site_verification')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+            </div>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2">
             <div>
                 <label class="block text-sm font-medium" for="adsense_publisher_id">Google AdSense 发布商 ID</label>
                 <input id="adsense_publisher_id" wire:model="adsense_publisher_id" placeholder="ca-pub-1234567890123456" class="mt-2 w-full rounded border px-3 py-2">
                 <p class="mt-1 text-xs text-slate-500">格式示例：ca-pub-1234567890123456。只有启用广告输出后才会在前台加载。</p>
                 @error('adsense_publisher_id')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+            </div>
+            <div class="rounded border border-blue-100 bg-blue-50 p-4 text-sm text-blue-950">
+                <p class="font-semibold">统计系统采集范围</p>
+                <p class="mt-2 text-xs leading-6 text-blue-800">GA4 负责访问人数、页面浏览、来源、停留、每次会话访问页数、站内搜索词、外链点击、滚动深度和阅读时长事件。Search Console 负责 Google 搜索进入网站前的关键词、展现、点击率和平均排名。</p>
             </div>
         </div>
 

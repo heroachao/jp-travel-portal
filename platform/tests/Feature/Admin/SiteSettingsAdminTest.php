@@ -24,6 +24,7 @@ class SiteSettingsAdminTest extends TestCase
         $this->assertFalse($settings->analytics_enabled);
         $this->assertFalse($settings->ads_enabled);
         $this->assertNull($settings->ga4_measurement_id);
+        $this->assertNull($settings->google_site_verification);
         $this->assertNull($settings->adsense_publisher_id);
         $this->assertNull($settings->tagline);
         $this->assertFalse($settings->organization_schema_enabled);
@@ -45,6 +46,7 @@ class SiteSettingsAdminTest extends TestCase
             ->set('tagline', 'Independent planning for rail-first Japan trips.')
             ->set('default_meta_description', 'Independent Japan travel planning guides.')
             ->set('ga4_measurement_id', 'G-ABC123DEF4')
+            ->set('google_site_verification', '<meta name="google-site-verification" content="google-verification-token_123">')
             ->set('adsense_publisher_id', 'ca-pub-1234567890123456')
             ->set('contact_email', 'hello@example.com')
             ->set('social_links', '{"x":"https://x.com/japanrail","youtube":"https://youtube.com/@japanrail"}')
@@ -61,6 +63,7 @@ class SiteSettingsAdminTest extends TestCase
             'site_name' => 'Japan Rail Travel',
             'tagline' => 'Independent planning for rail-first Japan trips.',
             'ga4_measurement_id' => 'G-ABC123DEF4',
+            'google_site_verification' => 'google-verification-token_123',
             'adsense_publisher_id' => 'ca-pub-1234567890123456',
             'contact_email' => 'hello@example.com',
             'robots_extra_rules' => "Disallow: /private\nCrawl-delay: 5",
@@ -180,6 +183,7 @@ class SiteSettingsAdminTest extends TestCase
             'tagline' => 'Rail-first Japan planning.',
             'default_meta_description' => 'Independent Japan travel planning guides.',
             'ga4_measurement_id' => 'G-ABC123DEF4',
+            'google_site_verification' => 'google-verification-token_123',
             'adsense_publisher_id' => 'ca-pub-1234567890123456',
             'contact_email' => 'hello@example.com',
             'social_links' => ['x' => 'https://x.com/japanrail'],
@@ -195,6 +199,7 @@ class SiteSettingsAdminTest extends TestCase
             ->set('tagline', '')
             ->set('default_meta_description', '')
             ->set('ga4_measurement_id', '')
+            ->set('google_site_verification', '')
             ->set('adsense_publisher_id', '')
             ->set('contact_email', '')
             ->set('social_links', '')
@@ -207,6 +212,7 @@ class SiteSettingsAdminTest extends TestCase
             'tagline' => null,
             'default_meta_description' => null,
             'ga4_measurement_id' => null,
+            'google_site_verification' => null,
             'adsense_publisher_id' => null,
             'contact_email' => null,
             'social_links' => null,
@@ -225,6 +231,8 @@ class SiteSettingsAdminTest extends TestCase
             ->assertOk()
             ->assertSee('站点设置')
             ->assertSee('Google Analytics 4 衡量 ID')
+            ->assertSee('Google Search Console 验证码')
+            ->assertSee('统计系统采集范围')
             ->assertSee('组织结构化数据')
             ->assertSee('社交链接 JSON');
     }

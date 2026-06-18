@@ -19,6 +19,8 @@ class SiteSettingsForm extends Component
 
     public ?string $ga4_measurement_id = null;
 
+    public ?string $google_site_verification = null;
+
     public ?string $adsense_publisher_id = null;
 
     public bool $organization_schema_enabled = false;
@@ -42,6 +44,7 @@ class SiteSettingsForm extends Component
         $this->tagline = $current->tagline;
         $this->default_meta_description = $current->default_meta_description;
         $this->ga4_measurement_id = $current->ga4_measurement_id;
+        $this->google_site_verification = $current->google_site_verification;
         $this->adsense_publisher_id = $current->adsense_publisher_id;
         $this->organization_schema_enabled = $current->organization_schema_enabled;
         $this->contact_email = $current->contact_email;
@@ -65,6 +68,7 @@ class SiteSettingsForm extends Component
             'tagline' => ['nullable', 'string', 'max:160'],
             'default_meta_description' => ['nullable', 'string', 'max:255'],
             'ga4_measurement_id' => ['nullable', 'string', 'max:255', 'regex:/^G-[A-Z0-9]{8,16}$/'],
+            'google_site_verification' => ['nullable', 'string', 'max:255'],
             'adsense_publisher_id' => ['nullable', 'string', 'max:255', 'regex:/^ca-pub-[0-9]{16}$/'],
             'contact_email' => ['nullable', 'email', 'max:255'],
             'social_links' => ['nullable', 'json'],
@@ -86,6 +90,7 @@ class SiteSettingsForm extends Component
             'tagline',
             'default_meta_description',
             'ga4_measurement_id',
+            'google_site_verification',
             'adsense_publisher_id',
             'contact_email',
             'social_links',
@@ -93,12 +98,27 @@ class SiteSettingsForm extends Component
         ] as $field) {
             $this->{$field} = $this->nullableText($this->{$field});
         }
+
+        $this->google_site_verification = $this->extractGoogleSiteVerification($this->google_site_verification);
     }
 
     private function nullableText(?string $value): ?string
     {
         if ($value === null || trim($value) === '') {
             return null;
+        }
+
+        return trim($value);
+    }
+
+    private function extractGoogleSiteVerification(?string $value): ?string
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        if (preg_match('/content=[\'"]([^\'"]+)[\'"]/i', $value, $matches) === 1) {
+            return trim($matches[1]);
         }
 
         return $value;

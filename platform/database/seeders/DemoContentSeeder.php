@@ -28,6 +28,7 @@ class DemoContentSeeder extends Seeder
                 'tagline' => 'Independent planning guides for Japan travelers.',
                 'default_meta_description' => 'Independent planning guides, regional hubs, and useful travel tools for English-speaking Japan travelers.',
                 'ga4_measurement_id' => null,
+                'google_site_verification' => null,
                 'adsense_publisher_id' => null,
                 'analytics_enabled' => false,
                 'ads_enabled' => false,

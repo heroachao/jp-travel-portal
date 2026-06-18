@@ -112,6 +112,7 @@ class DemoContentSeederTest extends TestCase
             $settings->default_meta_description,
         );
         $this->assertNull($settings->ga4_measurement_id);
+        $this->assertNull($settings->google_site_verification);
         $this->assertNull($settings->adsense_publisher_id);
         $this->assertFalse($settings->analytics_enabled);
         $this->assertFalse($settings->ads_enabled);
@@ -138,6 +139,7 @@ class DemoContentSeederTest extends TestCase
             'tagline' => 'Configured tagline.',
             'default_meta_description' => 'Configured default description.',
             'ga4_measurement_id' => 'G-CONFIGURED1',
+            'google_site_verification' => 'configured-search-console-token',
             'adsense_publisher_id' => 'ca-pub-1234567890123456',
             'analytics_enabled' => true,
             'ads_enabled' => true,
@@ -156,6 +158,7 @@ class DemoContentSeederTest extends TestCase
         $this->assertSame('Configured tagline.', $settings->tagline);
         $this->assertSame('Configured default description.', $settings->default_meta_description);
         $this->assertSame('G-CONFIGURED1', $settings->ga4_measurement_id);
+        $this->assertSame('configured-search-console-token', $settings->google_site_verification);
         $this->assertSame('ca-pub-1234567890123456', $settings->adsense_publisher_id);
         $this->assertTrue($settings->analytics_enabled);
         $this->assertTrue($settings->ads_enabled);

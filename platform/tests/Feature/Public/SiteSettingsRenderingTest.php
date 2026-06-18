@@ -36,6 +36,18 @@ class SiteSettingsRenderingTest extends TestCase
             ->assertDontSee('pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', false);
     }
 
+    public function test_homepage_outputs_search_console_verification_meta_when_configured(): void
+    {
+        SiteSetting::query()->create([
+            'id' => 1,
+            'google_site_verification' => 'google-verification-token_123',
+        ]);
+
+        $this->get(route('home'))
+            ->assertOk()
+            ->assertSee('<meta name="google-site-verification" content="google-verification-token_123">', false);
+    }
+
     public function test_homepage_outputs_adsense_bootstrap_when_ads_enabled_with_publisher_id(): void
     {
         SiteSetting::query()->create([

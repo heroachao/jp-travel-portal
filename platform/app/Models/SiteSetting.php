@@ -12,6 +12,7 @@ class SiteSetting extends Model
         'tagline',
         'default_meta_description',
         'ga4_measurement_id',
+        'google_site_verification',
         'adsense_publisher_id',
         'organization_schema_enabled',
         'contact_email',
