@@ -8,6 +8,8 @@
             <p class="mt-3 max-w-3xl text-lg text-slate-600">Browse regional travel channels for practical Japan trip planning.</p>
         </div>
 
+        @ad('content-mid-rectangle')
+
         <div class="mt-5 grid gap-4 md:grid-cols-3">
             @forelse($regions as $region)
                 <a class="public-tool-link" href="{{ route('regions.show', $region) }}">

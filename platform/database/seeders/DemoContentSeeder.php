@@ -585,28 +585,72 @@ class DemoContentSeeder extends Seeder
             );
         }
 
-        AdPlacement::updateOrCreate(
-            ['key' => 'article-body-middle'],
+        $adsenseCode = static fn (string $name, string $slot): string => <<<HTML
+<!-- {$name} -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3754179629894278"
+     data-ad-slot="{$slot}"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+HTML;
+
+        foreach ([
             [
+                'key' => 'global-top-leaderboard',
+                'name' => '全站顶部高曝光横幅广告',
+                'page_type' => 'global',
+                'position' => 'after_header',
+                'code' => $adsenseCode('japantriptools_top_leaderboard', '7711442398'),
+                'notes' => 'High-viewability unit directly below the navigation.',
+            ],
+            [
+                'key' => 'article-body-middle',
                 'name' => '文章正文中段广告',
                 'page_type' => 'article',
                 'position' => 'body_middle',
-                'code' => '<ins class="adsbygoogle"></ins>',
-                'is_enabled' => false,
-                'notes' => 'Paste Google AdSense code here after approval.',
-            ]
-        );
-
-        AdPlacement::updateOrCreate(
-            ['key' => 'home-after-hero'],
+                'code' => $adsenseCode('japantriptools_in_article_mid', '4678084940'),
+                'notes' => 'Primary in-content article ad unit.',
+            ],
             [
-                'name' => '首页首屏后广告',
+                'key' => 'home-after-hero',
+                'name' => '首页首屏后信息流广告',
                 'page_type' => 'home',
                 'position' => 'after_hero',
-                'code' => null,
-                'is_enabled' => false,
-                'notes' => 'Reserved homepage ad placement.',
-            ]
-        );
+                'code' => $adsenseCode('japantriptools_in_article_mid', '4678084940'),
+                'notes' => 'Homepage in-feed unit after the lead story block.',
+            ],
+            [
+                'key' => 'content-mid-rectangle',
+                'name' => '列表和频道页中段广告',
+                'page_type' => 'listing',
+                'position' => 'content_middle',
+                'code' => $adsenseCode('japantriptools_in_article_mid', '4678084940'),
+                'notes' => 'Middle content unit for search, category, tag, topic, region, and destination pages.',
+            ],
+            [
+                'key' => 'global-bottom-leaderboard',
+                'name' => '全站底部补充横幅广告',
+                'page_type' => 'global',
+                'position' => 'before_footer',
+                'code' => $adsenseCode('japantriptools_bottom_sidebar', '5085279057'),
+                'notes' => 'Bottom unit before the footer, used as the third page-level placement.',
+            ],
+        ] as $placement) {
+            AdPlacement::updateOrCreate(
+                ['key' => $placement['key']],
+                [
+                    'name' => $placement['name'],
+                    'page_type' => $placement['page_type'],
+                    'position' => $placement['position'],
+                    'code' => $placement['code'],
+                    'is_enabled' => false,
+                    'notes' => $placement['notes'],
+                ]
+            );
+        }
     }
 }

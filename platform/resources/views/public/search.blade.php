@@ -39,6 +39,7 @@
             </label>
             <button class="rounded bg-slate-950 px-4 py-2 font-semibold text-white md:col-span-1">Search</button>
         </form>
+        @ad('content-mid-rectangle')
         <div class="mt-5 grid gap-3">
             @foreach($articles as $article)
                 <a class="public-row-story public-card" href="{{ route('articles.show', $article) }}">

@@ -116,9 +116,11 @@
             </nav>
         </div>
     </header>
+    @ad('global-top-leaderboard')
     <main class="public-main">
         @yield('content')
     </main>
+    @ad('global-bottom-leaderboard')
     <footer class="public-footer">
         <div class="mx-auto grid max-w-7xl gap-6 px-5 py-8 text-sm text-slate-600 md:grid-cols-3">
             <div>

@@ -9,6 +9,8 @@
             <div class="content-prose mt-8">{!! $destination->body !!}</div>
         @endif
 
+        @ad('content-mid-rectangle')
+
         @if($destination->children->isNotEmpty())
             <h2 class="mt-12 text-2xl font-semibold">Places in this region</h2>
             <div class="mt-5 grid gap-4 md:grid-cols-2">

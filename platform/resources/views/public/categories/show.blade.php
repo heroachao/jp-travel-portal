@@ -9,6 +9,8 @@
             <div class="content-prose mt-8">{!! $category->body !!}</div>
         @endif
 
+        @ad('content-mid-rectangle')
+
         @if($category->children->isNotEmpty())
             <h2 class="mt-12 text-2xl font-semibold">Related Categories</h2>
             <div class="mt-5 grid gap-4 md:grid-cols-2">

@@ -7,6 +7,7 @@
             <h1 class="mt-2 text-4xl font-black tracking-tight">Japan Travel Articles</h1>
             <p class="mt-3 max-w-2xl text-slate-600">Fresh planning notes, destination explainers, route ideas, and practical travel tools for Japan trips.</p>
         </div>
+        @ad('content-mid-rectangle')
         <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             @foreach($articles as $article)
                 <a class="public-story-card" href="{{ route('articles.show', $article) }}">

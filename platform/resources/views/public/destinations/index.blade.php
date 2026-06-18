@@ -6,6 +6,7 @@
             <p class="public-kicker">Destination Board</p>
             <h1 class="mt-2 text-4xl font-black tracking-tight">Japan Destinations</h1>
         </div>
+        @ad('content-mid-rectangle')
         <div class="mt-5 grid gap-4 md:grid-cols-3">
             @foreach($destinations as $destination)
                 <a class="public-tool-link" href="{{ route('destinations.show', $destination) }}">

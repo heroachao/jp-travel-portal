@@ -15,6 +15,11 @@ Route::get('/tags/{tag:slug}', [\App\Http\Controllers\Public\TagController::clas
 Route::get('/search', \App\Http\Controllers\Public\SearchController::class)->name('search');
 Route::get('/sitemap.xml', \App\Http\Controllers\Public\SitemapController::class)->name('sitemap');
 Route::get('/robots.txt', \App\Http\Controllers\Public\RobotsController::class)->name('robots');
+Route::get('/ads.txt', static fn () => response(
+    "google.com, pub-3754179629894278, DIRECT, f08c47fec0942fa0\n",
+    200,
+    ['Content-Type' => 'text/plain'],
+))->name('ads-txt');
 
 Route::view('/health', 'health')->name('health');
 

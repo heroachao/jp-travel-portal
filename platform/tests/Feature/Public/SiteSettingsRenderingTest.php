@@ -51,6 +51,14 @@ class SiteSettingsRenderingTest extends TestCase
             ->assertDontSee('googletagmanager.com/gtag/js', false);
     }
 
+    public function test_ads_txt_outputs_adsense_authorization_line(): void
+    {
+        $this->get(route('ads-txt'))
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/plain; charset=UTF-8')
+            ->assertSee('google.com, pub-3754179629894278, DIRECT, f08c47fec0942fa0', false);
+    }
+
     public function test_homepage_omits_google_scripts_when_ids_or_switches_are_incomplete(): void
     {
         SiteSetting::query()->create([

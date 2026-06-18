@@ -153,6 +153,8 @@
         </aside>
     </section>
 
+    @ad('home-after-hero')
+
     <section class="mx-auto grid max-w-7xl gap-5 px-4 pb-10 lg:grid-cols-[minmax(0,1fr)_340px]">
         <div class="space-y-5">
             <div class="public-section-heading">

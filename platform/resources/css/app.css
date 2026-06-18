@@ -199,6 +199,32 @@
         min-height: 65vh;
     }
 
+    .ad-slot {
+        max-width: 80rem;
+        margin: 1.25rem auto;
+        padding-inline: 1rem;
+    }
+
+    .ad-slot .adsbygoogle {
+        display: block;
+        width: 100%;
+    }
+
+    .ad-slot[data-ad-key='global-top-leaderboard'] {
+        margin-block: 0.85rem 1.15rem;
+    }
+
+    .ad-slot[data-ad-key='global-bottom-leaderboard'] {
+        margin-block: 2rem 0;
+    }
+
+    .content-prose .ad-slot,
+    .public-card .ad-slot {
+        max-width: none;
+        margin: 1.25rem 0;
+        padding-inline: 0;
+    }
+
     .public-footer {
         margin-top: 4rem;
         border-top: 1px solid #d9dde6;
