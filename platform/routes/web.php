@@ -26,4 +26,8 @@ Route::middleware(['auth', 'admin'])
         Route::get('/articles/create', \App\Livewire\Admin\Articles\ArticleForm::class)->name('articles.create');
         Route::get('/articles/{article}/edit', \App\Livewire\Admin\Articles\ArticleForm::class)->name('articles.edit');
         Route::get('/articles/{article}/review', \App\Livewire\Admin\Articles\ReviewPanel::class)->name('articles.review');
+        Route::get('/destinations', \App\Livewire\Admin\Destinations\DestinationIndex::class)->name('destinations.index');
+        Route::get('/topics', \App\Livewire\Admin\Topics\TopicIndex::class)->name('topics.index');
+        Route::get('/tags', \App\Livewire\Admin\Tags\TagIndex::class)->name('tags.index');
+        Route::get('/ads', \App\Livewire\Admin\Ads\AdPlacementIndex::class)->name('ads.index');
     });

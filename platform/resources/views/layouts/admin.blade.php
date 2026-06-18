@@ -15,6 +15,10 @@
             <nav class="mt-8 space-y-2 text-sm">
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.dashboard') }}">工作台</a>
                 <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.articles.index') }}">文章管理</a>
+                <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.destinations.index') }}">目的地管理</a>
+                <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.topics.index') }}">专题管理</a>
+                <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.tags.index') }}">标签管理</a>
+                <a class="block rounded px-3 py-2 hover:bg-slate-100" href="{{ route('admin.ads.index') }}">广告管理</a>
             </nav>
         </aside>
         <main class="flex-1 p-8">
