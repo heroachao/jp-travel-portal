@@ -2,10 +2,12 @@
 
 namespace Tests\Feature\Admin;
 
+use App\Livewire\Admin\Destinations\DestinationIndex;
 use App\Livewire\Admin\HomepageModules\HomepageModuleIndex;
 use App\Livewire\Admin\ServiceLinks\ServiceLinkIndex;
 use App\Livewire\Admin\TravelCategories\TravelCategoryIndex;
 use App\Models\Article;
+use App\Models\Destination;
 use App\Models\HomepageModule;
 use App\Models\HomepageModuleItem;
 use App\Models\ServiceLink;
@@ -210,6 +212,120 @@ class MediaPortalAdminTest extends TestCase
 
         $this->assertNotSoftDeleted('travel_categories', ['id' => $blockedParent->id]);
         $this->assertSoftDeleted('travel_categories', ['id' => $emptyCategory->id]);
+    }
+
+    public function test_editor_can_manage_destination_channel_fields_from_chinese_admin(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(DestinationIndex::class)
+            ->set('type', 'region')
+            ->set('name', 'Tokyo')
+            ->set('display_name', 'Tokyo Region')
+            ->set('slug', 'tokyo')
+            ->set('excerpt', 'Tokyo region travel planning hub.')
+            ->set('body', '<p>Tokyo works best when planned by neighborhood and rail line.</p>')
+            ->set('seo_title', 'Tokyo Travel Guide')
+            ->set('meta_description', 'Plan Tokyo travel by neighborhood, transport, food, and season.')
+            ->set('is_indexable', true)
+            ->set('is_channel', true)
+            ->set('sort_order', 3)
+            ->call('save')
+            ->assertHasNoErrors();
+
+        $this->assertDatabaseHas('destinations', [
+            'slug' => 'tokyo',
+            'display_name' => 'Tokyo Region',
+            'is_channel' => true,
+            'sort_order' => 3,
+        ]);
+    }
+
+    public function test_editor_cannot_set_destination_parent_to_itself(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $destination = Destination::factory()->create([
+            'name' => 'Tokyo',
+            'parent_id' => null,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(DestinationIndex::class)
+            ->call('edit', $destination->id)
+            ->set('name', 'Loop destination')
+            ->set('parent_id', $destination->id)
+            ->call('save')
+            ->assertHasErrors(['parent_id']);
+
+        $this->assertDatabaseHas('destinations', [
+            'id' => $destination->id,
+            'name' => 'Tokyo',
+            'parent_id' => null,
+        ]);
+    }
+
+    public function test_editor_cannot_set_destination_parent_to_missing_destination(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(DestinationIndex::class)
+            ->set('type', 'region')
+            ->set('name', 'Tokyo')
+            ->set('slug', 'tokyo')
+            ->set('parent_id', 999999)
+            ->call('save')
+            ->assertHasErrors(['parent_id']);
+
+        $this->assertDatabaseMissing('destinations', [
+            'slug' => 'tokyo',
+            'parent_id' => 999999,
+        ]);
+    }
+
+    public function test_editor_cannot_set_destination_parent_to_descendant(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $parent = Destination::factory()->create([
+            'name' => 'Japan',
+            'parent_id' => null,
+        ]);
+        $child = Destination::factory()->create([
+            'name' => 'Tokyo',
+            'parent_id' => $parent->id,
+        ]);
+        $grandchild = Destination::factory()->create([
+            'name' => 'Ueno',
+            'parent_id' => $child->id,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(DestinationIndex::class)
+            ->call('edit', $parent->id)
+            ->assertViewHas('parentOptions', fn ($parentOptions) => $parentOptions
+                ->whereIn('id', [$parent->id, $child->id, $grandchild->id])
+                ->isEmpty())
+            ->set('parent_id', $grandchild->id)
+            ->call('save')
+            ->assertHasErrors(['parent_id']);
+
+        $this->assertDatabaseHas('destinations', [
+            'id' => $parent->id,
+            'parent_id' => null,
+        ]);
     }
 
     public function test_editor_can_create_service_link_from_chinese_admin(): void
