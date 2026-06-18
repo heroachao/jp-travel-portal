@@ -82,8 +82,7 @@
     <header class="public-header">
         <div class="public-header-main">
             <a class="public-brand" href="{{ route('home') }}" aria-label="{{ $siteSettings->site_name }}">
-                <span class="public-brand-mark">JP</span>
-                <span><b>japan</b><strong>travel</strong></span>
+                <img class="public-brand-logo" src="{{ asset('images/japan-trip-tools-logo.png') }}" alt="{{ $siteSettings->site_name }}">
             </a>
             <form action="{{ route('search') }}" class="public-search" role="search">
                 <input name="q" placeholder="Search Tokyo rail, Kyoto food, JR Pass">
