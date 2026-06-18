@@ -200,13 +200,18 @@
     }
 
     .ad-slot {
+        box-sizing: border-box;
+        width: 100%;
         max-width: 80rem;
         margin: 1.25rem auto;
         padding-inline: 1rem;
+        overflow: hidden;
     }
 
-    .ad-slot .adsbygoogle {
+    .ad-slot .adsbygoogle,
+    .ad-slot iframe {
         display: block;
+        max-width: 100%;
         width: 100%;
     }
 
