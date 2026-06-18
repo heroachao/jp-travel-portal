@@ -1,1 +1,8 @@
 .superpowers/
+.worktrees/
+.tools/
+platform/vendor/
+platform/node_modules/
+platform/.env
+platform/.env.backup
+platform/storage/*.key
