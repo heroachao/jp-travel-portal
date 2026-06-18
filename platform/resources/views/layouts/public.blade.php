@@ -55,6 +55,7 @@
     @if($layoutDescription)<meta name="description" content="{{ $layoutDescription }}">@endif
     <link rel="canonical" href="{{ $meta->canonical }}">
     @unless($meta->indexable)<meta name="robots" content="noindex,nofollow">@endunless
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
     <meta property="og:title" content="{{ $meta->ogTitle ?? $layoutTitle }}">
     @if($meta->ogDescription ?? $layoutDescription)<meta property="og:description" content="{{ $meta->ogDescription ?? $layoutDescription }}">@endif
     @if($meta->ogImage)<meta property="og:image" content="{{ $meta->ogImage }}">@endif
