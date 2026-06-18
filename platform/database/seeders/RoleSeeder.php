@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\PermissionRegistrar;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -12,6 +13,8 @@ class RoleSeeder extends Seeder
 {
     public function run(): void
     {
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
+
         $permissions = [
             'admin.access',
             'articles.create',
@@ -24,9 +27,10 @@ class RoleSeeder extends Seeder
             'system.logs',
         ];
 
-        foreach ($permissions as $permission) {
-            Permission::findOrCreate($permission);
-        }
+        $permissionModels = collect($permissions)
+            ->mapWithKeys(fn (string $permission) => [
+                $permission => Permission::findOrCreate($permission, 'web'),
+            ]);
 
         $roles = [
             'super-admin' => $permissions,
@@ -37,7 +41,8 @@ class RoleSeeder extends Seeder
         ];
 
         foreach ($roles as $name => $rolePermissions) {
-            Role::findOrCreate($name)->syncPermissions($rolePermissions);
+            Role::findOrCreate($name, 'web')
+                ->syncPermissions($permissionModels->only($rolePermissions)->values()->all());
         }
 
         $admin = User::firstOrCreate(
@@ -46,5 +51,7 @@ class RoleSeeder extends Seeder
         );
 
         $admin->assignRole('super-admin');
+
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
     }
 }
