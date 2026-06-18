@@ -1,0 +1,537 @@
+{
+  "articles": [
+    {
+      "slug": "tokyo-first-time-neighborhood-planner",
+      "title": "Tokyo First-Time Neighborhood Planner",
+      "excerpt": "A practical way to choose Tokyo bases and daily routes by grouping neighborhoods, rail lines, and travel pace.",
+      "seo_title": "Tokyo First-Time Neighborhood Planner",
+      "meta_description": "Choose where to stay and how to group Tokyo neighborhoods for a first Japan trip, using official Tokyo travel information as source material.",
+      "published_at": "2026-06-18T09:00:00+09:00",
+      "category_slugs": ["guide", "transport", "lodging"],
+      "destination_slugs": ["tokyo"],
+      "topic_slugs": ["first-time-japan", "tokyo-neighborhoods"],
+      "tag_slugs": ["tokyo", "first-time", "rail"],
+      "popularity_score": 94,
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Exterior%20-%20Tokyo%20Station%20Marunouchi%20Building%20-%20DSC09896.JPG?width=1400",
+        "alt": "Tokyo Station Marunouchi Building",
+        "caption": "Tokyo Station is a useful reference point for planning central Tokyo rail movements.",
+        "license": "CC0 1.0 Universal Public Domain Dedication",
+        "attribution": "Daderot, Wikimedia Commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Exterior_-_Tokyo_Station_Marunouchi_Building_-_DSC09896.JPG"
+      },
+      "sources": [
+        {
+          "name": "GO TOKYO: The Official Tokyo Travel Guide",
+          "url": "https://www.gotokyo.org/en/index.html"
+        },
+        {
+          "name": "GO TOKYO: IC Cards and Getting Around",
+          "url": "https://www.gotokyo.org/en/plan/getting-around/ic-card/index.html"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Start with rail geography, not a checklist",
+          "paragraphs": [
+            "Tokyo is easier when a first trip is planned around clusters rather than isolated landmarks. Put one or two neighborhoods into each day, then use the nearest rail or subway connection as the backbone.",
+            "For most visitors, a central base near a major station reduces transfers and makes late-day changes less stressful. Tokyo Station, Shinjuku, Ueno, Shibuya, and Ginza all work differently; the right choice depends on whether the trip is focused on food, shopping, museums, day trips, or nightlife."
+          ]
+        },
+        {
+          "heading": "Suggested first-time grouping",
+          "paragraphs": [
+            "Use west Tokyo for Shinjuku, Shibuya, Harajuku, and modern shopping. Use east Tokyo for Ueno, Asakusa, museums, older streets, and river areas. Keep Ginza, Marunouchi, and Tokyo Station together for a polished central day."
+          ],
+          "bullets": [
+            "Two or three full Tokyo days: pick one west-side day, one east-side day, and one flexible central day.",
+            "Four or five days: add a food-focused evening, a garden or museum morning, and a day trip buffer.",
+            "Families and first arrivals should avoid changing hotels inside Tokyo unless there is a strong reason."
+          ]
+        },
+        {
+          "heading": "Practical travel note",
+          "paragraphs": [
+            "IC cards are useful for many rail and bus services in Tokyo and other parts of Japan. They are prepaid and rechargeable, which makes small movements across the city simpler than buying a paper ticket each time."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Where should a first-time visitor stay in Tokyo?",
+          "answer": "Choose a base with easy rail access. Shinjuku and Shibuya suit nightlife and shopping; Tokyo Station and Ginza suit central convenience; Ueno and Asakusa suit museums, older streets, and better-value stays."
+        },
+        {
+          "question": "How many Tokyo neighborhoods should I visit in one day?",
+          "answer": "Two main neighborhoods plus one nearby evening area is a realistic first-trip pace."
+        }
+      ]
+    },
+    {
+      "slug": "kyoto-responsible-first-visit-route",
+      "title": "Kyoto Responsible First-Visit Route",
+      "excerpt": "A first Kyoto route that balances temples, old streets, food, and responsible travel pacing.",
+      "seo_title": "Kyoto Responsible First-Visit Route",
+      "meta_description": "Plan a first Kyoto visit with responsible pacing, morning starts, temple areas, and official Kyoto travel guidance.",
+      "published_at": "2026-06-18T09:10:00+09:00",
+      "category_slugs": ["guide", "itinerary", "basics"],
+      "destination_slugs": ["kyoto", "kansai"],
+      "topic_slugs": ["responsible-travel", "kyoto-first-time"],
+      "tag_slugs": ["kyoto", "temples", "responsible-travel"],
+      "popularity_score": 91,
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kiyomizu-dera%20in%20Kyoto%2C%20Japan%201909.jpg?width=1400",
+        "alt": "Historic Kiyomizu-dera image in Kyoto",
+        "caption": "Historic public-domain imagery can support Kyoto articles without using restricted tourism photography.",
+        "license": "Public domain",
+        "attribution": "University of Vermont Libraries / Wikimedia Commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Kiyomizu-dera_in_Kyoto,_Japan_1909.jpg"
+      },
+      "sources": [
+        {
+          "name": "Kyoto City Official Guide",
+          "url": "https://kyoto.travel/en/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Build the route around areas",
+          "paragraphs": [
+            "Kyoto rewards slower travel. A first route should group sights by area so the day does not become a chain of long bus rides. Higashiyama, downtown Kyoto, Arashiyama, northern temples, and the station area each work best as separate planning blocks.",
+            "The responsible approach is to arrive early, keep popular streets for quieter hours, and avoid squeezing too many temples into one afternoon. Kyoto is not only a checklist of famous spots; it is also a city of residential lanes, local customs, and seasonal congestion."
+          ]
+        },
+        {
+          "heading": "A balanced first route",
+          "paragraphs": [
+            "Start with a Higashiyama morning, then use downtown Kyoto for food and a gentler evening. Put Arashiyama on a separate morning if it is important. Keep one flexible slot for weather, rest, or a less crowded temple area."
+          ],
+          "bullets": [
+            "Three days: Higashiyama, Arashiyama, downtown and food.",
+            "Four days: add northern Kyoto or a quieter temple district.",
+            "Five days: add Nara, Uji, or a slow day for shopping and cafes."
+          ]
+        },
+        {
+          "heading": "Travel etiquette",
+          "paragraphs": [
+            "Use official Kyoto guidance for current etiquette, seasonal notices, and responsible travel requests. The core rule is simple: move quietly, respect private spaces, and let the city breathe."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is three days enough for Kyoto?",
+          "answer": "Three days can work for a first visit if each day is organized by area. Four or five days gives a calmer pace."
+        },
+        {
+          "question": "Should I visit Kyoto temples very early?",
+          "answer": "Early starts help reduce crowd pressure and make popular areas easier to enjoy."
+        }
+      ]
+    },
+    {
+      "slug": "osaka-food-nightlife-first-guide",
+      "title": "Osaka Food and Nightlife First Guide",
+      "excerpt": "How to use Osaka as a fun, food-focused base while keeping transport and sightseeing realistic.",
+      "seo_title": "Osaka Food and Nightlife First Guide",
+      "meta_description": "A first Osaka guide for food, nightlife, castle-area sightseeing, and Kansai trip planning using official tourism sources.",
+      "published_at": "2026-06-18T09:20:00+09:00",
+      "category_slugs": ["food", "guide", "things-to-do"],
+      "destination_slugs": ["kansai"],
+      "topic_slugs": ["osaka-first-time", "kansai-trip-planning"],
+      "tag_slugs": ["osaka", "food", "nightlife"],
+      "popularity_score": 88,
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/20190121%20Osaka%20Castle-1.jpg?width=1400",
+        "alt": "Osaka Castle in Osaka",
+        "caption": "Osaka Castle is a recognizable planning anchor for first-time Osaka itineraries.",
+        "license": "CC0 1.0 Universal Public Domain Dedication",
+        "attribution": "Wikimedia Commons contributor, CC0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:20190121_Osaka_Castle-1.jpg"
+      },
+      "sources": [
+        {
+          "name": "OSAKA-INFO Official Tourism Guide",
+          "url": "https://osaka-info.jp/en/"
+        },
+        {
+          "name": "Travel Japan: Osaka",
+          "url": "https://www.japan.travel/en/destinations/kansai/osaka/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Use Osaka for energy and food",
+          "paragraphs": [
+            "Osaka is useful because it adds a different rhythm to a Kansai trip. Kyoto is often planned around temples and cultural districts; Osaka is more relaxed, food-forward, and better for late evenings.",
+            "A first visitor should avoid treating Osaka as only a quick dinner stop. The city works well as a base for food streets, castle-area sightseeing, shopping, and short train links across Kansai."
+          ]
+        },
+        {
+          "heading": "First Osaka structure",
+          "paragraphs": [
+            "Put one daytime landmark area together with one evening food area. This keeps the trip simple and gives Osaka the space it needs."
+          ],
+          "bullets": [
+            "Morning or afternoon: Osaka Castle area or a museum district.",
+            "Evening: Namba, Dotonbori, or another food-focused neighborhood.",
+            "Extra day: add shopping, bay-area attractions, or a Kansai day trip."
+          ]
+        },
+        {
+          "heading": "Kansai pairing",
+          "paragraphs": [
+            "Osaka pairs naturally with Kyoto, Nara, Kobe, and other Kansai stops. For first-time travelers, the best split is usually not equal days everywhere; give Kyoto quiet time and use Osaka for food, transit, and city energy."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Can Osaka be a base for Kyoto?",
+          "answer": "Yes, but staying in Kyoto is usually calmer for early temple mornings. Osaka works well if nightlife, food, and broader Kansai transport matter more."
+        },
+        {
+          "question": "What is Osaka best known for on a first trip?",
+          "answer": "Food, nightlife, shopping, and an easier-going city atmosphere are the main first-trip strengths."
+        }
+      ]
+    },
+    {
+      "slug": "hokkaido-seasons-first-trip-guide",
+      "title": "Hokkaido Seasons First-Trip Guide",
+      "excerpt": "A seasonal planning guide for Hokkaido wilderness, snow, seafood, flowers, and wide-distance travel.",
+      "seo_title": "Hokkaido Seasons First-Trip Guide",
+      "meta_description": "Plan Hokkaido by season, distance, food, and nature using official Hokkaido and JNTO travel sources.",
+      "published_at": "2026-06-18T09:30:00+09:00",
+      "category_slugs": ["guide", "itinerary", "food"],
+      "destination_slugs": ["hokkaido"],
+      "topic_slugs": ["hokkaido-seasons", "nature-travel"],
+      "tag_slugs": ["hokkaido", "winter", "seafood"],
+      "popularity_score": 86,
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mt.%20Tosshozan%20%28Hokkaido%29.jpg?width=1400",
+        "alt": "Mountain landscape in Hokkaido",
+        "caption": "Hokkaido planning should account for long distances and seasonal landscapes.",
+        "license": "CC0 1.0 Universal Public Domain Dedication",
+        "attribution": "Wikimedia Commons contributor, CC0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Mt._Tosshozan_(Hokkaido).jpg"
+      },
+      "sources": [
+        {
+          "name": "HOKKAIDO LOVE! Official Tourism Site",
+          "url": "https://www.visit-hokkaido.jp/en/index.html"
+        },
+        {
+          "name": "Travel Japan: Hokkaido",
+          "url": "https://www.japan.travel/en/destinations/hokkaido/hokkaido/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Plan Hokkaido by season first",
+          "paragraphs": [
+            "Hokkaido is not a compact add-on. It is a large northern island where the season changes the entire trip. Winter, flower season, autumn foliage, national parks, seafood, and city stays each require different transport and clothing decisions.",
+            "Official tourism material emphasizes Hokkaido's wilderness, powder snow, seafood, and indigenous culture. Use those themes as planning anchors instead of copying a generic Tokyo-Kyoto route."
+          ]
+        },
+        {
+          "heading": "Choose one travel style",
+          "paragraphs": [
+            "A first trip should choose a style before choosing stops. Sapporo plus Otaru is a simple urban-food route. Eastern Hokkaido is better for nature and wildlife. Furano and Biei work for flowers and rural scenery. Winter trips need more weather flexibility."
+          ],
+          "bullets": [
+            "Winter: snow festivals, skiing, hot springs, and buffer time.",
+            "Summer: flowers, road trips, national parks, and cooler weather.",
+            "Autumn: foliage routes, lakes, food, and fewer crowds than peak summer."
+          ]
+        },
+        {
+          "heading": "Distance warning",
+          "paragraphs": [
+            "The biggest first-time mistake is underestimating distance. Hokkaido maps look simple, but travel times can be long. Keep fewer bases and make each move count."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is Hokkaido good for a first Japan trip?",
+          "answer": "Yes, if the trip is planned around nature, food, or winter. It is less convenient as a short add-on to a packed Tokyo-Kyoto itinerary."
+        },
+        {
+          "question": "Do I need a car in Hokkaido?",
+          "answer": "A car helps in rural areas, but Sapporo, Otaru, Hakodate, and some rail-linked routes can work without one."
+        }
+      ]
+    },
+    {
+      "slug": "okinawa-island-planning-guide",
+      "title": "Okinawa Island Planning Guide",
+      "excerpt": "A practical first guide to Okinawa's islands, subtropical climate, culture, beaches, and safety planning.",
+      "seo_title": "Okinawa Island Planning Guide",
+      "meta_description": "Plan Okinawa island travel with official tourism information on culture, beaches, useful information, transport, and safety.",
+      "published_at": "2026-06-18T09:40:00+09:00",
+      "category_slugs": ["guide", "things-to-do", "basics"],
+      "destination_slugs": ["okinawa"],
+      "topic_slugs": ["okinawa-first-time", "island-travel"],
+      "tag_slugs": ["okinawa", "beaches", "culture"],
+      "popularity_score": 84,
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kouri-Beach.jpg?width=1400",
+        "alt": "Kouri Beach in Okinawa",
+        "caption": "Okinawa planning should balance beaches with culture, transport, and weather awareness.",
+        "license": "CC0 1.0 Universal Public Domain Dedication",
+        "attribution": "Wikimedia Commons contributor, CC0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Kouri-Beach.jpg"
+      },
+      "sources": [
+        {
+          "name": "VISIT OKINAWA JAPAN Official Travel Guide",
+          "url": "https://visitokinawajapan.com/"
+        },
+        {
+          "name": "VISIT OKINAWA JAPAN Useful Information",
+          "url": "https://visitokinawajapan.com/plan-your-trip/useful-information/"
+        },
+        {
+          "name": "Travel Japan: Okinawa",
+          "url": "https://www.japan.travel/en/destinations/okinawa/okinawa/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Treat Okinawa as an island trip",
+          "paragraphs": [
+            "Okinawa is not simply a beach version of mainland Japan. Official tourism sources present it as a chain of islands with Ryukyu heritage, subtropical nature, local culture, marine life, and travel logistics that need their own plan.",
+            "A first trip should decide whether the priority is Naha and culture, resort beaches, island hopping, diving, family travel, or road trips. Mixing all of them into a short stay usually creates too much transit."
+          ]
+        },
+        {
+          "heading": "Useful first decisions",
+          "paragraphs": [
+            "Start by choosing a base. Naha is useful for food, culture, and airport convenience. Resort areas work better for beach time. Smaller islands need more advance transport planning."
+          ],
+          "bullets": [
+            "Check weather and typhoon season before locking the route.",
+            "Plan transport early, especially outside central Naha.",
+            "Balance beaches with cultural districts, pottery streets, markets, and nature."
+          ]
+        },
+        {
+          "heading": "Safety and comfort",
+          "paragraphs": [
+            "Use official useful-information pages for current safety, shopping, tourist information, and disaster guidance. This is especially important for island travel, summer heat, and marine activities."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How many days do I need in Okinawa?",
+          "answer": "Three days can cover Naha and a nearby beach area. Five to seven days is better for island pacing or resort time."
+        },
+        {
+          "question": "Is Okinawa only for beaches?",
+          "answer": "No. Ryukyu heritage, local food, pottery, karate culture, mangroves, markets, and island villages are also major reasons to visit."
+        }
+      ]
+    },
+    {
+      "slug": "japan-rail-pass-basics-official-guide",
+      "title": "Japan Rail Pass Basics: What It Covers and When to Check",
+      "excerpt": "A clear summary of Japan Rail Pass coverage, exceptions, and planning checks based on official JR and JNTO information.",
+      "seo_title": "Japan Rail Pass Basics Official Guide",
+      "meta_description": "Understand what the Japan Rail Pass covers, when to check official rules, and how to plan rail travel across Japan.",
+      "published_at": "2026-06-18T09:50:00+09:00",
+      "category_slugs": ["transport", "basics", "guide"],
+      "destination_slugs": ["tokyo", "kansai", "hokkaido"],
+      "topic_slugs": ["japan-rail-travel", "jr-pass"],
+      "tag_slugs": ["jr-pass", "rail", "shinkansen"],
+      "popularity_score": 96,
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Shinkansen%20Type-0%20Kodama.jpg?width=1400",
+        "alt": "Shinkansen train",
+        "caption": "Rail planning should be checked against official JR Pass rules before purchase.",
+        "license": "Public domain",
+        "attribution": "Cassiopeia sweet, Wikimedia Commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Shinkansen_Type-0_Kodama.jpg"
+      },
+      "sources": [
+        {
+          "name": "Travel Japan: Japan Rail Pass Guide",
+          "url": "https://www.japan.travel/en/guide/jr-rail-pass/"
+        },
+        {
+          "name": "JAPAN RAIL PASS Official Website",
+          "url": "https://japanrailpass.net/en/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Understand coverage before comparing prices",
+          "paragraphs": [
+            "The Japan Rail Pass can be powerful, but it should not be treated as an automatic purchase. Official sources describe it as a pass for JR train lines across the country, with important exceptions and conditions.",
+            "The best planning order is route first, pass second. List the long-distance JR segments, check whether they are covered, then compare the pass against individual tickets and regional passes."
+          ]
+        },
+        {
+          "heading": "What to verify",
+          "paragraphs": [
+            "Official rules can change, so the purchase decision should always be checked on official pages before payment."
+          ],
+          "bullets": [
+            "Which shinkansen services are included or excluded.",
+            "Whether seat reservations are needed for your route.",
+            "Whether a regional pass is better than a nationwide pass.",
+            "Exchange, purchase, eligibility, and passport requirements."
+          ]
+        },
+        {
+          "heading": "When the pass is most likely to help",
+          "paragraphs": [
+            "The pass is most useful on trips with multiple long JR intercity rides. It is usually less useful for a single city stay, short Kansai movements, or routes built mainly around private railways and local subway travel."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Should every visitor buy a Japan Rail Pass?",
+          "answer": "No. It depends on the exact route, distance, and rail operators used."
+        },
+        {
+          "question": "Where should I check the latest JR Pass rules?",
+          "answer": "Use the official JAPAN RAIL PASS website and JNTO guide pages before buying."
+        }
+      ]
+    },
+    {
+      "slug": "tokyo-ic-card-practical-guide",
+      "title": "Tokyo IC Card Practical Guide",
+      "excerpt": "How prepaid IC cards simplify trains, buses, and small payments during a Tokyo stay.",
+      "seo_title": "Tokyo IC Card Practical Guide",
+      "meta_description": "Use official Tokyo travel information to understand IC cards, rail gates, buses, recharging, and small payments.",
+      "published_at": "2026-06-18T10:00:00+09:00",
+      "category_slugs": ["transport", "basics"],
+      "destination_slugs": ["tokyo"],
+      "topic_slugs": ["tokyo-transport", "ic-cards"],
+      "tag_slugs": ["ic-card", "tokyo", "transport"],
+      "popularity_score": 90,
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Shinkansen%20schedule%20display%20at%20Tokyo%20station%20crop.png?width=1400",
+        "alt": "Schedule display at Tokyo Station",
+        "caption": "Tokyo transport is easier when small daily movements are planned with reusable payment tools.",
+        "license": "CC0 1.0 Universal Public Domain Dedication",
+        "attribution": "Wikimedia Commons contributor, CC0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Shinkansen_schedule_display_at_Tokyo_station_crop.png"
+      },
+      "sources": [
+        {
+          "name": "GO TOKYO: IC Cards",
+          "url": "https://www.gotokyo.org/en/plan/getting-around/ic-card/index.html"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Why IC cards matter",
+          "paragraphs": [
+            "A prepaid IC card reduces small transport friction. Instead of buying a ticket for every ride, travelers can tap at readers, recharge the balance, and move between many train and bus services more smoothly.",
+            "Official Tokyo information notes that IC cards can be used on major rail and bus services in the metropolitan area and many other parts of Japan. Some shops also accept them as electronic money."
+          ]
+        },
+        {
+          "heading": "How to use the card in daily planning",
+          "paragraphs": [
+            "Use IC cards for short urban movements and keep long-distance tickets separate. This makes Tokyo days easier because the visitor can choose the best route in the moment without stopping for individual fares."
+          ],
+          "bullets": [
+            "Recharge before busy transfer periods.",
+            "Keep the card accessible at gates and bus readers.",
+            "Do not assume every rural route or special service accepts the same payment method."
+          ]
+        },
+        {
+          "heading": "Where it fits with passes",
+          "paragraphs": [
+            "IC cards and rail passes solve different problems. A rail pass may cover selected intercity or regional travel, while an IC card is a flexible payment tool for small daily rides and some purchases."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Can an IC card replace all tickets in Japan?",
+          "answer": "No. It is useful for many local rides, but long-distance rail and special services may require separate tickets."
+        },
+        {
+          "question": "Can IC cards be used outside Tokyo?",
+          "answer": "Many major areas support compatible IC cards, but coverage should be checked for rural or special routes."
+        }
+      ]
+    },
+    {
+      "slug": "sapporo-first-time-city-and-nature-guide",
+      "title": "Sapporo First-Time City and Nature Guide",
+      "excerpt": "How to use Sapporo as a northern city base for food, snow, parks, shopping, and Hokkaido day planning.",
+      "seo_title": "Sapporo First-Time City and Nature Guide",
+      "meta_description": "Plan Sapporo with official travel information for food, seasonal scenery, shopping, nature, and Hokkaido access.",
+      "published_at": "2026-06-18T10:10:00+09:00",
+      "category_slugs": ["guide", "food", "things-to-do"],
+      "destination_slugs": ["hokkaido"],
+      "topic_slugs": ["sapporo-first-time", "hokkaido-city-base"],
+      "tag_slugs": ["sapporo", "hokkaido", "food"],
+      "popularity_score": 82,
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cityscape%20of%20Asahikawa%20from%20Mt.%20Arashiyama.jpg?width=1400",
+        "alt": "Hokkaido cityscape and mountain view",
+        "caption": "Northern Japan city stays are often paired with nature and food-focused day planning.",
+        "license": "CC0 1.0 Universal Public Domain Dedication",
+        "attribution": "Wikimedia Commons contributor, CC0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Cityscape_of_Asahikawa_from_Mt._Arashiyama.jpg"
+      },
+      "sources": [
+        {
+          "name": "Visit Sapporo Official Travel Guide",
+          "url": "https://visit.sapporo.travel/"
+        },
+        {
+          "name": "HOKKAIDO LOVE! Official Tourism Site",
+          "url": "https://www.visit-hokkaido.jp/en/index.html"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Use Sapporo as the northern base",
+          "paragraphs": [
+            "Sapporo is Hokkaido's most practical first base because it combines big-city comfort with access to food, parks, shopping, and seasonal trips. Official Sapporo tourism presents the city as a capital of the north surrounded by nature.",
+            "For first-time visitors, Sapporo works best when the city is not overloaded. Keep one or two city days, then add a day trip or seasonal activity."
+          ]
+        },
+        {
+          "heading": "What to plan around",
+          "paragraphs": [
+            "Winter travelers may focus on snow and festivals. Summer travelers can use Sapporo for cooler weather, parks, food, and access to wider Hokkaido routes."
+          ],
+          "bullets": [
+            "Food: seafood, ramen, dairy, and regional dishes.",
+            "Nature: parks, nearby mountains, and day trips.",
+            "Season: snow in winter, greenery in summer, and foliage in autumn."
+          ]
+        },
+        {
+          "heading": "Avoid overextending",
+          "paragraphs": [
+            "A Sapporo stay should not try to cover all of Hokkaido. The island is too large. Choose a small set of nearby experiences or add separate bases for eastern, central, or southern Hokkaido."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is Sapporo enough for a short Hokkaido trip?",
+          "answer": "Yes. Sapporo plus one or two nearby day trips can work for a short first Hokkaido stay."
+        },
+        {
+          "question": "What is Sapporo best for?",
+          "answer": "Food, winter atmosphere, parks, shopping, and a comfortable base for northern Japan planning."
+        }
+      ]
+    }
+  ]
+}
