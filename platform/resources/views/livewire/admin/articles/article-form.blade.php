@@ -35,6 +35,101 @@
 
         <div class="grid gap-5 border-t pt-5 md:grid-cols-2">
             <div>
+                <label class="block text-sm font-medium" for="source_name">来源名称</label>
+                <input id="source_name" wire:model="source_name" class="mt-2 w-full rounded border px-3 py-2">
+                @error('source_name')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+            </div>
+            <div>
+                <label class="block text-sm font-medium" for="source_url">来源链接</label>
+                <input id="source_url" wire:model="source_url" class="mt-2 w-full rounded border px-3 py-2">
+                @error('source_url')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+            </div>
+            <div>
+                <label class="block text-sm font-medium" for="display_updated_at">前台显示更新时间</label>
+                <input id="display_updated_at" type="datetime-local" wire:model="display_updated_at" class="mt-2 w-full rounded border px-3 py-2">
+                @error('display_updated_at')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+            </div>
+            <div>
+                <label class="block text-sm font-medium" for="reading_time_minutes">阅读时间（分钟）</label>
+                <input id="reading_time_minutes" type="number" min="1" wire:model="reading_time_minutes" class="mt-2 w-full rounded border px-3 py-2">
+                @error('reading_time_minutes')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+            </div>
+            <div>
+                <label class="block text-sm font-medium" for="popularity_score">热度分数</label>
+                <input id="popularity_score" type="number" min="0" wire:model="popularity_score" class="mt-2 w-full rounded border px-3 py-2">
+                @error('popularity_score')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+            </div>
+            <label class="flex items-center gap-2 self-end text-sm">
+                <input type="checkbox" wire:model="has_coupon">
+                标记含优惠信息
+            </label>
+            @error('has_coupon')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+        </div>
+
+        <fieldset class="grid gap-3 border-t pt-5">
+            <legend class="text-sm font-medium">所属分类</legend>
+            @if($categoryOptions->isEmpty())
+                <p class="text-sm text-slate-500">暂无可选分类</p>
+            @else
+                <div class="grid gap-2 md:grid-cols-2">
+                    @foreach($categoryOptions as $category)
+                        <label class="flex items-center gap-2 rounded border px-3 py-2 text-sm">
+                            <input type="checkbox" wire:model="selectedCategoryIds" value="{{ $category->id }}">
+                            <span>{{ $category->display_name ?: $category->title }}</span>
+                            <span class="text-xs text-slate-500">/{{ $category->slug }}</span>
+                        </label>
+                    @endforeach
+                </div>
+            @endif
+            @error('selectedCategoryIds')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+            @error('selectedCategoryIds.*')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+        </fieldset>
+
+        <fieldset class="grid gap-4 border-t pt-5">
+            <legend class="sr-only">文章 FAQ</legend>
+            <div class="flex items-center justify-between">
+                <p class="text-sm font-medium">文章 FAQ</p>
+                <button type="button" wire:click="addFaq" class="rounded border px-3 py-1.5 text-sm font-medium">新增 FAQ</button>
+            </div>
+
+            @forelse($faqs as $index => $faq)
+                <div wire:key="article-faq-{{ $index }}" class="grid gap-3 rounded border border-slate-200 p-4">
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium">FAQ {{ $index + 1 }}</p>
+                        <button type="button" wire:click="removeFaq({{ $index }})" class="text-sm text-red-700 underline">移除</button>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium" for="faq_question_{{ $index }}">问题</label>
+                        <input id="faq_question_{{ $index }}" wire:model="faqs.{{ $index }}.question" class="mt-2 w-full rounded border px-3 py-2">
+                        @error("faqs.$index.question")<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium" for="faq_answer_{{ $index }}">答案 HTML</label>
+                        <textarea id="faq_answer_{{ $index }}" wire:model="faqs.{{ $index }}.answer" rows="4" class="mt-2 w-full rounded border px-3 py-2 font-mono text-sm"></textarea>
+                        @error("faqs.$index.answer")<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+                    </div>
+                    <div class="grid gap-3 md:grid-cols-2">
+                        <div>
+                            <label class="block text-sm font-medium" for="faq_sort_order_{{ $index }}">排序</label>
+                            <input id="faq_sort_order_{{ $index }}" type="number" min="0" wire:model="faqs.{{ $index }}.sort_order" class="mt-2 w-full rounded border px-3 py-2">
+                            @error("faqs.$index.sort_order")<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+                        </div>
+                        <label class="flex items-center gap-2 self-end text-sm">
+                            <input type="checkbox" wire:model="faqs.{{ $index }}.is_enabled">
+                            启用
+                        </label>
+                        @error("faqs.$index.is_enabled")<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+                    </div>
+                </div>
+            @empty
+                <p class="text-sm text-slate-500">尚未添加 FAQ</p>
+            @endforelse
+
+            @error('faqs')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+        </fieldset>
+
+        <div class="grid gap-5 border-t pt-5 md:grid-cols-2">
+            <div>
                 <label class="block text-sm font-medium" for="seo_title">SEO 标题</label>
                 <input id="seo_title" wire:model="seo_title" class="mt-2 w-full rounded border px-3 py-2">
                 @error('seo_title')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
