@@ -121,6 +121,36 @@ class Article extends Model
             ->where('published_at', '<=', now());
     }
 
+    public function firstImageUrl(): ?string
+    {
+        if (! $this->body) {
+            return null;
+        }
+
+        if (! preg_match('/<img[^>]+src=(["\'])(.*?)\1/i', $this->body, $matches)) {
+            return null;
+        }
+
+        return html_entity_decode($matches[2], ENT_QUOTES | ENT_HTML5);
+    }
+
+    public function firstImageAlt(): string
+    {
+        if (! $this->body) {
+            return $this->title;
+        }
+
+        if (preg_match('/<img[^>]+alt=(["\'])(.*?)\1/i', $this->body, $matches)) {
+            $alt = trim(strip_tags(html_entity_decode($matches[2], ENT_QUOTES | ENT_HTML5)));
+
+            if ($alt !== '') {
+                return $alt;
+            }
+        }
+
+        return $this->title;
+    }
+
     public function getRouteKeyName(): string
     {
         return 'slug';

@@ -6,6 +6,7 @@
         $secondaryArticles = $articles->skip(1)->take(6);
         $latestRail = $articles->take(7);
         $routeDesk = $articles->skip(7)->take(5);
+        $travelGraphicArticles = $articles->take(4);
         $moduleItemCard = function ($moduleItem): ?array {
             $item = $moduleItem->item;
 
@@ -130,8 +131,23 @@
                 <h1>Plan Japan with practical guides and route tools.</h1>
                 <p>Publish your first guide in the admin to feature it here.</p>
             @endif
-            <div class="public-travel-graphic" aria-hidden="true">
-                <span></span><span></span><span></span><span></span>
+            <div class="public-travel-graphic" aria-label="Featured Japan travel images">
+                @foreach($travelGraphicArticles as $graphicArticle)
+                    @php
+                        $graphicImage = $graphicArticle->firstImageUrl();
+                    @endphp
+                    @if($graphicImage)
+                        <a href="{{ route('articles.show', $graphicArticle) }}" aria-label="{{ $graphicArticle->title }}">
+                            <img
+                                src="{{ $graphicImage }}"
+                                alt="{{ $graphicArticle->firstImageAlt() }}"
+                                loading="{{ $loop->first ? 'eager' : 'lazy' }}"
+                            >
+                        </a>
+                    @else
+                        <span></span>
+                    @endif
+                @endforeach
             </div>
         </div>
 
@@ -163,16 +179,30 @@
             </div>
             <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 @forelse($secondaryArticles as $article)
+                    @php
+                        $articleImage = $article->firstImageUrl();
+                    @endphp
                     <a class="public-story-card" href="{{ route('articles.show', $article) }}">
-                        <span class="public-story-thumb"></span>
+                        <span class="public-story-thumb">
+                            @if($articleImage)
+                                <img src="{{ $articleImage }}" alt="{{ $article->firstImageAlt() }}" loading="lazy">
+                            @endif
+                        </span>
                         <small>{{ $article->published_at?->format('M j, Y') }}</small>
                         <h3>{{ $article->title }}</h3>
                         <p>{{ $article->excerpt }}</p>
                     </a>
                 @empty
                     @foreach($popularArticles->take(3) as $article)
+                        @php
+                            $articleImage = $article->firstImageUrl();
+                        @endphp
                         <a class="public-story-card" href="{{ route('articles.show', $article) }}">
-                            <span class="public-story-thumb"></span>
+                            <span class="public-story-thumb">
+                                @if($articleImage)
+                                    <img src="{{ $articleImage }}" alt="{{ $article->firstImageAlt() }}" loading="lazy">
+                                @endif
+                            </span>
                             <small>{{ $article->published_at?->format('M j, Y') }}</small>
                             <h3>{{ $article->title }}</h3>
                             <p>{{ $article->excerpt }}</p>
