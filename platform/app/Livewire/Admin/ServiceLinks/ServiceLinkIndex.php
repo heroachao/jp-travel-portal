@@ -46,7 +46,7 @@ class ServiceLinkIndex extends Component
         $data = $this->validate([
             'type' => ['required', Rule::in(['guide', 'activity', 'hotel', 'flight', 'rail', 'shop', 'community', 'exchange_rate', 'advertising', 'custom'])],
             'label' => ['required', 'string', 'max:120'],
-            'url' => ['required', 'url', 'max:255'],
+            'url' => ['required', 'url:http,https', 'max:255'],
             'placement' => ['required', Rule::in(['header', 'footer'])],
             'tracking_key' => ['nullable', 'alpha_dash:ascii', 'max:80'],
             'notes' => ['nullable', 'string', 'max:1000'],

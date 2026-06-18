@@ -6,6 +6,11 @@
             {{ session('status') }}
         </div>
     @endif
+    @error('delete')
+        <div class="mt-4 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+            {{ $message }}
+        </div>
+    @enderror
 
     <form wire:submit="save" class="mt-6 grid gap-3 rounded-lg border bg-white p-5 md:grid-cols-4">
         <label class="grid gap-1 text-sm">
@@ -90,7 +95,7 @@
                         <td class="px-4 py-3">
                             <div class="space-x-3">
                                 <button type="button" wire:click="edit({{ $serviceLink->id }})" class="underline">编辑</button>
-                                <button type="button" wire:click="delete({{ $serviceLink->id }})" class="text-red-700 underline">删除</button>
+                                <button type="button" wire:click="delete({{ $serviceLink->id }})" wire:confirm="确认删除这个服务入口吗？" class="text-red-700 underline">删除</button>
                             </div>
                         </td>
                     </tr>

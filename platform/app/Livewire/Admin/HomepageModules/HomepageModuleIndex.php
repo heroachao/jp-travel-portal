@@ -53,7 +53,15 @@ class HomepageModuleIndex extends Component
 
     public function delete(int $id): void
     {
-        HomepageModule::findOrFail($id)->delete();
+        $module = HomepageModule::withCount('items')->findOrFail($id);
+
+        if ($module->items_count > 0) {
+            $this->addError('delete', '首页模块已有条目，不能删除');
+
+            return;
+        }
+
+        $module->delete();
     }
 
     public function render(): View

@@ -66,8 +66,10 @@ class TravelCategoryIndex extends Component
             'sort_order' => ['integer', 'min:0', 'max:9999'],
         ]);
 
-        if ($data['parent_id'] === $this->categoryId) {
-            $data['parent_id'] = null;
+        if ($this->parentCreatesLoop($data['parent_id'])) {
+            $this->addError('parent_id', '父级频道不能选择自己或子级频道');
+
+            return;
         }
 
         TravelCategory::updateOrCreate(['id' => $this->categoryId], $data);
@@ -77,14 +79,22 @@ class TravelCategoryIndex extends Component
 
     public function delete(int $id): void
     {
-        TravelCategory::findOrFail($id)->delete();
+        $category = TravelCategory::withCount(['articles', 'children'])->findOrFail($id);
+
+        if ($category->children_count > 0 || $category->articles_count > 0) {
+            $this->addError('delete', '分类频道已有子级或文章，不能删除');
+
+            return;
+        }
+
+        $category->delete();
     }
 
     public function render(): View
     {
         return view('livewire.admin.travel-categories.travel-category-index', [
             'categories' => TravelCategory::query()->with('parent')->ordered()->get(),
-            'parentOptions' => TravelCategory::query()->ordered()->get(),
+            'parentOptions' => $this->parentOptions(),
         ])->layout('layouts.admin', ['title' => '分类频道管理']);
     }
 
@@ -102,5 +112,57 @@ class TravelCategoryIndex extends Component
         $this->is_indexable = true;
         $this->is_visible = true;
         $this->sort_order = 0;
+    }
+
+    private function parentCreatesLoop(?int $parentId): bool
+    {
+        if ($this->categoryId === null || $parentId === null) {
+            return false;
+        }
+
+        $parentId = (int) $parentId;
+
+        return $parentId === $this->categoryId
+            || in_array($parentId, $this->descendantIds($this->categoryId), true);
+    }
+
+    private function parentOptions()
+    {
+        $query = TravelCategory::query()->ordered();
+
+        if ($this->categoryId !== null) {
+            $query->whereNotIn('id', array_merge([$this->categoryId], $this->descendantIds($this->categoryId)));
+        }
+
+        return $query->get();
+    }
+
+    /**
+     * @return array<int>
+     */
+    private function descendantIds(int $categoryId): array
+    {
+        $descendantIds = [];
+        $frontier = [$categoryId];
+
+        while ($frontier !== []) {
+            $childIds = TravelCategory::query()
+                ->whereIn('parent_id', $frontier)
+                ->pluck('id')
+                ->all();
+
+            $frontier = [];
+
+            foreach ($childIds as $childId) {
+                if (in_array($childId, $descendantIds, true)) {
+                    continue;
+                }
+
+                $descendantIds[] = $childId;
+                $frontier[] = $childId;
+            }
+        }
+
+        return $descendantIds;
     }
 }
