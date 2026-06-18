@@ -47,20 +47,19 @@ class DemoContentSeederTest extends TestCase
         ];
 
         $this->assertGreaterThanOrEqual(8, TravelCategory::count());
-        $this->assertEqualsCanonicalizing(
-            $expectedCategorySlugs,
-            TravelCategory::query()->whereIn('slug', $expectedCategorySlugs)->pluck('slug')->all(),
-        );
 
-        $this->assertGreaterThanOrEqual(8, Destination::query()->where('is_channel', true)->count());
-        $this->assertEqualsCanonicalizing(
-            $expectedChannelDestinationSlugs,
-            Destination::query()
-                ->where('is_channel', true)
-                ->whereIn('slug', $expectedChannelDestinationSlugs)
-                ->pluck('slug')
-                ->all(),
-        );
+        $actualCategorySlugs = TravelCategory::query()->pluck('slug')->all();
+
+        $this->assertEmpty(array_diff($expectedCategorySlugs, $actualCategorySlugs));
+
+        $actualChannelDestinationSlugs = Destination::query()
+            ->where('is_channel', true)
+            ->pluck('slug')
+            ->all();
+
+        $this->assertEmpty(array_diff($expectedChannelDestinationSlugs, $actualChannelDestinationSlugs));
+        $this->assertEmpty(array_diff($actualChannelDestinationSlugs, $expectedChannelDestinationSlugs));
+        $this->assertCount(10, $actualChannelDestinationSlugs);
 
         $this->assertArticleHasCategories('first-timers-guide-to-tokyo-neighborhoods', ['guide', 'transport']);
         $this->assertArticleHasCategories('three-days-in-kyoto', ['itinerary', 'basics']);
@@ -73,7 +72,19 @@ class DemoContentSeederTest extends TestCase
             $this->assertStringStartsWith('https://', $serviceLink->url);
         }
 
+        $this->assertEmpty(array_diff(
+            $enabledServiceLinks->pluck('type')->all(),
+            ['guide', 'activity', 'hotel', 'flight', 'rail', 'shop', 'community', 'exchange_rate', 'advertising', 'custom'],
+        ));
+
         $this->assertGreaterThanOrEqual(3, HomepageModule::query()->where('is_enabled', true)->count());
+        $this->assertEmpty(array_diff(
+            HomepageModule::query()->pluck('type')->all(),
+            ['featured_articles', 'latest_articles', 'popular_articles', 'region_grid', 'category_grid', 'service_highlights', 'travel_tools'],
+        ));
+        $this->assertSame('featured_articles', HomepageModule::query()->where('placement_key', 'home-featured')->value('type'));
+        $this->assertSame('region_grid', HomepageModule::query()->where('placement_key', 'home-regions')->value('type'));
+        $this->assertSame('travel_tools', HomepageModule::query()->where('placement_key', 'home-tools')->value('type'));
 
         foreach (['home-featured', 'home-regions', 'home-tools'] as $placementKey) {
             $module = HomepageModule::query()

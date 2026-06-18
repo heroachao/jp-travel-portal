@@ -48,7 +48,7 @@ class DemoContentSeeder extends Seeder
                 'seo_title' => 'Kyoto Travel Guide',
                 'meta_description' => 'Explore Kyoto temples, neighborhoods, seasonal routes, and travel planning tips.',
                 'is_indexable' => true,
-                'is_channel' => true,
+                'is_channel' => false,
                 'sort_order' => 2,
             ]
         );
@@ -389,7 +389,7 @@ class DemoContentSeeder extends Seeder
 
         foreach ([
             'activities' => [
-                'type' => 'activities',
+                'type' => 'activity',
                 'label' => 'Activities',
                 'url' => 'https://example.com/japan-activities',
                 'placement' => 'header',
@@ -397,7 +397,7 @@ class DemoContentSeeder extends Seeder
                 'sort_order' => 1,
             ],
             'hotels' => [
-                'type' => 'hotels',
+                'type' => 'hotel',
                 'label' => 'Hotels',
                 'url' => 'https://example.com/japan-hotels',
                 'placement' => 'header',
@@ -405,7 +405,7 @@ class DemoContentSeeder extends Seeder
                 'sort_order' => 2,
             ],
             'flights' => [
-                'type' => 'flights',
+                'type' => 'flight',
                 'label' => 'Flights',
                 'url' => 'https://example.com/japan-flights',
                 'placement' => 'header',
@@ -429,7 +429,7 @@ class DemoContentSeeder extends Seeder
                 'sort_order' => 5,
             ],
             'exchange-rate' => [
-                'type' => 'tool',
+                'type' => 'exchange_rate',
                 'label' => 'Exchange Rate',
                 'url' => 'https://example.com/jpy-exchange-rate',
                 'placement' => 'header',
@@ -437,7 +437,7 @@ class DemoContentSeeder extends Seeder
                 'sort_order' => 6,
             ],
             'advertise' => [
-                'type' => 'advertise',
+                'type' => 'advertising',
                 'label' => 'Advertise',
                 'url' => 'https://example.com/advertise',
                 'placement' => 'footer',
@@ -463,7 +463,7 @@ class DemoContentSeeder extends Seeder
         $featuredModule = HomepageModule::updateOrCreate(
             ['placement_key' => 'home-featured'],
             [
-                'type' => 'featured',
+                'type' => 'featured_articles',
                 'title' => 'Featured Guides',
                 'subtitle' => 'Fresh planning notes for first-time Japan trips.',
                 'is_enabled' => true,
@@ -474,7 +474,7 @@ class DemoContentSeeder extends Seeder
         $regionsModule = HomepageModule::updateOrCreate(
             ['placement_key' => 'home-regions'],
             [
-                'type' => 'regions',
+                'type' => 'region_grid',
                 'title' => 'Regional Starting Points',
                 'subtitle' => 'Useful hubs for shaping the first draft of a route.',
                 'is_enabled' => true,
@@ -485,7 +485,7 @@ class DemoContentSeeder extends Seeder
         $toolsModule = HomepageModule::updateOrCreate(
             ['placement_key' => 'home-tools'],
             [
-                'type' => 'tools',
+                'type' => 'travel_tools',
                 'title' => 'Trip Tools',
                 'subtitle' => 'Quick links for booking and planning decisions.',
                 'is_enabled' => true,
