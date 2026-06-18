@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\Destination;
 use App\Services\Seo\MetaPayload;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class DestinationController extends Controller
@@ -46,9 +47,13 @@ class DestinationController extends Controller
         ]);
     }
 
-    public function show(Destination $destination): View
+    public function show(Destination $destination): RedirectResponse|View
     {
         abort_unless($destination->is_indexable, 404);
+
+        if ($destination->is_channel) {
+            return redirect()->route('regions.show', $destination, 301);
+        }
 
         $destination->load(['articles' => fn ($query) => $query->published()->latest('published_at'), 'topics']);
 

@@ -72,6 +72,10 @@ class TravelCategoryIndex extends Component
             return;
         }
 
+        if ($data['body'] !== null) {
+            $data['body'] = clean($data['body']);
+        }
+
         TravelCategory::updateOrCreate(['id' => $this->categoryId], $data);
         session()->flash('status', '分类频道已保存');
         $this->resetForm();

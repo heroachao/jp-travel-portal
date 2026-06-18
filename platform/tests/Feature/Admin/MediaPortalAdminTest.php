@@ -54,6 +54,34 @@ class MediaPortalAdminTest extends TestCase
         ]);
     }
 
+    public function test_editor_sanitizes_travel_category_body_before_public_rendering(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(TravelCategoryIndex::class)
+            ->set('title', 'Transport')
+            ->set('slug', 'transport-xss')
+            ->set('body', '<script>alert(1)</script><p>Safe</p>')
+            ->set('is_visible', true)
+            ->set('is_indexable', true)
+            ->call('save')
+            ->assertHasNoErrors();
+
+        $body = TravelCategory::where('slug', 'transport-xss')->firstOrFail()->body;
+
+        $this->assertStringNotContainsString('<script>', $body);
+        $this->assertStringContainsString('<p>Safe</p>', $body);
+
+        $this->get('/categories/transport-xss')
+            ->assertOk()
+            ->assertDontSee('<script>', false)
+            ->assertSee('Safe');
+    }
+
     public function test_editor_cannot_set_travel_category_parent_to_itself(): void
     {
         $this->seed(RoleSeeder::class);
