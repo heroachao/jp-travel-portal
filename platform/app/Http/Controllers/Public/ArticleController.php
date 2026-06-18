@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Services\Seo\MetaPayload;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ArticleController extends Controller
@@ -27,7 +28,12 @@ class ArticleController extends Controller
             'tags' => fn ($query) => $query->orderBy('name'),
             'travelCategories' => fn ($query) => $query->visible(),
             'enabledFaqs',
+            'coverMedia',
+            'ogMedia',
         ]);
+
+        $ogMedia = $article->ogMedia ?: $article->coverMedia;
+        $ogImage = $ogMedia ? Storage::disk($ogMedia->disk)->url($ogMedia->path) : null;
 
         $faqJsonLd = $article->enabledFaqs->isEmpty() ? null : [
             '@context' => 'https://schema.org',
@@ -52,7 +58,7 @@ class ArticleController extends Controller
                 $article->canonical_url ?: route('articles.show', $article),
                 $article->og_title,
                 $article->og_description,
-                null,
+                $ogImage,
                 $article->is_indexable,
             ),
             'article' => $article,

@@ -33,6 +33,62 @@
             @error('body')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
         </div>
 
+        <fieldset class="grid gap-4 border-t pt-5">
+            <legend class="text-sm font-medium">文章图片</legend>
+            <div class="grid gap-5 md:grid-cols-2">
+                <div>
+                    <label class="block text-sm font-medium" for="cover_media_id">封面图</label>
+                    <select id="cover_media_id" wire:model="cover_media_id" class="mt-2 w-full rounded border px-3 py-2">
+                        <option value="">不选择封面图</option>
+                        @foreach($mediaOptions as $media)
+                            <option value="{{ $media->id }}">{{ $media->alt_text ?: $media->path }}</option>
+                        @endforeach
+                    </select>
+                    <p class="mt-1 text-xs text-slate-500">用于文章详情页标题下方展示。</p>
+                    @error('cover_media_id')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+
+                    @if($selectedCoverMedia)
+                        <div class="mt-3 overflow-hidden rounded border border-slate-200 bg-slate-50">
+                            <img src="{{ Storage::disk($selectedCoverMedia->disk)->url($selectedCoverMedia->path) }}" alt="{{ $selectedCoverMedia->alt_text ?: $selectedCoverMedia->path }}" class="h-40 w-full object-cover">
+                            <div class="px-3 py-2 text-xs text-slate-600">
+                                <p class="truncate">{{ $selectedCoverMedia->alt_text ?: $selectedCoverMedia->path }}</p>
+                                @if($selectedCoverMedia->source_note)
+                                    <p class="mt-1 truncate">{{ $selectedCoverMedia->source_note }}</p>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium" for="og_media_id">社交分享图</label>
+                    <select id="og_media_id" wire:model="og_media_id" class="mt-2 w-full rounded border px-3 py-2">
+                        <option value="">不选择社交分享图</option>
+                        @foreach($mediaOptions as $media)
+                            <option value="{{ $media->id }}">{{ $media->alt_text ?: $media->path }}</option>
+                        @endforeach
+                    </select>
+                    <p class="mt-1 text-xs text-slate-500">优先用于文章详情页的 Open Graph 分享图。</p>
+                    @error('og_media_id')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
+
+                    @if($selectedOgMedia)
+                        <div class="mt-3 overflow-hidden rounded border border-slate-200 bg-slate-50">
+                            <img src="{{ Storage::disk($selectedOgMedia->disk)->url($selectedOgMedia->path) }}" alt="{{ $selectedOgMedia->alt_text ?: $selectedOgMedia->path }}" class="h-40 w-full object-cover">
+                            <div class="px-3 py-2 text-xs text-slate-600">
+                                <p class="truncate">{{ $selectedOgMedia->alt_text ?: $selectedOgMedia->path }}</p>
+                                @if($selectedOgMedia->source_note)
+                                    <p class="mt-1 truncate">{{ $selectedOgMedia->source_note }}</p>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            @if($mediaOptions->isEmpty())
+                <p class="text-sm text-slate-500">媒体库暂无可选图片</p>
+            @endif
+        </fieldset>
+
         <div class="grid gap-5 border-t pt-5 md:grid-cols-2">
             <div>
                 <label class="block text-sm font-medium" for="source_name">来源名称</label>
@@ -151,6 +207,20 @@
             <input type="checkbox" wire:model="is_indexable">
             允许搜索引擎索引
         </label>
+
+        <div class="rounded border border-slate-200 bg-slate-50 p-4">
+            <p class="text-sm font-medium">SEO 预览</p>
+            <p class="mt-3 text-base font-semibold text-slate-950">{{ $seoPreview['title'] ?: '未填写标题' }}</p>
+            @if($seoPreview['canonical'])
+                <p class="mt-1 break-all text-sm text-emerald-700">{{ $seoPreview['canonical'] }}</p>
+            @else
+                <p class="mt-1 text-sm text-slate-500">保存 Slug 后生成 Canonical URL</p>
+            @endif
+            <p class="mt-2 text-sm text-slate-600">{{ $seoPreview['description'] ?: '未填写描述' }}</p>
+            <p class="mt-3 text-xs font-medium {{ $seoPreview['indexable'] ? 'text-emerald-700' : 'text-red-700' }}">
+                {{ $seoPreview['indexable'] ? '允许索引' : '不允许索引' }}
+            </p>
+        </div>
 
         <div class="flex gap-3">
             <button type="submit" class="rounded bg-slate-900 px-5 py-2 text-sm font-medium text-white">保存</button>

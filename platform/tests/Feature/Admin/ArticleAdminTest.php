@@ -5,6 +5,7 @@ namespace Tests\Feature\Admin;
 use App\Livewire\Admin\Articles\ArticleForm;
 use App\Models\Article;
 use App\Models\ArticleFaq;
+use App\Models\MediaAsset;
 use App\Models\TravelCategory;
 use App\Models\User;
 use Database\Seeders\RoleSeeder;
@@ -88,6 +89,144 @@ class ArticleAdminTest extends TestCase
             'question' => 'Do I need a rail pass in Tokyo?',
             'is_enabled' => true,
         ]);
+    }
+
+    public function test_editor_can_save_article_cover_and_og_media(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $cover = MediaAsset::factory()->create([
+            'alt_text' => 'Kyoto cover image',
+            'path' => 'media/2026/06/kyoto-cover.jpg',
+        ]);
+        $og = MediaAsset::factory()->create([
+            'alt_text' => 'Kyoto social share image',
+            'path' => 'media/2026/06/kyoto-og.jpg',
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class)
+            ->set('title', 'Kyoto Image Guide')
+            ->set('slug', 'kyoto-image-guide')
+            ->set('excerpt', 'A Kyoto article with selected media.')
+            ->set('body', '<p>Bring good walking shoes.</p>')
+            ->set('cover_media_id', $cover->id)
+            ->set('og_media_id', $og->id)
+            ->call('save')
+            ->assertRedirect();
+
+        $this->assertDatabaseHas('articles', [
+            'slug' => 'kyoto-image-guide',
+            'cover_media_id' => $cover->id,
+            'og_media_id' => $og->id,
+        ]);
+    }
+
+    public function test_editor_can_clear_article_media_selection_with_empty_select_values(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $cover = MediaAsset::factory()->create();
+        $og = MediaAsset::factory()->create([
+            'path' => 'media/2026/06/clear-og.jpg',
+        ]);
+        $article = Article::factory()->create([
+            'author_id' => $editor->id,
+            'cover_media_id' => $cover->id,
+            'og_media_id' => $og->id,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class, ['article' => $article])
+            ->set('cover_media_id', '')
+            ->set('og_media_id', '')
+            ->call('save')
+            ->assertRedirect();
+
+        $article->refresh();
+
+        $this->assertNull($article->cover_media_id);
+        $this->assertNull($article->og_media_id);
+    }
+
+    public function test_editor_article_form_loads_existing_cover_and_og_media_ids(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        $cover = MediaAsset::factory()->create([
+            'alt_text' => 'Existing cover image',
+        ]);
+        $og = MediaAsset::factory()->create([
+            'alt_text' => 'Existing OG image',
+            'path' => 'media/2026/06/existing-og.jpg',
+        ]);
+        $article = Article::factory()->create([
+            'author_id' => $editor->id,
+            'cover_media_id' => $cover->id,
+            'og_media_id' => $og->id,
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class, ['article' => $article])
+            ->assertSet('cover_media_id', $cover->id)
+            ->assertSet('og_media_id', $og->id);
+    }
+
+    public function test_editor_cannot_save_invalid_article_media_ids(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class)
+            ->set('title', 'Invalid Media Article')
+            ->set('slug', 'invalid-media-article')
+            ->set('body', '<p>Body</p>')
+            ->set('cover_media_id', 999999)
+            ->set('og_media_id', 999998)
+            ->call('save')
+            ->assertHasErrors([
+                'cover_media_id' => 'exists',
+                'og_media_id' => 'exists',
+            ]);
+
+        $this->assertDatabaseMissing('articles', [
+            'slug' => 'invalid-media-article',
+        ]);
+    }
+
+    public function test_article_form_shows_media_controls_and_seo_preview(): void
+    {
+        $this->seed(RoleSeeder::class);
+        $editor = User::factory()->create();
+        $editor->assignRole('editor');
+        MediaAsset::factory()->create([
+            'alt_text' => 'Arashiyama cover option',
+            'path' => 'media/2026/06/arashiyama.jpg',
+        ]);
+
+        $this->actingAs($editor);
+
+        Livewire::test(ArticleForm::class)
+            ->set('title', 'Arashiyama Morning Walk')
+            ->set('slug', 'arashiyama-morning-walk')
+            ->set('excerpt', 'A quiet early walk before the crowds arrive.')
+            ->assertSee('文章图片')
+            ->assertSee('封面图')
+            ->assertSee('社交分享图')
+            ->assertSee('SEO 预览')
+            ->assertSee('Arashiyama Morning Walk')
+            ->assertSee(url('/articles/arashiyama-morning-walk'))
+            ->assertSee('A quiet early walk before the crowds arrive.')
+            ->assertSee('Arashiyama cover option');
     }
 
     public function test_editor_cannot_use_non_http_source_url_for_article(): void

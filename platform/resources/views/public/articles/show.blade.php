@@ -5,6 +5,14 @@
         <p class="text-sm text-emerald-800">{{ $article->published_at?->format('F j, Y') }}</p>
         <h1 class="mt-3 text-4xl font-bold leading-tight">{{ $article->title }}</h1>
         <p class="mt-5 text-lg text-slate-600">{{ $article->excerpt }}</p>
+        @if($article->coverMedia)
+            <figure class="mt-8">
+                <img src="{{ Storage::disk($article->coverMedia->disk)->url($article->coverMedia->path) }}" alt="{{ $article->coverMedia->alt_text }}" class="aspect-[16/9] w-full rounded object-cover">
+                @if($article->coverMedia->source_note)
+                    <figcaption class="mt-2 text-xs text-slate-500">{{ $article->coverMedia->source_note }}</figcaption>
+                @endif
+            </figure>
+        @endif
         <div class="mt-5 flex flex-wrap gap-3 text-sm text-slate-600">
             @if($article->published_at)
                 <span>Published {{ $article->published_at->format('F j, Y') }}</span>

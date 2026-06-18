@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Articles;
 
 use App\Enums\ArticleStatus;
 use App\Models\Article;
+use App\Models\MediaAsset;
 use App\Models\TravelCategory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -36,6 +37,10 @@ class ArticleForm extends Component
 
     public bool $has_coupon = false;
 
+    public ?int $cover_media_id = null;
+
+    public ?int $og_media_id = null;
+
     public ?string $seo_title = null;
 
     public ?string $meta_description = null;
@@ -65,6 +70,8 @@ class ArticleForm extends Component
         $this->reading_time_minutes = $article->reading_time_minutes;
         $this->popularity_score = $article->popularity_score ?? 0;
         $this->has_coupon = (bool) ($article->has_coupon ?? false);
+        $this->cover_media_id = $article->cover_media_id;
+        $this->og_media_id = $article->og_media_id;
         $this->seo_title = $article->seo_title;
         $this->meta_description = $article->meta_description;
         $this->canonical_url = $article->canonical_url;
@@ -97,6 +104,8 @@ class ArticleForm extends Component
             'reading_time_minutes' => ['nullable', 'integer', 'min:1', 'max:65535'],
             'popularity_score' => ['integer', 'min:0', 'max:4294967295'],
             'has_coupon' => ['boolean'],
+            'cover_media_id' => ['nullable', 'integer', Rule::exists('media_assets', 'id')],
+            'og_media_id' => ['nullable', 'integer', Rule::exists('media_assets', 'id')],
             'seo_title' => ['nullable', 'string', 'max:180'],
             'meta_description' => ['nullable', 'string', 'max:260'],
             'canonical_url' => ['nullable', 'url:http,https', 'max:255'],
@@ -117,6 +126,9 @@ class ArticleForm extends Component
         if ($this->display_updated_at === '') {
             $this->display_updated_at = null;
         }
+
+        $this->normalizeMediaId('cover_media_id');
+        $this->normalizeMediaId('og_media_id');
 
         $this->withValidator(function ($validator): void {
             $validator->after(function ($validator): void {
@@ -201,10 +213,44 @@ class ArticleForm extends Component
 
     public function render(): View
     {
+        $mediaOptions = MediaAsset::query()
+            ->latest()
+            ->limit(100)
+            ->get();
+
+        $selectedCoverMedia = $this->cover_media_id
+            ? ($mediaOptions->firstWhere('id', $this->cover_media_id) ?? MediaAsset::find($this->cover_media_id))
+            : null;
+        $selectedOgMedia = $this->og_media_id
+            ? ($mediaOptions->firstWhere('id', $this->og_media_id) ?? MediaAsset::find($this->og_media_id))
+            : null;
+
         return view('livewire.admin.articles.article-form', [
             'categoryOptions' => TravelCategory::query()->ordered()->get(),
+            'mediaOptions' => $mediaOptions,
+            'selectedCoverMedia' => $selectedCoverMedia,
+            'selectedOgMedia' => $selectedOgMedia,
+            'seoPreview' => [
+                'title' => $this->seo_title ?: $this->title,
+                'description' => $this->meta_description ?: $this->excerpt,
+                'canonical' => $this->canonical_url ?: ($this->slug ? url('/articles/'.$this->slug) : null),
+                'indexable' => $this->is_indexable,
+            ],
         ])
             ->layout('layouts.admin', ['title' => $this->articleId ? '编辑文章' : '新建文章']);
+    }
+
+    private function normalizeMediaId(string $property): void
+    {
+        if ($this->{$property} === '') {
+            $this->{$property} = null;
+
+            return;
+        }
+
+        if ($this->{$property} !== null) {
+            $this->{$property} = (int) $this->{$property};
+        }
     }
 
     private function normalizeFaqRows(array $faqs): array
