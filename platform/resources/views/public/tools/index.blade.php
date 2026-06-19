@@ -16,6 +16,8 @@
         </div>
     </section>
 
+    @ad('content-mid-rectangle')
+
     <section class="mx-auto max-w-7xl px-4 pb-12">
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             @foreach($tools as $tool)

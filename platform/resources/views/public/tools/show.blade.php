@@ -21,6 +21,8 @@
         </div>
     </section>
 
+    @ad('content-mid-rectangle')
+
     <section class="mx-auto grid max-w-7xl gap-5 px-4 pb-12 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div class="public-card travel-tool-panel" data-travel-tool="{{ $slug }}" style="--tool-accent: {{ $tool['accent'] }}">
             @if($slug === 'trip-planner')

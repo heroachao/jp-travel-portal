@@ -9,6 +9,8 @@
             <p class="mt-5 text-sm font-semibold text-slate-500">Last updated: {{ $page['updated'] }}</p>
         </div>
 
+        @ad('content-mid-rectangle')
+
         <div class="mt-6 space-y-4">
             @foreach($page['sections'] as $section)
                 <article class="public-card p-6 sm:p-8">

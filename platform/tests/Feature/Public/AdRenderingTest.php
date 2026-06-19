@@ -70,6 +70,40 @@ class AdRenderingTest extends TestCase
             ->assertSee('data-ad-slot="5085279057"', false);
     }
 
+    public function test_tools_and_static_pages_render_three_page_level_ad_positions_when_configured(): void
+    {
+        SiteSetting::query()->create([
+            'id' => 1,
+            'ads_enabled' => true,
+            'adsense_publisher_id' => 'ca-pub-3754179629894278',
+        ]);
+
+        foreach ([
+            'global-top-leaderboard' => '7711442398',
+            'content-mid-rectangle' => '4678084940',
+            'global-bottom-leaderboard' => '5085279057',
+        ] as $key => $slot) {
+            AdPlacement::factory()->create([
+                'key' => $key,
+                'code' => '<ins class="adsbygoogle" data-ad-slot="'.$slot.'"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>',
+                'is_enabled' => true,
+            ]);
+        }
+
+        foreach ([
+            route('tools.index'),
+            route('tools.show', 'budget-calculator'),
+            route('image-credits'),
+            route('pages.about'),
+        ] as $url) {
+            $this->get($url)
+                ->assertOk()
+                ->assertSee('data-ad-key="global-top-leaderboard"', false)
+                ->assertSee('data-ad-key="content-mid-rectangle"', false)
+                ->assertSee('data-ad-key="global-bottom-leaderboard"', false);
+        }
+    }
+
     public function test_site_level_ads_toggle_blocks_enabled_placement(): void
     {
         SiteSetting::query()->create([
