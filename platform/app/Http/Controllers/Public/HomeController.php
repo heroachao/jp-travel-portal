@@ -9,6 +9,7 @@ use App\Models\HomepageModule;
 use App\Models\ServiceLink;
 use App\Models\TravelCategory;
 use App\Services\Seo\MetaPayload;
+use App\Support\JapanGames;
 use App\Support\PublicUrl;
 use App\Support\TravelTools;
 use Illuminate\View\View;
@@ -30,6 +31,8 @@ class HomeController extends Controller
             'serviceLinks' => ServiceLink::query()->enabled()->placement('header')->ordered()->get(),
             'tools' => collect(TravelTools::featured()),
             'toolCount' => count(TravelTools::all()),
+            'games' => collect(JapanGames::featured()),
+            'gameCount' => count(JapanGames::all()),
             'regionChannels' => Destination::query()
                 ->channel()
                 ->where('is_indexable', true)

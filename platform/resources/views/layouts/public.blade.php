@@ -111,12 +111,14 @@
                 <a href="{{ \App\Support\PublicUrl::route('articles.index') }}">News</a>
                 <a href="{{ \App\Support\PublicUrl::route('regions.index') }}">Regions</a>
                 <a href="{{ \App\Support\PublicUrl::route('tools.index') }}">Tools</a>
+                <a href="{{ \App\Support\PublicUrl::route('games.index') }}">Games</a>
             </nav>
         </div>
         <div class="public-channel-bar">
             <nav class="public-channel-nav" aria-label="Japan travel channels">
                 <a class="is-active" href="{{ \App\Support\PublicUrl::route('home') }}">My Trip</a>
                 <a href="{{ \App\Support\PublicUrl::route('articles.index') }}">News</a>
+                <a href="{{ \App\Support\PublicUrl::route('games.index') }}">Games</a>
                 @foreach($layoutCategories as $category)
                     <a href="{{ \App\Support\PublicUrl::route('categories.show', $category) }}">{{ $category->display_name ?: $category->title }}</a>
                 @endforeach
@@ -149,6 +151,7 @@
                 <a href="{{ \App\Support\PublicUrl::route('regions.index') }}">Regions</a>
                 <a href="{{ \App\Support\PublicUrl::route('articles.index') }}">Articles</a>
                 <a href="{{ \App\Support\PublicUrl::route('tools.index') }}">Tools</a>
+                <a href="{{ \App\Support\PublicUrl::route('games.index') }}">Games</a>
                 <a href="{{ \App\Support\PublicUrl::route('search') }}">Search</a>
                 <a href="{{ \App\Support\PublicUrl::route('pages.about') }}">About</a>
                 <a href="{{ \App\Support\PublicUrl::route('pages.contact') }}">Contact</a>

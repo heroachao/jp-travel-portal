@@ -273,7 +273,7 @@
     .public-scoreboard {
         display: grid;
         gap: 0.75rem;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     }
 
     @media (max-width: 640px) {
@@ -1358,6 +1358,633 @@
         color: var(--tool-accent, #6d28d9);
         font-size: 1.1rem;
         font-weight: 950;
+    }
+
+    .travel-game-hero,
+    .travel-game-show-hero {
+        display: grid;
+        gap: 1.25rem;
+        align-items: stretch;
+        overflow: hidden;
+        padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    @media (min-width: 900px) {
+        .travel-game-hero,
+        .travel-game-show-hero {
+            grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.72fr);
+        }
+    }
+
+    .travel-game-hero h1,
+    .travel-game-show-hero h1 {
+        max-width: 52rem;
+        margin-top: 0.65rem;
+        color: #111827;
+        font-size: clamp(2rem, 4.2vw, 4.15rem);
+        font-weight: 950;
+        letter-spacing: 0;
+        line-height: 1;
+        text-wrap: balance;
+    }
+
+    .travel-game-hero p,
+    .travel-game-show-hero p {
+        max-width: 44rem;
+        margin-top: 0.9rem;
+        color: #64748b;
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    .travel-game-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-top: 1.2rem;
+    }
+
+    .travel-game-hero-actions a,
+    .game-action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.35rem;
+        border: 0;
+        border-radius: 999px;
+        background: #111827;
+        padding: 0.65rem 0.95rem;
+        color: #fff;
+        font-size: 0.82rem;
+        font-weight: 950;
+        line-height: 1.1;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: transform 0.18s ease, filter 0.18s ease;
+    }
+
+    .travel-game-hero-actions a:nth-child(2),
+    .game-action-button.is-secondary {
+        border: 1px solid #e0e4ec;
+        background: #fff;
+        color: #111827;
+    }
+
+    .travel-game-hero-actions a:hover,
+    .game-action-button:hover {
+        filter: brightness(0.95);
+        transform: translateY(-1px);
+    }
+
+    .travel-game-hero-board {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.65rem;
+    }
+
+    .travel-game-hero-board a,
+    .travel-game-card-thumb,
+    .travel-game-poster {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem;
+        background: #111827;
+    }
+
+    .travel-game-hero-board a {
+        display: block;
+        min-height: 9rem;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .travel-game-hero-board img,
+    .travel-game-card-thumb img,
+    .travel-game-poster img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .travel-game-hero-board a::after,
+    .travel-game-card-thumb::after,
+    .travel-game-poster::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgb(17 24 39 / 0.02), rgb(17 24 39 / 0.58));
+        pointer-events: none;
+    }
+
+    .travel-game-hero-board span {
+        position: absolute;
+        inset-inline: 0.75rem;
+        bottom: 0.75rem;
+        z-index: 1;
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 950;
+        line-height: 1.15;
+    }
+
+    .travel-game-card {
+        border-top: 4px solid var(--game-accent, #6d28d9);
+    }
+
+    .travel-game-card-thumb {
+        display: block;
+        aspect-ratio: 16 / 9;
+    }
+
+    .travel-game-card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin: 1rem;
+    }
+
+    .travel-game-card-meta em {
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--game-accent, #6d28d9) 12%, #fff);
+        padding: 0.35rem 0.55rem;
+        color: #334155;
+        font-size: 0.72rem;
+        font-style: normal;
+        font-weight: 850;
+    }
+
+    .travel-game-back {
+        color: var(--game-accent, #6d28d9);
+        font-size: 0.875rem;
+        font-weight: 900;
+        text-decoration: none;
+    }
+
+    .travel-game-poster {
+        min-height: 18rem;
+    }
+
+    .travel-game-poster dl {
+        position: absolute;
+        inset-inline: 0.85rem;
+        bottom: 0.85rem;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.45rem;
+    }
+
+    .travel-game-poster div {
+        border-radius: 0.5rem;
+        background: rgb(255 255 255 / 0.88);
+        padding: 0.65rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .travel-game-poster dt,
+    .travel-game-poster dd {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .travel-game-poster dt {
+        color: #64748b;
+        font-size: 0.68rem;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .travel-game-poster dd {
+        margin-top: 0.2rem;
+        color: #111827;
+        font-size: 0.78rem;
+        font-weight: 950;
+    }
+
+    .travel-game-panel,
+    .travel-game-side {
+        padding: 1rem;
+    }
+
+    @media (min-width: 760px) {
+        .travel-game-panel {
+            padding: 1.25rem;
+        }
+    }
+
+    .travel-game-panel-head {
+        display: grid;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    @media (min-width: 760px) {
+        .travel-game-panel-head {
+            grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.72fr);
+        }
+    }
+
+    .travel-game-panel-head h2 {
+        margin-top: 0.35rem;
+        color: #111827;
+        font-size: clamp(1.45rem, 3vw, 2.4rem);
+        font-weight: 950;
+        letter-spacing: 0;
+        line-height: 1.05;
+    }
+
+    .travel-game-stat-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.55rem;
+    }
+
+    .travel-game-stat-row span {
+        min-width: 0;
+        border: 1px solid #e0e4ec;
+        border-radius: 0.5rem;
+        background: #f9fafc;
+        padding: 0.65rem;
+    }
+
+    .travel-game-stat-row b,
+    .travel-game-stat-row small {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .travel-game-stat-row b {
+        color: var(--game-accent, #6d28d9);
+        font-size: 1.15rem;
+        font-weight: 950;
+        line-height: 1.05;
+    }
+
+    .travel-game-stat-row small {
+        margin-top: 0.25rem;
+        color: #64748b;
+        font-size: 0.68rem;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .travel-game-objective {
+        margin-top: 1rem;
+        border-left: 4px solid var(--game-accent, #6d28d9);
+        background: color-mix(in srgb, var(--game-accent, #6d28d9) 8%, #fff);
+        padding: 0.85rem 1rem;
+        color: #334155;
+        font-size: 0.92rem;
+        font-weight: 750;
+        line-height: 1.5;
+    }
+
+    .travel-game-stage {
+        display: grid;
+        min-height: 22rem;
+        margin-top: 1rem;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid #e0e4ec;
+        border-radius: 0.5rem;
+        background:
+            radial-gradient(circle at 18% 18%, rgb(255 255 255 / 0.96), transparent 24rem),
+            linear-gradient(135deg, #f8fafc, #eef2f7);
+        padding: 1rem;
+    }
+
+    .travel-game-controls,
+    .game-control-cluster {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .game-board {
+        display: grid;
+        width: min(100%, 28rem);
+        aspect-ratio: 1;
+        gap: 0.35rem;
+    }
+
+    .game-cell,
+    .game-tile,
+    .game-card-button {
+        display: grid;
+        min-width: 0;
+        min-height: 0;
+        place-items: center;
+        border: 1px solid #d9dde6;
+        border-radius: 0.45rem;
+        background: #fff;
+        color: #111827;
+        font-weight: 950;
+        line-height: 1.05;
+        text-align: center;
+        user-select: none;
+    }
+
+    .game-cell button,
+    .game-card-button {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+    }
+
+    .word-grid {
+        display: grid;
+        width: min(100%, 23rem);
+        gap: 0.4rem;
+    }
+
+    .word-row {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0.4rem;
+    }
+
+    .word-letter {
+        display: grid;
+        aspect-ratio: 1;
+        place-items: center;
+        border: 2px solid #d9dde6;
+        border-radius: 0.45rem;
+        background: #fff;
+        color: #111827;
+        font-size: clamp(1.05rem, 5vw, 1.65rem);
+        font-weight: 950;
+        text-transform: uppercase;
+    }
+
+    .word-letter.is-hit {
+        border-color: #047857;
+        background: #047857;
+        color: #fff;
+    }
+
+    .word-letter.is-present {
+        border-color: #ca8a04;
+        background: #ca8a04;
+        color: #fff;
+    }
+
+    .word-letter.is-miss {
+        border-color: #64748b;
+        background: #64748b;
+        color: #fff;
+    }
+
+    .word-entry {
+        display: flex;
+        width: min(100%, 23rem);
+        gap: 0.55rem;
+        margin-top: 1rem;
+    }
+
+    .word-entry input,
+    .typing-entry input {
+        min-width: 0;
+        flex: 1;
+        border: 1px solid #d9dde6;
+        border-radius: 0.5rem;
+        background: #fff;
+        padding: 0.75rem 0.9rem;
+        color: #111827;
+        font-weight: 850;
+        outline: none;
+    }
+
+    .merge-board {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        background: #d9dde6;
+        padding: 0.35rem;
+    }
+
+    .merge-board .game-tile {
+        font-size: clamp(1rem, 5vw, 1.7rem);
+        background: color-mix(in srgb, var(--game-accent, #6d28d9) calc(var(--tile-strength, 3) * 4%), #fff);
+    }
+
+    .snake-board,
+    .mine-board,
+    .match-board {
+        gap: 0.18rem;
+        background: #d9dde6;
+        padding: 0.25rem;
+    }
+
+    .snake-board {
+        grid-template-columns: repeat(14, minmax(0, 1fr));
+    }
+
+    .snake-board .game-cell {
+        border: 0;
+        border-radius: 0.18rem;
+        background: #fff;
+    }
+
+    .snake-board .is-snake {
+        background: #111827;
+    }
+
+    .snake-board .is-food {
+        background: var(--game-accent, #dc2626);
+    }
+
+    .memory-board {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .game-card-button {
+        aspect-ratio: 1;
+        background: #111827;
+        color: #fff;
+        font-size: clamp(0.78rem, 3vw, 1rem);
+        padding: 0.35rem;
+    }
+
+    .game-card-button.is-open,
+    .game-card-button.is-matched {
+        background: color-mix(in srgb, var(--game-accent, #6d28d9) 18%, #fff);
+        color: #111827;
+    }
+
+    .mine-board {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+
+    .mine-board .game-cell {
+        aspect-ratio: 1;
+        border: 0;
+        background: #e2e8f0;
+        color: #334155;
+        font-size: clamp(0.7rem, 3vw, 1rem);
+    }
+
+    .mine-board .is-open {
+        background: #fff;
+    }
+
+    .mine-board .is-boom {
+        background: #fecaca;
+        color: #991b1b;
+    }
+
+    .runner-field {
+        position: relative;
+        width: min(100%, 42rem);
+        height: 18rem;
+        overflow: hidden;
+        border-radius: 0.5rem;
+        background:
+            linear-gradient(180deg, #dbeafe, #f8fafc 58%, #cbd5e1 59%, #94a3b8 62%, #f8fafc 63%),
+            #f8fafc;
+    }
+
+    .runner-player,
+    .runner-obstacle {
+        position: absolute;
+        bottom: 4.9rem;
+        display: grid;
+        place-items: center;
+        border-radius: 0.45rem;
+        color: #fff;
+        font-weight: 950;
+    }
+
+    .runner-player {
+        left: 4rem;
+        width: 3rem;
+        height: 3rem;
+        background: var(--game-accent, #2563eb);
+    }
+
+    .runner-obstacle {
+        width: 2.2rem;
+        height: 2.8rem;
+        background: #111827;
+    }
+
+    .match-board {
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+
+    .match-board .game-tile {
+        aspect-ratio: 1;
+        border: 0;
+        font-size: clamp(0.72rem, 2.6vw, 0.9rem);
+        padding: 0.25rem;
+    }
+
+    .match-board .is-selected {
+        outline: 3px solid var(--game-accent, #ca8a04);
+        outline-offset: -3px;
+    }
+
+    .typing-panel,
+    .ramen-panel {
+        display: grid;
+        width: min(100%, 35rem);
+        gap: 1rem;
+    }
+
+    .typing-word,
+    .ramen-order {
+        border: 1px solid #e0e4ec;
+        border-radius: 0.5rem;
+        background: #fff;
+        padding: 1rem;
+        color: #111827;
+        font-size: clamp(1.25rem, 5vw, 2rem);
+        font-weight: 950;
+        text-align: center;
+    }
+
+    .typing-entry {
+        display: flex;
+        gap: 0.55rem;
+    }
+
+    .slider-board {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        background: #111827;
+        padding: 0.25rem;
+    }
+
+    .slider-tile {
+        aspect-ratio: 1;
+        border: 0;
+        border-radius: 0.35rem;
+        background-repeat: no-repeat;
+        color: #fff;
+        font-size: 0;
+        box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.42);
+    }
+
+    .slider-tile.is-empty {
+        background: #111827;
+        box-shadow: none;
+    }
+
+    .ramen-ingredient-grid,
+    .ramen-selected {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        justify-content: center;
+    }
+
+    .ramen-chip {
+        border: 1px solid #e0e4ec;
+        border-radius: 999px;
+        background: #fff;
+        padding: 0.55rem 0.75rem;
+        color: #111827;
+        font-size: 0.82rem;
+        font-weight: 900;
+    }
+
+    .ramen-chip.is-selected {
+        border-color: var(--game-accent, #ea580c);
+        background: color-mix(in srgb, var(--game-accent, #ea580c) 14%, #fff);
+    }
+
+    @media (max-width: 560px) {
+        .travel-game-stage {
+            min-height: 18rem;
+            padding: 0.65rem;
+        }
+
+        .travel-game-stat-row {
+            grid-template-columns: 1fr;
+        }
+
+        .game-board {
+            width: min(100%, 21rem);
+        }
+
+        .runner-field {
+            height: 15rem;
+        }
+
+        .runner-player {
+            left: 2.5rem;
+        }
+
+        .word-entry,
+        .typing-entry {
+            flex-direction: column;
+        }
     }
 
     .image-credit-row {

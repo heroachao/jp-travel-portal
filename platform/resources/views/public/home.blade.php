@@ -101,13 +101,23 @@
                     @endforeach
                 </div>
             </div>
+            <div class="public-score-card">
+                <span>Arcade</span>
+                <b>{{ $gameCount }}</b>
+                <small>free Japan games</small>
+                <div class="public-score-list">
+                    @foreach($games->take(3) as $game)
+                        <em>{{ $game['short_name'] }}</em>
+                    @endforeach
+                </div>
+            </div>
         </div>
 
         <aside class="public-card public-trip-card">
             <p class="public-kicker">My Trip</p>
             <h2>Build a smarter Japan route.</h2>
-            <p>Search guides, compare regions, and keep practical tools close while planning.</p>
-            <a href="{{ \App\Support\PublicUrl::route('tools.index') }}">Open travel tools</a>
+            <p>Search guides, compare regions, play quick games, and keep practical tools close while planning.</p>
+            <a href="{{ \App\Support\PublicUrl::route('games.index') }}">Play Japan games</a>
         </aside>
     </section>
 
@@ -357,6 +367,21 @@
                         <a class="public-tool-link" href="{{ \App\Support\PublicUrl::route('tools.show', $tool['slug']) }}">
                             <strong>{{ $tool['short_name'] }}</strong>
                             <span>{{ $tool['summary'] }}</span>
+                        </a>
+                    @endforeach
+                </div>
+            </section>
+
+            <section class="public-card">
+                <div class="public-section-heading">
+                    <h2>Daily Games</h2>
+                    <a href="{{ \App\Support\PublicUrl::route('games.index') }}">All</a>
+                </div>
+                <div class="mt-3 grid gap-3">
+                    @foreach($games as $game)
+                        <a class="public-tool-link" href="{{ \App\Support\PublicUrl::route('games.show', $game['slug']) }}">
+                            <strong>{{ $game['short_name'] }}</strong>
+                            <span>{{ $game['summary'] }}</span>
                         </a>
                     @endforeach
                 </div>

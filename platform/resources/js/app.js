@@ -1,3 +1,5 @@
+import './japan-games';
+
 const normalizeAnalyticsText = (value, maxLength = 120) => {
     if (typeof value !== 'string') {
         return null;

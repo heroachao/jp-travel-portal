@@ -12,6 +12,7 @@ use App\Http\Controllers\Public\SitemapController;
 use App\Http\Controllers\Public\TagController;
 use App\Http\Controllers\Public\TopicController;
 use App\Http\Controllers\Public\TravelCategoryController;
+use App\Http\Controllers\Public\TravelGameController;
 use App\Http\Controllers\Public\TravelToolController;
 use App\Livewire\Admin\Ads\AdPlacementIndex;
 use App\Livewire\Admin\Articles\ArticleForm;
@@ -37,6 +38,8 @@ Route::get('/terms', [LegalPageController::class, 'terms'])->name('pages.terms')
 Route::get('/disclaimer', [LegalPageController::class, 'disclaimer'])->name('pages.disclaimer');
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');
+Route::get('/games', [TravelGameController::class, 'index'])->name('games.index');
+Route::get('/games/{game}', [TravelGameController::class, 'show'])->name('games.show');
 Route::get('/tools', [TravelToolController::class, 'index'])->name('tools.index');
 Route::get('/tools/{tool}', [TravelToolController::class, 'show'])->name('tools.show');
 Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
@@ -61,6 +64,7 @@ Route::get('/llms.txt', static fn () => response(
         'Articles: '.PublicUrl::route('articles.index'),
         'Regions: '.PublicUrl::route('regions.index'),
         'Tools: '.PublicUrl::route('tools.index'),
+        'Games: '.PublicUrl::route('games.index'),
         'Image credits: '.PublicUrl::route('image-credits'),
         '',
         'Important tools:',
@@ -69,6 +73,11 @@ Route::get('/llms.txt', static fn () => response(
         '- Airport transfer planner: '.PublicUrl::route('tools.show', 'airport-transfer'),
         '- Budget calculator: '.PublicUrl::route('tools.show', 'budget-calculator'),
         '- Luggage planner: '.PublicUrl::route('tools.show', 'luggage-planner'),
+        '',
+        'Important games:',
+        '- Daily Japan Word Trail: '.PublicUrl::route('games.show', 'daily-japan-word'),
+        '- Fuji Merge 2048: '.PublicUrl::route('games.show', 'fuji-merge-2048'),
+        '- Sushi Snake Arcade: '.PublicUrl::route('games.show', 'sushi-snake'),
         '',
         'Editorial note: pages are written in original professional English for international travelers. Readers should verify current prices, schedules, closures, safety alerts, and booking rules with official providers before travel.',
         '',

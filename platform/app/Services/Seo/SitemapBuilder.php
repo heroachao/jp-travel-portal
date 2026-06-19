@@ -7,6 +7,7 @@ use App\Models\Destination;
 use App\Models\Tag;
 use App\Models\Topic;
 use App\Models\TravelCategory;
+use App\Support\JapanGames;
 use App\Support\PublicUrl;
 use App\Support\TravelTools;
 use Illuminate\Support\Collection;
@@ -44,6 +45,7 @@ class SitemapBuilder
             ['loc' => PublicUrl::route('home'), 'lastmod' => null],
             ['loc' => PublicUrl::route('articles.index'), 'lastmod' => null],
             ['loc' => PublicUrl::route('tools.index'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('games.index'), 'lastmod' => null],
             ['loc' => PublicUrl::route('image-credits'), 'lastmod' => null],
             ['loc' => PublicUrl::route('regions.index'), 'lastmod' => null],
             ['loc' => PublicUrl::route('destinations.index'), 'lastmod' => null],
@@ -55,6 +57,11 @@ class SitemapBuilder
         ])->merge(
             collect(TravelTools::slugs())->map(fn (string $slug) => [
                 'loc' => PublicUrl::route('tools.show', $slug),
+                'lastmod' => null,
+            ])
+        )->merge(
+            collect(JapanGames::slugs())->map(fn (string $slug) => [
+                'loc' => PublicUrl::route('games.show', $slug),
                 'lastmod' => null,
             ])
         );
