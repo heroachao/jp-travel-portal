@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Services\Seo\MetaPayload;
+use App\Services\Settings\SiteSettings;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
@@ -28,12 +29,16 @@ class ArticleController extends Controller
             'tags' => fn ($query) => $query->orderBy('name'),
             'travelCategories' => fn ($query) => $query->visible(),
             'enabledFaqs',
+            'author',
             'coverMedia',
             'ogMedia',
         ]);
 
         $ogMedia = $article->ogMedia ?: $article->coverMedia;
         $ogImage = $ogMedia ? Storage::disk($ogMedia->disk)->url($ogMedia->path) : null;
+        $absoluteOgImage = $ogImage && str_starts_with($ogImage, 'http') ? $ogImage : ($ogImage ? url($ogImage) : null);
+        $canonical = $article->canonical_url ?: route('articles.show', $article);
+        $siteSettings = app(SiteSettings::class)->current();
 
         $faqJsonLd = $article->enabledFaqs->isEmpty() ? null : [
             '@context' => 'https://schema.org',
@@ -50,19 +55,75 @@ class ArticleController extends Controller
                 ->values()
                 ->all(),
         ];
+        $articleJsonLd = [
+            '@context' => 'https://schema.org',
+            '@type' => $article->structured_data_type ?: 'Article',
+            'headline' => $article->title,
+            'description' => $article->meta_description ?: $article->excerpt,
+            'url' => $canonical,
+            'mainEntityOfPage' => [
+                '@type' => 'WebPage',
+                '@id' => $canonical,
+            ],
+            'datePublished' => $article->published_at?->toAtomString(),
+            'dateModified' => ($article->display_updated_at ?: $article->updated_at)?->toAtomString(),
+            'author' => [
+                '@type' => 'Organization',
+                'name' => $article->author?->name ?: $siteSettings->site_name,
+            ],
+            'publisher' => [
+                '@type' => 'Organization',
+                'name' => $siteSettings->site_name,
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => asset('images/japan-trip-tools-logo.png'),
+                ],
+            ],
+        ];
+
+        if ($absoluteOgImage) {
+            $articleJsonLd['image'] = [$absoluteOgImage];
+        }
+
+        $breadcrumbJsonLd = [
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => 'Japan Trip Tools',
+                    'item' => route('home'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => 'Articles',
+                    'item' => route('articles.index'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 3,
+                    'name' => $article->title,
+                    'item' => $canonical,
+                ],
+            ],
+        ];
 
         return view('public.articles.show', [
             'meta' => new MetaPayload(
                 $article->seo_title ?: $article->title,
                 $article->meta_description,
-                $article->canonical_url ?: route('articles.show', $article),
+                $canonical,
                 $article->og_title,
                 $article->og_description,
-                $ogImage,
+                $absoluteOgImage,
                 $article->is_indexable,
             ),
             'article' => $article,
             'faqJsonLd' => $faqJsonLd,
+            'articleJsonLd' => $articleJsonLd,
+            'breadcrumbJsonLd' => $breadcrumbJsonLd,
         ]);
     }
 }

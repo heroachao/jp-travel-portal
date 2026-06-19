@@ -6,6 +6,8 @@ use App\Enums\ArticleStatus;
 use App\Models\Article;
 use App\Models\Destination;
 use App\Models\ServiceLink;
+use App\Models\Tag;
+use App\Models\Topic;
 use App\Models\TravelCategory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -109,5 +111,54 @@ class SitemapTest extends TestCase
             ->assertDontSee('/categories/hidden')
             ->assertDontSee('/categories/noindex')
             ->assertDontSee('example.com/rail');
+    }
+
+    public function test_sitemap_only_includes_taxonomy_pages_with_enough_published_guides(): void
+    {
+        $author = User::factory()->create();
+        $publishedArticles = Article::factory()
+            ->count(3)
+            ->create([
+                'author_id' => $author,
+                'status' => ArticleStatus::Published,
+                'published_at' => now(),
+            ]);
+        $singleArticle = Article::factory()->create([
+            'author_id' => $author,
+            'status' => ArticleStatus::Published,
+            'published_at' => now(),
+        ]);
+
+        $strongTopic = Topic::factory()->create(['slug' => 'strong-topic']);
+        $thinTopic = Topic::factory()->create(['slug' => 'thin-topic']);
+        $strongTag = Tag::factory()->create(['slug' => 'strong-tag']);
+        $thinTag = Tag::factory()->create(['slug' => 'thin-tag']);
+
+        $strongTopic->articles()->attach($publishedArticles->pluck('id'));
+        $strongTag->articles()->attach($publishedArticles->pluck('id'));
+        $thinTopic->articles()->attach($singleArticle->id);
+        $thinTag->articles()->attach($singleArticle->id);
+
+        $this->get('/sitemap.xml')
+            ->assertOk()
+            ->assertSee('/topics/strong-topic')
+            ->assertSee('/tags/strong-tag')
+            ->assertDontSee('/topics/thin-topic')
+            ->assertDontSee('/tags/thin-tag');
+    }
+
+    public function test_thin_tag_pages_remain_accessible_but_noindex(): void
+    {
+        $article = Article::factory()->create([
+            'author_id' => User::factory(),
+            'status' => ArticleStatus::Published,
+            'published_at' => now(),
+        ]);
+        $tag = Tag::factory()->create(['slug' => 'thin-tag']);
+        $tag->articles()->attach($article);
+
+        $this->get(route('tags.show', $tag))
+            ->assertOk()
+            ->assertSee('name="robots" content="noindex,nofollow"', false);
     }
 }

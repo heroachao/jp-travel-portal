@@ -98,6 +98,11 @@ class SitemapBuilder
     {
         return Topic::query()
             ->where('is_indexable', true)
+            ->whereNotNull('body')
+            ->where('body', '!=', '')
+            ->whereNotNull('meta_description')
+            ->where('meta_description', '!=', '')
+            ->whereHas('articles', fn ($query) => $query->published(), '>=', 3)
             ->get()
             ->map(fn (Topic $topic) => [
                 'loc' => route('topics.show', $topic),
@@ -108,6 +113,9 @@ class SitemapBuilder
     private function tagUrls(): Collection
     {
         return Tag::query()
+            ->whereNotNull('description')
+            ->where('description', '!=', '')
+            ->whereHas('articles', fn ($query) => $query->published(), '>=', 3)
             ->get()
             ->map(fn (Tag $tag) => [
                 'loc' => route('tags.show', $tag),

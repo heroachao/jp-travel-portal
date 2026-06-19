@@ -11,7 +11,7 @@ class TravelTools
      */
     public static function all(): array
     {
-        return [
+        $tools = [
             [
                 'slug' => 'trip-planner',
                 'name' => 'Japan Trip Planner',
@@ -123,6 +123,8 @@ class TravelTools
                 'accent' => '#7c3aed',
             ],
         ];
+
+        return array_map(fn (array $tool) => array_merge($tool, self::seoDetails($tool)), $tools);
     }
 
     /**
@@ -153,5 +155,61 @@ class TravelTools
         }
 
         return null;
+    }
+
+    /**
+     * @param array<string, mixed> $tool
+     * @return array<string, mixed>
+     */
+    private static function seoDetails(array $tool): array
+    {
+        $keywordMap = [
+            'trip-planner' => ['Japan itinerary planner', 'first time Japan itinerary', 'Japan route planner'],
+            'jr-pass-calculator' => ['JR Pass worth it', 'Japan Rail Pass calculator', 'Shinkansen pass value'],
+            'airport-transfer' => ['Japan airport transfer', 'Narita to Tokyo late arrival', 'Haneda airport transport'],
+            'budget-calculator' => ['Japan travel budget calculator', 'Japan trip cost estimate', 'Tokyo Kyoto Osaka budget'],
+            'region-finder' => ['where to go in Japan', 'Japan region finder', 'best Japan region by season'],
+            'season-packing' => ['Japan packing list', 'Japan weather packing planner', 'what to pack for Japan'],
+            'ic-card-checklist' => ['Suica Pasmo checklist', 'Japan IC card guide', 'visitor IC card Japan'],
+            'luggage-planner' => ['Japan luggage forwarding', 'takkyubin luggage planner', 'Japan train luggage rules'],
+            'allergy-card' => ['Japan allergy card', 'Japanese food allergy phrases', 'vegetarian card Japan'],
+            'tax-free-calculator' => ['Japan tax free shopping calculator', 'Japan consumption tax refund', 'tax free shopping Japan'],
+        ];
+
+        $keywords = $keywordMap[$tool['slug']] ?? [$tool['name'], $tool['category'].' Japan travel', 'Japan travel planning'];
+        $primaryKeyword = $keywords[0];
+
+        return [
+            'seo_intro' => "Use the {$tool['name']} when you need a quick, practical answer before building the rest of a Japan itinerary. It is designed for English-speaking travelers who want clear planning guidance without leaving Japan Trip Tools or opening several separate websites.",
+            'seo_sections' => [
+                [
+                    'title' => 'Best for first decisions',
+                    'body' => "This tool helps narrow the early planning choice behind {$primaryKeyword}. It works best when you already know your rough travel dates, main cities, and comfort level, but still need a simple way to compare the next step.",
+                ],
+                [
+                    'title' => 'How to use the result',
+                    'body' => "Treat the output as a planning checkpoint, then confirm official transport, ticket, weather, or store details before paying for anything. Japan travel conditions can change by season, route, and operator.",
+                ],
+                [
+                    'title' => 'Why it stays on site',
+                    'body' => 'The calculation runs inside this page so readers can continue to nearby guides, regional pages, and article searches instead of bouncing to unrelated external booking pages.',
+                ],
+            ],
+            'faqs' => [
+                [
+                    'question' => "Is the {$tool['name']} free?",
+                    'answer' => "Yes. The {$tool['name']} is free to use on Japan Trip Tools and does not require a login.",
+                ],
+                [
+                    'question' => "Can I use this as official travel advice?",
+                    'answer' => 'Use it as a planning helper, then verify prices, opening hours, transport schedules, and ticket rules with official providers before travel.',
+                ],
+                [
+                    'question' => "Who is this {$tool['category']} tool for?",
+                    'answer' => 'It is written for international travelers planning Japan in English, especially first-time visitors who want practical steps rather than a generic destination overview.',
+                ],
+            ],
+            'related_searches' => $keywords,
+        ];
     }
 }

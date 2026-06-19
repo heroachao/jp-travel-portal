@@ -17,6 +17,8 @@ class PublicTravelToolsTest extends TestCase
         $this->get(route('tools.index'))
             ->assertOk()
             ->assertSee('Japan travel tools that stay on this site.')
+            ->assertSee('Practical Japan travel tools for search-led planning')
+            ->assertSee('"@type":"ItemList"', false)
             ->assertSee(route('tools.show', 'trip-planner'), false)
             ->assertSee(route('tools.show', 'jr-pass-calculator'), false)
             ->assertDontSee('target="_blank"', false);
@@ -28,7 +30,12 @@ class PublicTravelToolsTest extends TestCase
             ->assertOk()
             ->assertSee('data-travel-tool="budget-calculator"', false)
             ->assertSee('Estimate budget')
-            ->assertSee('Runs locally in your browser');
+            ->assertSee('Runs locally in your browser')
+            ->assertSee('How this money tool helps')
+            ->assertSee('Frequently asked questions')
+            ->assertSee('"@type":"WebApplication"', false)
+            ->assertSee('"@type":"FAQPage"', false)
+            ->assertSee('"@type":"BreadcrumbList"', false);
     }
 
     public function test_sitemap_includes_tools_and_image_credits(): void

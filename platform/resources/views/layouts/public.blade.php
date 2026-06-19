@@ -10,6 +10,17 @@
         $layoutTitle .= ' | '.$siteSettings->seo_title_suffix;
     }
     $layoutDescription = $meta->description ?: $siteSettings->default_meta_description;
+    $websiteJsonLd = [
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        'name' => $siteSettings->site_name,
+        'url' => route('home'),
+        'potentialAction' => [
+            '@type' => 'SearchAction',
+            'target' => route('search').'?q={search_term_string}',
+            'query-input' => 'required name=search_term_string',
+        ],
+    ];
     $organizationJsonLd = null;
     if ($siteSettings->organization_schema_enabled) {
         $organizationJsonLd = [
@@ -62,9 +73,11 @@
     <meta property="og:title" content="{{ $meta->ogTitle ?? $layoutTitle }}">
     @if($meta->ogDescription ?? $layoutDescription)<meta property="og:description" content="{{ $meta->ogDescription ?? $layoutDescription }}">@endif
     @if($meta->ogImage)<meta property="og:image" content="{{ $meta->ogImage }}">@endif
+    <script type="application/ld+json">{!! json_encode($websiteJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) !!}</script>
     @if($organizationJsonLd)
         <script type="application/ld+json">{!! json_encode($organizationJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) !!}</script>
     @endif
+    @stack('structured-data')
     @if($siteSettings->analytics_enabled && filled($siteSettings->ga4_measurement_id))
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ $siteSettings->ga4_measurement_id }}"></script>
         <script>

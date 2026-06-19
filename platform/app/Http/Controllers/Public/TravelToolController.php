@@ -11,13 +11,30 @@ class TravelToolController extends Controller
 {
     public function index(): View
     {
+        $tools = TravelTools::all();
+        $toolsItemListJsonLd = [
+            '@context' => 'https://schema.org',
+            '@type' => 'ItemList',
+            'name' => 'Japan Travel Tools',
+            'itemListElement' => collect($tools)
+                ->values()
+                ->map(fn (array $tool, int $index) => [
+                    '@type' => 'ListItem',
+                    'position' => $index + 1,
+                    'name' => $tool['name'],
+                    'url' => route('tools.show', $tool['slug']),
+                ])
+                ->all(),
+        ];
+
         return view('public.tools.index', [
             'meta' => new MetaPayload(
                 'Japan Travel Tools',
                 'Free on-site Japan travel calculators, route planners, packing lists, and practical trip tools.',
                 route('tools.index'),
             ),
-            'tools' => TravelTools::all(),
+            'tools' => $tools,
+            'toolsItemListJsonLd' => $toolsItemListJsonLd,
         ]);
     }
 
@@ -27,6 +44,59 @@ class TravelToolController extends Controller
 
         abort_unless($toolConfig !== null, 404);
 
+        $toolJsonLd = [
+            '@context' => 'https://schema.org',
+            '@type' => 'WebApplication',
+            'name' => $toolConfig['name'],
+            'url' => route('tools.show', $toolConfig['slug']),
+            'applicationCategory' => 'TravelApplication',
+            'operatingSystem' => 'All',
+            'description' => $toolConfig['meta_description'],
+            'offers' => [
+                '@type' => 'Offer',
+                'price' => '0',
+                'priceCurrency' => 'USD',
+            ],
+        ];
+        $toolFaqJsonLd = [
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => collect($toolConfig['faqs'])
+                ->map(fn (array $faq) => [
+                    '@type' => 'Question',
+                    'name' => $faq['question'],
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $faq['answer'],
+                    ],
+                ])
+                ->all(),
+        ];
+        $breadcrumbJsonLd = [
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => 'Japan Trip Tools',
+                    'item' => route('home'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => 'Tools',
+                    'item' => route('tools.index'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 3,
+                    'name' => $toolConfig['name'],
+                    'item' => route('tools.show', $toolConfig['slug']),
+                ],
+            ],
+        ];
+
         return view('public.tools.show', [
             'meta' => new MetaPayload(
                 $toolConfig['name'].' | Japan Travel Tools',
@@ -35,6 +105,9 @@ class TravelToolController extends Controller
             ),
             'tool' => $toolConfig,
             'tools' => TravelTools::all(),
+            'toolJsonLd' => $toolJsonLd,
+            'toolFaqJsonLd' => $toolFaqJsonLd,
+            'breadcrumbJsonLd' => $breadcrumbJsonLd,
         ]);
     }
 }

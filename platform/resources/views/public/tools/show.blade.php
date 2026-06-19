@@ -1,5 +1,11 @@
 @extends('layouts.public')
 
+@push('structured-data')
+    <script type="application/ld+json">{!! json_encode($toolJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) !!}</script>
+    <script type="application/ld+json">{!! json_encode($toolFaqJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) !!}</script>
+    <script type="application/ld+json">{!! json_encode($breadcrumbJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) !!}</script>
+@endpush
+
 @section('content')
     @php
         $slug = $tool['slug'];
@@ -392,6 +398,32 @@
             @endif
 
             <div class="travel-tool-result" data-tool-result aria-live="polite"></div>
+
+            <section class="content-prose mt-8 border-t border-slate-200 pt-7">
+                <h2>How this {{ strtolower($tool['category']) }} tool helps</h2>
+                <p>{{ $tool['seo_intro'] }}</p>
+                <div class="mt-5 grid gap-4 md:grid-cols-3">
+                    @foreach($tool['seo_sections'] as $section)
+                        <div class="rounded-lg border border-slate-200 bg-white p-4">
+                            <h3 class="mt-0">{{ $section['title'] }}</h3>
+                            <p>{{ $section['body'] }}</p>
+                        </div>
+                    @endforeach
+                </div>
+                <h2>Frequently asked questions</h2>
+                @foreach($tool['faqs'] as $faq)
+                    <h3>{{ $faq['question'] }}</h3>
+                    <p>{{ $faq['answer'] }}</p>
+                @endforeach
+                <h2>Continue planning</h2>
+                <p>Use these related searches to connect the tool result with detailed Japan travel guides and regional planning articles.</p>
+                <div class="not-prose flex flex-wrap gap-2">
+                    @foreach($tool['related_searches'] as $search)
+                        <a class="public-tag-pill" href="{{ route('search', ['q' => $search]) }}">{{ $search }}</a>
+                    @endforeach
+                    <a class="public-tag-pill" href="{{ route('articles.index') }}">Latest Japan guides</a>
+                </div>
+            </section>
         </div>
 
         <aside class="space-y-5">
