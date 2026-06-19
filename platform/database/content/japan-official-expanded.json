@@ -7,18 +7,32 @@
       "seo_title": "Tohoku Slow Travel First Guide",
       "meta_description": "Plan a first Tohoku trip with official tourism sources for northern Honshu, shinkansen access, festivals, hot springs, and slower regional routes.",
       "published_at": "2026-06-18T06:00:00+09:00",
-      "category_slugs": ["guide", "itinerary", "basics"],
-      "destination_slugs": ["tohoku"],
-      "topic_slugs": ["tohoku-first-time", "slow-travel"],
-      "tag_slugs": ["tohoku", "onsen", "festivals"],
+      "category_slugs": [
+        "guide",
+        "itinerary",
+        "basics"
+      ],
+      "destination_slugs": [
+        "tohoku"
+      ],
+      "topic_slugs": [
+        "tohoku-first-time",
+        "slow-travel"
+      ],
+      "tag_slugs": [
+        "tohoku",
+        "onsen",
+        "festivals"
+      ],
       "popularity_score": 78,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Vessel%2C%20Tohoku%20District%2C%20Japan%2C%20Late%20Jomon%20period%2C%202000-1000%20BC%2C%20ceramic%20-%20Tokyo%20National%20Museum%20-%20Tokyo%2C%20Japan%20-%20DSC09150.jpg?width=1400",
-        "alt": "Jomon period vessel from the Tohoku district",
-        "caption": "Tohoku travel can connect landscapes, festivals, hot springs, and deep regional history.",
-        "license": "CC0 1.0 Universal Public Domain Dedication",
-        "attribution": "Daderot, Wikimedia Commons",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Vessel,_Tohoku_District,_Japan,_Late_Jomon_period,_2000-1000_BC,_ceramic_-_Tokyo_National_Museum_-_Tokyo,_Japan_-_DSC09150.jpg"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Matsushima.jpg",
+        "alt": "Tohoku travel scene for tohoku slow travel first guide",
+        "caption": "Tohoku routes are represented by major regional scenery and festivals.",
+        "license": "Public domain",
+        "attribution": "Wikimedia Commons contributor",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AMatsushima.jpg",
+        "match_query": "Matsushima Bay Tohoku"
       },
       "sources": [
         {
@@ -60,18 +74,32 @@
       "seo_title": "Hokuriku Shinetsu Craft and Coast Guide",
       "meta_description": "Plan Hokuriku Shinetsu around mountains, sea, Kanazawa, crafts, food, and slower regional travel using official Japan travel sources.",
       "published_at": "2026-06-18T06:10:00+09:00",
-      "category_slugs": ["guide", "food", "shopping"],
-      "destination_slugs": ["hokuriku"],
-      "topic_slugs": ["hokuriku-shinetsu", "craft-travel"],
-      "tag_slugs": ["hokuriku", "kanazawa", "crafts"],
+      "category_slugs": [
+        "guide",
+        "food",
+        "shopping"
+      ],
+      "destination_slugs": [
+        "hokuriku"
+      ],
+      "topic_slugs": [
+        "hokuriku-shinetsu",
+        "craft-travel"
+      ],
+      "tag_slugs": [
+        "hokuriku",
+        "kanazawa",
+        "crafts"
+      ],
       "popularity_score": 77,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kanizawa%20Shrine%20-%20Kanazawa%2C%20Japan%20-%20DSC09954.jpg?width=1400",
-        "alt": "Kanazawa shrine building",
-        "caption": "Kanazawa is a useful anchor for craft, garden, and old-town travel in Hokuriku.",
-        "license": "CC0 1.0 Universal Public Domain Dedication",
-        "attribution": "Daderot, Wikimedia Commons",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Kanizawa_Shrine_-_Kanazawa,_Japan_-_DSC09954.jpg"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Funsui-first-fountain-in-Japan-kanazawa-kenrokuen-2006-03-04.jpg/1920px-Funsui-first-fountain-in-Japan-kanazawa-kenrokuen-2006-03-04.jpg",
+        "alt": "Kenrokuen in Kanazawa for hokuriku shinetsu craft coast guide",
+        "caption": "Hokuriku craft and garden routes are represented by Kanazawa.",
+        "license": "Public domain",
+        "attribution": "No machine-readable author provided. Jovandavid~commonswiki assumed (based on copyright claims).",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AFunsui-first-fountain-in-Japan-kanazawa-kenrokuen-2006-03-04.jpg",
+        "match_query": "Kenrokuen Kanazawa"
       },
       "sources": [
         {
@@ -104,18 +132,32 @@
       "seo_title": "Tokai Shinkansen Stopover Guide",
       "meta_description": "Use official Japan travel sources to plan Tokai stopovers between Tokyo and Kyoto by shinkansen, cities, coastline, and mountain routes.",
       "published_at": "2026-06-18T06:20:00+09:00",
-      "category_slugs": ["transport", "guide", "itinerary"],
-      "destination_slugs": ["chubu"],
-      "topic_slugs": ["tokai-region", "shinkansen-stopovers"],
-      "tag_slugs": ["tokai", "shinkansen", "stopover"],
+      "category_slugs": [
+        "transport",
+        "guide",
+        "itinerary"
+      ],
+      "destination_slugs": [
+        "chubu"
+      ],
+      "topic_slugs": [
+        "tokai-region",
+        "shinkansen-stopovers"
+      ],
+      "tag_slugs": [
+        "tokai",
+        "shinkansen",
+        "stopover"
+      ],
       "popularity_score": 76,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tokai%20Natural%20Footpath%20-%20Homyoin%20Temple%20-%20Otsu%2C%20Shiga%20-%20DSC07564.JPG?width=1400",
-        "alt": "Tokai Natural Footpath near a temple",
-        "caption": "The Tokai region can add local nature and culture to the Tokyo-Kyoto corridor.",
-        "license": "CC0 1.0 Universal Public Domain Dedication",
-        "attribution": "Daderot, Wikimedia Commons",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Tokai_Natural_Footpath_-_Homyoin_Temple_-_Otsu,_Shiga_-_DSC07564.JPG"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Tokaido_Shinkansen_sharp_turn_in_Musashi-Kosugi_2.jpg/1920px-Tokaido_Shinkansen_sharp_turn_in_Musashi-Kosugi_2.jpg",
+        "alt": "Tokaido Shinkansen N700 for Tokai Shinkansen Stopover Guide",
+        "caption": "Tokaido Shinkansen N700 is used to match the article's destination or travel topic.",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Dr.yellow",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ATokaido_Shinkansen_sharp_turn_in_Musashi-Kosugi_2.jpg",
+        "match_query": "Tokaido Shinkansen N700"
       },
       "sources": [
         {
@@ -148,18 +190,32 @@
       "seo_title": "Chugoku Hiroshima and Seto Inland Sea Guide",
       "meta_description": "Plan Hiroshima, Miyajima, and the Seto Inland Sea with official Japan travel sources for Chugoku region sightseeing.",
       "published_at": "2026-06-18T06:30:00+09:00",
-      "category_slugs": ["guide", "itinerary", "things-to-do"],
-      "destination_slugs": ["chugoku"],
-      "topic_slugs": ["hiroshima-miyajima", "seto-inland-sea"],
-      "tag_slugs": ["hiroshima", "miyajima", "chugoku"],
+      "category_slugs": [
+        "guide",
+        "itinerary",
+        "things-to-do"
+      ],
+      "destination_slugs": [
+        "chugoku"
+      ],
+      "topic_slugs": [
+        "hiroshima-miyajima",
+        "seto-inland-sea"
+      ],
+      "tag_slugs": [
+        "hiroshima",
+        "miyajima",
+        "chugoku"
+      ],
       "popularity_score": 85,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/ItsukushimaTorii7381.jpg?width=1400",
-        "alt": "Itsukushima Shrine torii gate at Miyajima",
-        "caption": "Miyajima and the Seto Inland Sea are natural anchors for Chugoku routes.",
-        "license": "Public domain",
-        "attribution": "Fg2, Wikimedia Commons",
-        "source_url": "https://commons.wikimedia.org/wiki/File:ItsukushimaTorii7381.jpg"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Itsukushima_%28Miyajima_Hiroshima%29_hdsr_Shrine_S5_09.jpg/1920px-Itsukushima_%28Miyajima_Hiroshima%29_hdsr_Shrine_S5_09.jpg",
+        "alt": "Itsukushima Shrine Miyajima Hiroshima for Chugoku Hiroshima and Seto Inland Sea Guide",
+        "caption": "Itsukushima Shrine Miyajima Hiroshima is used to match the article's destination or travel topic.",
+        "license": "CC BY 4.0",
+        "attribution": "Hyppolyte de Saint-Rambert",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AItsukushima_(Miyajima_Hiroshima)_hdsr_Shrine_S5_09.jpg",
+        "match_query": "Itsukushima Shrine Miyajima Hiroshima"
       },
       "sources": [
         {
@@ -198,18 +254,32 @@
       "seo_title": "Shikoku Pilgrimage and Nature Guide",
       "meta_description": "Plan Shikoku around pilgrimage routes, islands, nature, local culture, and slower travel using official Japan travel sources.",
       "published_at": "2026-06-18T06:40:00+09:00",
-      "category_slugs": ["guide", "itinerary", "basics"],
-      "destination_slugs": ["shikoku"],
-      "topic_slugs": ["shikoku-pilgrimage", "slow-travel"],
-      "tag_slugs": ["shikoku", "pilgrimage", "nature"],
+      "category_slugs": [
+        "guide",
+        "itinerary",
+        "basics"
+      ],
+      "destination_slugs": [
+        "shikoku"
+      ],
+      "topic_slugs": [
+        "shikoku-pilgrimage",
+        "slow-travel"
+      ],
+      "tag_slugs": [
+        "shikoku",
+        "pilgrimage",
+        "nature"
+      ],
       "popularity_score": 73,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Shikoku%20Karst%202023-08-02%201712.jpg?width=1400",
-        "alt": "Shikoku Karst landscape",
-        "caption": "Shikoku is well suited to travelers who want nature, pilgrimage culture, and regional pacing.",
-        "license": "CC0 1.0 Universal Public Domain Dedication",
-        "attribution": "Wikimedia Commons contributor, CC0",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Shikoku_Karst_2023-08-02_1712.jpg"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Poles_showing_the_1st_temple_of_Shikoku_Pilgrimage_on_sando_of_Ryozenji_Temple.jpg/1920px-Poles_showing_the_1st_temple_of_Shikoku_Pilgrimage_on_sando_of_Ryozenji_Temple.jpg",
+        "alt": "Shikoku pilgrimage temple for shikoku pilgrimage nature guide",
+        "caption": "Shikoku routes are represented by pilgrimage temple scenery.",
+        "license": "CC BY-SA 4.0",
+        "attribution": "そらみみ",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3APoles_showing_the_1st_temple_of_Shikoku_Pilgrimage_on_sando_of_Ryozenji_Temple.jpg",
+        "match_query": "Shikoku pilgrimage temple"
       },
       "sources": [
         {
@@ -246,18 +316,32 @@
       "seo_title": "Kyushu Onsen and Volcano First Guide",
       "meta_description": "Plan a first Kyushu trip with official sources for Fukuoka, hot springs, volcanoes, beaches, food, and southern Japan routes.",
       "published_at": "2026-06-18T06:50:00+09:00",
-      "category_slugs": ["guide", "food", "itinerary"],
-      "destination_slugs": ["kyushu"],
-      "topic_slugs": ["kyushu-onsen", "volcano-travel"],
-      "tag_slugs": ["kyushu", "onsen", "volcanoes"],
+      "category_slugs": [
+        "guide",
+        "food",
+        "itinerary"
+      ],
+      "destination_slugs": [
+        "kyushu"
+      ],
+      "topic_slugs": [
+        "kyushu-onsen",
+        "volcano-travel"
+      ],
+      "tag_slugs": [
+        "kyushu",
+        "onsen",
+        "volcanoes"
+      ],
       "popularity_score": 83,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kyushu-Japan-ISS-Space.png?width=1400",
-        "alt": "Kyushu island seen from space",
-        "caption": "Kyushu's volcanic geography shapes many of its hot springs, food routes, and landscapes.",
-        "license": "Public domain",
-        "attribution": "NASA / Wikimedia Commons",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Kyushu-Japan-ISS-Space.png"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Mount_Aso_from_Aso_Volcano_Museum.jpg/1920px-Mount_Aso_from_Aso_Volcano_Museum.jpg",
+        "alt": "Mount Aso Kumamoto for Kyushu Onsen and Volcano First Guide",
+        "caption": "Mount Aso Kumamoto is used to match the article's destination or travel topic.",
+        "license": "CC BY-SA 3.0",
+        "attribution": "STA3816",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AMount_Aso_from_Aso_Volcano_Museum.jpg",
+        "match_query": "Mount Aso Kumamoto"
       },
       "sources": [
         {
@@ -294,18 +378,33 @@
       "seo_title": "Kansai First Route Planner",
       "meta_description": "Plan a first Kansai route with Kyoto, Osaka, Nara, Kobe, temples, food, and short rail trips using official city tourism sources.",
       "published_at": "2026-06-18T07:00:00+09:00",
-      "category_slugs": ["itinerary", "guide", "transport"],
-      "destination_slugs": ["kansai", "kyoto"],
-      "topic_slugs": ["kansai-first-time", "kyoto-osaka-route"],
-      "tag_slugs": ["kansai", "kyoto", "osaka"],
+      "category_slugs": [
+        "itinerary",
+        "guide",
+        "transport"
+      ],
+      "destination_slugs": [
+        "kansai",
+        "kyoto"
+      ],
+      "topic_slugs": [
+        "kansai-first-time",
+        "kyoto-osaka-route"
+      ],
+      "tag_slugs": [
+        "kansai",
+        "kyoto",
+        "osaka"
+      ],
       "popularity_score": 92,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Geofeatures%20map%20of%20Kansai%20Japan%20ja.svg?width=1400",
-        "alt": "Kansai region geographical map",
-        "caption": "Kansai routes work best when Kyoto, Osaka, Nara, and Kobe are grouped by rail logic.",
-        "license": "CC0 1.0 Universal Public Domain Dedication",
-        "attribution": "Wikimedia Commons contributor, CC0",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Geofeatures_map_of_Kansai_Japan_ja.svg"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dotonbori_Osaka_1910.jpg/1920px-Dotonbori_Osaka_1910.jpg",
+        "alt": "Osaka travel scene for kansai first route planner",
+        "caption": "Kansai and Osaka planning is represented by central Osaka landmarks.",
+        "license": "Public domain",
+        "attribution": "Naniwa Meisho",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ADotonbori_Osaka_1910.jpg",
+        "match_query": "Dotonbori Osaka Japan"
       },
       "sources": [
         {
@@ -342,18 +441,31 @@
       "seo_title": "Tokyo Shopping and Kitchenware Guide",
       "meta_description": "Plan Tokyo shopping by area, souvenir type, kitchenware, department stores, and practical route timing with official Tokyo tourism sources.",
       "published_at": "2026-06-18T07:10:00+09:00",
-      "category_slugs": ["shopping", "guide"],
-      "destination_slugs": ["tokyo"],
-      "topic_slugs": ["tokyo-shopping", "souvenir-planning"],
-      "tag_slugs": ["tokyo", "shopping", "souvenirs"],
+      "category_slugs": [
+        "shopping",
+        "guide"
+      ],
+      "destination_slugs": [
+        "tokyo"
+      ],
+      "topic_slugs": [
+        "tokyo-shopping",
+        "souvenir-planning"
+      ],
+      "tag_slugs": [
+        "tokyo",
+        "shopping",
+        "souvenirs"
+      ],
       "popularity_score": 87,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/EDION%20AKIBA.JPG?width=1400",
-        "alt": "Akihabara electronics shopping building",
-        "caption": "Tokyo shopping is easier when electronics, department stores, and specialty streets are planned by area.",
-        "license": "CC0 1.0 Universal Public Domain Dedication",
-        "attribution": "Wikimedia Commons contributor, CC0",
-        "source_url": "https://commons.wikimedia.org/wiki/File:EDION_AKIBA.JPG"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Red_coffee_cup-shaped_balcony%2C_Niimi_Tableware%2C_Kappabashi_Dougu_Street%2C_Tokyo%2C_Japan.jpg/1920px-Red_coffee_cup-shaped_balcony%2C_Niimi_Tableware%2C_Kappabashi_Dougu_Street%2C_Tokyo%2C_Japan.jpg",
+        "alt": "Kappabashi Tokyo for Tokyo Shopping and Kitchenware Guide",
+        "caption": "Kappabashi Tokyo is used to match the article's destination or travel topic.",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Basile Morin",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ARed_coffee_cup-shaped_balcony%2C_Niimi_Tableware%2C_Kappabashi_Dougu_Street%2C_Tokyo%2C_Japan.jpg",
+        "match_query": "Kappabashi Tokyo"
       },
       "sources": [
         {
@@ -386,18 +498,33 @@
       "seo_title": "Kyoto Morning and Night Quiet Hours Guide",
       "meta_description": "Plan Kyoto early mornings and evenings around quieter streets, food, river walks, and responsible tourism using official Kyoto guidance.",
       "published_at": "2026-06-18T07:20:00+09:00",
-      "category_slugs": ["things-to-do", "guide", "food"],
-      "destination_slugs": ["kyoto", "kansai"],
-      "topic_slugs": ["kyoto-morning-night", "responsible-travel"],
-      "tag_slugs": ["kyoto", "morning", "night"],
+      "category_slugs": [
+        "things-to-do",
+        "guide",
+        "food"
+      ],
+      "destination_slugs": [
+        "kyoto",
+        "kansai"
+      ],
+      "topic_slugs": [
+        "kyoto-morning-night",
+        "responsible-travel"
+      ],
+      "tag_slugs": [
+        "kyoto",
+        "morning",
+        "night"
+      ],
       "popularity_score": 89,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Nighttime%20view%20along%20the%20Kamo%20River%20in%20Pontocho%2C%20Kyoto%2C%20Japan%2020170409105607%20%2834280403006%29.jpg?width=1400",
-        "alt": "Nighttime view along the Kamo River in Kyoto",
-        "caption": "Kyoto evenings can be calmer when planned around river walks and respectful neighborhood pacing.",
-        "license": "CC0 1.0 Universal Public Domain Dedication",
-        "attribution": "Wikimedia Commons contributor, CC0",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Nighttime_view_along_the_Kamo_River_in_Pontocho,_Kyoto,_Japan_20170409105607_(34280403006).jpg"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Pontocho_by_einalem_in_Kyoto.jpg",
+        "alt": "Gion or Pontocho in Kyoto for kyoto morning night quiet hours guide",
+        "caption": "Kyoto night etiquette is represented by Gion or Pontocho streets.",
+        "license": "CC BY-SA 2.0",
+        "attribution": "einalem from Pontocho street in Nakagyo, Kyoto",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3APontocho_by_einalem_in_Kyoto.jpg",
+        "match_query": "Pontocho Kyoto night"
       },
       "sources": [
         {
@@ -430,18 +557,32 @@
       "seo_title": "Osaka Street Food and Shopping Guide",
       "meta_description": "Plan Osaka food and shopping around official tourism information, evening areas, castle sightseeing, and Kansai route logic.",
       "published_at": "2026-06-18T07:30:00+09:00",
-      "category_slugs": ["food", "shopping", "things-to-do"],
-      "destination_slugs": ["kansai"],
-      "topic_slugs": ["osaka-food", "osaka-shopping"],
-      "tag_slugs": ["osaka", "food", "shopping"],
+      "category_slugs": [
+        "food",
+        "shopping",
+        "things-to-do"
+      ],
+      "destination_slugs": [
+        "kansai"
+      ],
+      "topic_slugs": [
+        "osaka-food",
+        "osaka-shopping"
+      ],
+      "tag_slugs": [
+        "osaka",
+        "food",
+        "shopping"
+      ],
       "popularity_score": 90,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dotonbori%2C%20Osaka%2C%20Japan%20%28Unsplash%29.jpg?width=1400",
-        "alt": "Dotonbori in Osaka",
-        "caption": "Osaka evenings are strongest when food streets and shopping districts are planned together.",
-        "license": "CC0 1.0 Universal Public Domain Dedication",
-        "attribution": "Unsplash / Wikimedia Commons",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Dotonbori,_Osaka,_Japan_(Unsplash).jpg"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dotonbori_Osaka_1910.jpg/1920px-Dotonbori_Osaka_1910.jpg",
+        "alt": "Osaka travel scene for osaka street food shopping guide",
+        "caption": "Kansai and Osaka planning is represented by central Osaka landmarks.",
+        "license": "Public domain",
+        "attribution": "Naniwa Meisho",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ADotonbori_Osaka_1910.jpg",
+        "match_query": "Dotonbori Osaka Japan"
       },
       "sources": [
         {
@@ -474,18 +615,32 @@
       "seo_title": "Hokkaido Winter Activity Planner",
       "meta_description": "Plan winter Hokkaido with official tourism information for snow activities, food, hot springs, transport, and weather buffers.",
       "published_at": "2026-06-18T07:40:00+09:00",
-      "category_slugs": ["things-to-do", "guide", "itinerary"],
-      "destination_slugs": ["hokkaido"],
-      "topic_slugs": ["hokkaido-winter", "snow-travel"],
-      "tag_slugs": ["hokkaido", "winter", "snow"],
+      "category_slugs": [
+        "things-to-do",
+        "guide",
+        "itinerary"
+      ],
+      "destination_slugs": [
+        "hokkaido"
+      ],
+      "topic_slugs": [
+        "hokkaido-winter",
+        "snow-travel"
+      ],
+      "tag_slugs": [
+        "hokkaido",
+        "winter",
+        "snow"
+      ],
       "popularity_score": 88,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ai%20no%20kane%28Love%20of%20Bell%29%2C%20Asahidake%2C%20Hokkaido%20on%20June%2014th%2C%202019.jpg?width=1400",
-        "alt": "Asahidake in Hokkaido",
-        "caption": "Hokkaido winter trips need activity focus and transport buffer time.",
-        "license": "CC0 1.0 Universal Public Domain Dedication",
-        "attribution": "Wikimedia Commons contributor, CC0",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Ai_no_kane(Love_of_Bell),_Asahidake,_Hokkaido_on_June_14th,_2019.jpg"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Northern_Japan%2C_especially_the_island_of_Hokkaido%2C_is_home_to_some_of_the_snowiest_cities_in_the_world_%28stormy-snowy-winter-for-hokkaido%29.jpg/1920px-Northern_Japan%2C_especially_the_island_of_Hokkaido%2C_is_home_to_some_of_the_snowiest_cities_in_the_world_%28stormy-snowy-winter-for-hokkaido%29.jpg",
+        "alt": "Hokkaido snow winter for Hokkaido Winter Activity Planner",
+        "caption": "Hokkaido snow winter is used to match the article's destination or travel topic.",
+        "license": "Public domain",
+        "attribution": "Michala Garrison, using MODIS data from NASA EOSDIS LANCE and GIBS/Worldview",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ANorthern_Japan%2C_especially_the_island_of_Hokkaido%2C_is_home_to_some_of_the_snowiest_cities_in_the_world_(stormy-snowy-winter-for-hokkaido).jpg",
+        "match_query": "Hokkaido snow winter"
       },
       "sources": [
         {
@@ -522,18 +677,32 @@
       "seo_title": "Okinawa Useful Information and Safety Guide",
       "meta_description": "Use official Okinawa travel information to plan safety, transport, weather, shopping, tourist information, and first-trip island basics.",
       "published_at": "2026-06-18T07:50:00+09:00",
-      "category_slugs": ["basics", "guide", "shopping"],
-      "destination_slugs": ["okinawa"],
-      "topic_slugs": ["okinawa-safety", "island-basics"],
-      "tag_slugs": ["okinawa", "safety", "weather"],
+      "category_slugs": [
+        "basics",
+        "guide",
+        "shopping"
+      ],
+      "destination_slugs": [
+        "okinawa"
+      ],
+      "topic_slugs": [
+        "okinawa-safety",
+        "island-basics"
+      ],
+      "tag_slugs": [
+        "okinawa",
+        "safety",
+        "weather"
+      ],
       "popularity_score": 81,
       "image": {
-        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Araha%20Beach.JPG?width=1400",
-        "alt": "Araha Beach in Okinawa",
-        "caption": "Okinawa beach and island travel should be paired with weather and safety planning.",
-        "license": "Public domain",
-        "attribution": "Wikimedia Commons contributor, public domain",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Araha_Beach.JPG"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Kouri_beach%2C_Okinawa.jpg/1920px-Kouri_beach%2C_Okinawa.jpg",
+        "alt": "Okinawa beach scene for okinawa useful information safety guide",
+        "caption": "Okinawa planning is represented by main-island and outer-island beach scenery.",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Mokkie",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AKouri_beach%2C_Okinawa.jpg",
+        "match_query": "Okinawa Kouri Beach"
       },
       "sources": [
         {
