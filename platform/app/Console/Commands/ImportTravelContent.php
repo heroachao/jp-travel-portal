@@ -154,13 +154,27 @@ class ImportTravelContent extends Command
         $html = '';
 
         if (isset($entry['image']) && is_array($entry['image'])) {
-            $html .= '<figure class="public-card my-6 overflow-hidden">';
+            $image = $entry['image'];
+            $creditUrl = route('image-credits').'#article-'.$entry['slug'];
+            $license = $image['license'] ?? 'Open license';
+            $attribution = $image['attribution'] ?? 'Image source';
+
+            $html .= '<figure class="public-card public-image-figure my-6 overflow-hidden"';
+            if (filled($image['source_url'] ?? null)) {
+                $html .= ' data-image-source-url="'.e($image['source_url']).'"';
+            }
+            if (filled($image['license_url'] ?? null)) {
+                $html .= ' data-image-license-url="'.e($image['license_url']).'"';
+            }
+            $html .= ' data-image-license="'.e($license).'"';
+            $html .= ' data-image-attribution="'.e($attribution).'"';
+            $html .= '>';
             $html .= '<img src="'.e($entry['image']['url']).'" alt="'.e($entry['image']['alt'] ?? $entry['title']).'" class="aspect-[16/9] w-full object-cover">';
             $html .= '<figcaption class="px-4 py-3 text-sm text-slate-600">';
             $html .= e($entry['image']['caption'] ?? '');
-            $html .= ' Image license: '.e($entry['image']['license'] ?? 'Open license').'.';
+            $html .= ' Image: '.e($attribution).' / '.e($license).'.';
             if (filled($entry['image']['source_url'] ?? null)) {
-                $html .= ' Source: <a href="'.e($entry['image']['source_url']).'" rel="nofollow noopener" target="_blank">'.e($entry['image']['attribution'] ?? 'Wikimedia Commons').'</a>.';
+                $html .= ' <a href="'.e($creditUrl).'">Image credit details</a>.';
             }
             $html .= '</figcaption></figure>';
         }
@@ -188,10 +202,10 @@ class ImportTravelContent extends Command
         $html .= '<p>This article is an original English summary written from official tourism and transport sources. It is not a copied translation of those pages.</p>';
         $html .= '<ul>';
         foreach ($entry['sources'] as $source) {
-            $html .= '<li><a href="'.e($source['url']).'" rel="nofollow noopener" target="_blank">'.e($source['name']).'</a></li>';
+            $html .= '<li><a href="'.e($source['url']).'" rel="nofollow noopener noreferrer" target="_blank">'.e($source['name']).'</a></li>';
         }
         if (isset($entry['image']['source_url'])) {
-            $html .= '<li><a href="'.e($entry['image']['source_url']).'" rel="nofollow noopener" target="_blank">'.e($entry['image']['attribution'] ?? 'Image source').'</a> — '.e($entry['image']['license'] ?? 'Open license').'</li>';
+            $html .= '<li><a href="'.e(route('image-credits').'#article-'.$entry['slug']).'">Image credit and source record</a> — '.e($entry['image']['license'] ?? 'Open license').'</li>';
         }
         $html .= '</ul></section>';
 

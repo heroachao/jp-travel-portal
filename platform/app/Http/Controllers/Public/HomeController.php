@@ -9,6 +9,7 @@ use App\Models\HomepageModule;
 use App\Models\ServiceLink;
 use App\Models\TravelCategory;
 use App\Services\Seo\MetaPayload;
+use App\Support\TravelTools;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -26,6 +27,8 @@ class HomeController extends Controller
             'articleCount' => $publishedArticleCount,
             'articles' => Article::published()->latest('published_at')->limit(12)->get(),
             'serviceLinks' => ServiceLink::query()->enabled()->placement('header')->ordered()->get(),
+            'tools' => collect(TravelTools::featured()),
+            'toolCount' => count(TravelTools::all()),
             'regionChannels' => Destination::query()
                 ->channel()
                 ->where('is_indexable', true)

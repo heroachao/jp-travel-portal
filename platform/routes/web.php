@@ -11,6 +11,8 @@ Route::get('/terms', [\App\Http\Controllers\Public\LegalPageController::class, '
 Route::get('/disclaimer', [\App\Http\Controllers\Public\LegalPageController::class, 'disclaimer'])->name('pages.disclaimer');
 Route::get('/articles', [\App\Http\Controllers\Public\ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/{article:slug}', [\App\Http\Controllers\Public\ArticleController::class, 'show'])->name('articles.show');
+Route::get('/tools', [\App\Http\Controllers\Public\TravelToolController::class, 'index'])->name('tools.index');
+Route::get('/tools/{tool}', [\App\Http\Controllers\Public\TravelToolController::class, 'show'])->name('tools.show');
 Route::get('/destinations', [\App\Http\Controllers\Public\DestinationController::class, 'index'])->name('destinations.index');
 Route::get('/destinations/{destination:slug}', [\App\Http\Controllers\Public\DestinationController::class, 'show'])->name('destinations.show');
 Route::get('/regions', [\App\Http\Controllers\Public\DestinationController::class, 'regions'])->name('regions.index');
@@ -18,6 +20,7 @@ Route::get('/regions/{destination:slug}', [\App\Http\Controllers\Public\Destinat
 Route::get('/categories/{category:slug}', [\App\Http\Controllers\Public\TravelCategoryController::class, 'show'])->name('categories.show');
 Route::get('/topics/{topic:slug}', [\App\Http\Controllers\Public\TopicController::class, 'show'])->name('topics.show');
 Route::get('/tags/{tag:slug}', [\App\Http\Controllers\Public\TagController::class, 'show'])->name('tags.show');
+Route::get('/image-credits', \App\Http\Controllers\Public\ImageCreditController::class)->name('image-credits');
 Route::get('/search', \App\Http\Controllers\Public\SearchController::class)->name('search');
 Route::get('/sitemap.xml', \App\Http\Controllers\Public\SitemapController::class)->name('sitemap');
 Route::get('/robots.txt', \App\Http\Controllers\Public\RobotsController::class)->name('robots');

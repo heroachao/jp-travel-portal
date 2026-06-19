@@ -94,7 +94,7 @@
             <nav class="public-actions" aria-label="Primary links">
                 <a href="{{ route('articles.index') }}">News</a>
                 <a href="{{ route('regions.index') }}">Regions</a>
-                <a href="{{ route('search') }}">Tools</a>
+                <a href="{{ route('tools.index') }}">Tools</a>
             </nav>
         </div>
         <div class="public-channel-bar">
@@ -132,6 +132,7 @@
             <div class="flex flex-wrap gap-3">
                 <a href="{{ route('regions.index') }}">Regions</a>
                 <a href="{{ route('articles.index') }}">Articles</a>
+                <a href="{{ route('tools.index') }}">Tools</a>
                 <a href="{{ route('search') }}">Search</a>
                 <a href="{{ route('pages.about') }}">About</a>
                 <a href="{{ route('pages.contact') }}">Contact</a>
@@ -146,5 +147,6 @@
             </div>
         </div>
     </footer>
+    @stack('scripts')
 </body>
 </html>

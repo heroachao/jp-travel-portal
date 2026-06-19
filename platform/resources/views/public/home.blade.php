@@ -90,14 +90,12 @@
             </div>
             <div class="public-score-card">
                 <span>Trip Tools</span>
-                <b>{{ $serviceLinks->count() }}</b>
-                <small>service links</small>
+                <b>{{ $toolCount }}</b>
+                <small>on-site tools</small>
                 <div class="public-score-list">
-                    @forelse($serviceLinks->take(3) as $link)
-                        <em>{{ $link->label }}</em>
-                    @empty
-                        <em>Guide Search</em>
-                    @endforelse
+                    @foreach($tools->take(3) as $tool)
+                        <em>{{ $tool['short_name'] }}</em>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -106,7 +104,7 @@
             <p class="public-kicker">My Trip</p>
             <h2>Build a smarter Japan route.</h2>
             <p>Search guides, compare regions, and keep practical tools close while planning.</p>
-            <a href="{{ route('search') }}">Open travel search</a>
+            <a href="{{ route('tools.index') }}">Open travel tools</a>
         </aside>
     </section>
 
@@ -305,17 +303,12 @@
                     <h2>Travel Tools</h2>
                 </div>
                 <div class="mt-3 grid gap-3">
-                    @forelse($serviceLinks as $link)
-                        <a class="public-tool-link" target="_blank" rel="nofollow noopener sponsored" href="{{ $link->url }}">
-                            <strong>{{ $link->label }}</strong>
-                            <span>{{ ucfirst(str_replace('_', ' ', $link->type)) }}</span>
+                    @foreach($tools as $tool)
+                        <a class="public-tool-link" href="{{ route('tools.show', $tool['slug']) }}">
+                            <strong>{{ $tool['short_name'] }}</strong>
+                            <span>{{ $tool['summary'] }}</span>
                         </a>
-                    @empty
-                        <a class="public-tool-link" href="{{ route('search') }}">
-                            <strong>Guide Search</strong>
-                            <span>Find routes, food, transport, and seasonal ideas.</span>
-                        </a>
-                    @endforelse
+                    @endforeach
                 </div>
             </section>
 

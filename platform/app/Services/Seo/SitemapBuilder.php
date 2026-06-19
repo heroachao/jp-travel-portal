@@ -7,6 +7,7 @@ use App\Models\Destination;
 use App\Models\Tag;
 use App\Models\Topic;
 use App\Models\TravelCategory;
+use App\Support\TravelTools;
 use Illuminate\Support\Collection;
 use SimpleXMLElement;
 
@@ -41,6 +42,8 @@ class SitemapBuilder
         return collect([
             ['loc' => route('home'), 'lastmod' => null],
             ['loc' => route('articles.index'), 'lastmod' => null],
+            ['loc' => route('tools.index'), 'lastmod' => null],
+            ['loc' => route('image-credits'), 'lastmod' => null],
             ['loc' => route('regions.index'), 'lastmod' => null],
             ['loc' => route('destinations.index'), 'lastmod' => null],
             ['loc' => route('pages.about'), 'lastmod' => null],
@@ -48,7 +51,12 @@ class SitemapBuilder
             ['loc' => route('pages.privacy'), 'lastmod' => null],
             ['loc' => route('pages.terms'), 'lastmod' => null],
             ['loc' => route('pages.disclaimer'), 'lastmod' => null],
-        ]);
+        ])->merge(
+            collect(TravelTools::slugs())->map(fn (string $slug) => [
+                'loc' => route('tools.show', $slug),
+                'lastmod' => null,
+            ])
+        );
     }
 
     private function articleUrls(): Collection

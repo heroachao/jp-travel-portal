@@ -77,7 +77,10 @@ class TravelContentImportCommandTest extends TestCase
         $this->assertSame(ArticleStatus::Published, $article->status);
         $this->assertSame('GO TOKYO', $article->source_name);
         $this->assertSame('https://www.gotokyo.org/en/index.html', $article->source_url);
-        $this->assertStringContainsString('Image license: CC0 1.0', $article->body);
+        $this->assertStringContainsString('data-image-source-url="https://commons.wikimedia.org/wiki/File:Exterior-test.jpg"', $article->body);
+        $this->assertStringContainsString('Image: Wikimedia Commons / CC0 1.0', $article->body);
+        $this->assertStringContainsString(route('image-credits').'#article-official-tokyo-test-guide', $article->body);
+        $this->assertStringNotContainsString('Source: <a href="https://commons.wikimedia.org/wiki/File:Exterior-test.jpg"', $article->body);
         $this->assertStringContainsString('This article is an original English summary', $article->body);
         $this->assertTrue($article->travelCategories()->where('slug', 'guide')->exists());
         $this->assertTrue($article->destinations()->where('slug', 'tokyo')->exists());
