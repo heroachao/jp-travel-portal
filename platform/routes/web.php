@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\Public\HomeController::class, '__invoke'])->name('home');
+Route::get('/about', [\App\Http\Controllers\Public\LegalPageController::class, 'about'])->name('pages.about');
+Route::get('/contact', [\App\Http\Controllers\Public\LegalPageController::class, 'contact'])->name('pages.contact');
+Route::get('/privacy-policy', [\App\Http\Controllers\Public\LegalPageController::class, 'privacy'])->name('pages.privacy');
+Route::get('/privacy', [\App\Http\Controllers\Public\LegalPageController::class, 'privacy'])->name('pages.privacy-short');
+Route::get('/terms', [\App\Http\Controllers\Public\LegalPageController::class, 'terms'])->name('pages.terms');
+Route::get('/disclaimer', [\App\Http\Controllers\Public\LegalPageController::class, 'disclaimer'])->name('pages.disclaimer');
 Route::get('/articles', [\App\Http\Controllers\Public\ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/{article:slug}', [\App\Http\Controllers\Public\ArticleController::class, 'show'])->name('articles.show');
 Route::get('/destinations', [\App\Http\Controllers\Public\DestinationController::class, 'index'])->name('destinations.index');

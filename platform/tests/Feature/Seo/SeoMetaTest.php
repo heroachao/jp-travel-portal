@@ -50,8 +50,8 @@ class SeoMetaTest extends TestCase
         $this->get(route('articles.show', $article))
             ->assertOk()
             ->assertSee('property="og:image"', false)
-            ->assertSee('property="og:image" content="http://localhost/storage/media/2026/06/social-share.jpg"', false)
-            ->assertDontSee('property="og:image" content="http://localhost/storage/media/2026/06/cover-image.jpg"', false);
+            ->assertSee('property="og:image" content="'.asset('storage/media/2026/06/social-share.jpg').'"', false)
+            ->assertDontSee('property="og:image" content="'.asset('storage/media/2026/06/cover-image.jpg').'"', false);
     }
 
     public function test_article_falls_back_to_cover_media_for_og_image(): void
@@ -72,7 +72,7 @@ class SeoMetaTest extends TestCase
         $this->get(route('articles.show', $article))
             ->assertOk()
             ->assertSee('property="og:image"', false)
-            ->assertSee('property="og:image" content="http://localhost/storage/media/2026/06/fallback-cover.jpg"', false);
+            ->assertSee('property="og:image" content="'.asset('storage/media/2026/06/fallback-cover.jpg').'"', false);
     }
 
     public function test_article_page_displays_cover_image_and_source_note(): void

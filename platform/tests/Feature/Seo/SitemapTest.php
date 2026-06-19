@@ -38,6 +38,21 @@ class SitemapTest extends TestCase
             ->assertDontSee('/articles/draft-kyoto');
     }
 
+    public function test_sitemap_includes_core_public_and_policy_pages(): void
+    {
+        $this->get('/sitemap.xml')
+            ->assertOk()
+            ->assertSee(route('home'), false)
+            ->assertSee(route('articles.index'), false)
+            ->assertSee(route('regions.index'), false)
+            ->assertSee(route('destinations.index'), false)
+            ->assertSee(route('pages.about'), false)
+            ->assertSee(route('pages.contact'), false)
+            ->assertSee(route('pages.privacy'), false)
+            ->assertSee(route('pages.terms'), false)
+            ->assertSee(route('pages.disclaimer'), false);
+    }
+
     public function test_sitemap_includes_region_and_category_channels(): void
     {
         Destination::factory()->create([

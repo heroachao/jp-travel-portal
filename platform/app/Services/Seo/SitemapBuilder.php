@@ -15,6 +15,7 @@ class SitemapBuilder
     public function build(): string
     {
         $urls = collect()
+            ->merge($this->staticUrls())
             ->merge($this->articleUrls())
             ->merge($this->destinationUrls())
             ->merge($this->categoryUrls())
@@ -33,6 +34,21 @@ class SitemapBuilder
         }
 
         return $xml->asXML() ?: '';
+    }
+
+    private function staticUrls(): Collection
+    {
+        return collect([
+            ['loc' => route('home'), 'lastmod' => null],
+            ['loc' => route('articles.index'), 'lastmod' => null],
+            ['loc' => route('regions.index'), 'lastmod' => null],
+            ['loc' => route('destinations.index'), 'lastmod' => null],
+            ['loc' => route('pages.about'), 'lastmod' => null],
+            ['loc' => route('pages.contact'), 'lastmod' => null],
+            ['loc' => route('pages.privacy'), 'lastmod' => null],
+            ['loc' => route('pages.terms'), 'lastmod' => null],
+            ['loc' => route('pages.disclaimer'), 'lastmod' => null],
+        ]);
     }
 
     private function articleUrls(): Collection

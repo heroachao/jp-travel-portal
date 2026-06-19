@@ -133,8 +133,13 @@
                 <a href="{{ route('regions.index') }}">Regions</a>
                 <a href="{{ route('articles.index') }}">Articles</a>
                 <a href="{{ route('search') }}">Search</a>
+                <a href="{{ route('pages.about') }}">About</a>
+                <a href="{{ route('pages.contact') }}">Contact</a>
             </div>
             <div class="flex flex-wrap gap-3">
+                <a href="{{ route('pages.privacy') }}">Privacy Policy</a>
+                <a href="{{ route('pages.terms') }}">Terms</a>
+                <a href="{{ route('pages.disclaimer') }}">Disclaimer</a>
                 @foreach($layoutFooterServiceLinks as $link)
                     <a href="{{ $link->url }}" target="_blank" rel="nofollow noopener sponsored">{{ $link->label }}</a>
                 @endforeach

@@ -12,6 +12,34 @@ class PublicPagesTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_compliance_pages_are_public_and_indexable(): void
+    {
+        foreach ([
+            '/about' => 'About Japan Trip Tools',
+            '/contact' => 'Contact Japan Trip Tools',
+            '/privacy-policy' => 'Privacy Policy',
+            '/privacy' => 'Privacy Policy',
+            '/terms' => 'Terms of Use',
+            '/disclaimer' => 'Travel Information Disclaimer',
+        ] as $path => $heading) {
+            $this->get($path)
+                ->assertOk()
+                ->assertSee($heading)
+                ->assertDontSee('noindex,nofollow');
+        }
+    }
+
+    public function test_footer_links_to_compliance_pages(): void
+    {
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('href="'.route('pages.about').'"', false)
+            ->assertSee('href="'.route('pages.contact').'"', false)
+            ->assertSee('href="'.route('pages.privacy').'"', false)
+            ->assertSee('href="'.route('pages.terms').'"', false)
+            ->assertSee('href="'.route('pages.disclaimer').'"', false);
+    }
+
     public function test_published_article_is_public(): void
     {
         $article = Article::factory()->create([
