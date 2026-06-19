@@ -7,6 +7,7 @@ Home: https://japantriptools.com
 Articles: https://japantriptools.com/articles/
 Regions: https://japantriptools.com/regions/
 Tools: https://japantriptools.com/tools/
+Games: https://japantriptools.com/games/
 Image credits: https://japantriptools.com/image-credits/
 
 Important tools:
@@ -15,5 +16,10 @@ Important tools:
 - Airport transfer planner: https://japantriptools.com/tools/airport-transfer/
 - Budget calculator: https://japantriptools.com/tools/budget-calculator/
 - Luggage planner: https://japantriptools.com/tools/luggage-planner/
+
+Important games:
+- Daily Japan Word Trail: https://japantriptools.com/games/daily-japan-word/
+- Fuji Merge 2048: https://japantriptools.com/games/fuji-merge-2048/
+- Sushi Snake Arcade: https://japantriptools.com/games/sushi-snake/
 
 Editorial note: pages are written in original professional English for international travelers. Readers should verify current prices, schedules, closures, safety alerts, and booking rules with official providers before travel.
