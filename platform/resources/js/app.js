@@ -597,12 +597,27 @@ const initializeTravelTools = () => {
 
 const collapseUnfilledAds = () => {
     const markEmptySlots = () => {
-        document.querySelectorAll('.ad-slot .adsbygoogle[data-ad-status="unfilled"]').forEach((adElement) => {
-            adElement.closest('.ad-slot')?.setAttribute('data-ad-empty', 'true');
+        document.querySelectorAll('.ad-slot').forEach((slot) => {
+            const adElement = slot.querySelector('.adsbygoogle');
+
+            if (! adElement) {
+                return;
+            }
+
+            if (adElement.dataset.adStatus === 'filled') {
+                slot.removeAttribute('data-ad-empty');
+
+                return;
+            }
+
+            if (adElement.dataset.adStatus === 'unfilled' || ! slot.querySelector('iframe')) {
+                slot.setAttribute('data-ad-empty', 'true');
+            }
         });
     };
 
-    markEmptySlots();
+    window.setTimeout(markEmptySlots, 1200);
+    window.setTimeout(markEmptySlots, 3200);
 
     const observer = new MutationObserver(markEmptySlots);
     document.querySelectorAll('.ad-slot .adsbygoogle').forEach((adElement) => {

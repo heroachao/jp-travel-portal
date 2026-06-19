@@ -7,6 +7,9 @@
         $latestRail = $articles->take(7);
         $routeDesk = $articles->skip(7)->take(5);
         $travelGraphicArticles = $articles->take(4);
+        $plannerTool = $tools->firstWhere('slug', 'trip-planner') ?? $tools->first();
+        $budgetTool = $tools->firstWhere('slug', 'budget-calculator') ?? $tools->skip(1)->first();
+        $plannerRegion = $regionChannels->first();
         $moduleItemCard = function ($moduleItem): ?array {
             $item = $moduleItem->item;
 
@@ -110,42 +113,59 @@
 
     <section class="mx-auto grid max-w-7xl gap-5 px-4 pb-8 xl:grid-cols-[minmax(0,1.55fr)_minmax(280px,0.75fr)]">
         <div class="public-card public-lead-card">
-            <p class="public-kicker">Top Guide</p>
-            @if($leadArticle)
-                <a href="{{ route('articles.show', $leadArticle) }}">
-                    <h1>{{ $leadArticle->title }}</h1>
-                    <p>{{ $leadArticle->excerpt }}</p>
-                </a>
-                <div class="public-meta-row">
-                    <span>{{ $leadArticle->published_at?->format('M j, Y') }}</span>
-                    @if($leadArticle->reading_time_minutes)
-                        <span>{{ $leadArticle->reading_time_minutes }} min read</span>
-                    @endif
-                    @if($leadArticle->has_coupon)
-                        <span>Service available</span>
-                    @endif
+            <div class="public-lead-copy">
+                <p class="public-kicker">Top Guide</p>
+                @if($leadArticle)
+                    <a class="public-lead-link" href="{{ route('articles.show', $leadArticle) }}">
+                        <h1>{{ $leadArticle->title }}</h1>
+                        <p>{{ $leadArticle->excerpt }}</p>
+                    </a>
+                    <div class="public-meta-row">
+                        <span>{{ $leadArticle->published_at?->format('M j, Y') }}</span>
+                        @if($leadArticle->reading_time_minutes)
+                            <span>{{ $leadArticle->reading_time_minutes }} min read</span>
+                        @endif
+                        @if($leadArticle->has_coupon)
+                            <span>Service available</span>
+                        @endif
+                    </div>
+                    <div class="public-lead-actions">
+                        <a class="public-primary-link" href="{{ route('articles.show', $leadArticle) }}">Read the guide</a>
+                        <a class="public-secondary-link" href="{{ route('tools.index') }}">Open tools</a>
+                    </div>
+                @else
+                    <h1>Plan Japan with practical guides and route tools.</h1>
+                    <p>Publish your first guide in the admin to feature it here.</p>
+                    <div class="public-lead-actions">
+                        <a class="public-primary-link" href="{{ route('tools.index') }}">Open tools</a>
+                    </div>
+                @endif
+            </div>
+
+            <div class="public-lead-side">
+                <div class="public-lead-note">
+                    <span>Planning Now</span>
+                    <strong>{{ $plannerRegion ? 'Start with '.$plannerRegion->name : 'Build a cleaner first route' }}</strong>
+                    <p>Pick one region, add one transport check, then save room for food and weather changes.</p>
                 </div>
-            @else
-                <h1>Plan Japan with practical guides and route tools.</h1>
-                <p>Publish your first guide in the admin to feature it here.</p>
-            @endif
-            <div class="public-travel-graphic" aria-label="Featured Japan travel images">
-                @foreach($travelGraphicArticles as $graphicArticle)
-                    @php
-                        $graphicImage = $graphicArticle->firstImageUrl();
-                    @endphp
-                    @if($graphicImage)
-                        <a href="{{ route('articles.show', $graphicArticle) }}" aria-label="{{ $graphicArticle->title }}">
-                            <img
-                                src="{{ $graphicImage }}"
-                                alt="{{ $graphicArticle->firstImageAlt() }}"
-                                loading="{{ $loop->first ? 'eager' : 'lazy' }}"
-                            >
-                        </a>
-                    @else
-                        <span></span>
-                    @endif
-                @endforeach
+                <div class="public-travel-graphic" aria-label="Featured Japan travel images">
+                    @foreach($travelGraphicArticles as $graphicArticle)
+                        @php
+                            $graphicImage = $graphicArticle->firstImageUrl();
+                        @endphp
+                        @if($graphicImage)
+                            <a href="{{ route('articles.show', $graphicArticle) }}" aria-label="{{ $graphicArticle->title }}">
+                                <img
+                                    src="{{ $graphicImage }}"
+                                    alt="{{ $graphicArticle->firstImageAlt() }}"
+                                    loading="{{ $loop->first ? 'eager' : 'lazy' }}"
+                                >
+                            </a>
+                        @else
+                            <span></span>
+                        @endif
+                    @endforeach
+                </div>
             </div>
         </div>
 
@@ -282,6 +302,36 @@
         </div>
 
         <aside class="space-y-5">
+            <section class="public-card public-planning-widget">
+                <div class="public-section-heading">
+                    <h2>Plan Next</h2>
+                    <a href="{{ route('tools.index') }}">Tools</a>
+                </div>
+                <div class="public-planning-steps">
+                    @if($plannerTool)
+                        <a href="{{ route('tools.show', $plannerTool['slug']) }}">
+                            <span>1</span>
+                            <strong>{{ $plannerTool['short_name'] }}</strong>
+                            <small>{{ $plannerTool['summary'] }}</small>
+                        </a>
+                    @endif
+                    @if($leadArticle)
+                        <a href="{{ route('articles.show', $leadArticle) }}">
+                            <span>2</span>
+                            <strong>Read the latest guide</strong>
+                            <small>{{ $leadArticle->title }}</small>
+                        </a>
+                    @endif
+                    @if($budgetTool)
+                        <a href="{{ route('tools.show', $budgetTool['slug']) }}">
+                            <span>3</span>
+                            <strong>{{ $budgetTool['short_name'] }}</strong>
+                            <small>{{ $budgetTool['summary'] }}</small>
+                        </a>
+                    @endif
+                </div>
+            </section>
+
             <section class="public-card">
                 <div class="public-section-heading">
                     <h2>Region Standings</h2>
