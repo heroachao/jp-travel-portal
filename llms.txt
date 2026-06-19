@@ -1,0 +1,19 @@
+# Japan Trip Tools
+
+Japan Trip Tools is an independent English-language Japan travel planning site with practical guides, regional hubs, and browser-based travel tools.
+
+Sitemap: https://japantriptools.com/sitemap.xml
+Home: https://japantriptools.com
+Articles: https://japantriptools.com/articles/
+Regions: https://japantriptools.com/regions/
+Tools: https://japantriptools.com/tools/
+Image credits: https://japantriptools.com/image-credits/
+
+Important tools:
+- Trip planner: https://japantriptools.com/tools/trip-planner/
+- JR Pass checker: https://japantriptools.com/tools/jr-pass-calculator/
+- Airport transfer planner: https://japantriptools.com/tools/airport-transfer/
+- Budget calculator: https://japantriptools.com/tools/budget-calculator/
+- Luggage planner: https://japantriptools.com/tools/luggage-planner/
+
+Editorial note: pages are written in original professional English for international travelers. Readers should verify current prices, schedules, closures, safety alerts, and booking rules with official providers before travel.
