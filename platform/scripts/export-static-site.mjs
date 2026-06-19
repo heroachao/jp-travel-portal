@@ -23,6 +23,7 @@ const fetched = new Set();
 const queued = [];
 const missing = [];
 const exported = [];
+let cachedAnalyticsHeadSnippet = null;
 
 function normalizeBase(value) {
     return value.replace(/\/+$/, '');
@@ -210,6 +211,27 @@ async function assertNoLocalBaseLeaks() {
     }
 }
 
+async function analyticsHeadSnippet() {
+    if (cachedAnalyticsHeadSnippet !== null) {
+        return cachedAnalyticsHeadSnippet;
+    }
+
+    const indexPath = path.join(outDir, 'index.html');
+
+    if (! await fileExists(indexPath)) {
+        cachedAnalyticsHeadSnippet = '';
+
+        return cachedAnalyticsHeadSnippet;
+    }
+
+    const body = await readFile(indexPath, 'utf8');
+    const match = body.match(/<script async src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=[^"]+"><\/script>\s*<script>[\s\S]*?gtag\('config', '[^']+'\);[\s\S]*?<\/script>/);
+
+    cachedAnalyticsHeadSnippet = match ? `\n  ${match[0].replace(/\n/g, '\n  ')}\n` : '';
+
+    return cachedAnalyticsHeadSnippet;
+}
+
 async function writeNotFoundPage() {
     await writeFile(path.join(outDir, '404.html'), `<!doctype html>
 <html lang="en">
@@ -217,6 +239,7 @@ async function writeNotFoundPage() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
+  ${await analyticsHeadSnippet()}
   <title>Page Not Found | Japan Trip Tools</title>
   <style>
     body{margin:0;background:#f4f6fa;color:#111827;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
@@ -254,6 +277,7 @@ async function writeRedirectPage(pathname, targetPath) {
   <meta name="robots" content="noindex,follow">
   <link rel="canonical" href="${targetUrl}">
   <meta http-equiv="refresh" content="0; url=${targetUrl}">
+  ${await analyticsHeadSnippet()}
   <title>Redirecting | Japan Trip Tools</title>
 </head>
 <body>
