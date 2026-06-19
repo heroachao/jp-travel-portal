@@ -242,6 +242,59 @@ async function writeNotFoundPage() {
 `);
 }
 
+async function writeRedirectPage(pathname, targetPath) {
+    const targetUrl = `${siteUrl}${targetPath}`;
+
+    await mkdir(path.dirname(outputPathFor(pathname)), { recursive: true });
+    await writeFile(outputPathFor(pathname), `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="${targetUrl}">
+  <meta http-equiv="refresh" content="0; url=${targetUrl}">
+  <title>Redirecting | Japan Trip Tools</title>
+</head>
+<body>
+  <p>This page moved to <a href="${targetUrl}">${targetUrl}</a>.</p>
+  <script>window.location.replace(${JSON.stringify(targetUrl)});</script>
+</body>
+</html>
+`);
+}
+
+async function writeDestinationCompatibilityPages() {
+    await exportPage('/destinations/');
+
+    const regionsDir = path.join(outDir, 'regions');
+    const entries = await readdir(regionsDir, { withFileTypes: true }).catch(() => []);
+
+    for (const entry of entries) {
+        if (! entry.isDirectory()) {
+            continue;
+        }
+
+        const indexPath = path.join(regionsDir, entry.name, 'index.html');
+
+        if (! await fileExists(indexPath)) {
+            continue;
+        }
+
+        await writeRedirectPage(`/destinations/${entry.name}/`, `/regions/${entry.name}/`);
+    }
+}
+
+async function fileExists(file) {
+    try {
+        await stat(file);
+
+        return true;
+    } catch {
+        return false;
+    }
+}
+
 async function listFiles(directory, prefix = '') {
     const entries = await readdir(directory, { withFileTypes: true });
     const files = [];
@@ -273,6 +326,7 @@ while (queued.length > 0) {
     await exportPage(queued.shift());
 }
 
+await writeDestinationCompatibilityPages();
 await writeNotFoundPage();
 await assertNoLocalBaseLeaks();
 
