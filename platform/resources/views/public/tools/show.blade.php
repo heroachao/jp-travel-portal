@@ -14,7 +14,7 @@
     <section class="mx-auto max-w-7xl px-4 py-8">
         <div class="public-card travel-tool-show-hero" style="--tool-accent: {{ $tool['accent'] }}">
             <div>
-                <a class="travel-tool-back" href="{{ route('tools.index') }}">All tools</a>
+                <a class="travel-tool-back" href="{{ \App\Support\PublicUrl::route('tools.index') }}">All tools</a>
                 <p class="public-kicker">{{ $tool['category'] }}</p>
                 <h1>{{ $tool['name'] }}</h1>
                 <p>{{ $tool['summary'] }}</p>
@@ -419,9 +419,9 @@
                 <p>Use these related searches to connect the tool result with detailed Japan travel guides and regional planning articles.</p>
                 <div class="not-prose flex flex-wrap gap-2">
                     @foreach($tool['related_searches'] as $search)
-                        <a class="public-tag-pill" href="{{ route('search', ['q' => $search]) }}">{{ $search }}</a>
+                        <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('search', ['q' => $search]) }}">{{ $search }}</a>
                     @endforeach
-                    <a class="public-tag-pill" href="{{ route('articles.index') }}">Latest Japan guides</a>
+                    <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('articles.index') }}">Latest Japan guides</a>
                 </div>
             </section>
         </div>
@@ -430,11 +430,11 @@
             <section class="public-card travel-tool-side">
                 <div class="public-section-heading">
                     <h2>More Tools</h2>
-                    <a href="{{ route('tools.index') }}">All</a>
+                    <a href="{{ \App\Support\PublicUrl::route('tools.index') }}">All</a>
                 </div>
                 <div class="mt-3 grid gap-3">
                     @foreach($tools as $sideTool)
-                        <a class="public-tool-link @if($sideTool['slug'] === $slug) is-active @endif" href="{{ route('tools.show', $sideTool['slug']) }}">
+                        <a class="public-tool-link @if($sideTool['slug'] === $slug) is-active @endif" href="{{ \App\Support\PublicUrl::route('tools.show', $sideTool['slug']) }}">
                             <strong>{{ $sideTool['short_name'] }}</strong>
                             <span>{{ $sideTool['category'] }}</span>
                         </a>
@@ -445,11 +445,11 @@
             <section class="public-card travel-tool-side">
                 <div class="public-section-heading">
                     <h2>Related Guides</h2>
-                    <a href="{{ route('search') }}">Search</a>
+                    <a href="{{ \App\Support\PublicUrl::route('search') }}">Search</a>
                 </div>
                 <div class="mt-3 grid gap-3">
                     @foreach($tool['inputs'] as $input)
-                        <a class="public-tag-pill" href="{{ route('search', ['q' => $input]) }}">{{ $input }}</a>
+                        <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('search', ['q' => $input]) }}">{{ $input }}</a>
                     @endforeach
                 </div>
             </section>

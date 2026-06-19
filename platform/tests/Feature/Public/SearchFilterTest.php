@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Destination;
 use App\Models\Tag;
 use App\Models\TravelCategory;
+use App\Support\PublicUrl;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -67,6 +68,46 @@ class SearchFilterTest extends TestCase
             ->assertOk()
             ->assertSee('Tokyo Rail Discount Guide')
             ->assertDontSee('Kyoto Food Walk');
+    }
+
+    public function test_search_page_outputs_static_filter_data_for_github_pages(): void
+    {
+        $tokyo = Destination::factory()->create([
+            'name' => 'Tokyo',
+            'slug' => 'tokyo',
+            'is_channel' => true,
+            'is_indexable' => true,
+        ]);
+        $transport = TravelCategory::factory()->create([
+            'title' => 'Transport',
+            'slug' => 'transport',
+            'is_visible' => true,
+            'is_indexable' => true,
+        ]);
+        $rail = Tag::factory()->create(['name' => 'rail', 'slug' => 'rail']);
+        $article = $this->publishedArticle([
+            'title' => 'Tokyo Rail Static Search Guide',
+            'slug' => 'tokyo-rail-static-search-guide',
+            'excerpt' => 'Airport rail and Suica planning notes.',
+            'body' => '<p>Hidden searchable Narita transfer phrase.</p>',
+            'has_coupon' => true,
+            'popularity_score' => 123,
+        ]);
+
+        $article->destinations()->attach($tokyo);
+        $article->travelCategories()->attach($transport, ['sort_order' => 1]);
+        $article->tags()->attach($rail);
+
+        $this->get('/search')
+            ->assertOk()
+            ->assertSee('data-search-page-form', false)
+            ->assertSee('data-search-result-count', false)
+            ->assertSee('href="'.PublicUrl::route('articles.show', $article).'"', false)
+            ->assertSee('data-region="tokyo"', false)
+            ->assertSee('data-category="transport"', false)
+            ->assertSee('data-tag="rail"', false)
+            ->assertSee('data-coupon="1"', false)
+            ->assertSee('hidden searchable narita transfer phrase', false);
     }
 
     public function test_search_filter_controls_hide_non_public_region_and_category_values(): void

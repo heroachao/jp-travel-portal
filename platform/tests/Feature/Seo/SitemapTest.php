@@ -10,6 +10,7 @@ use App\Models\Tag;
 use App\Models\Topic;
 use App\Models\TravelCategory;
 use App\Models\User;
+use App\Support\PublicUrl;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -36,7 +37,7 @@ class SitemapTest extends TestCase
         $this->get('/sitemap.xml')
             ->assertOk()
             ->assertHeader('content-type', 'application/xml')
-            ->assertSee('/articles/published-kyoto')
+            ->assertSee('/articles/published-kyoto/')
             ->assertDontSee('/articles/draft-kyoto');
     }
 
@@ -44,15 +45,15 @@ class SitemapTest extends TestCase
     {
         $this->get('/sitemap.xml')
             ->assertOk()
-            ->assertSee(route('home'), false)
-            ->assertSee(route('articles.index'), false)
-            ->assertSee(route('regions.index'), false)
-            ->assertSee(route('destinations.index'), false)
-            ->assertSee(route('pages.about'), false)
-            ->assertSee(route('pages.contact'), false)
-            ->assertSee(route('pages.privacy'), false)
-            ->assertSee(route('pages.terms'), false)
-            ->assertSee(route('pages.disclaimer'), false);
+            ->assertSee(PublicUrl::route('home'), false)
+            ->assertSee(PublicUrl::route('articles.index'), false)
+            ->assertSee(PublicUrl::route('regions.index'), false)
+            ->assertSee(PublicUrl::route('destinations.index'), false)
+            ->assertSee(PublicUrl::route('pages.about'), false)
+            ->assertSee(PublicUrl::route('pages.contact'), false)
+            ->assertSee(PublicUrl::route('pages.privacy'), false)
+            ->assertSee(PublicUrl::route('pages.terms'), false)
+            ->assertSee(PublicUrl::route('pages.disclaimer'), false);
     }
 
     public function test_sitemap_includes_region_and_category_channels(): void
@@ -104,8 +105,8 @@ class SitemapTest extends TestCase
 
         $this->get('/sitemap.xml')
             ->assertOk()
-            ->assertSee('/regions/tokyo')
-            ->assertSee('/categories/transport')
+            ->assertSee('/regions/tokyo/')
+            ->assertSee('/categories/transport/')
             ->assertDontSee('/regions/osaka')
             ->assertDontSee('/destinations/osaka')
             ->assertDontSee('/categories/hidden')
@@ -141,8 +142,8 @@ class SitemapTest extends TestCase
 
         $this->get('/sitemap.xml')
             ->assertOk()
-            ->assertSee('/topics/strong-topic')
-            ->assertSee('/tags/strong-tag')
+            ->assertSee('/topics/strong-topic/')
+            ->assertSee('/tags/strong-tag/')
             ->assertDontSee('/topics/thin-topic')
             ->assertDontSee('/tags/thin-tag');
     }
@@ -160,5 +161,25 @@ class SitemapTest extends TestCase
         $this->get(route('tags.show', $tag))
             ->assertOk()
             ->assertSee('name="robots" content="noindex,nofollow"', false);
+    }
+
+    public function test_sitemap_uses_canonical_trailing_slash_urls_for_html_pages(): void
+    {
+        $article = Article::factory()->create([
+            'author_id' => User::factory(),
+            'slug' => 'canonical-trailing-slash',
+            'status' => ArticleStatus::Published,
+            'published_at' => now(),
+            'is_indexable' => true,
+        ]);
+
+        $xml = $this->get('/sitemap.xml')
+            ->assertOk()
+            ->content();
+
+        $this->assertStringContainsString('<loc>'.PublicUrl::route('articles.show', $article).'</loc>', $xml);
+        $this->assertStringContainsString('<loc>'.PublicUrl::route('articles.index').'</loc>', $xml);
+        $this->assertStringNotContainsString('<loc>'.route('articles.show', $article).'</loc>', $xml);
+        $this->assertStringNotContainsString('<loc>'.route('articles.index').'</loc>', $xml);
     }
 }

@@ -6,6 +6,7 @@ use App\Enums\ArticleStatus;
 use App\Models\Article;
 use App\Models\SiteSetting;
 use App\Models\User;
+use App\Support\PublicUrl;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -142,7 +143,19 @@ class SiteSettingsRenderingTest extends TestCase
         $this->get(route('robots'))
             ->assertOk()
             ->assertSee("User-agent: *\nDisallow:", false)
-            ->assertSee('Sitemap: '.route('sitemap'), false)
+            ->assertSee('Sitemap: '.PublicUrl::route('sitemap'), false)
             ->assertSee("Disallow: /private\nCrawl-delay: 5", false);
+    }
+
+    public function test_llms_txt_exposes_core_public_entry_points(): void
+    {
+        $this->get(route('llms-txt'))
+            ->assertOk()
+            ->assertHeader('content-type', 'text/plain; charset=UTF-8')
+            ->assertSee('# Japan Trip Tools', false)
+            ->assertSee('Sitemap: '.PublicUrl::route('sitemap'), false)
+            ->assertSee('Articles: '.PublicUrl::route('articles.index'), false)
+            ->assertSee('Tools: '.PublicUrl::route('tools.index'), false)
+            ->assertSee('Trip planner: '.PublicUrl::route('tools.show', 'trip-planner'), false);
     }
 }

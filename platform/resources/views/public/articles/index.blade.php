@@ -11,9 +11,9 @@
         <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             @foreach($articles as $article)
                 @php
-                    $articleImage = $article->firstImageUrl();
+                    $articleImage = $article->firstImageUrl(640);
                 @endphp
-                <a class="public-story-card" href="{{ route('articles.show', $article) }}">
+                <a class="public-story-card" href="{{ \App\Support\PublicUrl::route('articles.show', $article) }}">
                     <span class="public-story-thumb">
                         @if($articleImage)
                             <img src="{{ $articleImage }}" alt="{{ $article->firstImageAlt() }}" loading="lazy">

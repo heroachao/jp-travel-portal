@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Services\Settings\SiteSettings;
+use App\Support\PublicUrl;
 use Illuminate\Http\Response;
 
 class RobotsController extends Controller
@@ -13,7 +14,7 @@ class RobotsController extends Controller
         $rules = [
             'User-agent: *',
             'Disallow:',
-            'Sitemap: '.route('sitemap'),
+            'Sitemap: '.PublicUrl::route('sitemap'),
         ];
 
         $extraRules = trim((string) $settings->current()->robots_extra_rules);

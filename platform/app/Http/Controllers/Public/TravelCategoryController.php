@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\TravelCategory;
 use App\Services\Seo\MetaPayload;
+use App\Support\PublicUrl;
 use Illuminate\View\View;
 
 class TravelCategoryController extends Controller
@@ -19,7 +20,7 @@ class TravelCategoryController extends Controller
             'meta' => new MetaPayload(
                 $category->seo_title ?: $category->title,
                 $category->meta_description,
-                route('categories.show', $category),
+                PublicUrl::route('categories.show', $category),
                 indexable: $category->is_indexable,
             ),
             'category' => $category,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Services\Seo\MetaPayload;
+use App\Support\PublicUrl;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -24,7 +25,7 @@ class ImageCreditController extends Controller
             'meta' => new MetaPayload(
                 'Image Credits | Japan Trip Tools',
                 'Image attribution, source, and license records for Japan Trip Tools article images.',
-                route('image-credits'),
+                PublicUrl::route('image-credits'),
             ),
             'credits' => $credits,
         ]);
@@ -57,7 +58,7 @@ class ImageCreditController extends Controller
             'article' => $article,
             'title' => $article->title,
             'slug' => $article->slug,
-            'url' => route('articles.show', $article),
+            'url' => PublicUrl::route('articles.show', $article),
             'image_url' => $article->firstImageUrl(),
             'image_alt' => $article->firstImageAlt(),
             'caption' => $caption,

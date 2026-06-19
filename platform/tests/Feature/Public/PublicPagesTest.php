@@ -5,6 +5,7 @@ namespace Tests\Feature\Public;
 use App\Enums\ArticleStatus;
 use App\Models\Article;
 use App\Models\User;
+use App\Support\PublicUrl;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -33,11 +34,11 @@ class PublicPagesTest extends TestCase
     {
         $this->get('/')
             ->assertOk()
-            ->assertSee('href="'.route('pages.about').'"', false)
-            ->assertSee('href="'.route('pages.contact').'"', false)
-            ->assertSee('href="'.route('pages.privacy').'"', false)
-            ->assertSee('href="'.route('pages.terms').'"', false)
-            ->assertSee('href="'.route('pages.disclaimer').'"', false);
+            ->assertSee('href="'.PublicUrl::route('pages.about').'"', false)
+            ->assertSee('href="'.PublicUrl::route('pages.contact').'"', false)
+            ->assertSee('href="'.PublicUrl::route('pages.privacy').'"', false)
+            ->assertSee('href="'.PublicUrl::route('pages.terms').'"', false)
+            ->assertSee('href="'.PublicUrl::route('pages.disclaimer').'"', false);
     }
 
     public function test_published_article_is_public(): void

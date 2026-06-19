@@ -9,6 +9,7 @@ use App\Models\Tag;
 use App\Models\Topic;
 use App\Models\TravelCategory;
 use App\Models\User;
+use App\Support\PublicUrl;
 use Carbon\CarbonImmutable;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -155,7 +156,7 @@ class ImportTravelContent extends Command
 
         if (isset($entry['image']) && is_array($entry['image'])) {
             $image = $entry['image'];
-            $creditUrl = route('image-credits').'#article-'.$entry['slug'];
+            $creditUrl = PublicUrl::route('image-credits').'#article-'.$entry['slug'];
             $license = $image['license'] ?? 'Open license';
             $attribution = $image['attribution'] ?? 'Image source';
 
@@ -205,7 +206,7 @@ class ImportTravelContent extends Command
             $html .= '<li><a href="'.e($source['url']).'" rel="nofollow noopener noreferrer" target="_blank">'.e($source['name']).'</a></li>';
         }
         if (isset($entry['image']['source_url'])) {
-            $html .= '<li><a href="'.e(route('image-credits').'#article-'.$entry['slug']).'">Image credit and source record</a> — '.e($entry['image']['license'] ?? 'Open license').'</li>';
+            $html .= '<li><a href="'.e(PublicUrl::route('image-credits').'#article-'.$entry['slug']).'">Image credit and source record</a> — '.e($entry['image']['license'] ?? 'Open license').'</li>';
         }
         $html .= '</ul></section>';
 

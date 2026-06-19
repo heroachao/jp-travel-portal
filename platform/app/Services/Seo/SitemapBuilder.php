@@ -7,6 +7,7 @@ use App\Models\Destination;
 use App\Models\Tag;
 use App\Models\Topic;
 use App\Models\TravelCategory;
+use App\Support\PublicUrl;
 use App\Support\TravelTools;
 use Illuminate\Support\Collection;
 use SimpleXMLElement;
@@ -40,20 +41,20 @@ class SitemapBuilder
     private function staticUrls(): Collection
     {
         return collect([
-            ['loc' => route('home'), 'lastmod' => null],
-            ['loc' => route('articles.index'), 'lastmod' => null],
-            ['loc' => route('tools.index'), 'lastmod' => null],
-            ['loc' => route('image-credits'), 'lastmod' => null],
-            ['loc' => route('regions.index'), 'lastmod' => null],
-            ['loc' => route('destinations.index'), 'lastmod' => null],
-            ['loc' => route('pages.about'), 'lastmod' => null],
-            ['loc' => route('pages.contact'), 'lastmod' => null],
-            ['loc' => route('pages.privacy'), 'lastmod' => null],
-            ['loc' => route('pages.terms'), 'lastmod' => null],
-            ['loc' => route('pages.disclaimer'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('home'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('articles.index'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('tools.index'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('image-credits'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('regions.index'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('destinations.index'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('pages.about'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('pages.contact'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('pages.privacy'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('pages.terms'), 'lastmod' => null],
+            ['loc' => PublicUrl::route('pages.disclaimer'), 'lastmod' => null],
         ])->merge(
             collect(TravelTools::slugs())->map(fn (string $slug) => [
-                'loc' => route('tools.show', $slug),
+                'loc' => PublicUrl::route('tools.show', $slug),
                 'lastmod' => null,
             ])
         );
@@ -65,7 +66,7 @@ class SitemapBuilder
             ->where('is_indexable', true)
             ->get()
             ->map(fn (Article $article) => [
-                'loc' => route('articles.show', $article),
+                'loc' => PublicUrl::route('articles.show', $article),
                 'lastmod' => $article->updated_at?->toAtomString(),
             ]);
     }
@@ -77,7 +78,7 @@ class SitemapBuilder
             ->where('is_channel', true)
             ->get()
             ->map(fn (Destination $destination) => [
-                'loc' => route('regions.show', $destination),
+                'loc' => PublicUrl::route('regions.show', $destination),
                 'lastmod' => $destination->updated_at?->toAtomString(),
             ]);
     }
@@ -89,7 +90,7 @@ class SitemapBuilder
             ->where('is_visible', true)
             ->get()
             ->map(fn (TravelCategory $category) => [
-                'loc' => route('categories.show', $category),
+                'loc' => PublicUrl::route('categories.show', $category),
                 'lastmod' => $category->updated_at?->toAtomString(),
             ]);
     }
@@ -105,7 +106,7 @@ class SitemapBuilder
             ->whereHas('articles', fn ($query) => $query->published(), '>=', 3)
             ->get()
             ->map(fn (Topic $topic) => [
-                'loc' => route('topics.show', $topic),
+                'loc' => PublicUrl::route('topics.show', $topic),
                 'lastmod' => $topic->updated_at?->toAtomString(),
             ]);
     }
@@ -118,7 +119,7 @@ class SitemapBuilder
             ->whereHas('articles', fn ($query) => $query->published(), '>=', 3)
             ->get()
             ->map(fn (Tag $tag) => [
-                'loc' => route('tags.show', $tag),
+                'loc' => PublicUrl::route('tags.show', $tag),
                 'lastmod' => $tag->updated_at?->toAtomString(),
             ]);
     }

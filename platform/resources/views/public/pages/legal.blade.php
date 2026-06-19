@@ -25,11 +25,11 @@
         </div>
 
         <nav class="mt-8 flex flex-wrap gap-3 text-sm font-extrabold" aria-label="Policy pages">
-            <a class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 no-underline" href="{{ route('pages.about') }}">About</a>
-            <a class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 no-underline" href="{{ route('pages.contact') }}">Contact</a>
-            <a class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 no-underline" href="{{ route('pages.privacy') }}">Privacy Policy</a>
-            <a class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 no-underline" href="{{ route('pages.terms') }}">Terms</a>
-            <a class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 no-underline" href="{{ route('pages.disclaimer') }}">Disclaimer</a>
+            <a class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 no-underline" href="{{ \App\Support\PublicUrl::route('pages.about') }}">About</a>
+            <a class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 no-underline" href="{{ \App\Support\PublicUrl::route('pages.contact') }}">Contact</a>
+            <a class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 no-underline" href="{{ \App\Support\PublicUrl::route('pages.privacy') }}">Privacy Policy</a>
+            <a class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 no-underline" href="{{ \App\Support\PublicUrl::route('pages.terms') }}">Terms</a>
+            <a class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700 no-underline" href="{{ \App\Support\PublicUrl::route('pages.disclaimer') }}">Disclaimer</a>
         </nav>
     </section>
 @endsection

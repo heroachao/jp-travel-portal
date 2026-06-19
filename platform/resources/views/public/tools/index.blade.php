@@ -25,7 +25,7 @@
     <section class="mx-auto max-w-7xl px-4 pb-12">
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             @foreach($tools as $tool)
-                <a class="public-story-card travel-tool-card" href="{{ route('tools.show', $tool['slug']) }}" style="--tool-accent: {{ $tool['accent'] }}">
+                <a class="public-story-card travel-tool-card" href="{{ \App\Support\PublicUrl::route('tools.show', $tool['slug']) }}" style="--tool-accent: {{ $tool['accent'] }}">
                     <span class="travel-tool-card-top">
                         <small>{{ $tool['category'] }}</small>
                         <b>{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</b>
@@ -57,11 +57,11 @@
         <aside class="public-card p-6">
             <h2 class="text-2xl font-black">Start with a common trip question</h2>
             <div class="mt-4 flex flex-wrap gap-2">
-                <a class="public-tag-pill" href="{{ route('search', ['q' => 'JR Pass worth it']) }}">JR Pass worth it</a>
-                <a class="public-tag-pill" href="{{ route('search', ['q' => 'Japan travel budget']) }}">Japan travel budget</a>
-                <a class="public-tag-pill" href="{{ route('search', ['q' => 'Narita airport transfer']) }}">Narita airport transfer</a>
-                <a class="public-tag-pill" href="{{ route('search', ['q' => 'Japan luggage forwarding']) }}">Luggage forwarding</a>
-                <a class="public-tag-pill" href="{{ route('articles.index') }}">Latest guides</a>
+                <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('search', ['q' => 'JR Pass worth it']) }}">JR Pass worth it</a>
+                <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('search', ['q' => 'Japan travel budget']) }}">Japan travel budget</a>
+                <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('search', ['q' => 'Narita airport transfer']) }}">Narita airport transfer</a>
+                <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('search', ['q' => 'Japan luggage forwarding']) }}">Luggage forwarding</a>
+                <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('articles.index') }}">Latest guides</a>
             </div>
         </aside>
     </section>

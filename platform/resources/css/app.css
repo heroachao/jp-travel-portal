@@ -76,6 +76,12 @@
         text-decoration: none;
     }
 
+    .public-brand picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
     .public-brand-logo {
         display: block;
         width: 100%;
@@ -133,12 +139,6 @@
     .public-search button:hover {
         background: #5b21b6;
         transform: translateY(-1px);
-    }
-
-    @media (max-width: 520px) {
-        .public-search {
-            display: none;
-        }
     }
 
     .public-actions {
@@ -376,7 +376,8 @@
 
     @media (min-width: 980px) {
         .public-lead-card {
-            grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.48fr);
+            grid-template-columns: minmax(0, 0.92fr) minmax(22rem, 0.72fr);
+            min-height: 32rem;
         }
     }
 
@@ -472,7 +473,6 @@
     .public-lead-side {
         display: grid;
         min-width: 0;
-        align-content: space-between;
         gap: 1rem;
     }
 
@@ -513,8 +513,20 @@
     .public-travel-graphic {
         display: grid;
         width: 100%;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.55rem;
+    }
+
+    @media (min-width: 980px) {
+        .public-travel-graphic {
+            min-height: 21rem;
+        }
+
+        .public-travel-graphic a:first-child,
+        .public-travel-graphic span:first-child {
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
     }
 
     @media (max-width: 900px) {
@@ -537,7 +549,7 @@
     .public-travel-graphic a,
     .public-travel-graphic span {
         display: block;
-        aspect-ratio: 4 / 5.3;
+        aspect-ratio: 5 / 4;
         min-height: 6.8rem;
         overflow: hidden;
         border-radius: 0.5rem;
@@ -546,6 +558,25 @@
             linear-gradient(135deg, #e9eef7, #cbd5e1);
         box-shadow: 0 10px 24px rgb(15 23 42 / 0.12);
         transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    @media (max-width: 520px) {
+        .public-header-main {
+            gap: 0.7rem;
+        }
+
+        .public-search input {
+            padding: 0.68rem 0.85rem;
+            font-size: 0.88rem;
+        }
+
+        .public-search button {
+            padding-inline: 0.85rem;
+        }
+
+        .public-actions {
+            justify-content: flex-start;
+        }
     }
 
     .public-travel-graphic a:hover {
@@ -710,6 +741,15 @@
         padding: 0.85rem;
         color: inherit;
         text-decoration: none;
+    }
+
+    .public-search-result[hidden] {
+        display: none;
+    }
+
+    .public-search-page-form input,
+    .public-search-page-form select {
+        min-width: 0;
     }
 
     .public-row-story:hover {
@@ -951,6 +991,56 @@
         color: #5f01d1;
         font-weight: 850;
         text-decoration: none;
+    }
+
+    .article-trust-strip {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1.2rem;
+    }
+
+    @media (min-width: 760px) {
+        .article-trust-strip {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    .article-trust-strip div {
+        border: 1px solid #e0e4ec;
+        border-radius: 0.5rem;
+        background: #f9fafc;
+        padding: 0.85rem;
+    }
+
+    .article-trust-strip strong,
+    .article-trust-strip span {
+        display: block;
+    }
+
+    .article-trust-strip strong {
+        color: #111827;
+        font-size: 0.82rem;
+        font-weight: 950;
+    }
+
+    .article-trust-strip span {
+        margin-top: 0.35rem;
+        color: #64748b;
+        font-size: 0.78rem;
+        line-height: 1.45;
+    }
+
+    .article-depth-panel {
+        margin-top: 2.5rem;
+        border-top: 1px solid #e0e4ec;
+        padding-top: 0.5rem;
+    }
+
+    .article-depth-section ul {
+        display: grid;
+        gap: 0.45rem;
+        margin-block: 1rem;
+        padding-left: 1.15rem;
     }
 
     .travel-tools-hero,

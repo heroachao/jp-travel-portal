@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\Destination;
 use App\Services\Seo\MetaPayload;
+use App\Support\PublicUrl;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -13,7 +14,7 @@ class DestinationController extends Controller
     public function regions(): View
     {
         return view('public.regions.index', [
-            'meta' => new MetaPayload('Japan Regions', 'Explore Japan region guides and related travel planning articles.', route('regions.index')),
+            'meta' => new MetaPayload('Japan Regions', 'Explore Japan region guides and related travel planning articles.', PublicUrl::route('regions.index')),
             'regions' => Destination::query()
                 ->channel()
                 ->where('is_indexable', true)
@@ -32,7 +33,7 @@ class DestinationController extends Controller
             'meta' => new MetaPayload(
                 $destination->seo_title ?: $destination->name.' Travel Guide',
                 $destination->meta_description,
-                route('regions.show', $destination),
+                PublicUrl::route('regions.show', $destination),
             ),
             'destination' => $destination,
             'articles' => $destination->articles()->published()->latest('published_at')->paginate(240),
@@ -42,7 +43,7 @@ class DestinationController extends Controller
     public function index(): View
     {
         return view('public.destinations.index', [
-            'meta' => new MetaPayload('Japan Destinations', 'Explore Japanese regions, cities, attractions, and related travel guides.', route('destinations.index')),
+            'meta' => new MetaPayload('Japan Destinations', 'Explore Japanese regions, cities, attractions, and related travel guides.', PublicUrl::route('destinations.index')),
             'destinations' => Destination::query()->where('is_indexable', true)->latest()->paginate(24),
         ]);
     }
@@ -52,7 +53,7 @@ class DestinationController extends Controller
         abort_unless($destination->is_indexable, 404);
 
         if ($destination->is_channel) {
-            return redirect()->route('regions.show', $destination, 301);
+            return redirect(PublicUrl::route('regions.show', $destination), 301);
         }
 
         $destination->load(['articles' => fn ($query) => $query->published()->latest('published_at'), 'topics']);
@@ -61,7 +62,7 @@ class DestinationController extends Controller
             'meta' => new MetaPayload(
                 $destination->seo_title ?: $destination->name.' Travel Guide',
                 $destination->meta_description,
-                route('destinations.show', $destination),
+                PublicUrl::route('destinations.show', $destination),
             ),
             'destination' => $destination,
         ]);

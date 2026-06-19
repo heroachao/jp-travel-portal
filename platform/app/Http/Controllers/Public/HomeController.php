@@ -9,6 +9,7 @@ use App\Models\HomepageModule;
 use App\Models\ServiceLink;
 use App\Models\TravelCategory;
 use App\Services\Seo\MetaPayload;
+use App\Support\PublicUrl;
 use App\Support\TravelTools;
 use Illuminate\View\View;
 
@@ -22,7 +23,7 @@ class HomeController extends Controller
             'meta' => new MetaPayload(
                 'Japan Travel Guide | Practical Itineraries, Destinations, and Tips',
                 'Independent Japan travel guides, destination hubs, itineraries, and practical planning notes.',
-                url()->current(),
+                PublicUrl::route('home'),
             ),
             'articleCount' => $publishedArticleCount,
             'articles' => Article::published()->latest('published_at')->limit(12)->get(),

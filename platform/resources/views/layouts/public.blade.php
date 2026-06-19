@@ -14,10 +14,10 @@
         '@context' => 'https://schema.org',
         '@type' => 'WebSite',
         'name' => $siteSettings->site_name,
-        'url' => route('home'),
+        'url' => \App\Support\PublicUrl::route('home'),
         'potentialAction' => [
             '@type' => 'SearchAction',
-            'target' => route('search').'?q={search_term_string}',
+            'target' => \App\Support\PublicUrl::route('search').'?q={search_term_string}',
             'query-input' => 'required name=search_term_string',
         ],
     ];
@@ -27,7 +27,7 @@
             '@context' => 'https://schema.org',
             '@type' => 'Organization',
             'name' => $siteSettings->site_name,
-            'url' => route('home'),
+            'url' => \App\Support\PublicUrl::route('home'),
         ];
 
         if (filled($siteSettings->contact_email)) {
@@ -97,25 +97,28 @@
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">
-            <a class="public-brand" href="{{ route('home') }}" aria-label="{{ $siteSettings->site_name }}">
-                <img class="public-brand-logo" src="{{ asset('images/japan-trip-tools-logo.png') }}" alt="{{ $siteSettings->site_name }}">
+            <a class="public-brand" href="{{ \App\Support\PublicUrl::route('home') }}" aria-label="{{ $siteSettings->site_name }}">
+                <picture>
+                    <source srcset="{{ asset('images/japan-trip-tools-logo.webp') }}" type="image/webp">
+                    <img class="public-brand-logo" src="{{ asset('images/japan-trip-tools-logo.png') }}" alt="{{ $siteSettings->site_name }}" width="360" height="360">
+                </picture>
             </a>
-            <form action="{{ route('search') }}" class="public-search" role="search">
+            <form action="{{ \App\Support\PublicUrl::route('search') }}" class="public-search" role="search">
                 <input name="q" placeholder="Search Tokyo rail, Kyoto food, JR Pass">
                 <button aria-label="Search">Search</button>
             </form>
             <nav class="public-actions" aria-label="Primary links">
-                <a href="{{ route('articles.index') }}">News</a>
-                <a href="{{ route('regions.index') }}">Regions</a>
-                <a href="{{ route('tools.index') }}">Tools</a>
+                <a href="{{ \App\Support\PublicUrl::route('articles.index') }}">News</a>
+                <a href="{{ \App\Support\PublicUrl::route('regions.index') }}">Regions</a>
+                <a href="{{ \App\Support\PublicUrl::route('tools.index') }}">Tools</a>
             </nav>
         </div>
         <div class="public-channel-bar">
             <nav class="public-channel-nav" aria-label="Japan travel channels">
-                <a class="is-active" href="{{ route('home') }}">My Trip</a>
-                <a href="{{ route('articles.index') }}">News</a>
+                <a class="is-active" href="{{ \App\Support\PublicUrl::route('home') }}">My Trip</a>
+                <a href="{{ \App\Support\PublicUrl::route('articles.index') }}">News</a>
                 @foreach($layoutCategories as $category)
-                    <a href="{{ route('categories.show', $category) }}">{{ $category->display_name ?: $category->title }}</a>
+                    <a href="{{ \App\Support\PublicUrl::route('categories.show', $category) }}">{{ $category->display_name ?: $category->title }}</a>
                 @endforeach
                 @foreach($layoutHeaderServiceLinks as $link)
                     <a href="{{ $link->url }}" target="_blank" rel="nofollow noopener sponsored" @if($link->tracking_key) data-service-key="{{ $link->tracking_key }}" @endif>{{ $link->label }}</a>
@@ -124,9 +127,9 @@
         </div>
         <div class="public-region-strip">
             <nav class="public-region-nav" aria-label="Region shortcuts">
-                <a href="{{ route('regions.index') }}">All Japan</a>
+                <a href="{{ \App\Support\PublicUrl::route('regions.index') }}">All Japan</a>
                 @foreach($layoutRegions as $region)
-                    <a href="{{ route('regions.show', $region) }}">{{ $region->display_name ?: $region->name }}</a>
+                    <a href="{{ \App\Support\PublicUrl::route('regions.show', $region) }}">{{ $region->display_name ?: $region->name }}</a>
                 @endforeach
             </nav>
         </div>
@@ -143,17 +146,17 @@
                 <p class="mt-2">{{ $layoutFooterDescription }}</p>
             </div>
             <div class="flex flex-wrap gap-3">
-                <a href="{{ route('regions.index') }}">Regions</a>
-                <a href="{{ route('articles.index') }}">Articles</a>
-                <a href="{{ route('tools.index') }}">Tools</a>
-                <a href="{{ route('search') }}">Search</a>
-                <a href="{{ route('pages.about') }}">About</a>
-                <a href="{{ route('pages.contact') }}">Contact</a>
+                <a href="{{ \App\Support\PublicUrl::route('regions.index') }}">Regions</a>
+                <a href="{{ \App\Support\PublicUrl::route('articles.index') }}">Articles</a>
+                <a href="{{ \App\Support\PublicUrl::route('tools.index') }}">Tools</a>
+                <a href="{{ \App\Support\PublicUrl::route('search') }}">Search</a>
+                <a href="{{ \App\Support\PublicUrl::route('pages.about') }}">About</a>
+                <a href="{{ \App\Support\PublicUrl::route('pages.contact') }}">Contact</a>
             </div>
             <div class="flex flex-wrap gap-3">
-                <a href="{{ route('pages.privacy') }}">Privacy Policy</a>
-                <a href="{{ route('pages.terms') }}">Terms</a>
-                <a href="{{ route('pages.disclaimer') }}">Disclaimer</a>
+                <a href="{{ \App\Support\PublicUrl::route('pages.privacy') }}">Privacy Policy</a>
+                <a href="{{ \App\Support\PublicUrl::route('pages.terms') }}">Terms</a>
+                <a href="{{ \App\Support\PublicUrl::route('pages.disclaimer') }}">Disclaimer</a>
                 @foreach($layoutFooterServiceLinks as $link)
                     <a href="{{ $link->url }}" target="_blank" rel="nofollow noopener sponsored">{{ $link->label }}</a>
                 @endforeach

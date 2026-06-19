@@ -11,7 +11,7 @@
             <div class="travel-tools-hero-grid" aria-label="Image credit summary">
                 <span><b>{{ $credits->count() }}</b><small>image records</small></span>
                 <span><b>CC</b><small>license notes</small></span>
-                <span><b>New</b><small>opens separately</small></span>
+                <span><b>Stay</b><small>no outbound image links</small></span>
             </div>
         </div>
     </section>
@@ -38,12 +38,12 @@
                             </div>
                             <div>
                                 <dt>Source</dt>
-                                <dd><a href="{{ $credit['source_url'] }}" target="_blank" rel="nofollow noopener noreferrer">Open original source</a></dd>
+                                <dd>{{ $credit['source_url'] ?: 'Source recorded by attribution note' }}</dd>
                             </div>
                             @if($credit['license_url'])
                                 <div>
                                     <dt>License</dt>
-                                    <dd><a href="{{ $credit['license_url'] }}" target="_blank" rel="nofollow noopener noreferrer">Open license</a></dd>
+                                    <dd>{{ $credit['license'] }}</dd>
                                 </div>
                             @endif
                         </dl>

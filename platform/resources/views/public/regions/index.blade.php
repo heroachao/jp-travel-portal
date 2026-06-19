@@ -12,7 +12,7 @@
 
         <div class="mt-5 grid gap-4 md:grid-cols-3">
             @forelse($regions as $region)
-                <a class="public-tool-link" href="{{ route('regions.show', $region) }}">
+                <a class="public-tool-link" href="{{ \App\Support\PublicUrl::route('regions.show', $region) }}">
                     <strong>{{ $region->display_name ?: $region->name }}</strong>
                     @if($region->excerpt)
                         <span>{{ $region->excerpt }}</span>

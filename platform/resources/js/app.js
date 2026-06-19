@@ -104,6 +104,152 @@ const trackSearchInteractions = () => {
     }
 };
 
+const normalizeSearchValue = (value) => String(value ?? '').trim().toLowerCase();
+
+const initStaticSearchPage = () => {
+    const form = document.querySelector('[data-search-page-form]');
+    const results = document.querySelector('[data-search-results]');
+
+    if (! form || ! results) {
+        return;
+    }
+
+    const cards = [...results.querySelectorAll('[data-index]')];
+    const countNode = document.querySelector('[data-search-result-count]');
+    const emptyNode = document.querySelector('[data-search-empty]');
+    const activeLabel = document.querySelector('[data-search-active-label]');
+    const fields = ['q', 'region', 'category', 'tag', 'sort', 'coupon'];
+    const params = new URLSearchParams(window.location.search);
+
+    fields.forEach((name) => {
+        const field = form.elements.namedItem(name);
+
+        if (! field || ! params.has(name)) {
+            return;
+        }
+
+        if (field instanceof HTMLInputElement && field.type === 'checkbox') {
+            field.checked = params.get(name) === '1';
+            return;
+        }
+
+        if ('value' in field) {
+            field.value = params.get(name) || '';
+        }
+    });
+
+    const getValue = (name) => {
+        const field = form.elements.namedItem(name);
+
+        if (field instanceof HTMLInputElement && field.type === 'checkbox') {
+            return field.checked ? '1' : '';
+        }
+
+        return field && 'value' in field ? String(field.value || '') : '';
+    };
+
+    const updateUrl = () => {
+        const next = new URLSearchParams();
+
+        fields.forEach((name) => {
+            const value = getValue(name);
+
+            if (value && !(name === 'sort' && value === 'newest')) {
+                next.set(name, value);
+            }
+        });
+
+        const query = next.toString();
+        window.history.replaceState(null, '', `${window.location.pathname}${query ? `?${query}` : ''}`);
+    };
+
+    const sortCards = (visibleCards, sort) => {
+        const number = (card, key) => Number(card.dataset[key] || 0);
+
+        return [...visibleCards].sort((a, b) => {
+            if (sort === 'popular') {
+                return number(b, 'popularity') - number(a, 'popularity') || number(b, 'published') - number(a, 'published');
+            }
+
+            if (sort === 'updated') {
+                return number(b, 'updated') - number(a, 'updated') || number(b, 'published') - number(a, 'published');
+            }
+
+            if (sort === 'recommended') {
+                return Number(b.dataset.coupon || 0) - Number(a.dataset.coupon || 0)
+                    || number(b, 'popularity') - number(a, 'popularity')
+                    || number(b, 'published') - number(a, 'published');
+            }
+
+            return number(b, 'published') - number(a, 'published');
+        });
+    };
+
+    const applyFilters = () => {
+        const term = normalizeSearchValue(getValue('q'));
+        const region = normalizeSearchValue(getValue('region'));
+        const category = normalizeSearchValue(getValue('category'));
+        const tag = normalizeSearchValue(getValue('tag'));
+        const coupon = getValue('coupon') === '1';
+        const sort = getValue('sort') || 'newest';
+
+        const visibleCards = cards.filter((card) => {
+            const matchesTerm = term === '' || (card.dataset.index || '').includes(term);
+            const matchesRegion = region === '' || (` ${card.dataset.region || ''} `).includes(` ${region} `);
+            const matchesCategory = category === '' || (` ${card.dataset.category || ''} `).includes(` ${category} `);
+            const matchesTag = tag === '' || (` ${card.dataset.tag || ''} `).includes(` ${tag} `);
+            const matchesCoupon = ! coupon || card.dataset.coupon === '1';
+
+            return matchesTerm && matchesRegion && matchesCategory && matchesTag && matchesCoupon;
+        });
+
+        cards.forEach((card) => {
+            card.hidden = true;
+        });
+
+        sortCards(visibleCards, sort).forEach((card, index) => {
+            card.hidden = false;
+            card.querySelector(':scope > span').textContent = String(index + 1).padStart(2, '0');
+            results.appendChild(card);
+        });
+
+        if (countNode) {
+            countNode.textContent = String(visibleCards.length);
+        }
+
+        if (emptyNode) {
+            emptyNode.classList.toggle('hidden', visibleCards.length !== 0);
+        }
+
+        if (activeLabel) {
+            const labels = [];
+            if (term) labels.push(`keyword "${term}"`);
+            if (region) labels.push(region);
+            if (category) labels.push(category);
+            if (tag) labels.push(`#${tag}`);
+            if (coupon) labels.push('service available');
+
+            activeLabel.textContent = labels.length
+                ? `Filtered by ${labels.join(', ')}.`
+                : 'Use keywords, regions, categories, tags, and sorting to narrow the guide feed.';
+        }
+    };
+
+    form.addEventListener('input', () => {
+        applyFilters();
+        updateUrl();
+    });
+    form.addEventListener('change', () => {
+        applyFilters();
+        updateUrl();
+    });
+    form.addEventListener('submit', () => {
+        updateUrl();
+    });
+
+    applyFilters();
+};
+
 const trackOutboundClicks = () => {
     document.addEventListener('click', (event) => {
         const link = event.target.closest?.('a[href]');
@@ -629,6 +775,7 @@ const collapseUnfilledAds = () => {
 };
 
 trackSearchInteractions();
+initStaticSearchPage();
 trackOutboundClicks();
 trackScrollDepth();
 trackEngagementCheckpoints();

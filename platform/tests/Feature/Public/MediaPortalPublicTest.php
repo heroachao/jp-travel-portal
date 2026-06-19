@@ -11,6 +11,7 @@ use App\Models\HomepageModuleItem;
 use App\Models\ServiceLink;
 use App\Models\TravelCategory;
 use App\Models\User;
+use App\Support\PublicUrl;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
@@ -130,7 +131,7 @@ class MediaPortalPublicTest extends TestCase
 
         $this->get('/destinations/tokyo')
             ->assertStatus(301)
-            ->assertRedirect(route('regions.show', $tokyo));
+            ->assertRedirect(PublicUrl::route('regions.show', $tokyo));
     }
 
     public function test_non_channel_destination_still_renders_on_legacy_destination_url(): void
@@ -517,11 +518,11 @@ class MediaPortalPublicTest extends TestCase
             ->assertSee('Curated Planning Set')
             ->assertSee('Module Rail Feature Label')
             ->assertSee('Curated rail module summary.')
-            ->assertSee('href="'.route('articles.show', $publishedArticle).'"', false)
+            ->assertSee('href="'.PublicUrl::route('articles.show', $publishedArticle).'"', false)
             ->assertSee('Module Kansai Channel Label')
-            ->assertSee('href="'.route('regions.show', $region).'"', false)
+            ->assertSee('href="'.PublicUrl::route('regions.show', $region).'"', false)
             ->assertSee('Module Transport Category Label')
-            ->assertSee('href="'.route('categories.show', $category).'"', false)
+            ->assertSee('href="'.PublicUrl::route('categories.show', $category).'"', false)
             ->assertSee('Module Rail Service Label')
             ->assertSee('href="https://example.com/module-rail"', false)
             ->assertSee('rel="nofollow noopener sponsored"', false)
@@ -572,7 +573,10 @@ class MediaPortalPublicTest extends TestCase
             ->assertSee('href="https://www.tokyometro.jp/en/"', false)
             ->assertSee('rel="nofollow noopener"', false)
             ->assertSee('Transport')
-            ->assertSee('7 min read')
+            ->assertSee('min read')
+            ->assertSee('Editorial review')
+            ->assertSee('Quick pre-trip checklist')
+            ->assertSee('"wordCount":', false)
             ->assertSee('Can I use Suica in Tokyo?')
             ->assertSee('Yes, for most short city trips.', false)
             ->assertSee('application/ld+json', false)
@@ -624,5 +628,39 @@ class MediaPortalPublicTest extends TestCase
             ->assertOk()
             ->assertSee('Local Tourism Board')
             ->assertDontSee('href="#"', false);
+    }
+
+    public function test_article_body_rewrites_legacy_internal_links_to_canonical_https_urls(): void
+    {
+        $article = Article::factory()->create([
+            'author_id' => User::factory(),
+            'title' => 'Legacy Credit Link',
+            'slug' => 'legacy-credit-link',
+            'status' => ArticleStatus::Published,
+            'published_at' => now(),
+            'body' => '<p><a href="http://japantriptools.com/image-credits#article-legacy-credit-link">Image credit details</a></p>',
+        ]);
+
+        $this->get(route('articles.show', $article))
+            ->assertOk()
+            ->assertSee('href="'.PublicUrl::route('image-credits').'#article-legacy-credit-link"', false)
+            ->assertDontSee('http://japantriptools.com/image-credits', false);
+    }
+
+    public function test_article_image_urls_preserve_known_working_wikimedia_thumbnail_paths(): void
+    {
+        $article = Article::factory()->create([
+            'author_id' => User::factory(),
+            'title' => 'Wikimedia Thumbnail',
+            'slug' => 'wikimedia-thumbnail',
+            'status' => ArticleStatus::Published,
+            'published_at' => now(),
+            'body' => '<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Nikko_toshogu_shrine.jpg/1920px-Nikko_toshogu_shrine.jpg" alt="Nikko"></p>',
+        ]);
+
+        $this->assertSame(
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Nikko_toshogu_shrine.jpg/1920px-Nikko_toshogu_shrine.jpg',
+            $article->firstImageUrl(640),
+        );
     }
 }

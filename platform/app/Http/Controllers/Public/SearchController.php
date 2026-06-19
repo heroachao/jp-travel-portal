@@ -8,6 +8,7 @@ use App\Models\Destination;
 use App\Models\Tag;
 use App\Models\TravelCategory;
 use App\Services\Seo\MetaPayload;
+use App\Support\PublicUrl;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -50,9 +51,24 @@ class SearchController extends Controller
         }
 
         $articles = Article::published()
+            ->with([
+                'destinations' => fn ($builder) => $builder->where('is_indexable', true)->ordered(),
+                'travelCategories' => fn ($builder) => $builder->visible()->ordered(),
+                'tags' => fn ($builder) => $builder->orderBy('name'),
+            ])
             ->when($query !== '', fn ($builder) => $builder->where(function ($inner) use ($query): void {
                 $inner->where('title', 'like', "%{$query}%")
-                    ->orWhere('excerpt', 'like', "%{$query}%");
+                    ->orWhere('excerpt', 'like', "%{$query}%")
+                    ->orWhere('body', 'like', "%{$query}%")
+                    ->orWhereHas('destinations', fn ($relation) => $relation
+                        ->where('name', 'like', "%{$query}%")
+                        ->orWhere('display_name', 'like', "%{$query}%"))
+                    ->orWhereHas('travelCategories', fn ($relation) => $relation
+                        ->where('title', 'like', "%{$query}%")
+                        ->orWhere('display_name', 'like', "%{$query}%"))
+                    ->orWhereHas('tags', fn ($relation) => $relation
+                        ->where('name', 'like', "%{$query}%")
+                        ->orWhere('slug', 'like', "%{$query}%"));
             }))
             ->when($region !== '', fn ($builder) => $builder->whereHas('destinations', fn ($inner) => $inner
                 ->where('slug', $region)
@@ -85,7 +101,7 @@ class SearchController extends Controller
         };
 
         return view('public.search', [
-            'meta' => new MetaPayload('Search Japan Travel Guides', 'Search published Japan travel articles.', route('search')),
+            'meta' => new MetaPayload('Search Japan Travel Guides', 'Search published Japan travel articles.', PublicUrl::route('search')),
             'q' => $query,
             'region' => $region,
             'category' => $category,

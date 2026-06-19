@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ArticleStatus;
+use App\Support\PublicUrl;
 use Database\Factories\ArticleFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,6 +17,7 @@ class Article extends Model
 {
     /** @use HasFactory<ArticleFactory> */
     use HasFactory;
+
     use SoftDeletes;
 
     protected $fillable = [
@@ -121,7 +123,7 @@ class Article extends Model
             ->where('published_at', '<=', now());
     }
 
-    public function firstImageUrl(): ?string
+    public function firstImageUrl(int $width = 960): ?string
     {
         if (! $this->body) {
             return null;
@@ -131,7 +133,7 @@ class Article extends Model
             return null;
         }
 
-        return html_entity_decode($matches[2], ENT_QUOTES | ENT_HTML5);
+        return self::optimizedImageUrl(html_entity_decode($matches[2], ENT_QUOTES | ENT_HTML5), $width);
     }
 
     public function firstImageAlt(): string
@@ -149,6 +151,85 @@ class Article extends Model
         }
 
         return $this->title;
+    }
+
+    public function optimizedBodyHtml(): string
+    {
+        if (! $this->body) {
+            return '';
+        }
+
+        $html = preg_replace_callback('/<img\b[^>]*\bsrc=(["\'])(.*?)\1[^>]*>/i', function (array $matches): string {
+            $imageTag = $matches[0];
+            $src = html_entity_decode($matches[2], ENT_QUOTES | ENT_HTML5);
+            $optimizedSrc = e(self::optimizedImageUrl($src));
+            $imageTag = preg_replace_callback(
+                '/\bsrc=(["\']).*?\1/i',
+                fn (): string => 'src="'.$optimizedSrc.'"',
+                $imageTag,
+            ) ?: $imageTag;
+
+            if (! preg_match('/\bloading=/i', $imageTag)) {
+                $imageTag = preg_replace('/<img\b/i', '<img loading="lazy"', $imageTag, 1) ?: $imageTag;
+            }
+
+            if (! preg_match('/\bdecoding=/i', $imageTag)) {
+                $imageTag = preg_replace('/<img\b/i', '<img decoding="async"', $imageTag, 1) ?: $imageTag;
+            }
+
+            return $imageTag;
+        }, $this->body) ?: $this->body;
+
+        return preg_replace_callback('/\bhref=(["\'])(.*?)\1/i', function (array $matches): string {
+            $href = html_entity_decode($matches[2], ENT_QUOTES | ENT_HTML5);
+            $canonicalHref = self::canonicalInternalHref($href);
+
+            if ($canonicalHref === null) {
+                return $matches[0];
+            }
+
+            return 'href="'.e($canonicalHref).'"';
+        }, $html) ?: $html;
+    }
+
+    public static function optimizedImageUrl(string $url, int $width = 960): string
+    {
+        return $url;
+    }
+
+    private static function canonicalInternalHref(string $href): ?string
+    {
+        if ($href === '' || str_starts_with($href, '#')) {
+            return null;
+        }
+
+        $siteBase = rtrim((string) config('app.url', 'https://japantriptools.com'), '/');
+        $siteHost = (string) parse_url($siteBase, PHP_URL_HOST);
+        $siteScheme = (string) (parse_url($siteBase, PHP_URL_SCHEME) ?: 'https');
+        $parsed = parse_url($href);
+
+        if ($parsed === false) {
+            return null;
+        }
+
+        if (isset($parsed['host']) && ! in_array($parsed['host'], array_filter([$siteHost, 'japantriptools.com']), true)) {
+            return null;
+        }
+
+        if (isset($parsed['scheme']) && ! in_array($parsed['scheme'], ['http', 'https'], true)) {
+            return null;
+        }
+
+        $path = $parsed['path'] ?? '';
+
+        if ($path === '' || ! str_starts_with($path, '/')) {
+            return null;
+        }
+
+        $query = isset($parsed['query']) ? '?'.$parsed['query'] : '';
+        $fragment = isset($parsed['fragment']) ? '#'.$parsed['fragment'] : '';
+
+        return PublicUrl::canonicalize($siteScheme.'://'.$siteHost.$path.$query.$fragment);
     }
 
     public function getRouteKeyName(): string

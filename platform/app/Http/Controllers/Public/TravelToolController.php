@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Services\Seo\MetaPayload;
+use App\Support\PublicUrl;
 use App\Support\TravelTools;
 use Illuminate\View\View;
 
@@ -22,7 +23,7 @@ class TravelToolController extends Controller
                     '@type' => 'ListItem',
                     'position' => $index + 1,
                     'name' => $tool['name'],
-                    'url' => route('tools.show', $tool['slug']),
+                    'url' => PublicUrl::route('tools.show', $tool['slug']),
                 ])
                 ->all(),
         ];
@@ -31,7 +32,7 @@ class TravelToolController extends Controller
             'meta' => new MetaPayload(
                 'Japan Travel Tools',
                 'Free on-site Japan travel calculators, route planners, packing lists, and practical trip tools.',
-                route('tools.index'),
+                PublicUrl::route('tools.index'),
             ),
             'tools' => $tools,
             'toolsItemListJsonLd' => $toolsItemListJsonLd,
@@ -48,7 +49,7 @@ class TravelToolController extends Controller
             '@context' => 'https://schema.org',
             '@type' => 'WebApplication',
             'name' => $toolConfig['name'],
-            'url' => route('tools.show', $toolConfig['slug']),
+            'url' => PublicUrl::route('tools.show', $toolConfig['slug']),
             'applicationCategory' => 'TravelApplication',
             'operatingSystem' => 'All',
             'description' => $toolConfig['meta_description'],
@@ -80,19 +81,19 @@ class TravelToolController extends Controller
                     '@type' => 'ListItem',
                     'position' => 1,
                     'name' => 'Japan Trip Tools',
-                    'item' => route('home'),
+                    'item' => PublicUrl::route('home'),
                 ],
                 [
                     '@type' => 'ListItem',
                     'position' => 2,
                     'name' => 'Tools',
-                    'item' => route('tools.index'),
+                    'item' => PublicUrl::route('tools.index'),
                 ],
                 [
                     '@type' => 'ListItem',
                     'position' => 3,
                     'name' => $toolConfig['name'],
-                    'item' => route('tools.show', $toolConfig['slug']),
+                    'item' => PublicUrl::route('tools.show', $toolConfig['slug']),
                 ],
             ],
         ];
@@ -101,7 +102,7 @@ class TravelToolController extends Controller
             'meta' => new MetaPayload(
                 $toolConfig['name'].' | Japan Travel Tools',
                 $toolConfig['meta_description'],
-                route('tools.show', $toolConfig['slug']),
+                PublicUrl::route('tools.show', $toolConfig['slug']),
             ),
             'tool' => $toolConfig,
             'tools' => TravelTools::all(),

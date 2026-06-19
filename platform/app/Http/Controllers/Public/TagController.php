@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use App\Services\Seo\MetaPayload;
+use App\Support\PublicUrl;
 use Illuminate\View\View;
 
 class TagController extends Controller
@@ -18,7 +19,7 @@ class TagController extends Controller
             'meta' => new MetaPayload(
                 $tag->name.' Japan Travel Guides',
                 $tag->description ?: 'Related Japan travel guides and planning notes.',
-                route('tags.show', $tag),
+                PublicUrl::route('tags.show', $tag),
                 indexable: $isSearchIndexable,
             ),
             'tag' => $tag,

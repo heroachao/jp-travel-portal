@@ -9,7 +9,7 @@
         @ad('content-mid-rectangle')
         <div class="mt-5 grid gap-4 md:grid-cols-3">
             @foreach($destinations as $destination)
-                <a class="public-tool-link" href="{{ route('destinations.show', $destination) }}">
+                <a class="public-tool-link" href="{{ \App\Support\PublicUrl::route('destinations.show', $destination) }}">
                     <strong>{{ $destination->name }}</strong>
                     <span>{{ $destination->excerpt }}</span>
                 </a>

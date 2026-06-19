@@ -21,8 +21,11 @@
                 @if($article->display_updated_at)
                     <span>Updated {{ $article->display_updated_at->format('F j, Y') }}</span>
                 @endif
-                @if($article->reading_time_minutes)
-                    <span>{{ $article->reading_time_minutes }} min read</span>
+                @if($contentEnhancement['reviewed_at'])
+                    <span>Reviewed {{ $contentEnhancement['reviewed_at'] }}</span>
+                @endif
+                @if($contentEnhancement['reading_time_minutes'])
+                    <span>{{ $contentEnhancement['reading_time_minutes'] }} min read</span>
                 @endif
                 @if($article->source_name)
                     @if($article->source_url)
@@ -31,6 +34,20 @@
                         <span>{{ $article->source_name }}</span>
                     @endif
                 @endif
+            </div>
+            <div class="article-trust-strip">
+                <div>
+                    <strong>Editorial review</strong>
+                    <span>Original English planning guide, reviewed for practical travel decisions and official-source checks.</span>
+                </div>
+                <div>
+                    <strong>Primary source</strong>
+                    <span>{{ $contentEnhancement['source_label'] ?: 'Official tourism and transport references' }}</span>
+                </div>
+                <div>
+                    <strong>Before booking</strong>
+                    <span>Verify current prices, hours, routes, weather alerts, and reservation rules with official providers.</span>
+                </div>
             </div>
         </header>
         @if($article->coverMedia)
@@ -43,21 +60,22 @@
         @endif
         <div class="public-card mt-5 flex flex-wrap gap-2 p-4 text-sm text-slate-600">
             @foreach($article->destinations as $destination)
-                <a class="public-tag-pill" href="{{ route($destination->is_channel ? 'regions.show' : 'destinations.show', $destination) }}">{{ $destination->display_name ?: $destination->name }}</a>
+                <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route($destination->is_channel ? 'regions.show' : 'destinations.show', $destination) }}">{{ $destination->display_name ?: $destination->name }}</a>
             @endforeach
             @foreach($article->travelCategories as $category)
-                <a class="public-tag-pill" href="{{ route('categories.show', $category) }}">{{ $category->display_name ?: $category->title }}</a>
+                <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('categories.show', $category) }}">{{ $category->display_name ?: $category->title }}</a>
             @endforeach
             @foreach($article->topics as $topic)
-                <a class="public-tag-pill" href="{{ route('topics.show', $topic) }}">{{ $topic->title }}</a>
+                <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('topics.show', $topic) }}">{{ $topic->title }}</a>
             @endforeach
             @foreach($article->tags as $tag)
-                <a class="public-tag-pill" href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
+                <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('tags.show', $tag) }}">#{{ $tag->name }}</a>
             @endforeach
         </div>
         <div class="content-prose public-card mt-5 p-6 md:p-8">
             @ad('article-body-middle')
-            {!! $article->body !!}
+            {!! $article->optimizedBodyHtml() !!}
+            {!! $contentEnhancement['html'] !!}
         </div>
         @if($article->enabledFaqs->isNotEmpty())
             <section class="public-card mt-5 p-6">

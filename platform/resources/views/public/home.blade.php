@@ -19,7 +19,7 @@
                 }
 
                 return [
-                    'url' => route('articles.show', $item),
+                    'url' => \App\Support\PublicUrl::route('articles.show', $item),
                     'label' => $moduleItem->label ?: $item->title,
                     'summary' => $moduleItem->summary ?: $item->excerpt,
                     'external' => false,
@@ -32,7 +32,7 @@
                 }
 
                 return [
-                    'url' => route($item->is_channel ? 'regions.show' : 'destinations.show', $item),
+                    'url' => \App\Support\PublicUrl::route($item->is_channel ? 'regions.show' : 'destinations.show', $item),
                     'label' => $moduleItem->label ?: ($item->display_name ?: $item->name),
                     'summary' => $moduleItem->summary ?: $item->excerpt,
                     'external' => false,
@@ -45,7 +45,7 @@
                 }
 
                 return [
-                    'url' => route('categories.show', $item),
+                    'url' => \App\Support\PublicUrl::route('categories.show', $item),
                     'label' => $moduleItem->label ?: ($item->display_name ?: $item->title),
                     'summary' => $moduleItem->summary ?: $item->excerpt,
                     'external' => false,
@@ -107,7 +107,7 @@
             <p class="public-kicker">My Trip</p>
             <h2>Build a smarter Japan route.</h2>
             <p>Search guides, compare regions, and keep practical tools close while planning.</p>
-            <a href="{{ route('tools.index') }}">Open travel tools</a>
+            <a href="{{ \App\Support\PublicUrl::route('tools.index') }}">Open travel tools</a>
         </aside>
     </section>
 
@@ -116,7 +116,7 @@
             <div class="public-lead-copy">
                 <p class="public-kicker">Top Guide</p>
                 @if($leadArticle)
-                    <a class="public-lead-link" href="{{ route('articles.show', $leadArticle) }}">
+                    <a class="public-lead-link" href="{{ \App\Support\PublicUrl::route('articles.show', $leadArticle) }}">
                         <h1>{{ $leadArticle->title }}</h1>
                         <p>{{ $leadArticle->excerpt }}</p>
                     </a>
@@ -130,14 +130,14 @@
                         @endif
                     </div>
                     <div class="public-lead-actions">
-                        <a class="public-primary-link" href="{{ route('articles.show', $leadArticle) }}">Read the guide</a>
-                        <a class="public-secondary-link" href="{{ route('tools.index') }}">Open tools</a>
+                        <a class="public-primary-link" href="{{ \App\Support\PublicUrl::route('articles.show', $leadArticle) }}">Read the guide</a>
+                        <a class="public-secondary-link" href="{{ \App\Support\PublicUrl::route('tools.index') }}">Open tools</a>
                     </div>
                 @else
                     <h1>Plan Japan with practical guides and route tools.</h1>
                     <p>Publish your first guide in the admin to feature it here.</p>
                     <div class="public-lead-actions">
-                        <a class="public-primary-link" href="{{ route('tools.index') }}">Open tools</a>
+                        <a class="public-primary-link" href="{{ \App\Support\PublicUrl::route('tools.index') }}">Open tools</a>
                     </div>
                 @endif
             </div>
@@ -151,10 +151,10 @@
                 <div class="public-travel-graphic" aria-label="Featured Japan travel images">
                     @foreach($travelGraphicArticles as $graphicArticle)
                         @php
-                            $graphicImage = $graphicArticle->firstImageUrl();
+                            $graphicImage = $graphicArticle->firstImageUrl(640);
                         @endphp
                         @if($graphicImage)
-                            <a href="{{ route('articles.show', $graphicArticle) }}" aria-label="{{ $graphicArticle->title }}">
+                            <a href="{{ \App\Support\PublicUrl::route('articles.show', $graphicArticle) }}" aria-label="{{ $graphicArticle->title }}">
                                 <img
                                     src="{{ $graphicImage }}"
                                     alt="{{ $graphicArticle->firstImageAlt() }}"
@@ -172,11 +172,11 @@
         <aside class="public-card public-news-stack">
             <div class="public-section-heading">
                 <h2>Latest Updates</h2>
-                <a href="{{ route('articles.index') }}">All guides</a>
+                <a href="{{ \App\Support\PublicUrl::route('articles.index') }}">All guides</a>
             </div>
             <div class="divide-y divide-slate-100">
                 @forelse($latestRail as $article)
-                    <a class="public-mini-story" href="{{ route('articles.show', $article) }}">
+                    <a class="public-mini-story" href="{{ \App\Support\PublicUrl::route('articles.show', $article) }}">
                         <span>{{ $article->published_at?->format('M j') }}</span>
                         <strong>{{ $article->title }}</strong>
                     </a>
@@ -193,14 +193,14 @@
         <div class="space-y-5">
             <div class="public-section-heading">
                 <h2>Featured Guides</h2>
-                <a href="{{ route('articles.index') }}">Read more</a>
+                <a href="{{ \App\Support\PublicUrl::route('articles.index') }}">Read more</a>
             </div>
             <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 @forelse($secondaryArticles as $article)
                     @php
-                        $articleImage = $article->firstImageUrl();
+                        $articleImage = $article->firstImageUrl(640);
                     @endphp
-                    <a class="public-story-card" href="{{ route('articles.show', $article) }}">
+                    <a class="public-story-card" href="{{ \App\Support\PublicUrl::route('articles.show', $article) }}">
                         <span class="public-story-thumb">
                             @if($articleImage)
                                 <img src="{{ $articleImage }}" alt="{{ $article->firstImageAlt() }}" loading="lazy">
@@ -213,9 +213,9 @@
                 @empty
                     @foreach($popularArticles->take(3) as $article)
                         @php
-                            $articleImage = $article->firstImageUrl();
+                            $articleImage = $article->firstImageUrl(640);
                         @endphp
-                        <a class="public-story-card" href="{{ route('articles.show', $article) }}">
+                        <a class="public-story-card" href="{{ \App\Support\PublicUrl::route('articles.show', $article) }}">
                             <span class="public-story-thumb">
                                 @if($articleImage)
                                     <img src="{{ $articleImage }}" alt="{{ $article->firstImageAlt() }}" loading="lazy">
@@ -236,11 +236,11 @@
                             <h2>Route Desk</h2>
                             <p>More planning angles to keep exploring Japan by region, season, and transport style.</p>
                         </div>
-                        <a href="{{ route('articles.index') }}">Open feed</a>
+                        <a href="{{ \App\Support\PublicUrl::route('articles.index') }}">Open feed</a>
                     </div>
                     <div class="mt-4 grid gap-3 md:grid-cols-2">
                         @foreach($routeDesk as $article)
-                            <a class="public-route-row" href="{{ route('articles.show', $article) }}">
+                            <a class="public-route-row" href="{{ \App\Support\PublicUrl::route('articles.show', $article) }}">
                                 <span>{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                                 <div>
                                     <strong>{{ $article->title }}</strong>
@@ -255,11 +255,11 @@
             <div class="public-card">
                 <div class="public-section-heading">
                     <h2>Popular Articles</h2>
-                    <a href="{{ route('search', ['sort' => 'popular']) }}">Popular feed</a>
+                    <a href="{{ \App\Support\PublicUrl::route('search', ['sort' => 'popular']) }}">Popular feed</a>
                 </div>
                 <div class="mt-3 grid gap-3">
                     @foreach($popularArticles as $article)
-                        <a class="public-row-story" href="{{ route('articles.show', $article) }}">
+                        <a class="public-row-story" href="{{ \App\Support\PublicUrl::route('articles.show', $article) }}">
                             <span>{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                             <div>
                                 <h3>{{ $article->title }}</h3>
@@ -305,25 +305,25 @@
             <section class="public-card public-planning-widget">
                 <div class="public-section-heading">
                     <h2>Plan Next</h2>
-                    <a href="{{ route('tools.index') }}">Tools</a>
+                    <a href="{{ \App\Support\PublicUrl::route('tools.index') }}">Tools</a>
                 </div>
                 <div class="public-planning-steps">
                     @if($plannerTool)
-                        <a href="{{ route('tools.show', $plannerTool['slug']) }}">
+                        <a href="{{ \App\Support\PublicUrl::route('tools.show', $plannerTool['slug']) }}">
                             <span>1</span>
                             <strong>{{ $plannerTool['short_name'] }}</strong>
                             <small>{{ $plannerTool['summary'] }}</small>
                         </a>
                     @endif
                     @if($leadArticle)
-                        <a href="{{ route('articles.show', $leadArticle) }}">
+                        <a href="{{ \App\Support\PublicUrl::route('articles.show', $leadArticle) }}">
                             <span>2</span>
                             <strong>Read the latest guide</strong>
                             <small>{{ $leadArticle->title }}</small>
                         </a>
                     @endif
                     @if($budgetTool)
-                        <a href="{{ route('tools.show', $budgetTool['slug']) }}">
+                        <a href="{{ \App\Support\PublicUrl::route('tools.show', $budgetTool['slug']) }}">
                             <span>3</span>
                             <strong>{{ $budgetTool['short_name'] }}</strong>
                             <small>{{ $budgetTool['summary'] }}</small>
@@ -335,11 +335,11 @@
             <section class="public-card">
                 <div class="public-section-heading">
                     <h2>Region Standings</h2>
-                    <a href="{{ route('regions.index') }}">All</a>
+                    <a href="{{ \App\Support\PublicUrl::route('regions.index') }}">All</a>
                 </div>
                 <div class="mt-3 divide-y divide-slate-100">
                     @foreach($regionChannels as $destination)
-                        <a class="public-ranking-row" href="{{ route('regions.show', $destination) }}">
+                        <a class="public-ranking-row" href="{{ \App\Support\PublicUrl::route('regions.show', $destination) }}">
                             <span>{{ $loop->iteration }}</span>
                             <strong>{{ $destination->display_name ?: $destination->name }}</strong>
                             <small>{{ $destination->published_articles_count }} {{ \Illuminate\Support\Str::plural('guide', $destination->published_articles_count) }}</small>
@@ -354,7 +354,7 @@
                 </div>
                 <div class="mt-3 grid gap-3">
                     @foreach($tools as $tool)
-                        <a class="public-tool-link" href="{{ route('tools.show', $tool['slug']) }}">
+                        <a class="public-tool-link" href="{{ \App\Support\PublicUrl::route('tools.show', $tool['slug']) }}">
                             <strong>{{ $tool['short_name'] }}</strong>
                             <span>{{ $tool['summary'] }}</span>
                         </a>
@@ -368,7 +368,7 @@
                 </div>
                 <div class="mt-3 flex flex-wrap gap-2">
                     @foreach($travelCategories as $category)
-                        <a class="public-tag-pill" href="{{ route('categories.show', $category) }}">
+                        <a class="public-tag-pill" href="{{ \App\Support\PublicUrl::route('categories.show', $category) }}">
                             {{ $category->display_name ?: $category->title }}
                             <small>{{ $category->published_articles_count }}</small>
                         </a>

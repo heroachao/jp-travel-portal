@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\Topic;
 use App\Services\Seo\MetaPayload;
+use App\Support\PublicUrl;
 use Illuminate\View\View;
 
 class TopicController extends Controller
@@ -22,7 +23,7 @@ class TopicController extends Controller
             'meta' => new MetaPayload(
                 $topic->seo_title ?: $topic->title,
                 $topic->meta_description,
-                route('topics.show', $topic),
+                PublicUrl::route('topics.show', $topic),
                 indexable: $isSearchIndexable,
             ),
             'topic' => $topic,

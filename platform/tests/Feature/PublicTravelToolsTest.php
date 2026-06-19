@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Enums\ArticleStatus;
 use App\Models\Article;
 use App\Models\User;
+use App\Support\PublicUrl;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -19,8 +20,8 @@ class PublicTravelToolsTest extends TestCase
             ->assertSee('Japan travel tools that stay on this site.')
             ->assertSee('Practical Japan travel tools for search-led planning')
             ->assertSee('"@type":"ItemList"', false)
-            ->assertSee(route('tools.show', 'trip-planner'), false)
-            ->assertSee(route('tools.show', 'jr-pass-calculator'), false)
+            ->assertSee(PublicUrl::route('tools.show', 'trip-planner'), false)
+            ->assertSee(PublicUrl::route('tools.show', 'jr-pass-calculator'), false)
             ->assertDontSee('target="_blank"', false);
     }
 
@@ -42,10 +43,10 @@ class PublicTravelToolsTest extends TestCase
     {
         $this->get(route('sitemap'))
             ->assertOk()
-            ->assertSee(route('tools.index'), false)
-            ->assertSee(route('tools.show', 'trip-planner'), false)
-            ->assertSee(route('tools.show', 'tax-free-calculator'), false)
-            ->assertSee(route('image-credits'), false);
+            ->assertSee(PublicUrl::route('tools.index'), false)
+            ->assertSee(PublicUrl::route('tools.show', 'trip-planner'), false)
+            ->assertSee(PublicUrl::route('tools.show', 'tax-free-calculator'), false)
+            ->assertSee(PublicUrl::route('image-credits'), false);
     }
 
     public function test_image_credits_collects_structured_article_image_sources(): void
@@ -56,7 +57,7 @@ class PublicTravelToolsTest extends TestCase
             'slug' => 'kyoto-image-credit-test',
             'status' => ArticleStatus::Published,
             'published_at' => now(),
-            'body' => '<figure data-image-source-url="https://commons.wikimedia.org/wiki/File:Kyoto.jpg" data-image-license="CC BY 4.0" data-image-license-url="https://creativecommons.org/licenses/by/4.0/" data-image-attribution="Example Photographer"><img src="https://example.com/kyoto.jpg" alt="Kyoto temple"><figcaption>Kyoto temple image. <a href="'.route('image-credits').'#article-kyoto-image-credit-test">Image credit details</a>.</figcaption></figure><p>Body.</p>',
+            'body' => '<figure data-image-source-url="https://commons.wikimedia.org/wiki/File:Kyoto.jpg" data-image-license="CC BY 4.0" data-image-license-url="https://creativecommons.org/licenses/by/4.0/" data-image-attribution="Example Photographer"><img src="https://example.com/kyoto.jpg" alt="Kyoto temple"><figcaption>Kyoto temple image. <a href="'.PublicUrl::route('image-credits').'#article-kyoto-image-credit-test">Image credit details</a>.</figcaption></figure><p>Body.</p>',
         ]);
 
         $this->get(route('image-credits'))
@@ -64,7 +65,8 @@ class PublicTravelToolsTest extends TestCase
             ->assertSee('Kyoto Image Credit Test')
             ->assertSee('Example Photographer')
             ->assertSee('CC BY 4.0')
-            ->assertSee(route('articles.show', $article), false)
-            ->assertSee('target="_blank" rel="nofollow noopener noreferrer"', false);
+            ->assertSee(PublicUrl::route('articles.show', $article), false)
+            ->assertSee('https://commons.wikimedia.org/wiki/File:Kyoto.jpg', false)
+            ->assertDontSee('target="_blank" rel="nofollow noopener noreferrer"', false);
     }
 }

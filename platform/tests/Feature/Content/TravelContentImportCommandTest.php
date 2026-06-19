@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Destination;
 use App\Models\TravelCategory;
 use App\Models\User;
+use App\Support\PublicUrl;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -79,7 +80,7 @@ class TravelContentImportCommandTest extends TestCase
         $this->assertSame('https://www.gotokyo.org/en/index.html', $article->source_url);
         $this->assertStringContainsString('data-image-source-url="https://commons.wikimedia.org/wiki/File:Exterior-test.jpg"', $article->body);
         $this->assertStringContainsString('Image: Wikimedia Commons / CC0 1.0', $article->body);
-        $this->assertStringContainsString(route('image-credits').'#article-official-tokyo-test-guide', $article->body);
+        $this->assertStringContainsString(PublicUrl::route('image-credits').'#article-official-tokyo-test-guide', $article->body);
         $this->assertStringNotContainsString('Source: <a href="https://commons.wikimedia.org/wiki/File:Exterior-test.jpg"', $article->body);
         $this->assertStringContainsString('This article is an original English summary', $article->body);
         $this->assertTrue($article->travelCategories()->where('slug', 'guide')->exists());

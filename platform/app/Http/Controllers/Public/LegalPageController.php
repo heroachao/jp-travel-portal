@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Services\Seo\MetaPayload;
 use App\Services\Settings\SiteSettings;
+use App\Support\PublicUrl;
 use Illuminate\View\View;
 
 class LegalPageController extends Controller
@@ -45,7 +46,7 @@ class LegalPageController extends Controller
             'meta' => new MetaPayload(
                 $page['title'].' | '.$site->site_name,
                 $page['description'],
-                route($page['route']),
+                PublicUrl::route($page['route']),
             ),
             'page' => $page,
             'contactEmail' => $contactEmail,
