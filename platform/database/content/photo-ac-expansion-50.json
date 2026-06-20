@@ -26,13 +26,14 @@
       ],
       "popularity_score": 72,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Shibuya_Crossing%2C_Tokyo%2C_Japan_%286790070270%29.jpg/1920px-Shibuya_Crossing%2C_Tokyo%2C_Japan_%286790070270%29.jpg",
-        "alt": "Shibuya Crossing Tokyo for Tokyo 48-Hour Transit-Friendly Itinerary",
-        "caption": "Shibuya Crossing Tokyo is used to match the article's destination or travel topic.",
-        "license": "CC BY 2.0",
-        "attribution": "yeowatzup",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AShibuya_Crossing%2C_Tokyo%2C_Japan_(6790070270).jpg",
-        "match_query": "Shibuya Crossing Tokyo"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Yamanote-Line-E235.jpg/960px-Yamanote-Line-E235.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "MaedaAkihiko",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Yamanote-Line-E235.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Yamanote Line image for Tokyo 48-Hour Transit-Friendly Itinerary",
+        "caption": "Tokyo 48-Hour Transit-Friendly Itinerary is represented with a matched Wikimedia Commons image of Yamanote Line.",
+        "match_query": "Yamanote Line"
       },
       "sources": [
         {
@@ -108,13 +109,14 @@
       ],
       "popularity_score": 73,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Mensen_op_een_trap_in_het_Ueno-park_in_Tokyo_Ueno_Park%2C_at_Tokyo_%28titel_op_object%29%2C_RP-F-F01102-AY.jpg/1920px-Mensen_op_een_trap_in_het_Ueno-park_in_Tokyo_Ueno_Park%2C_at_Tokyo_%28titel_op_object%29%2C_RP-F-F01102-AY.jpg",
-        "alt": "Ueno Park in Tokyo for ueno museum and park morning plan",
-        "caption": "Ueno museum and park plans center on Ueno Park and nearby museums.",
-        "license": "CC0",
-        "attribution": "Rijksmuseum",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AMensen_op_een_trap_in_het_Ueno-park_in_Tokyo_Ueno_Park%2C_at_Tokyo_(titel_op_object)%2C_RP-F-F01102-AY.jpg",
-        "match_query": "Ueno Park Tokyo"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Ueno_park.jpg/960px-Ueno_park.jpg",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Bernard Gagnon",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Ueno_park.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "alt": "Ueno Park image for Ueno Museum and Park Morning Plan",
+        "caption": "Ueno Museum and Park Morning Plan is represented with a matched Wikimedia Commons image of Ueno Park.",
+        "match_query": "Ueno Park"
       },
       "sources": [
         {
@@ -190,13 +192,14 @@
       ],
       "popularity_score": 74,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Shrines_-_Sensoji_Temple%2C_Asakusa%2C_Tokyo%2C_Japan_-_DSC02054.JPG/1920px-Shrines_-_Sensoji_Temple%2C_Asakusa%2C_Tokyo%2C_Japan_-_DSC02054.JPG",
-        "alt": "Asakusa in Tokyo for asakusa nakamise shopping street guide",
-        "caption": "Asakusa and Nakamise are classic Tokyo walking areas.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Sensoji_2023.jpg/960px-Sensoji_2023.jpg",
         "license": "CC0",
-        "attribution": "Daderot",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AShrines_-_Sensoji_Temple%2C_Asakusa%2C_Tokyo%2C_Japan_-_DSC02054.JPG",
-        "match_query": "Sensoji Asakusa Tokyo"
+        "attribution": "Akonnchiroll",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sensoji_2023.jpg",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "alt": "Nakamise dori image for Asakusa Nakamise Shopping Street Guide",
+        "caption": "Asakusa Nakamise Shopping Street Guide is represented with a matched Wikimedia Commons image of Nakamise dori.",
+        "match_query": "Nakamise-dori"
       },
       "sources": [
         {
@@ -272,13 +275,14 @@
       ],
       "popularity_score": 75,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Tokyo_Tower_at_night_1.JPG/1920px-Tokyo_Tower_at_night_1.JPG",
-        "alt": "Tokyo Tower at night for tokyo night view route without late transfers",
-        "caption": "Evening views in Tokyo are represented by Tokyo Tower.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Tokyo_Skytree_2014_%E2%85%A2.jpg/960px-Tokyo_Skytree_2014_%E2%85%A2.jpg",
         "license": "CC BY-SA 3.0",
         "attribution": "Kakidai",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ATokyo_Tower_at_night_1.JPG",
-        "match_query": "Tokyo Tower night"
+        "source_url": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_2014_%E2%85%A2.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "alt": "Tokyo Skytree image for Tokyo Night View Route Without Late Transfers",
+        "caption": "Tokyo Night View Route Without Late Transfers is represented with a matched Wikimedia Commons image of Tokyo Skytree.",
+        "match_query": "Tokyo Skytree"
       },
       "sources": [
         {
@@ -354,13 +358,14 @@
       ],
       "popularity_score": 76,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Tokyo_Tower_at_night_1.JPG/1920px-Tokyo_Tower_at_night_1.JPG",
-        "alt": "Tokyo Tower at night for tokyo tower and roppongi evening planner",
-        "caption": "Evening views in Tokyo are represented by Tokyo Tower.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Roppongi_Hills_2013-12-01.jpg/960px-Roppongi_Hills_2013-12-01.jpg",
         "license": "CC BY-SA 3.0",
-        "attribution": "Kakidai",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ATokyo_Tower_at_night_1.JPG",
-        "match_query": "Tokyo Tower night"
+        "attribution": "Shampoorobot at Japanese Wikipedia aka ja:User:A16504601",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Roppongi_Hills_2013-12-01.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "alt": "Roppongi Hills image for Tokyo Tower and Roppongi Evening Planner",
+        "caption": "Tokyo Tower and Roppongi Evening Planner is represented with a matched Wikimedia Commons image of Roppongi Hills.",
+        "match_query": "Roppongi Hills"
       },
       "sources": [
         {
@@ -436,13 +441,14 @@
       ],
       "popularity_score": 77,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Shinjuku_station%2C_Tokyo%2C_Japan_--_aerial_photo%2C_2008-04-11.jpg/1920px-Shinjuku_station%2C_Tokyo%2C_Japan_--_aerial_photo%2C_2008-04-11.jpg",
-        "alt": "Shinjuku in Tokyo for shinjuku station arrival checklist",
-        "caption": "Shinjuku is a practical evening food and hotel base.",
-        "license": "CC BY 2.0",
-        "attribution": "Lukas",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AShinjuku_station%2C_Tokyo%2C_Japan_--_aerial_photo%2C_2008-04-11.jpg",
-        "match_query": "Shinjuku Tokyo night"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/JRE_Shinjuku-STA_South.jpg/960px-JRE_Shinjuku-STA_South.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "MaedaAkihiko",
+        "source_url": "https://commons.wikimedia.org/wiki/File:JRE_Shinjuku-STA_South.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Shinjuku Station image for Shinjuku Station Arrival Checklist",
+        "caption": "Shinjuku Station Arrival Checklist is represented with a matched Wikimedia Commons image of Shinjuku Station.",
+        "match_query": "Shinjuku Station"
       },
       "sources": [
         {
@@ -518,13 +524,14 @@
       ],
       "popularity_score": 78,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/National_Tokyo_Museum-Ueno-Tokyo_entrance_garden.jpg/1920px-National_Tokyo_Museum-Ueno-Tokyo_entrance_garden.jpg",
-        "alt": "Tokyo National Museum for tokyo rainy day museums and shopping plan",
-        "caption": "Tokyo museum buffers work well around Ueno and national museums.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tokyo_National_Museum%2C_Honkan_2010.jpg/960px-Tokyo_National_Museum%2C_Honkan_2010.jpg",
         "license": "CC BY-SA 3.0",
-        "attribution": "Carla Antonini",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ANational_Tokyo_Museum-Ueno-Tokyo_entrance_garden.jpg",
-        "match_query": "Tokyo National Museum Ueno"
+        "attribution": "Wiiii",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Tokyo_National_Museum,_Honkan_2010.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "alt": "Tokyo National Museum image for Tokyo Rainy Day Museums and Shopping Plan",
+        "caption": "Tokyo Rainy Day Museums and Shopping Plan is represented with a matched Wikimedia Commons image of Tokyo National Museum.",
+        "match_query": "Tokyo National Museum"
       },
       "sources": [
         {
@@ -847,13 +854,14 @@
       ],
       "popularity_score": 82,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Kiyomizu-dera_Temple%2C_Kyoto_-_panoramio.jpg/1920px-Kiyomizu-dera_Temple%2C_Kyoto_-_panoramio.jpg",
-        "alt": "Kyoto temple travel scene for kyoto early morning temple strategy",
-        "caption": "Kyoto articles are represented by recognizable temple and historic street scenes.",
-        "license": "CC BY 3.0",
-        "attribution": "Kovacs Bela-Hungary",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AKiyomizu-dera_Temple%2C_Kyoto_-_panoramio.jpg",
-        "match_query": "Kiyomizu-dera Kyoto Japan"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine%2C_Kyoto%2C_Japan.jpg/960px-Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine%2C_Kyoto%2C_Japan.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Basile Morin",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine,_Kyoto,_Japan.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Fushimi Inari taisha image for Kyoto Early Morning Temple Strategy",
+        "caption": "Kyoto Early Morning Temple Strategy is represented with a matched Wikimedia Commons image of Fushimi Inari taisha.",
+        "match_query": "Fushimi Inari-taisha"
       },
       "sources": [
         {
@@ -1013,13 +1021,14 @@
       ],
       "popularity_score": 84,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Pontocho_by_einalem_in_Kyoto.jpg",
-        "alt": "Gion or Pontocho in Kyoto for kyoto night streets and quiet hours guide",
-        "caption": "Kyoto night etiquette is represented by Gion or Pontocho streets.",
-        "license": "CC BY-SA 2.0",
-        "attribution": "einalem from Pontocho street in Nakagyo, Kyoto",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3APontocho_by_einalem_in_Kyoto.jpg",
-        "match_query": "Pontocho Kyoto night"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Pontocho_by_Wolfiewolf_in_Nabeyacho%2C_Kyoto.jpg/960px-Pontocho_by_Wolfiewolf_in_Nabeyacho%2C_Kyoto.jpg",
+        "license": "CC BY 2.0",
+        "attribution": "Wolfiewolf from Pontocho street in Nakagyo, Kyoto",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Pontocho_by_Wolfiewolf_in_Nabeyacho,_Kyoto.jpg",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "alt": "Ponto cho image for Kyoto Night Streets and Quiet Hours Guide",
+        "caption": "Kyoto Night Streets and Quiet Hours Guide is represented with a matched Wikimedia Commons image of Ponto cho.",
+        "match_query": "Ponto-cho"
       },
       "sources": [
         {
@@ -1262,13 +1271,14 @@
       ],
       "popularity_score": 87,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Kyoto_Station_C0389.jpg/1920px-Kyoto_Station_C0389.jpg",
-        "alt": "Kyoto Station building for Kyoto Rainy Day Temples and Cafes",
-        "caption": "Kyoto Station building is used to match the article's destination or travel topic.",
-        "license": "Public domain",
-        "attribution": "No machine-readable author provided. Fg2 assumed (based on copyright claims).",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AKyoto_Station_C0389.jpg",
-        "match_query": "Kyoto Station building"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Nishiki_Ichiba_by_matsuyuki.jpg/960px-Nishiki_Ichiba_by_matsuyuki.jpg",
+        "license": "CC BY-SA 2.0",
+        "attribution": "matsuyuki",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Nishiki_Ichiba_by_matsuyuki.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "alt": "Nishiki Market image for Kyoto Rainy Day Temples and Cafes",
+        "caption": "Kyoto Rainy Day Temples and Cafes is represented with a matched Wikimedia Commons image of Nishiki Market.",
+        "match_query": "Nishiki Market"
       },
       "sources": [
         {
@@ -1345,13 +1355,14 @@
       ],
       "popularity_score": 88,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Byodoin_Uji_Kyoto03s3s4110.jpg/1920px-Byodoin_Uji_Kyoto03s3s4110.jpg",
-        "alt": "Uji or Nara day-trip scene for kyoto to nara day trip planner",
-        "caption": "Kyoto side-trip choices are represented by Uji or Nara landmarks.",
-        "license": "CC BY 2.5",
-        "attribution": "663highland",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AByodoin_Uji_Kyoto03s3s4110.jpg",
-        "match_query": "Byodoin Uji Kyoto"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Series221-Nara_line.jpg/960px-Series221-Nara_line.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Kamihiroya",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Series221-Nara_line.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Nara Line image for Kyoto to Nara Day Trip Planner",
+        "caption": "Kyoto to Nara Day Trip Planner is represented with a matched Wikimedia Commons image of Nara Line.",
+        "match_query": "Nara Line"
       },
       "sources": [
         {
@@ -1424,13 +1435,14 @@
       ],
       "popularity_score": 89,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Kyoto_Station_C0389.jpg/1920px-Kyoto_Station_C0389.jpg",
-        "alt": "Kyoto Station for kyoto station area hotel strategy",
-        "caption": "Kyoto Station is the luggage, rail and hotel-area anchor.",
-        "license": "Public domain",
-        "attribution": "No machine-readable author provided. Fg2 assumed (based on copyright claims).",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AKyoto_Station_C0389.jpg",
-        "match_query": "Kyoto Station building"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Kyoto_Tower_at_dusk%2C_from_railway_station.jpg/960px-Kyoto_Tower_at_dusk%2C_from_railway_station.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Rwendland",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Kyoto_Tower_at_dusk,_from_railway_station.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Kyoto Tower image for Kyoto Station Area Hotel Strategy",
+        "caption": "Kyoto Station Area Hotel Strategy is represented with a matched Wikimedia Commons image of Kyoto Tower.",
+        "match_query": "Kyoto Tower"
       },
       "sources": [
         {
@@ -1588,13 +1600,14 @@
       ],
       "popularity_score": 91,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Osaka_Castle_Nishinomaru_Garden_April_2005.JPG",
-        "alt": "Osaka Castle for osaka castle and nakanoshima day",
-        "caption": "Osaka history plans are represented by Osaka Castle or Nakanoshima.",
-        "license": "Public domain",
-        "attribution": "Wikimedia Commons contributor",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AOsaka_Castle_Nishinomaru_Garden_April_2005.JPG",
-        "match_query": "Osaka Castle"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Nakanoshima_Skyscrapers_in_201504_001.jpg/960px-Nakanoshima_Skyscrapers_in_201504_001.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Mc681",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Nakanoshima_Skyscrapers_in_201504_001.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Nakanoshima image for Osaka Castle and Nakanoshima Day",
+        "caption": "Osaka Castle and Nakanoshima Day is represented with a matched Wikimedia Commons image of Nakanoshima.",
+        "match_query": "Nakanoshima"
       },
       "sources": [
         {
@@ -1752,13 +1765,14 @@
       ],
       "popularity_score": 93,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Osaka_Kuromon_Ichiba_Market_2017-12_%282%29.jpg/1920px-Osaka_Kuromon_Ichiba_Market_2017-12_%282%29.jpg",
-        "alt": "Kuromon Market Osaka for Namba and Kuromon Market Food Plan",
-        "caption": "Kuromon Market Osaka is used to match the article's destination or travel topic.",
-        "license": "CC BY-SA 4.0",
-        "attribution": "Mr.ちゅらさん",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AOsaka_Kuromon_Ichiba_Market_2017-12_(2).jpg",
-        "match_query": "Kuromon Market Osaka"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Shinsaibashi_Osaka_Japan01-r.jpg/960px-Shinsaibashi_Osaka_Japan01-r.jpg",
+        "license": "CC BY 2.5",
+        "attribution": "Oilstreet",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Shinsaibashi_Osaka_Japan01-r.jpg",
+        "license_url": "https://creativecommons.org/licenses/by/2.5",
+        "alt": "Shinsaibashi image for Namba and Kuromon Market Food Plan",
+        "caption": "Namba and Kuromon Market Food Plan is represented with a matched Wikimedia Commons image of Shinsaibashi.",
+        "match_query": "Shinsaibashi"
       },
       "sources": [
         {
@@ -1835,13 +1849,14 @@
       ],
       "popularity_score": 94,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Kansai_International_Airport_North_Terminal.jpg/1920px-Kansai_International_Airport_North_Terminal.jpg",
-        "alt": "Kansai International Airport for kansai airport arrival to osaka or kyoto",
-        "caption": "Kansai arrivals are represented by Kansai International Airport.",
-        "license": "CC BY-SA 3.0",
-        "attribution": "Wikimedia Commons contributor",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AKansai_International_Airport_North_Terminal.jpg",
-        "match_query": "Kansai International Airport terminal"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/%E9%96%A2%E8%A5%BF%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%E5%85%A8%E4%BD%93%E5%86%99%E7%9C%9F20220811.jpg/960px-%E9%96%A2%E8%A5%BF%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%E5%85%A8%E4%BD%93%E5%86%99%E7%9C%9F20220811.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Ankou1192",
+        "source_url": "https://commons.wikimedia.org/wiki/File:%E9%96%A2%E8%A5%BF%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%E5%85%A8%E4%BD%93%E5%86%99%E7%9C%9F20220811.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Kansai International Airport image for Kansai Airport Arrival to Osaka or Kyoto",
+        "caption": "Kansai Airport Arrival to Osaka or Kyoto is represented with a matched Wikimedia Commons image of Kansai International Airport.",
+        "match_query": "Kansai International Airport"
       },
       "sources": [
         {
@@ -1913,13 +1928,14 @@
       ],
       "popularity_score": 95,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/A_deer_at_Nara_Park%2C_Japan.jpeg/1920px-A_deer_at_Nara_Park%2C_Japan.jpeg",
-        "alt": "Nara Park for nara deer park responsible visit",
-        "caption": "Nara timing advice is represented by Nara Park and temple areas.",
-        "license": "CC BY-SA 3.0",
-        "attribution": "User:uniquex",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AA_deer_at_Nara_Park%2C_Japan.jpeg",
-        "match_query": "Nara Park deer"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Nara_Park_-_panoramio_%282%29.jpg/960px-Nara_Park_-_panoramio_%282%29.jpg",
+        "license": "CC BY 3.0",
+        "attribution": "Feri88",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Nara_Park_-_panoramio_(2).jpg",
+        "license_url": "https://creativecommons.org/licenses/by/3.0",
+        "alt": "Nara Park image for Nara Deer Park Responsible Visit",
+        "caption": "Nara Deer Park Responsible Visit is represented with a matched Wikimedia Commons image of Nara Park.",
+        "match_query": "Nara Park"
       },
       "sources": [
         {
@@ -1991,13 +2007,14 @@
       ],
       "popularity_score": 72,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Kobe_Harborland_001.JPG/1920px-Kobe_Harborland_001.JPG",
-        "alt": "Kobe Harborland for kobe harbor and sannomiya day trip",
-        "caption": "Kobe side trips are represented by Kobe harbor or Arima Onsen.",
-        "license": "CC BY-SA 3.0",
-        "attribution": "Pastern",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AKobe_Harborland_001.JPG",
-        "match_query": "Kobe Harborland"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/20190901_Kobe_Port_Tower-1.jpg/960px-20190901_Kobe_Port_Tower-1.jpg",
+        "license": "CC0",
+        "attribution": "Balon Greyjoy",
+        "source_url": "https://commons.wikimedia.org/wiki/File:20190901_Kobe_Port_Tower-1.jpg",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "alt": "Kobe Port Tower image for Kobe Harbor and Sannomiya Day Trip",
+        "caption": "Kobe Harbor and Sannomiya Day Trip is represented with a matched Wikimedia Commons image of Kobe Port Tower.",
+        "match_query": "Kobe Port Tower"
       },
       "sources": [
         {
@@ -2069,13 +2086,14 @@
       ],
       "popularity_score": 73,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Road_leading_to_Universal_Studios_Japan.JPG",
-        "alt": "Universal Studios Japan in Osaka for universal studios japan planning basics",
-        "caption": "Theme-park rest-day planning is represented by Universal Studios Japan.",
-        "license": "CC BY 2.5",
-        "attribution": "Terence Ong",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ARoad_leading_to_Universal_Studios_Japan.JPG",
-        "match_query": "Universal Studios Japan Osaka"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Sakurajima_Station_20190201.jpg/960px-Sakurajima_Station_20190201.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "そらみみ",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sakurajima_Station_20190201.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Sakurajima Station image for Universal Studios Japan Planning Basics",
+        "caption": "Universal Studios Japan Planning Basics is represented with a matched Wikimedia Commons image of Sakurajima Station.",
+        "match_query": "Sakurajima Station"
       },
       "sources": [
         {
@@ -2151,13 +2169,13 @@
       ],
       "popularity_score": 74,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Hokkaido_Sapporo_Odori_Park.jpg/1920px-Hokkaido_Sapporo_Odori_Park.jpg",
-        "alt": "Sapporo city scene for sapporo first night food and transit",
-        "caption": "Sapporo travel planning is represented by Odori Park and central Sapporo.",
-        "license": "CC BY-SA 3.0",
-        "attribution": "Nkns",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AHokkaido_Sapporo_Odori_Park.jpg",
-        "match_query": "Sapporo Odori Park winter"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Spectaculars_of_Susukino-Sapporo.jpg/960px-Spectaculars_of_Susukino-Sapporo.jpg",
+        "license": "Public domain",
+        "attribution": "Chatama",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Spectaculars_of_Susukino-Sapporo.jpg",
+        "alt": "Susukino image for Sapporo First Night Food and Transit",
+        "caption": "Sapporo First Night Food and Transit is represented with a matched Wikimedia Commons image of Susukino.",
+        "match_query": "Susukino"
       },
       "sources": [
         {
@@ -2233,13 +2251,14 @@
       ],
       "popularity_score": 75,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Rural_road_in_Hokkaido_in_winter_showing_edge_markers.jpg/1920px-Rural_road_in_Hokkaido_in_winter_showing_edge_markers.jpg",
-        "alt": "Hokkaido snow road for Hokkaido Winter Road Trip Safety",
-        "caption": "Hokkaido snow road is used to match the article's destination or travel topic.",
-        "license": "CC BY-SA 4.0",
-        "attribution": "Sgroey",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ARural_road_in_Hokkaido_in_winter_showing_edge_markers.jpg",
-        "match_query": "Hokkaido snow road"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/%E3%83%8B%E3%82%BB%E3%82%B3%E6%9D%B1%E5%B1%B1%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B42.JPG/960px-%E3%83%8B%E3%82%BB%E3%82%B3%E6%9D%B1%E5%B1%B1%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B42.JPG",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Wakimasa",
+        "source_url": "https://commons.wikimedia.org/wiki/File:%E3%83%8B%E3%82%BB%E3%82%B3%E6%9D%B1%E5%B1%B1%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B42.JPG",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "alt": "Niseko image for Hokkaido Winter Road Trip Safety",
+        "caption": "Hokkaido Winter Road Trip Safety is represented with a matched Wikimedia Commons image of Niseko.",
+        "match_query": "Niseko"
       },
       "sources": [
         {
@@ -2315,13 +2334,14 @@
       ],
       "popularity_score": 76,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Furano-Biei_Norokko_Train.jpg",
-        "alt": "Furano or Biei in Hokkaido for biei blue pond and furano route",
-        "caption": "Hokkaido flower and farm routes are represented by Furano or Biei.",
-        "license": "CC BY-SA 3.0",
-        "attribution": "User:SElefant",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AFurano-Biei_Norokko_Train.jpg",
-        "match_query": "Furano lavender Hokkaido"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Biei_Blue-pond.jpg/960px-Biei_Blue-pond.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "MaedaAkihiko",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Biei_Blue-pond.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Blue Pond (Biei) image for Biei Blue Pond and Furano Route",
+        "caption": "Biei Blue Pond and Furano Route is represented with a matched Wikimedia Commons image of Blue Pond (Biei).",
+        "match_query": "Blue Pond (Biei)"
       },
       "sources": [
         {
@@ -2397,13 +2417,14 @@
       ],
       "popularity_score": 77,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Night_view_of_Hakodate.jpg",
-        "alt": "Hakodate night view for Hakodate Night View and Morning Market",
-        "caption": "Hakodate night view is used to match the article's destination or travel topic.",
-        "license": "Public domain",
-        "attribution": "Lombroso",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ANight_view_of_Hakodate.jpg",
-        "match_query": "Hakodate night view"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Kanemori_Red_Brick_Warehouse_Hakodate_Hokkaido_pref_Japan01n.jpg/960px-Kanemori_Red_Brick_Warehouse_Hakodate_Hokkaido_pref_Japan01n.jpg",
+        "license": "CC BY 2.5",
+        "attribution": "663highland",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Kanemori_Red_Brick_Warehouse_Hakodate_Hokkaido_pref_Japan01n.jpg",
+        "license_url": "https://creativecommons.org/licenses/by/2.5",
+        "alt": "Mount Hakodate image for Hakodate Night View and Morning Market",
+        "caption": "Hakodate Night View and Morning Market is represented with a matched Wikimedia Commons image of Mount Hakodate.",
+        "match_query": "Mount Hakodate"
       },
       "sources": [
         {
@@ -2561,13 +2582,14 @@
       ],
       "popularity_score": 79,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/130922_Lake_Toya_Toyako_Hokkaido_Japan01s5.jpg/1920px-130922_Lake_Toya_Toyako_Hokkaido_Japan01s5.jpg",
-        "alt": "Lake Toya or Noboribetsu in Hokkaido for lake toya usuzan volcano plan",
-        "caption": "Hokkaido onsen and volcano routes are represented by Lake Toya or Noboribetsu.",
-        "license": "CC BY 2.5",
-        "attribution": "663highland",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3A130922_Lake_Toya_Toyako_Hokkaido_Japan01s5.jpg",
-        "match_query": "Lake Toya Hokkaido"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/%E6%9C%89%E7%8F%A0%E5%B1%B1.jpg/960px-%E6%9C%89%E7%8F%A0%E5%B1%B1.jpg",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Wakimasa",
+        "source_url": "https://commons.wikimedia.org/wiki/File:%E6%9C%89%E7%8F%A0%E5%B1%B1.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "alt": "Mount Usu image for Lake Toya and Usuzan Volcano Plan",
+        "caption": "Lake Toya and Usuzan Volcano Plan is represented with a matched Wikimedia Commons image of Mount Usu.",
+        "match_query": "Mount Usu"
       },
       "sources": [
         {
@@ -2643,13 +2665,14 @@
       ],
       "popularity_score": 80,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Furano-Biei_Norokko_Train.jpg",
-        "alt": "Furano or Biei in Hokkaido for hokkaido lavender and farm season",
-        "caption": "Hokkaido flower and farm routes are represented by Furano or Biei.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Biei_Hokkaido.jpg",
         "license": "CC BY-SA 3.0",
-        "attribution": "User:SElefant",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AFurano-Biei_Norokko_Train.jpg",
-        "match_query": "Furano lavender Hokkaido"
+        "attribution": "Jialiang Gao www.peace-on-earth.org",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Biei_Hokkaido.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "alt": "Biei, Hokkaido image for Hokkaido Lavender and Farm Season",
+        "caption": "Hokkaido Lavender and Farm Season is represented with a matched Wikimedia Commons image of Biei, Hokkaido.",
+        "match_query": "Biei, Hokkaido"
       },
       "sources": [
         {
@@ -2889,13 +2912,14 @@
       ],
       "popularity_score": 83,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E9%82%A3%E9%9C%B8_Naha_%E5%9C%8B%E9%9A%9B%E9%80%9A_Kokusai-dori_sign_route_January_2025_R12S_02.jpg/1920px-JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E9%82%A3%E9%9C%B8_Naha_%E5%9C%8B%E9%9A%9B%E9%80%9A_Kokusai-dori_sign_route_January_2025_R12S_02.jpg",
-        "alt": "Naha travel scene for naha first night and monorail guide",
-        "caption": "Naha first-evening plans are represented by Kokusai-dori or the monorail.",
-        "license": "CC0",
-        "attribution": "Naha Mama Pavilionz",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AJP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E9%82%A3%E9%9C%B8_Naha_%E5%9C%8B%E9%9A%9B%E9%80%9A_Kokusai-dori_sign_route_January_2025_R12S_02.jpg",
-        "match_query": "Kokusai Dori Naha Okinawa"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Naha-kuko_Station02s3s3750.jpg/960px-Naha-kuko_Station02s3s3750.jpg",
+        "license": "CC BY 2.5",
+        "attribution": "663highland",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Naha-kuko_Station02s3s3750.jpg",
+        "license_url": "https://creativecommons.org/licenses/by/2.5",
+        "alt": "Okinawa Urban Monorail image for Naha First Night and Monorail Guide",
+        "caption": "Naha First Night and Monorail Guide is represented with a matched Wikimedia Commons image of Okinawa Urban Monorail.",
+        "match_query": "Okinawa Urban Monorail"
       },
       "sources": [
         {
@@ -2970,13 +2994,14 @@
       ],
       "popularity_score": 84,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/STS043-608-38_Ishigaki_Island.jpg",
-        "alt": "Ishigaki Island for ishigaki island nature day plan",
-        "caption": "Yaeyama base choices are represented by Ishigaki Island scenery.",
-        "license": "Public domain",
-        "attribution": "NASA",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ASTS043-608-38_Ishigaki_Island.jpg",
-        "match_query": "Ishigaki Island Okinawa"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Kabira-Bay-Kabira-park-2019.jpg/960px-Kabira-Bay-Kabira-park-2019.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Tokyo-Good",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Kabira-Bay-Kabira-park-2019.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Kabira Bay image for Ishigaki Island Nature Day Plan",
+        "caption": "Ishigaki Island Nature Day Plan is represented with a matched Wikimedia Commons image of Kabira Bay.",
+        "match_query": "Kabira Bay"
       },
       "sources": [
         {
@@ -3052,13 +3077,14 @@
       ],
       "popularity_score": 85,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Yonahamaehama_Miyakojima_Okinawa_Japan01bs3s4592.jpg/1920px-Yonahamaehama_Miyakojima_Okinawa_Japan01bs3s4592.jpg",
-        "alt": "Miyakojima beach or bridge scene for miyako islands bridge route",
-        "caption": "Miyako routes are represented by beaches and island bridges.",
-        "license": "CC BY 2.5",
-        "attribution": "663highland",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AYonahamaehama_Miyakojima_Okinawa_Japan01bs3s4592.jpg",
-        "match_query": "Miyakojima Okinawa beach"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Miyakojima_sky_view.jpg/960px-Miyakojima_sky_view.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Paipateroma",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Miyakojima_sky_view.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Miyako Island image for Miyako Islands Bridge Route",
+        "caption": "Miyako Islands Bridge Route is represented with a matched Wikimedia Commons image of Miyako Island.",
+        "match_query": "Miyako Island"
       },
       "sources": [
         {
@@ -3134,13 +3160,14 @@
       ],
       "popularity_score": 86,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Kouri_beach%2C_Okinawa.jpg/1920px-Kouri_beach%2C_Okinawa.jpg",
-        "alt": "Okinawa beach scene for okinawa rain and typhoon season planning",
-        "caption": "Okinawa planning is represented by main-island and outer-island beach scenery.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Naha_montage.jpg/960px-Naha_montage.jpg",
         "license": "CC BY-SA 3.0",
-        "attribution": "Mokkie",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AKouri_beach%2C_Okinawa.jpg",
-        "match_query": "Okinawa Kouri Beach"
+        "attribution": "663highland nnh Composition by Kyoww",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Naha_montage.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "alt": "Naha image for Okinawa Rain and Typhoon Season Planning",
+        "caption": "Okinawa Rain and Typhoon Season Planning is represented with a matched Wikimedia Commons image of Naha.",
+        "match_query": "Naha"
       },
       "sources": [
         {
@@ -3216,13 +3243,14 @@
       ],
       "popularity_score": 87,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/SC_205560_-_This_is_an_aerial_view_of_the_beach_at_Okinawa_a_few_days_after_Tenth_Army_troops_moved_ashore._%2851362208315%29.jpg/1920px-SC_205560_-_This_is_an_aerial_view_of_the_beach_at_Okinawa_a_few_days_after_Tenth_Army_troops_moved_ashore._%2851362208315%29.jpg",
-        "alt": "Okinawa reef-safe beach scene for okinawa family snorkeling safety basics",
-        "caption": "Okinawa snorkeling advice is represented by reef and beach scenery.",
-        "license": "Public domain",
-        "attribution": "Signal Corps Archive from Ireland and United States",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ASC_205560_-_This_is_an_aerial_view_of_the_beach_at_Okinawa_a_few_days_after_Tenth_Army_troops_moved_ashore._(51362208315).jpg",
-        "match_query": "Okinawa coral reef beach"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Okinawa_kerama_islands.jpg/960px-Okinawa_kerama_islands.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Paipateroma",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Okinawa_kerama_islands.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Kerama Islands image for Okinawa Family Snorkeling Safety Basics",
+        "caption": "Okinawa Family Snorkeling Safety Basics is represented with a matched Wikimedia Commons image of Kerama Islands.",
+        "match_query": "Kerama Islands"
       },
       "sources": [
         {
@@ -3299,13 +3327,14 @@
       ],
       "popularity_score": 88,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/N700_in_Tokaido_Shinkansen_%26Mt.Fuji.jpg/1920px-N700_in_Tokaido_Shinkansen_%26Mt.Fuji.jpg",
-        "alt": "Tokaido Shinkansen N700 for Japan Shinkansen Seat Reservation Basics",
-        "caption": "Tokaido Shinkansen N700 is used to match the article's destination or travel topic.",
-        "license": "CC BY-SA 4.0",
-        "attribution": "Charlie fong",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AN700_in_Tokaido_Shinkansen_%26Mt.Fuji.jpg",
-        "match_query": "Tokaido Shinkansen N700"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/JRC_N700_series_Z28.jpg/960px-JRC_N700_series_Z28.jpg",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Mitsuki-2368",
+        "source_url": "https://commons.wikimedia.org/wiki/File:JRC_N700_series_Z28.jpg",
+        "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+        "alt": "N700 Series Shinkansen image for Japan Shinkansen Seat Reservation Basics",
+        "caption": "Japan Shinkansen Seat Reservation Basics is represented with a matched Wikimedia Commons image of N700 Series Shinkansen.",
+        "match_query": "N700 Series Shinkansen"
       },
       "sources": [
         {
@@ -3381,13 +3410,14 @@
       ],
       "popularity_score": 89,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/%E3%81%AE%E3%82%8A%E3%81%93%E3%81%97%E7%B2%BE%E7%AE%97_2014_%2813154067205%29.jpg/1920px-%E3%81%AE%E3%82%8A%E3%81%93%E3%81%97%E7%B2%BE%E7%AE%97_2014_%2813154067205%29.jpg",
-        "alt": "Suica ticket gates in Tokyo for ic cards and cash travel checklist",
-        "caption": "IC card travel in Tokyo is best illustrated by station gates and Suica/PASMO use.",
-        "license": "CC BY 2.0",
-        "attribution": "Tim Adams from San Francisco",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3A%E3%81%AE%E3%82%8A%E3%81%93%E3%81%97%E7%B2%BE%E7%AE%97_2014_(13154067205).jpg",
-        "match_query": "Suica card Tokyo"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Suica_card_tap.jpg/960px-Suica_card_tap.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "タチヤマカムイ",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Suica_card_tap.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Suica image for IC Cards and Cash Travel Checklist",
+        "caption": "IC Cards and Cash Travel Checklist is represented with a matched Wikimedia Commons image of Suica.",
+        "match_query": "Suica"
       },
       "sources": [
         {
@@ -3464,13 +3494,14 @@
       ],
       "popularity_score": 90,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/N700_in_Tokaido_Shinkansen_%26Mt.Fuji.jpg/1920px-N700_in_Tokaido_Shinkansen_%26Mt.Fuji.jpg",
-        "alt": "Tokaido Shinkansen N700 for JR Pass Value Check for First Trips",
-        "caption": "Tokaido Shinkansen N700 is used to match the article's destination or travel topic.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/JR_Rail_Pass_2023.jpg/960px-JR_Rail_Pass_2023.jpg",
         "license": "CC BY-SA 4.0",
-        "attribution": "Charlie fong",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AN700_in_Tokaido_Shinkansen_%26Mt.Fuji.jpg",
-        "match_query": "Tokaido Shinkansen N700"
+        "attribution": "DragonFury",
+        "source_url": "https://commons.wikimedia.org/wiki/File:JR_Rail_Pass_2023.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Japan Rail Pass image for JR Pass Value Check for First Trips",
+        "caption": "JR Pass Value Check for First Trips is represented with a matched Wikimedia Commons image of Japan Rail Pass.",
+        "match_query": "Japan Rail Pass"
       },
       "sources": [
         {
@@ -3547,13 +3578,14 @@
       ],
       "popularity_score": 91,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Sign_of_How_to_use_a_Coinlocker_in_Shinjuku_Station.jpg",
-        "alt": "Japan station luggage lockers for luggage forwarding and hotel transfer plan",
-        "caption": "Luggage planning is represented by station storage and transfer scenes.",
-        "license": "CC BY 2.0",
-        "attribution": "MiNe",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ASign_of_How_to_use_a_Coinlocker_in_Shinjuku_Station.jpg",
-        "match_query": "Coin lockers Japan station"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/All_haneda.jpg/960px-All_haneda.jpg",
+        "license": "CC BY 4.0",
+        "attribution": "ブルーノ・プラス",
+        "source_url": "https://commons.wikimedia.org/wiki/File:All_haneda.jpg",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "alt": "Haneda Airport image for Luggage Forwarding and Hotel Transfer Plan",
+        "caption": "Luggage Forwarding and Hotel Transfer Plan is represented with a matched Wikimedia Commons image of Haneda Airport.",
+        "match_query": "Haneda Airport"
       },
       "sources": [
         {
@@ -3965,13 +3997,14 @@
       ],
       "popularity_score": 72,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Hozomon_Gate%2C_Tokyo%2C_South_view_from_Nakamise_Shopping_Street_20190420_1.jpg/1920px-Hozomon_Gate%2C_Tokyo%2C_South_view_from_Nakamise_Shopping_Street_20190420_1.jpg",
-        "alt": "Shopping street in Tokyo for tax free shopping and souvenir packing",
-        "caption": "Shopping and souvenir planning is represented by a Tokyo shopping area.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Ginza-WAKO_at_night.jpg/960px-Ginza-WAKO_at_night.jpg",
         "license": "CC BY-SA 4.0",
-        "attribution": "DXR",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AHozomon_Gate%2C_Tokyo%2C_South_view_from_Nakamise_Shopping_Street_20190420_1.jpg",
-        "match_query": "Nakamise shopping street Tokyo"
+        "attribution": "Kakidai",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Ginza-WAKO_at_night.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Ginza image for Tax-Free Shopping and Souvenir Packing",
+        "caption": "Tax-Free Shopping and Souvenir Packing is represented with a matched Wikimedia Commons image of Ginza.",
+        "match_query": "Ginza"
       },
       "sources": [
         {
@@ -4045,13 +4078,14 @@
       ],
       "popularity_score": 73,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Disaster_Prevention_Warehouse_of_Nishicyokai%2C_Tokyo.jpg/1920px-Disaster_Prevention_Warehouse_of_Nishicyokai%2C_Tokyo.jpg",
-        "alt": "Japan earthquake preparedness sign for Japan Earthquake and Weather Alert Basics",
-        "caption": "Japan earthquake preparedness sign is used to match the article's destination or travel topic.",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/JMA_Toranomon_office_2020-11-24.jpg/960px-JMA_Toranomon_office_2020-11-24.jpg",
         "license": "CC BY-SA 4.0",
-        "attribution": "Theodore Xu",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ADisaster_Prevention_Warehouse_of_Nishicyokai%2C_Tokyo.jpg",
-        "match_query": "Tokyo disaster prevention Japan"
+        "attribution": "Europeans1145",
+        "source_url": "https://commons.wikimedia.org/wiki/File:JMA_Toranomon_office_2020-11-24.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Japan Meteorological Agency image for Japan Earthquake and Weather Alert Basics",
+        "caption": "Japan Earthquake and Weather Alert Basics is represented with a matched Wikimedia Commons image of Japan Meteorological Agency.",
+        "match_query": "Japan Meteorological Agency"
       },
       "sources": [
         {

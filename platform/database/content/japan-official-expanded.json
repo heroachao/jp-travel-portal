@@ -398,13 +398,14 @@
       ],
       "popularity_score": 92,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dotonbori_Osaka_1910.jpg/1920px-Dotonbori_Osaka_1910.jpg",
-        "alt": "Osaka travel scene for kansai first route planner",
-        "caption": "Kansai and Osaka planning is represented by central Osaka landmarks.",
-        "license": "Public domain",
-        "attribution": "Naniwa Meisho",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ADotonbori_Osaka_1910.jpg",
-        "match_query": "Dotonbori Osaka Japan"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/JR_Osaka_Station_20151226.JPG/960px-JR_Osaka_Station_20151226.JPG",
+        "license": "CC BY-SA 4.0",
+        "attribution": "KishujiRapid",
+        "source_url": "https://commons.wikimedia.org/wiki/File:JR_Osaka_Station_20151226.JPG",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Osaka Station image for Kansai First Route Planner",
+        "caption": "Kansai First Route Planner is represented with a matched Wikimedia Commons image of Osaka Station.",
+        "match_query": "Osaka Station"
       },
       "sources": [
         {
@@ -576,13 +577,14 @@
       ],
       "popularity_score": 90,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dotonbori_Osaka_1910.jpg/1920px-Dotonbori_Osaka_1910.jpg",
-        "alt": "Osaka travel scene for osaka street food shopping guide",
-        "caption": "Kansai and Osaka planning is represented by central Osaka landmarks.",
-        "license": "Public domain",
-        "attribution": "Naniwa Meisho",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3ADotonbori_Osaka_1910.jpg",
-        "match_query": "Dotonbori Osaka Japan"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg/960px-Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Martin Falbisoner",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Dotonbori,_Osaka,_at_night,_November_2016.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Dotonbori image for Osaka Street Food and Shopping Guide",
+        "caption": "Osaka Street Food and Shopping Guide is represented with a matched Wikimedia Commons image of Dotonbori.",
+        "match_query": "Dotonbori"
       },
       "sources": [
         {
@@ -696,13 +698,13 @@
       ],
       "popularity_score": 81,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Kouri_beach%2C_Okinawa.jpg/1920px-Kouri_beach%2C_Okinawa.jpg",
-        "alt": "Okinawa beach scene for okinawa useful information safety guide",
-        "caption": "Okinawa planning is represented by main-island and outer-island beach scenery.",
-        "license": "CC BY-SA 3.0",
-        "attribution": "Mokkie",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AKouri_beach%2C_Okinawa.jpg",
-        "match_query": "Okinawa Kouri Beach"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Okinawa_Island-ISS042.jpg/960px-Okinawa_Island-ISS042.jpg",
+        "license": "Public domain",
+        "attribution": "Image Science and Analysis Laboratory, NASA - Johnson Space Center. \"The Gateway to Astronaut Photography of Earth.\"",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Okinawa_Island-ISS042.jpg",
+        "alt": "Okinawa Island image for Okinawa Useful Information and Safety Guide",
+        "caption": "Okinawa Useful Information and Safety Guide is represented with a matched Wikimedia Commons image of Okinawa Island.",
+        "match_query": "Okinawa Island"
       },
       "sources": [
         {

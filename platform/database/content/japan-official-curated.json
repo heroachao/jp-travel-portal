@@ -592,13 +592,14 @@
       ],
       "popularity_score": 82,
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Hokkaido_Sapporo_Odori_Park.jpg/1920px-Hokkaido_Sapporo_Odori_Park.jpg",
-        "alt": "Sapporo city scene for sapporo first time city and nature guide",
-        "caption": "Sapporo travel planning is represented by Odori Park and central Sapporo.",
-        "license": "CC BY-SA 3.0",
-        "attribution": "Nkns",
-        "source_url": "https://commons.wikimedia.org/wiki/File%3AHokkaido_Sapporo_Odori_Park.jpg",
-        "match_query": "Sapporo Odori Park winter"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Sapporo-TV-Tower-2025.jpg/960px-Sapporo-TV-Tower-2025.jpg",
+        "license": "CC BY 4.0",
+        "attribution": "AlphaBetaGamma",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sapporo-TV-Tower-2025.jpg",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "alt": "Sapporo TV Tower image for Sapporo First-Time City and Nature Guide",
+        "caption": "Sapporo First-Time City and Nature Guide is represented with a matched Wikimedia Commons image of Sapporo TV Tower.",
+        "match_query": "Sapporo TV Tower"
       },
       "sources": [
         {
