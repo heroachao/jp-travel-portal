@@ -18,7 +18,7 @@ class HomeController extends Controller
 {
     public function __invoke(): View
     {
-        $publishedArticleCount = Article::published()->count();
+        $publishedArticleCount = Article::published()->where('is_indexable', true)->count();
 
         return view('public.home', [
             'meta' => new MetaPayload(
@@ -27,7 +27,7 @@ class HomeController extends Controller
                 PublicUrl::route('home'),
             ),
             'articleCount' => $publishedArticleCount,
-            'articles' => Article::published()->latest('published_at')->limit(12)->get(),
+            'articles' => Article::published()->where('is_indexable', true)->latest('published_at')->limit(12)->get(),
             'serviceLinks' => ServiceLink::query()->enabled()->placement('header')->ordered()->get(),
             'tools' => collect(TravelTools::featured()),
             'toolCount' => count(TravelTools::all()),
@@ -36,14 +36,14 @@ class HomeController extends Controller
             'regionChannels' => Destination::query()
                 ->channel()
                 ->where('is_indexable', true)
-                ->withCount(['articles as published_articles_count' => fn ($query) => $query->published()])
+                ->withCount(['articles as published_articles_count' => fn ($query) => $query->published()->where('is_indexable', true)])
                 ->ordered()
                 ->limit(12)
                 ->get(),
             'travelCategories' => TravelCategory::query()
                 ->visible()
                 ->where('is_indexable', true)
-                ->withCount(['articles as published_articles_count' => fn ($query) => $query->published()])
+                ->withCount(['articles as published_articles_count' => fn ($query) => $query->published()->where('is_indexable', true)])
                 ->ordered()
                 ->limit(12)
                 ->get(),
@@ -56,6 +56,7 @@ class HomeController extends Controller
                 ])
                 ->get(),
             'popularArticles' => Article::published()
+                ->where('is_indexable', true)
                 ->orderByDesc('popularity_score')
                 ->latest('published_at')
                 ->limit(6)

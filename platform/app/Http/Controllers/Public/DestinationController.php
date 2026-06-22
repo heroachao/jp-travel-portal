@@ -36,7 +36,7 @@ class DestinationController extends Controller
                 PublicUrl::route('regions.show', $destination),
             ),
             'destination' => $destination,
-            'articles' => $destination->articles()->published()->latest('published_at')->paginate(240),
+            'articles' => $destination->articles()->published()->where('is_indexable', true)->latest('published_at')->paginate(240),
         ]);
     }
 
@@ -56,7 +56,7 @@ class DestinationController extends Controller
             return redirect(PublicUrl::route('regions.show', $destination), 301);
         }
 
-        $destination->load(['articles' => fn ($query) => $query->published()->latest('published_at'), 'topics']);
+        $destination->load(['articles' => fn ($query) => $query->published()->where('is_indexable', true)->latest('published_at'), 'topics']);
 
         return view('public.destinations.show', [
             'meta' => new MetaPayload(

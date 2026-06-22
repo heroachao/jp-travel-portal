@@ -12,7 +12,7 @@ class TagController extends Controller
 {
     public function show(Tag $tag): View
     {
-        $tag->load(['articles' => fn ($query) => $query->published()->latest('published_at')]);
+        $tag->load(['articles' => fn ($query) => $query->published()->where('is_indexable', true)->latest('published_at')]);
         $isSearchIndexable = $tag->articles->count() >= 3 && filled($tag->description);
 
         return view('public.tags.show', [

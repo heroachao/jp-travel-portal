@@ -24,7 +24,7 @@ class TravelCategoryController extends Controller
                 indexable: $category->is_indexable,
             ),
             'category' => $category,
-            'articles' => $category->articles()->published()->reorder()->latest('published_at')->paginate(240),
+            'articles' => $category->articles()->published()->where('is_indexable', true)->reorder()->latest('published_at')->paginate(240),
         ]);
     }
 }

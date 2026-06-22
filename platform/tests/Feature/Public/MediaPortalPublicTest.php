@@ -545,6 +545,7 @@ class MediaPortalPublicTest extends TestCase
             'reading_time_minutes' => 7,
             'source_name' => 'Tokyo Metro Source',
             'source_url' => 'https://www.tokyometro.jp/en/',
+            'body' => '<p>Use Tokyo rail routes as a practical framework for neighborhood planning.</p>',
         ]);
         $category = TravelCategory::factory()->create([
             'title' => 'Transport',
@@ -573,9 +574,10 @@ class MediaPortalPublicTest extends TestCase
             ->assertSee('href="https://www.tokyometro.jp/en/"', false)
             ->assertSee('rel="nofollow noopener"', false)
             ->assertSee('Transport')
+            ->assertSee('Use Tokyo rail routes as a practical framework for neighborhood planning.')
             ->assertSee('min read')
             ->assertSee('Editorial review')
-            ->assertSee('Quick pre-trip checklist')
+            ->assertDontSee('Quick pre-trip checklist')
             ->assertSee('"wordCount":', false)
             ->assertSee('Can I use Suica in Tokyo?')
             ->assertSee('Yes, for most short city trips.', false)

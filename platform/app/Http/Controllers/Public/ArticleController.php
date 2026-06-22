@@ -19,7 +19,7 @@ class ArticleController extends Controller
     {
         return view('public.articles.index', [
             'meta' => new MetaPayload('Japan Travel Articles', 'Latest Japan travel guides and practical planning notes.', PublicUrl::route('articles.index')),
-            'articles' => Article::published()->latest('published_at')->paginate(240),
+            'articles' => Article::published()->where('is_indexable', true)->latest('published_at')->paginate(240),
         ]);
     }
 
