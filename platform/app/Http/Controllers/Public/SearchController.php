@@ -81,6 +81,52 @@ class SearchController extends Controller
             ->when($tag !== '', fn ($builder) => $builder->whereHas('tags', fn ($inner) => $inner->where('slug', $tag)))
             ->when($coupon, fn ($builder) => $builder->where('has_coupon', true));
 
+        if ($query !== '') {
+            $like = '%'.mb_strtolower($query).'%';
+
+            $articles->orderByRaw(
+                "CASE
+                    WHEN LOWER(title) LIKE ? THEN 0
+                    WHEN EXISTS (
+                        SELECT 1
+                        FROM article_destination
+                        INNER JOIN destinations ON destinations.id = article_destination.destination_id
+                        WHERE article_destination.article_id = articles.id
+                        AND (
+                            LOWER(destinations.name) LIKE ?
+                            OR LOWER(COALESCE(destinations.display_name, '')) LIKE ?
+                            OR LOWER(destinations.slug) LIKE ?
+                        )
+                    ) THEN 1
+                    WHEN LOWER(excerpt) LIKE ? THEN 2
+                    WHEN EXISTS (
+                        SELECT 1
+                        FROM article_travel_category
+                        INNER JOIN travel_categories ON travel_categories.id = article_travel_category.travel_category_id
+                        WHERE article_travel_category.article_id = articles.id
+                        AND (
+                            LOWER(travel_categories.title) LIKE ?
+                            OR LOWER(COALESCE(travel_categories.display_name, '')) LIKE ?
+                            OR LOWER(travel_categories.slug) LIKE ?
+                        )
+                    ) THEN 3
+                    WHEN EXISTS (
+                        SELECT 1
+                        FROM article_tag
+                        INNER JOIN tags ON tags.id = article_tag.tag_id
+                        WHERE article_tag.article_id = articles.id
+                        AND (
+                            LOWER(tags.name) LIKE ?
+                            OR LOWER(tags.slug) LIKE ?
+                        )
+                    ) THEN 4
+                    WHEN LOWER(body) LIKE ? THEN 5
+                    ELSE 6
+                END",
+                [$like, $like, $like, $like, $like, $like, $like, $like, $like, $like, $like],
+            );
+        }
+
         match ($sort) {
             'updated' => $articles
                 ->orderByRaw('COALESCE(display_updated_at, published_at) DESC')

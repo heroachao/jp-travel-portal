@@ -1,0 +1,360 @@
+{
+    "generated_at": "2026-06-23T07:59:40+00:00",
+    "apply": true,
+    "target_words": 1050,
+    "articles_checked": 241,
+    "articles_enriched": [],
+    "images_replaced": [
+        {
+            "slug": "narita-to-tokyo-hotel-area-decision",
+            "source_slug": "narita-airport-late-arrival-recovery-plan"
+        },
+        {
+            "slug": "haneda-late-arrival-tokyo-hotel-plan",
+            "source_slug": "haneda-arrival-first-night-plan"
+        },
+        {
+            "slug": "shinkansen-large-luggage-seat-planner",
+            "source_slug": "japan-shinkansen-seat-reservation-basics"
+        },
+        {
+            "slug": "kansai-airport-to-kyoto-family-transfer",
+            "source_slug": "kansai-airport-arrival-to-osaka-or-kyoto"
+        },
+        {
+            "slug": "sapporo-station-vs-susukino-base",
+            "source_slug": "sapporo-first-night-food-and-transit"
+        },
+        {
+            "slug": "fukuoka-hakata-vs-tenjin-hotel-base",
+            "source_slug": "fukuoka-food-and-day-trip-base-guide"
+        },
+        {
+            "slug": "kanazawa-station-vs-kenrokuen-stay",
+            "source_slug": "kanazawa-garden-and-craft-day"
+        },
+        {
+            "slug": "nagoya-station-base-for-tokai-stopovers",
+            "source_slug": "nagoya-station-food-and-rail-hub-guide"
+        },
+        {
+            "slug": "sendai-station-base-for-tohoku-trips",
+            "source_slug": "sendai-and-matsushima-first-route"
+        },
+        {
+            "slug": "japan-winter-city-trip-footwear-luggage",
+            "source_slug": "hokkaido-winter-activity-planner"
+        },
+        {
+            "slug": "osaka-one-day-food-history-route",
+            "source_slug": "osaka-castle-and-nakanoshima-day"
+        },
+        {
+            "slug": "nara-half-day-vs-full-day-decision",
+            "source_slug": "nara-deer-park-responsible-visit"
+        }
+    ],
+    "seo_titles_cleaned": [
+        {
+            "slug": "three-days-in-kyoto",
+            "before": "Three Days in Kyoto Itinerary for First",
+            "after": "Three Days in Kyoto"
+        },
+        {
+            "slug": "first-timers-guide-to-tokyo-neighborhoods",
+            "before": "Tokyo Neighborhood Guide for First",
+            "after": "A First Timer's Guide to Tokyo Neighborhoods"
+        },
+        {
+            "slug": "tokyo-first-time-neighborhood-planner",
+            "before": "Tokyo First",
+            "after": "Tokyo First-Time Neighborhood Planner"
+        },
+        {
+            "slug": "kyoto-responsible-first-visit-route",
+            "before": "Kyoto Responsible First Visit Route",
+            "after": "Kyoto Responsible First-Visit Route"
+        },
+        {
+            "slug": "osaka-food-nightlife-first-guide",
+            "before": "Osaka Food and Nightlife Guide for First",
+            "after": "Osaka Food and Nightlife First Guide"
+        },
+        {
+            "slug": "hokkaido-seasons-first-trip-guide",
+            "before": "Hokkaido Seasons Guide",
+            "after": "Hokkaido Seasons First-Trip Guide"
+        },
+        {
+            "slug": "japan-rail-pass-basics-official-guide",
+            "before": "Japan Rail Pass Guide",
+            "after": "Japan Rail Pass Basics: What It Covers and When to Check"
+        },
+        {
+            "slug": "tokyo-ic-card-practical-guide",
+            "before": "Tokyo IC Card Guide",
+            "after": "Tokyo IC Card Practical Guide"
+        },
+        {
+            "slug": "sapporo-first-time-city-and-nature-guide",
+            "before": "Sapporo First",
+            "after": "Sapporo First-Time City and Nature Guide"
+        },
+        {
+            "slug": "tohoku-slow-travel-first-guide",
+            "before": "Tohoku Slow Travel Guide",
+            "after": "Tohoku Slow Travel First Guide"
+        },
+        {
+            "slug": "hokuriku-shinetsu-craft-coast-guide",
+            "before": "Hokuriku Shinetsu Guide",
+            "after": "Hokuriku Shinetsu Craft and Coast Guide"
+        },
+        {
+            "slug": "chugoku-hiroshima-seto-inland-sea-guide",
+            "before": "Hiroshima and Seto Inland Sea Guide for First",
+            "after": "Chugoku Hiroshima and Seto Inland Sea Guide"
+        },
+        {
+            "slug": "kyushu-onsen-volcano-first-guide",
+            "before": "Kyushu Onsen and Volcano Guide",
+            "after": "Kyushu Onsen and Volcano First Guide"
+        },
+        {
+            "slug": "kansai-first-route-planner",
+            "before": "Kansai First",
+            "after": "Kansai First Route Planner"
+        },
+        {
+            "slug": "kyoto-morning-night-quiet-hours-guide",
+            "before": "Kyoto Morning and Night Guide",
+            "after": "Kyoto Morning and Night Quiet Hours Guide"
+        },
+        {
+            "slug": "hokkaido-winter-activity-planner",
+            "before": "Hokkaido Winter Activities",
+            "after": "Hokkaido Winter Activity Planner"
+        },
+        {
+            "slug": "okinawa-useful-information-safety-guide",
+            "before": "Okinawa Useful Information and Safety Guide for First",
+            "after": "Okinawa Useful Information and Safety Guide"
+        },
+        {
+            "slug": "tokyo-48-hour-transit-friendly-itinerary",
+            "before": "Tokyo 48",
+            "after": "Tokyo 48-Hour Transit-Friendly Itinerary"
+        },
+        {
+            "slug": "tokyo-family-friendly-train-day",
+            "before": "Tokyo Family",
+            "after": "Tokyo Family-Friendly Train Day"
+        },
+        {
+            "slug": "arashiyama-half-day-without-rushing",
+            "before": "Arashiyama Half",
+            "after": "Arashiyama Half-Day Without Rushing"
+        },
+        {
+            "slug": "shin-osaka-shinkansen-transfer-guide",
+            "before": "Shin",
+            "after": "Shin-Osaka Shinkansen Transfer Guide"
+        },
+        {
+            "slug": "onsen-etiquette-for-first-time-visitors",
+            "before": "Onsen Etiquette for First",
+            "after": "Onsen Etiquette for First-Time Visitors"
+        },
+        {
+            "slug": "tax-free-shopping-and-souvenir-packing",
+            "before": "Tax",
+            "after": "Tax-Free Shopping and Souvenir Packing"
+        },
+        {
+            "slug": "tokyo-station-first-day-base-plan",
+            "before": "Tokyo Station First",
+            "after": "Tokyo Station First-Day Base Plan"
+        },
+        {
+            "slug": "ginza-and-marunouchi-rain-friendly-day",
+            "before": "Ginza and Marunouchi Rain",
+            "after": "Ginza and Marunouchi Rain-Friendly Day"
+        },
+        {
+            "slug": "tokyo-bay-waterfront-half-day-plan",
+            "before": "Tokyo Bay Waterfront Half",
+            "after": "Tokyo Bay Waterfront Half-Day Plan"
+        },
+        {
+            "slug": "tokyo-with-kids-stroller-friendly-day",
+            "before": "Tokyo With Kids Stroller",
+            "after": "Tokyo With Kids Stroller-Friendly Day"
+        },
+        {
+            "slug": "kyoto-northwest-temples-half-day",
+            "before": "Kyoto Northwest Temples Half",
+            "after": "Kyoto Northwest Temples Half-Day"
+        },
+        {
+            "slug": "osaka-history-and-river-half-day",
+            "before": "Osaka History and River Half",
+            "after": "Osaka History and River Half-Day"
+        },
+        {
+            "slug": "nara-evening-after-day-trippers-leave",
+            "before": "Nara Evening After Day",
+            "after": "Nara Evening After Day-Trippers Leave"
+        },
+        {
+            "slug": "hokkaido-first-timer-distance-reality-check",
+            "before": "Hokkaido First",
+            "after": "Hokkaido First-Timer Distance Reality Check"
+        },
+        {
+            "slug": "hakodate-two-day-food-and-view-plan",
+            "before": "Hakodate Two",
+            "after": "Hakodate Two-Day Food and View Plan"
+        },
+        {
+            "slug": "niseko-non-skier-winter-guide",
+            "before": "Niseko Non",
+            "after": "Niseko Non-Skier Winter Guide"
+        },
+        {
+            "slug": "shirakawa-go-season-and-crowd-planning",
+            "before": "Shirakawa",
+            "after": "Shirakawa-go Season and Crowd Planning"
+        },
+        {
+            "slug": "central-japan-rainy-day-backup-plan",
+            "before": "Central Japan Rainy",
+            "after": "Central Japan Rainy-Day Backup Plan"
+        },
+        {
+            "slug": "hiroshima-peace-and-miyajima-two-day-plan",
+            "before": "Hiroshima Peace and Miyajima Two",
+            "after": "Hiroshima Peace and Miyajima Two-Day Plan"
+        },
+        {
+            "slug": "setouchi-island-hopping-planning-basics",
+            "before": "Setouchi Island",
+            "after": "Setouchi Island-Hopping Planning Basics"
+        },
+        {
+            "slug": "beppu-onsen-first-visit-guide",
+            "before": "Beppu Onsen First",
+            "after": "Beppu Onsen First-Visit Guide"
+        },
+        {
+            "slug": "kagoshima-sakurajima-weather-aware-day",
+            "before": "Kagoshima Sakurajima Weather",
+            "after": "Kagoshima Sakurajima Weather-Aware Day"
+        },
+        {
+            "slug": "okinawa-reef-safe-snorkeling-basics",
+            "before": "Okinawa Reef",
+            "after": "Okinawa Reef-Safe Snorkeling Basics"
+        },
+        {
+            "slug": "hakone-weather-flexible-loop-plan",
+            "before": "Hakone Weather",
+            "after": "Hakone Weather-Flexible Loop Plan"
+        },
+        {
+            "slug": "kamikochi-car-free-day-from-matsumoto",
+            "before": "Kamikochi Day Trip from Matsumoto Without a Car",
+            "after": "Kamikochi Car-Free Day from Matsumoto"
+        },
+        {
+            "slug": "uji-matcha-and-byodoin-half-day-from-kyoto",
+            "before": "Uji Matcha and Byodoin Half",
+            "after": "Uji Matcha and Byodoin Half-Day from Kyoto"
+        },
+        {
+            "slug": "tokyo-first-night-arrival-checklist",
+            "before": "Tokyo First",
+            "after": "Tokyo First-Night Arrival Checklist"
+        },
+        {
+            "slug": "haneda-late-arrival-tokyo-hotel-plan",
+            "before": "Haneda Late",
+            "after": "Haneda Late-Arrival Tokyo Hotel Plan"
+        },
+        {
+            "slug": "tokyo-day-trip-return-buffer-checklist",
+            "before": "Tokyo Day",
+            "after": "Tokyo Day-Trip Return Buffer Checklist"
+        },
+        {
+            "slug": "japan-last-night-airport-hotel-decision",
+            "before": "Japan Last",
+            "after": "Japan Last-Night Airport Hotel Decision Guide"
+        },
+        {
+            "slug": "tokyo-shinjuku-vs-ueno-hotel-choice",
+            "before": "Shinjuku vs Ueno",
+            "after": "Shinjuku vs Ueno: Tokyo Hotel Base Choice"
+        },
+        {
+            "slug": "fukuoka-hakata-vs-tenjin-hotel-base",
+            "before": "Hakata vs Tenjin",
+            "after": "Hakata vs Tenjin: Fukuoka Hotel Base Choice"
+        },
+        {
+            "slug": "tokyo-kyoto-osaka-ten-day-route-tradeoffs",
+            "before": "Tokyo Kyoto Osaka Ten",
+            "after": "Tokyo Kyoto Osaka Ten-Day Route Tradeoffs"
+        },
+        {
+            "slug": "japan-seven-day-first-trip-skip-list",
+            "before": "Japan Seven",
+            "after": "Japan Seven-Day First Trip Skip List"
+        },
+        {
+            "slug": "kyoto-two-day-priority-itinerary",
+            "before": "Kyoto Two",
+            "after": "Kyoto Two-Day Priority Itinerary"
+        },
+        {
+            "slug": "osaka-one-day-food-history-route",
+            "before": "Osaka One",
+            "after": "Osaka One-Day Food and History Route"
+        },
+        {
+            "slug": "hiroshima-miyajima-one-vs-two-days",
+            "before": "Hiroshima and Miyajima",
+            "after": "Hiroshima and Miyajima: One Day or Two?"
+        },
+        {
+            "slug": "nikko-heritage-vs-oku-nikko-choice",
+            "before": "Nikko Heritage vs Oku",
+            "after": "Nikko Heritage vs Oku-Nikko Choice Guide"
+        },
+        {
+            "slug": "nara-half-day-vs-full-day-decision",
+            "before": "Nara Half",
+            "after": "Nara Half-Day vs Full-Day Decision Guide"
+        },
+        {
+            "slug": "kanazawa-shirakawago-takayama-route-choice",
+            "before": "Kanazawa Shirakawa",
+            "after": "Kanazawa Shirakawa-go Takayama Route Choice"
+        },
+        {
+            "slug": "japan-before-booking-route-checklist",
+            "before": "Japan Before",
+            "after": "Japan Before-Booking Route Checklist"
+        }
+    ],
+    "excerpt_rewritten": [
+        "hokkaido-seasons-first-trip-guide",
+        "tohoku-slow-travel-first-guide",
+        "tokyo-tower-and-roppongi-evening-planner",
+        "uji-matcha-and-byodoin-half-day-from-kyoto",
+        "kyoto-bus-crowd-avoidance-plan",
+        "kyoto-sakura-season-crowd-morning-plan",
+        "japan-seven-day-first-trip-skip-list",
+        "japan-daily-spending-buffer-guide"
+    ],
+    "skipped_image_replacements": []
+}

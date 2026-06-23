@@ -110,6 +110,55 @@ class SearchFilterTest extends TestCase
             ->assertSee('hidden searchable narita transfer phrase', false);
     }
 
+    public function test_keyword_search_prioritizes_title_and_destination_matches_before_body_only_matches(): void
+    {
+        $kyoto = Destination::factory()->create([
+            'name' => 'Kyoto',
+            'slug' => 'kyoto',
+            'is_channel' => true,
+            'is_indexable' => true,
+        ]);
+        $tokyo = Destination::factory()->create([
+            'name' => 'Tokyo',
+            'slug' => 'tokyo',
+            'is_channel' => true,
+            'is_indexable' => true,
+        ]);
+
+        $bodyOnly = $this->publishedArticle([
+            'title' => 'Tokyo Rain Backup Plan',
+            'slug' => 'tokyo-rain-backup-plan',
+            'excerpt' => 'A city plan that mentions Kyoto only in passing.',
+            'body' => '<p>Kyoto appears here as a comparison, not the main destination.</p>',
+            'published_at' => now(),
+        ]);
+        $bodyOnly->destinations()->attach($tokyo);
+
+        $destinationMatch = $this->publishedArticle([
+            'title' => 'Temple Morning Strategy',
+            'slug' => 'temple-morning-strategy',
+            'excerpt' => 'A quiet route for temple districts.',
+            'published_at' => now()->subDay(),
+        ]);
+        $destinationMatch->destinations()->attach($kyoto);
+
+        $titleMatch = $this->publishedArticle([
+            'title' => 'Kyoto Bus Crowd Avoidance Plan',
+            'slug' => 'kyoto-bus-crowd-avoidance-plan',
+            'excerpt' => 'A Kyoto transport guide for first-time visitors.',
+            'published_at' => now()->subDays(2),
+        ]);
+        $titleMatch->destinations()->attach($kyoto);
+
+        $this->get('/search?q=kyoto')
+            ->assertOk()
+            ->assertSeeInOrder([
+                $titleMatch->title,
+                $destinationMatch->title,
+                $bodyOnly->title,
+            ]);
+    }
+
     public function test_search_filter_controls_hide_non_public_region_and_category_values(): void
     {
         Destination::factory()->create([

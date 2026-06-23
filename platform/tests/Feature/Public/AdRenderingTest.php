@@ -153,4 +153,16 @@ class AdRenderingTest extends TestCase
             ->assertOk()
             ->assertDontSee('data-ad-key="article-body-middle"', false);
     }
+
+    public function test_unfilled_ads_keep_reserved_space_visible(): void
+    {
+        $css = file_get_contents(resource_path('css/app.css'));
+
+        $this->assertStringContainsString(".ad-slot[data-ad-empty='true']", $css);
+        $this->assertStringNotContainsString(
+            ".ad-slot[data-ad-empty='true'] {\n        display: none;",
+            $css,
+        );
+        $this->assertStringContainsString('min-height: 280px;', $css);
+    }
 }

@@ -4,6 +4,7 @@ namespace Tests\Feature\Public;
 
 use App\Enums\ArticleStatus;
 use App\Models\Article;
+use App\Models\ServiceLink;
 use App\Models\User;
 use App\Support\PublicUrl;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -39,6 +40,24 @@ class PublicPagesTest extends TestCase
             ->assertSee('href="'.PublicUrl::route('pages.privacy').'"', false)
             ->assertSee('href="'.PublicUrl::route('pages.terms').'"', false)
             ->assertSee('href="'.PublicUrl::route('pages.disclaimer').'"', false);
+    }
+
+    public function test_header_keeps_service_links_on_site(): void
+    {
+        ServiceLink::factory()->create([
+            'label' => 'Rail Tickets',
+            'url' => 'https://japanrailpass.net/en/',
+            'placement' => 'header',
+            'is_enabled' => true,
+            'tracking_key' => 'rail-tickets',
+            'sort_order' => 1,
+        ]);
+
+        $this->get('/')
+            ->assertOk()
+            ->assertDontSee('href="https://japanrailpass.net/en/"', false)
+            ->assertDontSee('data-service-key="rail-tickets"', false)
+            ->assertSee('href="'.PublicUrl::route('tools.show', 'jr-pass-calculator').'"', false);
     }
 
     public function test_published_article_is_public(): void

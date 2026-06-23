@@ -11,6 +11,7 @@
 @layer components {
     .content-prose {
         line-height: 1.8;
+        overflow-wrap: anywhere;
     }
 
     .content-prose p {
@@ -40,6 +41,17 @@
     .public-card,
     .public-story-card {
         min-width: 0;
+    }
+
+    .public-card h1,
+    .public-card h2,
+    .public-card h3,
+    .public-card p,
+    .public-story-card h2,
+    .public-story-card h3,
+    .public-story-card p {
+        min-width: 0;
+        overflow-wrap: anywhere;
     }
 
     .public-header {
@@ -197,6 +209,15 @@
         color: #5f01d1;
     }
 
+    @media (min-width: 1024px) {
+        .public-channel-nav {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem 1.05rem;
+            overflow-x: visible;
+        }
+    }
+
     .public-region-strip {
         border-top: 1px solid #eef0f4;
         background: #f9fafc;
@@ -232,11 +253,27 @@
     }
 
     .ad-slot[data-ad-empty='true'] {
-        display: none;
+        display: block;
+        min-height: 280px;
+    }
+
+    .ad-slot[data-ad-empty='true']::before {
+        content: 'Advertisement';
+        display: grid;
+        min-height: 280px;
+        place-items: center;
+        border: 1px dashed #d9dde6;
+        border-radius: 0.5rem;
+        background: #f9fafc;
+        color: #94a3b8;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
     }
 
     .ad-slot[data-ad-empty='true'] .adsbygoogle {
-        display: none !important;
+        display: block !important;
         height: 0 !important;
         min-height: 0 !important;
     }
@@ -961,6 +998,7 @@
         display: inline-flex;
         align-items: center;
         gap: 0.45rem;
+        max-width: 100%;
         border: 1px solid #e0e4ec;
         border-radius: 999px;
         background: #fff;
@@ -969,6 +1007,8 @@
         font-size: 0.82rem;
         font-weight: 850;
         text-decoration: none;
+        overflow-wrap: anywhere;
+        white-space: normal;
     }
 
     .public-tag-pill small {

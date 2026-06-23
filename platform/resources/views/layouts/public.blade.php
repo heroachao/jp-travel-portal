@@ -1,14 +1,32 @@
 @php
     $siteSettings = app(\App\Services\Settings\SiteSettings::class)->current();
     $layoutHeaderServiceLinks = \App\Models\ServiceLink::query()->enabled()->placement('header')->ordered()->get();
+    $layoutInternalServiceTargets = [
+        'activities' => ['label' => 'Activities', 'url' => \App\Support\PublicUrl::route('categories.show', 'things-to-do')],
+        'hotels' => ['label' => 'Hotels', 'url' => \App\Support\PublicUrl::route('categories.show', 'lodging')],
+        'flights' => ['label' => 'Flights', 'url' => \App\Support\PublicUrl::route('tools.show', 'airport-transfer')],
+        'rail-tickets' => ['label' => 'Rail Tickets', 'url' => \App\Support\PublicUrl::route('tools.show', 'jr-pass-calculator')],
+        'shop' => ['label' => 'Shop', 'url' => \App\Support\PublicUrl::route('tools.show', 'tax-free-calculator')],
+        'exchange-rate' => ['label' => 'Exchange Rate', 'url' => \App\Support\PublicUrl::route('tools.show', 'budget-calculator')],
+    ];
+    $layoutHeaderServiceLinks = $layoutHeaderServiceLinks
+        ->map(function ($link) use ($layoutInternalServiceTargets) {
+            $key = $link->tracking_key ?: \Illuminate\Support\Str::slug($link->label);
+            $target = $layoutInternalServiceTargets[$key] ?? ['label' => $link->label, 'url' => \App\Support\PublicUrl::route('tools.index')];
+
+            return [
+                'label' => $target['label'],
+                'url' => $target['url'],
+                'tracking_key' => $key,
+            ];
+        })
+        ->unique('url')
+        ->values();
     $layoutFooterServiceLinks = \App\Models\ServiceLink::query()->enabled()->placement('footer')->ordered()->get();
     $layoutFooterDescription = $siteSettings->tagline
         ?: ($siteSettings->default_meta_description
             ?: 'Independent planning guides, regional hubs, and useful travel tools for English-speaking Japan travelers.');
-    $layoutTitle = $meta->title;
-    if (filled($siteSettings->seo_title_suffix) && ! str_contains($layoutTitle, $siteSettings->seo_title_suffix)) {
-        $layoutTitle .= ' | '.$siteSettings->seo_title_suffix;
-    }
+    $layoutTitle = app(\App\Services\Seo\PublicTitleFormatter::class)->format($meta->title, $siteSettings);
     $layoutDescription = $meta->description ?: $siteSettings->default_meta_description;
     $websiteJsonLd = [
         '@context' => 'https://schema.org',
@@ -123,7 +141,7 @@
                     <a href="{{ \App\Support\PublicUrl::route('categories.show', $category) }}">{{ $category->display_name ?: $category->title }}</a>
                 @endforeach
                 @foreach($layoutHeaderServiceLinks as $link)
-                    <a href="{{ $link->url }}" target="_blank" rel="nofollow noopener sponsored" @if($link->tracking_key) data-service-key="{{ $link->tracking_key }}" @endif>{{ $link->label }}</a>
+                    <a href="{{ $link['url'] }}">{{ $link['label'] }}</a>
                 @endforeach
             </nav>
         </div>
