@@ -199,6 +199,23 @@ class ImportTravelContent extends Command
             $html .= '</section>';
         }
 
+        if (! empty($entry['internal_links']) && is_array($entry['internal_links'])) {
+            $html .= '<section><h2>Use next on Japan Trip Tools</h2>';
+            $html .= '<ul>';
+            foreach ($entry['internal_links'] as $link) {
+                if (blank($link['slug'] ?? null) || blank($link['title'] ?? null)) {
+                    continue;
+                }
+
+                $html .= '<li><a href="'.e(PublicUrl::route('articles.show', ['article' => $link['slug']])).'">'.e($link['title']).'</a>';
+                if (filled($link['reason'] ?? null)) {
+                    $html .= ' — '.e($link['reason']);
+                }
+                $html .= '</li>';
+            }
+            $html .= '</ul></section>';
+        }
+
         $html .= '<section><h2>Sources and image licensing</h2>';
         $html .= '<p>This article is an original English summary written from official tourism and transport sources. It is not a copied translation of those pages.</p>';
         $html .= '<ul>';
