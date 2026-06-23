@@ -56,12 +56,13 @@
                 if (! $item->is_enabled) {
                     return null;
                 }
+                $resolved = \App\Support\InternalServiceLink::resolve($item);
 
                 return [
-                    'url' => $item->url,
-                    'label' => $moduleItem->label ?: $item->label,
+                    'url' => $resolved['url'],
+                    'label' => $moduleItem->label ?: $resolved['label'],
                     'summary' => $moduleItem->summary,
-                    'external' => true,
+                    'external' => false,
                 ];
             }
 

@@ -4,6 +4,8 @@ namespace Tests\Feature\Public;
 
 use App\Enums\ArticleStatus;
 use App\Models\Article;
+use App\Models\HomepageModule;
+use App\Models\HomepageModuleItem;
 use App\Models\ServiceLink;
 use App\Models\User;
 use App\Support\PublicUrl;
@@ -57,6 +59,56 @@ class PublicPagesTest extends TestCase
             ->assertOk()
             ->assertDontSee('href="https://japanrailpass.net/en/"', false)
             ->assertDontSee('data-service-key="rail-tickets"', false)
+            ->assertSee('href="'.PublicUrl::route('tools.show', 'jr-pass-calculator').'"', false);
+    }
+
+    public function test_footer_keeps_service_links_on_site(): void
+    {
+        ServiceLink::factory()->create([
+            'label' => 'Exchange Rate',
+            'url' => 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=JPY',
+            'placement' => 'footer',
+            'is_enabled' => true,
+            'tracking_key' => 'exchange-rate',
+            'sort_order' => 1,
+        ]);
+
+        $this->get('/')
+            ->assertOk()
+            ->assertDontSee('href="https://www.xe.com/currencyconverter', false)
+            ->assertSee('href="'.PublicUrl::route('tools.show', 'budget-calculator').'"', false);
+    }
+
+    public function test_homepage_service_module_items_stay_on_site(): void
+    {
+        $module = HomepageModule::factory()->create([
+            'placement_key' => 'home-service-links',
+            'type' => 'service_highlights',
+            'title' => 'Trip Tools',
+            'is_enabled' => true,
+            'sort_order' => 1,
+        ]);
+        $serviceLink = ServiceLink::factory()->create([
+            'label' => 'Rail Tickets',
+            'url' => 'https://japanrailpass.net/en/',
+            'placement' => 'header',
+            'is_enabled' => true,
+            'tracking_key' => 'rail-tickets',
+            'sort_order' => 1,
+        ]);
+        HomepageModuleItem::factory()->create([
+            'homepage_module_id' => $module->id,
+            'item_type' => ServiceLink::class,
+            'item_id' => $serviceLink->id,
+            'label' => 'Rail Tickets',
+            'summary' => 'Plan rail ticket choices on site.',
+            'is_enabled' => true,
+            'sort_order' => 1,
+        ]);
+
+        $this->get('/')
+            ->assertOk()
+            ->assertDontSee('href="https://japanrailpass.net/en/"', false)
             ->assertSee('href="'.PublicUrl::route('tools.show', 'jr-pass-calculator').'"', false);
     }
 

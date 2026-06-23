@@ -1,28 +1,13 @@
 @php
     $siteSettings = app(\App\Services\Settings\SiteSettings::class)->current();
-    $layoutHeaderServiceLinks = \App\Models\ServiceLink::query()->enabled()->placement('header')->ordered()->get();
-    $layoutInternalServiceTargets = [
-        'activities' => ['label' => 'Activities', 'url' => \App\Support\PublicUrl::route('categories.show', 'things-to-do')],
-        'hotels' => ['label' => 'Hotels', 'url' => \App\Support\PublicUrl::route('categories.show', 'lodging')],
-        'flights' => ['label' => 'Flights', 'url' => \App\Support\PublicUrl::route('tools.show', 'airport-transfer')],
-        'rail-tickets' => ['label' => 'Rail Tickets', 'url' => \App\Support\PublicUrl::route('tools.show', 'jr-pass-calculator')],
-        'shop' => ['label' => 'Shop', 'url' => \App\Support\PublicUrl::route('tools.show', 'tax-free-calculator')],
-        'exchange-rate' => ['label' => 'Exchange Rate', 'url' => \App\Support\PublicUrl::route('tools.show', 'budget-calculator')],
-    ];
-    $layoutHeaderServiceLinks = $layoutHeaderServiceLinks
-        ->map(function ($link) use ($layoutInternalServiceTargets) {
-            $key = $link->tracking_key ?: \Illuminate\Support\Str::slug($link->label);
-            $target = $layoutInternalServiceTargets[$key] ?? ['label' => $link->label, 'url' => \App\Support\PublicUrl::route('tools.index')];
-
-            return [
-                'label' => $target['label'],
-                'url' => $target['url'],
-                'tracking_key' => $key,
-            ];
-        })
+    $layoutHeaderServiceLinks = \App\Models\ServiceLink::query()->enabled()->placement('header')->ordered()->get()
+        ->map(fn ($link) => \App\Support\InternalServiceLink::resolve($link))
         ->unique('url')
         ->values();
-    $layoutFooterServiceLinks = \App\Models\ServiceLink::query()->enabled()->placement('footer')->ordered()->get();
+    $layoutFooterServiceLinks = \App\Models\ServiceLink::query()->enabled()->placement('footer')->ordered()->get()
+        ->map(fn ($link) => \App\Support\InternalServiceLink::resolve($link))
+        ->unique('url')
+        ->values();
     $layoutFooterDescription = $siteSettings->tagline
         ?: ($siteSettings->default_meta_description
             ?: 'Independent planning guides, regional hubs, and useful travel tools for English-speaking Japan travelers.');
@@ -179,7 +164,7 @@
                 <a href="{{ \App\Support\PublicUrl::route('pages.terms') }}">Terms</a>
                 <a href="{{ \App\Support\PublicUrl::route('pages.disclaimer') }}">Disclaimer</a>
                 @foreach($layoutFooterServiceLinks as $link)
-                    <a href="{{ $link->url }}" target="_blank" rel="nofollow noopener sponsored">{{ $link->label }}</a>
+                    <a href="{{ $link['url'] }}">{{ $link['label'] }}</a>
                 @endforeach
             </div>
         </div>
