@@ -2,24 +2,24 @@
 
 Japan Trip Tools is an independent English-language Japan travel planning site with practical guides, regional hubs, and browser-based travel tools.
 
-Sitemap: https://heroachao.github.io/jp-travel-portal/sitemap.xml
-Home: https://heroachao.github.io/jp-travel-portal
-Articles: https://heroachao.github.io/jp-travel-portal/articles/
-Regions: https://heroachao.github.io/jp-travel-portal/regions/
-Tools: https://heroachao.github.io/jp-travel-portal/tools/
-Games: https://heroachao.github.io/jp-travel-portal/games/
-Image credits: https://heroachao.github.io/jp-travel-portal/image-credits/
+Sitemap: https://japantriptools.com/sitemap.xml
+Home: https://japantriptools.com
+Articles: https://japantriptools.com/articles/
+Regions: https://japantriptools.com/regions/
+Tools: https://japantriptools.com/tools/
+Games: https://japantriptools.com/games/
+Image credits: https://japantriptools.com/image-credits/
 
 Important tools:
-- Trip planner: https://heroachao.github.io/jp-travel-portal/tools/trip-planner/
-- JR Pass checker: https://heroachao.github.io/jp-travel-portal/tools/jr-pass-calculator/
-- Airport transfer planner: https://heroachao.github.io/jp-travel-portal/tools/airport-transfer/
-- Budget calculator: https://heroachao.github.io/jp-travel-portal/tools/budget-calculator/
-- Luggage planner: https://heroachao.github.io/jp-travel-portal/tools/luggage-planner/
+- Trip planner: https://japantriptools.com/tools/trip-planner/
+- JR Pass checker: https://japantriptools.com/tools/jr-pass-calculator/
+- Airport transfer planner: https://japantriptools.com/tools/airport-transfer/
+- Budget calculator: https://japantriptools.com/tools/budget-calculator/
+- Luggage planner: https://japantriptools.com/tools/luggage-planner/
 
 Important games:
-- Daily Japan Word Trail: https://heroachao.github.io/jp-travel-portal/games/daily-japan-word/
-- Fuji Merge 2048: https://heroachao.github.io/jp-travel-portal/games/fuji-merge-2048/
-- Sushi Snake Arcade: https://heroachao.github.io/jp-travel-portal/games/sushi-snake/
+- Daily Japan Word Trail: https://japantriptools.com/games/daily-japan-word/
+- Fuji Merge 2048: https://japantriptools.com/games/fuji-merge-2048/
+- Sushi Snake Arcade: https://japantriptools.com/games/sushi-snake/
 
 Editorial note: pages are written in original professional English for international travelers. Readers should verify current prices, schedules, closures, safety alerts, and booking rules with official providers before travel.
