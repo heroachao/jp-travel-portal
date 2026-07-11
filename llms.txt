@@ -7,11 +7,11 @@ Home: https://japantriptools.com
 Planning hub: https://japantriptools.com/plan/
 Itinerary hub: https://japantriptools.com/itineraries/
 Transport hub: https://japantriptools.com/transport/
+Where to stay hub: https://japantriptools.com/where-to-stay/
 Budget hub: https://japantriptools.com/budget/
 Articles: https://japantriptools.com/articles/
 Regions: https://japantriptools.com/regions/
 Tools: https://japantriptools.com/tools/
-Games: https://japantriptools.com/games/
 Image credits: https://japantriptools.com/image-credits/
 
 Important tools:
