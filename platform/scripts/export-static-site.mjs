@@ -18,6 +18,7 @@ const siteUrl = normalizeBase(args.get('site-url') || process.env.SITE_URL || 'h
 const outDir = path.resolve(args.get('out-dir') || process.env.OUT_DIR || path.join(root, 'dist-static'));
 const publicDir = path.join(root, 'public');
 const maxPages = Number(args.get('max-pages') || process.env.MAX_PAGES || 2000);
+const adsTxtContent = 'google.com, pub-3754179629894278, DIRECT, f08c47fec0942fa0\n';
 
 const fetched = new Set();
 const queued = [];
@@ -110,6 +111,33 @@ async function copyPublicAssets(from = publicDir, to = outDir) {
 
         await mkdir(path.dirname(targetPath), { recursive: true });
         await copyFile(sourcePath, targetPath);
+    }
+}
+
+async function readRequiredAdsTxt() {
+    const sourcePath = path.join(publicDir, 'ads.txt');
+    let body;
+
+    try {
+        body = await readFile(sourcePath, 'utf8');
+    } catch {
+        throw new Error(`Required root file is missing: ${sourcePath}`);
+    }
+
+    if (body !== adsTxtContent) {
+        throw new Error('public/ads.txt does not contain the approved AdSense authorization record.');
+    }
+
+    return body;
+}
+
+async function preserveRequiredRootFiles(adsTxtBody) {
+    const outputPath = path.join(outDir, 'ads.txt');
+
+    await writeFile(outputPath, adsTxtBody);
+
+    if (await readFile(outputPath, 'utf8') !== adsTxtContent) {
+        throw new Error('Static export is missing the approved ads.txt authorization record.');
     }
 }
 
@@ -342,6 +370,8 @@ async function listFiles(directory, prefix = '') {
     return files;
 }
 
+const requiredAdsTxt = await readRequiredAdsTxt();
+
 await emptyOutputDirectory();
 await copyPublicAssets();
 await seedFromSitemap();
@@ -352,6 +382,7 @@ while (queued.length > 0) {
 
 await writeDestinationCompatibilityPages();
 await writeNotFoundPage();
+await preserveRequiredRootFiles(requiredAdsTxt);
 await assertNoLocalBaseLeaks();
 
 console.log(JSON.stringify({
