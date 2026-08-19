@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Database\Factories\DestinationFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,6 +21,7 @@ class Destination extends Model
         'parent_id',
         'type',
         'name',
+        'display_name',
         'slug',
         'excerpt',
         'body',
@@ -29,6 +31,8 @@ class Destination extends Model
         'seo_title',
         'meta_description',
         'is_indexable',
+        'is_channel',
+        'sort_order',
     ];
 
     protected function casts(): array
@@ -37,6 +41,8 @@ class Destination extends Model
             'latitude' => 'decimal:7',
             'longitude' => 'decimal:7',
             'is_indexable' => 'boolean',
+            'is_channel' => 'boolean',
+            'sort_order' => 'integer',
         ];
     }
 
@@ -63,6 +69,16 @@ class Destination extends Model
     public function topics(): BelongsToMany
     {
         return $this->belongsToMany(Topic::class)->withTimestamps();
+    }
+
+    public function scopeChannel(Builder $query): Builder
+    {
+        return $query->where('is_channel', true);
+    }
+
+    public function scopeOrdered(Builder $query): Builder
+    {
+        return $query->orderBy('sort_order')->orderBy('name');
     }
 
     public function getRouteKeyName(): string

@@ -23,7 +23,12 @@ class SafeImageUpload
             throw ValidationException::withMessages(['file' => '图片大小不能超过 4MB。']);
         }
 
-        $dimensions = @getimagesize($file->getRealPath()) ?: [null, null];
+        $dimensions = @getimagesize($file->getRealPath());
+
+        if ($dimensions === false) {
+            throw ValidationException::withMessages(['file' => '无法读取图片尺寸，请上传有效图片。']);
+        }
+
         $path = $file->store('media/'.now()->format('Y/m'), 'public');
 
         return MediaAsset::create([

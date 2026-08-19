@@ -31,6 +31,8 @@ class AdminAccessTest extends TestCase
         $this->actingAs($admin)
             ->get('/admin')
             ->assertOk()
-            ->assertSee('工作台');
+            ->assertSee('工作台')
+            ->assertSee('内容运营')
+            ->assertSee('数据汇总');
     }
 }

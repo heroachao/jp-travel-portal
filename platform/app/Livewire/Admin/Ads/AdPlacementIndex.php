@@ -21,10 +21,14 @@ class AdPlacementIndex extends Component
 
     public ?string $code = null;
 
+    public ?string $notes = null;
+
     public bool $is_enabled = false;
 
     public function edit(int $id): void
     {
+        abort_unless(auth()->user()?->can('ads.manage'), 403);
+
         $placement = AdPlacement::findOrFail($id);
         $this->placementId = $placement->id;
         $this->key = $placement->key;
@@ -32,29 +36,37 @@ class AdPlacementIndex extends Component
         $this->page_type = $placement->page_type;
         $this->position = $placement->position;
         $this->code = $placement->code;
+        $this->notes = $placement->notes;
         $this->is_enabled = $placement->is_enabled;
     }
 
     public function save(): void
     {
+        abort_unless(auth()->user()?->can('ads.manage'), 403);
+
         $data = $this->validate([
             'key' => ['required', 'alpha_dash:ascii', 'max:120', Rule::unique('ad_placements', 'key')->ignore($this->placementId)],
             'name' => ['required', 'string', 'max:120'],
             'page_type' => ['required', 'string', 'max:60'],
             'position' => ['required', 'string', 'max:80'],
             'code' => ['nullable', 'string'],
+            'notes' => ['nullable', 'string', 'max:1000'],
             'is_enabled' => ['boolean'],
         ]);
 
         AdPlacement::updateOrCreate(['id' => $this->placementId], $data);
-        $this->reset(['placementId', 'key', 'name', 'code', 'is_enabled']);
+        $this->reset(['placementId', 'key', 'name', 'code', 'notes', 'is_enabled']);
         $this->page_type = 'article';
         $this->position = 'body_middle';
+        session()->flash('status', '广告位已保存');
     }
 
     public function delete(int $id): void
     {
+        abort_unless(auth()->user()?->can('ads.manage'), 403);
+
         AdPlacement::findOrFail($id)->delete();
+        session()->flash('status', '广告位已删除');
     }
 
     public function render(): View

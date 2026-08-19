@@ -1,0 +1,306 @@
+{
+  "articles": [
+    {
+      "slug": "kohama-island-slow-day-from-ishigaki",
+      "title": "Kohama Island Slow Day from Ishigaki",
+      "excerpt": "A calm Yaeyama Islands guide for travelers using Ishigaki as a base and planning a low-pressure Kohama Island day with beaches, viewpoints, ferry checks, and enough time to slow down.",
+      "seo_title": "Kohama Island Slow Day from Ishigaki | Japan Trip Tools",
+      "meta_description": "Plan a slow Kohama Island day from Ishigaki with ferry checks, viewpoints, beaches, village pacing, official Okinawa sources, and Photo AC image credit.",
+      "published_at": "2026-06-20T00:00:00+00:00",
+      "category_slugs": [
+        "guide",
+        "itinerary",
+        "things-to-do",
+        "transport"
+      ],
+      "destination_slugs": [
+        "okinawa"
+      ],
+      "topic_slugs": [
+        "okinawa-islands",
+        "yaeyama-islands",
+        "slow-travel"
+      ],
+      "tag_slugs": [
+        "kohama-island",
+        "ishigaki",
+        "yaeyama",
+        "ferry",
+        "beach"
+      ],
+      "popularity_score": 68,
+      "image": {
+        "url": "/images/photo-ac/kohamajima-view.jpeg",
+        "alt": "Kohama Island sea view in the Yaeyama Islands",
+        "caption": "Kohama Island works best as a slow Yaeyama side trip with ferry timing checked before travel.",
+        "license": "Photo AC Standard License",
+        "attribution": "Photo AC free licensed image",
+        "source_url": "https://www.photo-ac.com/",
+        "match_query": "Kohama Island Yaeyama sea view"
+      },
+      "sources": [
+        {
+          "name": "Official Okinawa Travel Guide: Kohama Island",
+          "url": "https://visitokinawajapan.com/destinations/yaeyama-islands/kohama-island/"
+        },
+        {
+          "name": "Official Okinawa Travel Guide: Ferries Between Islands",
+          "url": "https://visitokinawajapan.com/plan-your-trip/getting-around-okinawa/ferries-between-islands/"
+        },
+        {
+          "name": "Official Okinawa Travel Guide: Yaeyama Islands",
+          "url": "https://visitokinawajapan.com/destinations/yaeyama-islands/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Why Kohama works as a slow island day",
+          "paragraphs": [
+            "Kohama Island is not the island to rush through with a checklist. The official Okinawa guide describes it as a small Yaeyama island between Ishigaki and Iriomote, with white sand, turquoise water, quiet beaches, swimming and snorkeling opportunities, and broad views across the Yaeyama Islands. That makes the best plan simple: choose a relaxed route, protect the ferry buffer, and leave room for weather.",
+            "For travelers staying on Ishigaki, Kohama is useful because it feels meaningfully different without requiring a complicated multi-island day. The island is small enough to understand quickly, but the experience can feel shallow if you arrive only to take a photo and leave. Build the day around a viewpoint, a beach pause, a simple meal, and a return ferry you are comfortable missing only if you have a backup."
+          ]
+        },
+        {
+          "heading": "The route shape that avoids wasted time",
+          "paragraphs": [
+            "Start with the ferry decision. The official Okinawa ferry page lists Kohama Port as an express ferry destination from Ishigaki Port, with operators linked for schedule checks. Treat the schedule as the spine of the day rather than a detail to confirm at the pier. Island ferries can be affected by weather, sea conditions, and seasonal demand.",
+            "Once on Kohama, resist the urge to add another island unless you are already experienced with Yaeyama ferry movement. A better first version is to choose one or two island stops, then let the rest of the time stay flexible for heat, wind, swimming conditions, and the slower rhythm that makes the trip worthwhile."
+          ],
+          "bullets": [
+            "Check outbound and return ferries before booking any paid activity.",
+            "Carry sun protection, water, and cash for small local stops.",
+            "Keep the final ferry buffer conservative, especially outside peak daylight hours."
+          ]
+        },
+        {
+          "heading": "What to do on a first visit",
+          "paragraphs": [
+            "A first Kohama day should balance scenery and low effort. Use the morning or early afternoon for a viewpoint or beach area, then keep the middle of the day easy. If you plan to swim or snorkel, verify current local conditions and choose a supervised or conservative setting rather than assuming every beautiful beach is equally safe.",
+            "The island's appeal is not only the sea. The official guide notes a village of red-tiled houses, pastures, and sugarcane fields. Those details matter because they shift the day away from a beach-only plan and toward a slower cultural landscape. Move respectfully through residential areas and avoid treating private lanes as photo sets."
+          ]
+        },
+        {
+          "heading": "Who should add Kohama to an Okinawa itinerary",
+          "paragraphs": [
+            "Kohama suits travelers who already have at least one night on Ishigaki and want a quieter Yaeyama contrast. It is less suitable as a squeezed add-on between flights, multiple ferries, or a packed Ishigaki driving day. The value is in the slower pace, not in the number of stops.",
+            "If this is your first remote-island day in Okinawa, keep the plan intentionally light. Confirm the latest ferry schedule, bring what you need for heat and sun, and use official sources for final transport details before committing money or time."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Can Kohama Island be visited as a day trip from Ishigaki?",
+          "answer": "Yes, it can work as a day trip when ferry times fit your plan. Check the latest operator schedules through official links before travel, because sea and weather conditions can affect movement."
+        },
+        {
+          "question": "Should I combine Kohama with another Yaeyama island on the same day?",
+          "answer": "First-time visitors should usually keep Kohama as the main island of the day. Combining islands is possible, but it increases ferry risk and reduces the slow pace that makes Kohama worthwhile."
+        }
+      ],
+      "is_indexable": true,
+      "structured_data_type": "Article"
+    },
+    {
+      "slug": "okinawa-kaichu-road-and-hamahiga-drive",
+      "title": "Okinawa Kaichu Road and Hamahiga Drive",
+      "excerpt": "A practical central Okinawa drive plan connecting Kaichu-doro, Henza Island, Hamahiga Island, seafood stops, sea views, and conservative timing from Naha or central beach resorts.",
+      "seo_title": "Okinawa Kaichu Road and Hamahiga Drive | Japan Trip Tools",
+      "meta_description": "Plan a Kaichu Road and Hamahiga Island drive in Okinawa with official Uruma sources, route pacing, food stops, safety checks, and Photo AC image credit.",
+      "published_at": "2026-06-20T00:05:00+00:00",
+      "category_slugs": [
+        "guide",
+        "itinerary",
+        "things-to-do",
+        "transport"
+      ],
+      "destination_slugs": [
+        "okinawa"
+      ],
+      "topic_slugs": [
+        "okinawa-main-island",
+        "road-trip",
+        "coastal-drive"
+      ],
+      "tag_slugs": [
+        "kaichu-road",
+        "uruma",
+        "hamahiga",
+        "henza",
+        "okinawa-drive"
+      ],
+      "popularity_score": 70,
+      "image": {
+        "url": "/images/photo-ac/okinawa-yakena.jpeg",
+        "alt": "Central Okinawa coastal road near Uruma",
+        "caption": "Central Okinawa coastal drives need relaxed timing, weather checks, and respectful stops near island communities.",
+        "license": "Photo AC Standard License",
+        "attribution": "Photo AC free licensed image",
+        "source_url": "https://www.photo-ac.com/",
+        "match_query": "Uruma Okinawa Kaichu road coastal drive"
+      },
+      "sources": [
+        {
+          "name": "Official Okinawa Travel Guide: Uruma",
+          "url": "https://visitokinawajapan.com/destinations/okinawa-main-island/central-okinawa-main-island/uruma/"
+        },
+        {
+          "name": "Official Okinawa Travel Guide: Henza Island",
+          "url": "https://visitokinawajapan.com/destinations/okinawa-main-island/central-okinawa-main-island/henza-island/"
+        },
+        {
+          "name": "URUMA KANKO WEB",
+          "url": "https://uruma-ru.jp/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Why this drive belongs on a central Okinawa plan",
+          "paragraphs": [
+            "Kaichu-doro is one of the easiest ways to add island scenery to an Okinawa main island itinerary without taking a ferry. The official Okinawa guide describes Uruma as covering the central eastern coast, the Katsuren Peninsula, and the Yokatsu Islands. It highlights Kaichu-doro as a scenic sea road from the Katsuren Peninsula toward Henza, Hamahiga, Miyagi, and Ikei.",
+            "That geography makes the route useful for travelers staying in Naha, Onna, Chatan, or other central areas who want a half-day or relaxed full-day drive. The mistake is to treat the road as only a viewpoint. It works better when you combine the sea-road experience with one island stop, one food stop, and one historical or cultural anchor."
+          ]
+        },
+        {
+          "heading": "A simple route order",
+          "paragraphs": [
+            "Start by deciding how much of the Yokatsu island chain you actually want to cover. The official Uruma page notes that Henza is the first island reached from the peninsula and that Hamahiga lies south from there, while Miyagi and Ikei continue farther north. A first visit does not need every island.",
+            "For most travelers, the clean route is Katsuren Peninsula, Kaichu-doro, Henza Island, Hamahiga Island, and then either return or continue only if daylight, weather, and driver energy remain good. Add extra stops after the core route, not before it."
+          ],
+          "bullets": [
+            "Use Kaichu-doro as the scenic transition, not the whole plan.",
+            "Choose Hamahiga or Ikei as the main island add-on, not both if time is tight.",
+            "Check parking, local signs, and beach access rules before stopping."
+          ]
+        },
+        {
+          "heading": "Food, culture, and respectful stops",
+          "paragraphs": [
+            "Henza Island is described by the official Okinawa guide as a gateway to Hamahiga, Miyagi, and Ikei, with a fishing port, seafood, local backstreets, and island culture. That makes it a good place to slow down rather than just drive through.",
+            "This route passes real communities. Keep noise low near homes, avoid blocking narrow roads, and do not enter private coastal paths for photos. If a rest area, market, or museum is open, it can make the drive feel more grounded than a series of quick car-window views."
+          ]
+        },
+        {
+          "heading": "When to keep the drive conservative",
+          "paragraphs": [
+            "Okinawa driving days can be affected by rain, wind, heat, navigation mistakes, and slower parking than expected. Do not attach this route to a fixed dinner reservation across the island unless you have a generous buffer.",
+            "If you are using public transport rather than a rental car, this is not the same easy half-day. Check current bus and taxi feasibility before committing. The article is written primarily for travelers with a car, and final route decisions should be made with current official and local transport information."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Do I need a rental car for Kaichu Road and Hamahiga Island?",
+          "answer": "A rental car is the most practical way to follow this route. If you are not driving, check current bus and taxi options before planning the day because the experience is less flexible."
+        },
+        {
+          "question": "How many islands should I include on a first Kaichu Road drive?",
+          "answer": "For a first visit, keep the core route to Kaichu-doro, Henza, and Hamahiga, then add Miyagi or Ikei only if daylight and weather are still comfortable."
+        }
+      ],
+      "is_indexable": true,
+      "structured_data_type": "Article"
+    },
+    {
+      "slug": "kyoto-tango-railway-yura-river-bridge-plan",
+      "title": "Kyoto Tango Railway and Yura River Bridge Plan",
+      "excerpt": "A northern Kyoto rail-planning guide for travelers who want Sea of Japan scenery, the Yura River Bridge, Amanohashidate access, and a slower coastal side of Kyoto.",
+      "seo_title": "Kyoto Tango Railway and Yura River Bridge Plan | Japan Trip Tools",
+      "meta_description": "Plan a Kyoto Tango Railway scenic day with Yura River Bridge views, northern Kyoto pacing, official sources, ticket checks, and Photo AC image credit.",
+      "published_at": "2026-06-20T00:10:00+00:00",
+      "category_slugs": [
+        "guide",
+        "itinerary",
+        "transport",
+        "things-to-do"
+      ],
+      "destination_slugs": [
+        "kansai",
+        "kyoto"
+      ],
+      "topic_slugs": [
+        "kyoto-by-the-sea",
+        "scenic-rail",
+        "northern-kyoto"
+      ],
+      "tag_slugs": [
+        "kyoto-tango-railway",
+        "yura-river-bridge",
+        "amanohashidate",
+        "kyoto-by-the-sea",
+        "rail"
+      ],
+      "popularity_score": 67,
+      "image": {
+        "url": "/images/photo-ac/yura-coast.jpeg",
+        "alt": "Coastal scenery near the Yura River Bridge in northern Kyoto",
+        "caption": "The Kyoto Tango Railway is best planned as a scenic northern Kyoto day, not as a rushed add-on to central Kyoto sightseeing.",
+        "license": "Photo AC Standard License",
+        "attribution": "Photo AC free licensed image",
+        "source_url": "https://www.photo-ac.com/",
+        "match_query": "Yura River Bridge Kyoto Tango Railway coast"
+      },
+      "sources": [
+        {
+          "name": "Another Kyoto Official Travel Guide: Tango Railway",
+          "url": "https://www.kyototourism.org/en/sightseeing/32358/"
+        },
+        {
+          "name": "Another Kyoto Official Travel Guide: Amanohashidate to Ine",
+          "url": "https://www.kyototourism.org/en/column/7698/"
+        },
+        {
+          "name": "Kyoto Tango Railway Official Site",
+          "url": "https://trains.willer.co.jp/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Why northern Kyoto needs a different mindset",
+          "paragraphs": [
+            "Kyoto's coastal north is not a quick extension of a temple-heavy city day. Another Kyoto, the official prefectural tourism guide, frames the area as a different Kyoto: Sea of Japan scenery, fishing villages, castles, local food, and rail journeys that feel far removed from central Kyoto's busiest corridors.",
+            "The Kyoto Tango Railway is central to that experience. The official guide describes it as both local public transportation and a sightseeing train in the Kyoto by the Sea area, with changing views from ocean to mountain and rural landscapes. The Yura River Railway Bridge is specifically noted as a popular spot where the railway runs over the sea."
+          ]
+        },
+        {
+          "heading": "How to build a realistic rail day",
+          "paragraphs": [
+            "The first decision is whether the railway itself is the goal or whether it is supporting a larger northern Kyoto plan. If you want the scenic rail experience, keep the day focused around the line, the Yura River Bridge view, and one coastal town or viewpoint. If you want Amanohashidate or Ine, build the rail segment around access rather than trying to photograph every stretch.",
+            "Travelers coming from Kyoto, Osaka, or Kobe should check current schedules and ticket options through the railway's official site before committing. Northern Kyoto rewards slow timing. A plan that looks modest on a map can still involve multiple rail legs, station waits, weather changes, and limited return options."
+          ],
+          "bullets": [
+            "Choose one anchor: scenic train time, Amanohashidate, Ine, or a dining train experience.",
+            "Check limited-service or dining-train reservations separately before travel.",
+            "Keep the return path visible before extending farther along the coast."
+          ]
+        },
+        {
+          "heading": "Where the Yura River Bridge fits",
+          "paragraphs": [
+            "The Yura River Bridge is useful because it gives the route a clear scenic focus. It should not be treated as a standalone destination for every traveler. The better question is whether it helps the day feel different from central Kyoto: open water, low horizons, coastal air, and a slower rhythm.",
+            "If photography matters, plan around daylight and weather rather than assuming the view will work at any hour. If comfort matters more, treat the bridge as part of the journey and pair it with a town stop, lunch, or a coastal walk that does not depend entirely on perfect conditions."
+          ]
+        },
+        {
+          "heading": "Who should choose this over another Kyoto city day",
+          "paragraphs": [
+            "This route is best for second-time Kyoto visitors, rail fans, slow travelers, and people who want to understand that Kyoto Prefecture is larger than its old capital image. It is less suitable for travelers with only one full day in Kyoto, unless they have already decided to skip the classic temple circuit.",
+            "Before traveling, verify the latest railway schedule, ticket rules, and reservation requirements with the official railway and tourism sources. Do not use this guide as a substitute for same-day timetable checks, especially if you are connecting from another Kansai city."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is the Kyoto Tango Railway possible as a day trip from Kyoto city?",
+          "answer": "Yes, but it should be planned conservatively. Check current train schedules, decide on one northern Kyoto anchor, and avoid adding too many coastal stops to the same day."
+        },
+        {
+          "question": "Is the Yura River Bridge worth planning around?",
+          "answer": "It is worth including if you want the scenic rail side of Kyoto by the Sea. Treat it as part of a broader coastal rail day rather than the only reason for the trip."
+        }
+      ],
+      "is_indexable": true,
+      "structured_data_type": "Article"
+    }
+  ],
+  "image_policy": "Uses existing locally stored Photo AC free licensed images with article-specific place matching. Article pages route image credit details through the internal image credits page and do not link readers directly out to the image provider."
+}

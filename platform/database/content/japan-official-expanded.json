@@ -1,0 +1,738 @@
+{
+  "articles": [
+    {
+      "slug": "tohoku-slow-travel-first-guide",
+      "title": "Tohoku Slow Travel First Guide",
+      "excerpt": "A first guide to northern Honshu for travelers who want festivals, hot springs, mountain temples, coastal towns, and a quieter Japan route.",
+      "seo_title": "Tohoku Slow Travel First Guide",
+      "meta_description": "Plan a first Tohoku trip with official tourism sources for northern Honshu, shinkansen access, festivals, hot springs, and slower regional routes.",
+      "published_at": "2026-06-18T06:00:00+09:00",
+      "category_slugs": [
+        "guide",
+        "itinerary",
+        "basics"
+      ],
+      "destination_slugs": [
+        "tohoku"
+      ],
+      "topic_slugs": [
+        "tohoku-first-time",
+        "slow-travel"
+      ],
+      "tag_slugs": [
+        "tohoku",
+        "onsen",
+        "festivals"
+      ],
+      "popularity_score": 78,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Matsushima.jpg",
+        "alt": "Tohoku travel scene for tohoku slow travel first guide",
+        "caption": "Tohoku routes are represented by major regional scenery and festivals.",
+        "license": "Public domain",
+        "attribution": "Wikimedia Commons contributor",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AMatsushima.jpg",
+        "match_query": "Matsushima Bay Tohoku"
+      },
+      "sources": [
+        {
+          "name": "TRAVEL TO TOHOKU Official Tourism Website",
+          "url": "https://www.tohokukanko.jp/en/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Why Tohoku deserves more than one stop",
+          "paragraphs": [
+            "Tohoku is the northeastern region of Honshu and is best planned as a slower route, not a single side trip. Official tourism information frames the region through multiple prefectures, shinkansen access, local festivals, hot springs, coastlines, mountains, and historic towns.",
+            "For a first visit, choose one rail corridor or one seasonal theme. This keeps the route practical and gives the region enough time to feel different from Tokyo, Kyoto, and Osaka."
+          ]
+        },
+        {
+          "heading": "First planning pattern",
+          "paragraphs": [
+            "Use Sendai, Morioka, Aomori, or another regional hub as a base, then add focused day trips. Avoid trying to cross the whole region in two days."
+          ],
+          "bullets": [
+            "Spring and summer: festivals, castle towns, and mountain temple areas.",
+            "Autumn: foliage, hot springs, lake routes, and quieter countryside.",
+            "Winter: snow scenery and onsen, with extra weather buffer time."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is Tohoku easy to reach from Tokyo?",
+          "answer": "Major Tohoku cities are connected by shinkansen, but local sightseeing may still require careful train or bus planning."
+        }
+      ]
+    },
+    {
+      "slug": "hokuriku-shinetsu-craft-coast-guide",
+      "title": "Hokuriku Shinetsu Craft and Coast Guide",
+      "excerpt": "A first guide to mountains, Sea of Japan food, craft cities, gardens, and slower travel through Hokuriku Shinetsu.",
+      "seo_title": "Hokuriku Shinetsu Craft and Coast Guide",
+      "meta_description": "Plan Hokuriku Shinetsu around mountains, sea, Kanazawa, crafts, food, and slower regional travel using official Japan travel sources.",
+      "published_at": "2026-06-18T06:10:00+09:00",
+      "category_slugs": [
+        "guide",
+        "food",
+        "shopping"
+      ],
+      "destination_slugs": [
+        "hokuriku"
+      ],
+      "topic_slugs": [
+        "hokuriku-shinetsu",
+        "craft-travel"
+      ],
+      "tag_slugs": [
+        "hokuriku",
+        "kanazawa",
+        "crafts"
+      ],
+      "popularity_score": 77,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Funsui-first-fountain-in-Japan-kanazawa-kenrokuen-2006-03-04.jpg/1920px-Funsui-first-fountain-in-Japan-kanazawa-kenrokuen-2006-03-04.jpg",
+        "alt": "Kenrokuen in Kanazawa for hokuriku shinetsu craft coast guide",
+        "caption": "Hokuriku craft and garden routes are represented by Kanazawa.",
+        "license": "Public domain",
+        "attribution": "No machine-readable author provided. Jovandavid~commonswiki assumed (based on copyright claims).",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AFunsui-first-fountain-in-Japan-kanazawa-kenrokuen-2006-03-04.jpg",
+        "match_query": "Kenrokuen Kanazawa"
+      },
+      "sources": [
+        {
+          "name": "Travel Japan: Hokuriku Shinetsu",
+          "url": "https://www.japan.travel/en/destinations/hokuriku-shinetsu/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Mountains and sea shape the trip",
+          "paragraphs": [
+            "Official Japan travel guidance presents Hokuriku Shinetsu as a region where mountains and the Sea of Japan meet. That combination is the key to planning: coastal food, craft towns, gardens, snow-country scenery, and slower city stays all belong together.",
+            "Instead of treating Hokuriku as a pass-through between Tokyo and Kyoto, build a route around Kanazawa, Toyama, Fukui, or Niigata and give the area enough time for local food and craft experiences."
+          ]
+        },
+        {
+          "heading": "Best first-trip uses",
+          "bullets": [
+            "Add Kanazawa as a two-night cultural stop.",
+            "Use the Hokuriku Shinkansen for a Tokyo-linked route.",
+            "Pair craft workshops, gardens, seafood, and onsen instead of rushing across prefectures."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tokai-shinkansen-stopover-guide",
+      "title": "Tokai Shinkansen Stopover Guide",
+      "excerpt": "How to use the Tokai region between Tokyo and Kyoto for strategic stopovers, local food, transport, and mountain or coast add-ons.",
+      "seo_title": "Tokai Shinkansen Stopover Guide",
+      "meta_description": "Use official Japan travel sources to plan Tokai stopovers between Tokyo and Kyoto by shinkansen, cities, coastline, and mountain routes.",
+      "published_at": "2026-06-18T06:20:00+09:00",
+      "category_slugs": [
+        "transport",
+        "guide",
+        "itinerary"
+      ],
+      "destination_slugs": [
+        "chubu"
+      ],
+      "topic_slugs": [
+        "tokai-region",
+        "shinkansen-stopovers"
+      ],
+      "tag_slugs": [
+        "tokai",
+        "shinkansen",
+        "stopover"
+      ],
+      "popularity_score": 76,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Tokaido_Shinkansen_sharp_turn_in_Musashi-Kosugi_2.jpg/1920px-Tokaido_Shinkansen_sharp_turn_in_Musashi-Kosugi_2.jpg",
+        "alt": "Tokaido Shinkansen N700 for Tokai Shinkansen Stopover Guide",
+        "caption": "Tokaido Shinkansen N700 is used to match the article's destination or travel topic.",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Dr.yellow",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ATokaido_Shinkansen_sharp_turn_in_Musashi-Kosugi_2.jpg",
+        "match_query": "Tokaido Shinkansen N700"
+      },
+      "sources": [
+        {
+          "name": "Travel Japan: Tokai",
+          "url": "https://www.japan.travel/en/destinations/tokai/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Use Tokai as more than a transit zone",
+          "paragraphs": [
+            "The Tokai region sits on the shinkansen corridor between Tokyo and Kyoto. Official Japan travel material describes it as a place with both famous destinations and local character, which makes it useful for travelers who want to break up the standard route.",
+            "A stopover works best when it has one clear reason: food, industry, coast, castle towns, mountain access, or a more relaxed night between major cities."
+          ]
+        },
+        {
+          "heading": "Simple stopover logic",
+          "bullets": [
+            "One night: choose a city with direct shinkansen access.",
+            "Two nights: add a nearby nature, coast, or historic-town side trip.",
+            "Avoid adding Tokai only to collect another stop; give it a practical role in the itinerary."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chugoku-hiroshima-seto-inland-sea-guide",
+      "title": "Chugoku Hiroshima and Seto Inland Sea Guide",
+      "excerpt": "A first route through Hiroshima, Miyajima, Seto Inland Sea towns, beaches, forests, and peace heritage.",
+      "seo_title": "Chugoku Hiroshima and Seto Inland Sea Guide",
+      "meta_description": "Plan Hiroshima, Miyajima, and the Seto Inland Sea with official Japan travel sources for Chugoku region sightseeing.",
+      "published_at": "2026-06-18T06:30:00+09:00",
+      "category_slugs": [
+        "guide",
+        "itinerary",
+        "things-to-do"
+      ],
+      "destination_slugs": [
+        "chugoku"
+      ],
+      "topic_slugs": [
+        "hiroshima-miyajima",
+        "seto-inland-sea"
+      ],
+      "tag_slugs": [
+        "hiroshima",
+        "miyajima",
+        "chugoku"
+      ],
+      "popularity_score": 85,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Itsukushima_%28Miyajima_Hiroshima%29_hdsr_Shrine_S5_09.jpg/1920px-Itsukushima_%28Miyajima_Hiroshima%29_hdsr_Shrine_S5_09.jpg",
+        "alt": "Itsukushima Shrine Miyajima Hiroshima for Chugoku Hiroshima and Seto Inland Sea Guide",
+        "caption": "Itsukushima Shrine Miyajima Hiroshima is used to match the article's destination or travel topic.",
+        "license": "CC BY 4.0",
+        "attribution": "Hyppolyte de Saint-Rambert",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AItsukushima_(Miyajima_Hiroshima)_hdsr_Shrine_S5_09.jpg",
+        "match_query": "Itsukushima Shrine Miyajima Hiroshima"
+      },
+      "sources": [
+        {
+          "name": "Travel Japan: Hiroshima",
+          "url": "https://www.japan.travel/en/destinations/chugoku/hiroshima/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Build around Hiroshima and the sea",
+          "paragraphs": [
+            "Official Japan travel guidance highlights Hiroshima city, Miyajima, the Seto Inland Sea, forest trekking, hot springs, beaches, and peace heritage. That variety means Chugoku works best as a route, not just a single museum stop.",
+            "For first-time visitors, pair Hiroshima city with Miyajima, then add one slower coastal or island element if time allows."
+          ]
+        },
+        {
+          "heading": "First-route pattern",
+          "bullets": [
+            "Two days: Hiroshima city plus Miyajima.",
+            "Three or four days: add Onomichi, Tomonoura, or a Seto Inland Sea stop.",
+            "Longer trips: connect gardens, castle towns, beaches, and hot springs across Chugoku."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Can Hiroshima and Miyajima fit into one day?",
+          "answer": "It is possible but rushed. Two days gives a better balance between peace heritage, food, ferries, and shrine areas."
+        }
+      ]
+    },
+    {
+      "slug": "shikoku-pilgrimage-nature-guide",
+      "title": "Shikoku Pilgrimage and Nature Guide",
+      "excerpt": "A first Shikoku guide for pilgrimage culture, literary routes, islands, nature, and slower regional travel.",
+      "seo_title": "Shikoku Pilgrimage and Nature Guide",
+      "meta_description": "Plan Shikoku around pilgrimage routes, islands, nature, local culture, and slower travel using official Japan travel sources.",
+      "published_at": "2026-06-18T06:40:00+09:00",
+      "category_slugs": [
+        "guide",
+        "itinerary",
+        "basics"
+      ],
+      "destination_slugs": [
+        "shikoku"
+      ],
+      "topic_slugs": [
+        "shikoku-pilgrimage",
+        "slow-travel"
+      ],
+      "tag_slugs": [
+        "shikoku",
+        "pilgrimage",
+        "nature"
+      ],
+      "popularity_score": 73,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Poles_showing_the_1st_temple_of_Shikoku_Pilgrimage_on_sando_of_Ryozenji_Temple.jpg/1920px-Poles_showing_the_1st_temple_of_Shikoku_Pilgrimage_on_sando_of_Ryozenji_Temple.jpg",
+        "alt": "Shikoku pilgrimage temple for shikoku pilgrimage nature guide",
+        "caption": "Shikoku routes are represented by pilgrimage temple scenery.",
+        "license": "CC BY-SA 4.0",
+        "attribution": "そらみみ",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3APoles_showing_the_1st_temple_of_Shikoku_Pilgrimage_on_sando_of_Ryozenji_Temple.jpg",
+        "match_query": "Shikoku pilgrimage temple"
+      },
+      "sources": [
+        {
+          "name": "Travel Japan: Shikoku",
+          "url": "https://www.japan.travel/en/destinations/shikoku/"
+        },
+        {
+          "name": "SHIKOKU GUIDE",
+          "url": "https://shikoku-guide.com/en/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "A slower island for repeat visitors and careful first-timers",
+          "paragraphs": [
+            "Shikoku is often less crowded than Japan's best-known tourist corridors. Official travel sources describe pilgrimage culture, natural wonders, art islands, dancing traditions, and regional food as major themes.",
+            "The island rewards travelers who are willing to slow down and accept that transport can take more planning than in Tokyo, Kansai, or the shinkansen corridor."
+          ]
+        },
+        {
+          "heading": "How to choose a Shikoku route",
+          "bullets": [
+            "Culture route: temples, pilgrimage towns, castles, and local festivals.",
+            "Nature route: valleys, rivers, coastlines, and mountain scenery.",
+            "Island route: art islands and Seto Inland Sea connections."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kyushu-onsen-volcano-first-guide",
+      "title": "Kyushu Onsen and Volcano First Guide",
+      "excerpt": "How to plan Kyushu around hot springs, volcanic landscapes, food cities, beaches, and relaxed southern travel.",
+      "seo_title": "Kyushu Onsen and Volcano First Guide",
+      "meta_description": "Plan a first Kyushu trip with official sources for Fukuoka, hot springs, volcanoes, beaches, food, and southern Japan routes.",
+      "published_at": "2026-06-18T06:50:00+09:00",
+      "category_slugs": [
+        "guide",
+        "food",
+        "itinerary"
+      ],
+      "destination_slugs": [
+        "kyushu"
+      ],
+      "topic_slugs": [
+        "kyushu-onsen",
+        "volcano-travel"
+      ],
+      "tag_slugs": [
+        "kyushu",
+        "onsen",
+        "volcanoes"
+      ],
+      "popularity_score": 83,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Mount_Aso_from_Aso_Volcano_Museum.jpg/1920px-Mount_Aso_from_Aso_Volcano_Museum.jpg",
+        "alt": "Mount Aso Kumamoto for Kyushu Onsen and Volcano First Guide",
+        "caption": "Mount Aso Kumamoto is used to match the article's destination or travel topic.",
+        "license": "CC BY-SA 3.0",
+        "attribution": "STA3816",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AMount_Aso_from_Aso_Volcano_Museum.jpg",
+        "match_query": "Mount Aso Kumamoto"
+      },
+      "sources": [
+        {
+          "name": "Visit Kyushu Official Travel Guide",
+          "url": "https://www.visit-kyushu.com/en/"
+        },
+        {
+          "name": "Travel Japan: Kyushu",
+          "url": "https://www.japan.travel/en/destinations/kyushu/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Plan around heat, steam, and food",
+          "paragraphs": [
+            "Official tourism information presents Kyushu as Japan's third-largest island, known for hot springs, active volcanoes, dramatic mountains, beaches, food, and a relaxed southern atmosphere.",
+            "A first route should avoid trying to cover the whole island. Choose one anchor such as Fukuoka, Beppu, Kumamoto, Nagasaki, Kagoshima, or a hot-spring town, then build outward."
+          ]
+        },
+        {
+          "heading": "First-route ideas",
+          "bullets": [
+            "Food and city route: Fukuoka plus a nearby day trip.",
+            "Onsen route: Beppu, Yufuin, or another hot-spring base.",
+            "Volcano route: Kumamoto, Aso, or Kagoshima with weather-aware planning."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kansai-first-route-planner",
+      "title": "Kansai First Route Planner",
+      "excerpt": "A balanced way to split Kyoto, Osaka, Nara, Kobe, food, temples, and short train trips on a first Kansai visit.",
+      "seo_title": "Kansai First Route Planner",
+      "meta_description": "Plan a first Kansai route with Kyoto, Osaka, Nara, Kobe, temples, food, and short rail trips using official city tourism sources.",
+      "published_at": "2026-06-18T07:00:00+09:00",
+      "category_slugs": [
+        "itinerary",
+        "guide",
+        "transport"
+      ],
+      "destination_slugs": [
+        "kansai",
+        "kyoto"
+      ],
+      "topic_slugs": [
+        "kansai-first-time",
+        "kyoto-osaka-route"
+      ],
+      "tag_slugs": [
+        "kansai",
+        "kyoto",
+        "osaka"
+      ],
+      "popularity_score": 92,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/JR_Osaka_Station_20151226.JPG/960px-JR_Osaka_Station_20151226.JPG",
+        "license": "CC BY-SA 4.0",
+        "attribution": "KishujiRapid",
+        "source_url": "https://commons.wikimedia.org/wiki/File:JR_Osaka_Station_20151226.JPG",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Osaka Station image for Kansai First Route Planner",
+        "caption": "Kansai First Route Planner is represented with a matched Wikimedia Commons image of Osaka Station.",
+        "match_query": "Osaka Station"
+      },
+      "sources": [
+        {
+          "name": "Kyoto City Official Guide",
+          "url": "https://kyoto.travel/en/"
+        },
+        {
+          "name": "OSAKA-INFO Official Tourism Guide",
+          "url": "https://osaka-info.jp/en/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Do not split Kansai evenly by default",
+          "paragraphs": [
+            "Kansai works because several major destinations sit close enough for short rail movements. But first-time visitors should not automatically give every city the same number of days.",
+            "Kyoto usually needs the slowest pace, Osaka works well for food and evenings, Nara is a natural day trip, and Kobe can be added when food, harbor scenery, or a more relaxed urban stop fits the trip."
+          ]
+        },
+        {
+          "heading": "Simple first split",
+          "bullets": [
+            "Five days: three Kyoto-focused days, one Osaka day, one Nara or flexible day.",
+            "Seven days: add Kobe, Uji, Himeji, or a quieter temple district.",
+            "Use Osaka evenings for food if Kyoto mornings are reserved for temples."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tokyo-shopping-kitchenware-guide",
+      "title": "Tokyo Shopping and Kitchenware Guide",
+      "excerpt": "How to plan Tokyo shopping around neighborhoods, practical souvenirs, kitchen tools, department stores, and tax-free timing.",
+      "seo_title": "Tokyo Shopping and Kitchenware Guide",
+      "meta_description": "Plan Tokyo shopping by area, souvenir type, kitchenware, department stores, and practical route timing with official Tokyo tourism sources.",
+      "published_at": "2026-06-18T07:10:00+09:00",
+      "category_slugs": [
+        "shopping",
+        "guide"
+      ],
+      "destination_slugs": [
+        "tokyo"
+      ],
+      "topic_slugs": [
+        "tokyo-shopping",
+        "souvenir-planning"
+      ],
+      "tag_slugs": [
+        "tokyo",
+        "shopping",
+        "souvenirs"
+      ],
+      "popularity_score": 87,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Red_coffee_cup-shaped_balcony%2C_Niimi_Tableware%2C_Kappabashi_Dougu_Street%2C_Tokyo%2C_Japan.jpg/1920px-Red_coffee_cup-shaped_balcony%2C_Niimi_Tableware%2C_Kappabashi_Dougu_Street%2C_Tokyo%2C_Japan.jpg",
+        "alt": "Kappabashi Tokyo for Tokyo Shopping and Kitchenware Guide",
+        "caption": "Kappabashi Tokyo is used to match the article's destination or travel topic.",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Basile Morin",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ARed_coffee_cup-shaped_balcony%2C_Niimi_Tableware%2C_Kappabashi_Dougu_Street%2C_Tokyo%2C_Japan.jpg",
+        "match_query": "Kappabashi Tokyo"
+      },
+      "sources": [
+        {
+          "name": "GO TOKYO Official Travel Guide",
+          "url": "https://www.gotokyo.org/en/index.html"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Shop by neighborhood, not by store list",
+          "paragraphs": [
+            "Tokyo shopping becomes overwhelming when every recommendation is treated equally. A better first plan is to match the shopping goal with the area: department stores, fashion, electronics, kitchenware, stationery, food halls, or character goods.",
+            "Build shopping into existing sightseeing days so purchases do not consume the entire trip."
+          ]
+        },
+        {
+          "heading": "Practical shopping pattern",
+          "bullets": [
+            "Ginza and Marunouchi: polished department stores and food halls.",
+            "Shibuya and Harajuku: fashion, youth culture, and trend browsing.",
+            "Akihabara and specialty streets: electronics, hobby goods, and focused shopping."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kyoto-morning-night-quiet-hours-guide",
+      "title": "Kyoto Morning and Night Quiet Hours Guide",
+      "excerpt": "How to use early mornings and evenings in Kyoto for better pacing, fewer crowds, food, river walks, and respectful travel.",
+      "seo_title": "Kyoto Morning and Night Quiet Hours Guide",
+      "meta_description": "Plan Kyoto early mornings and evenings around quieter streets, food, river walks, and responsible tourism using official Kyoto guidance.",
+      "published_at": "2026-06-18T07:20:00+09:00",
+      "category_slugs": [
+        "things-to-do",
+        "guide",
+        "food"
+      ],
+      "destination_slugs": [
+        "kyoto",
+        "kansai"
+      ],
+      "topic_slugs": [
+        "kyoto-morning-night",
+        "responsible-travel"
+      ],
+      "tag_slugs": [
+        "kyoto",
+        "morning",
+        "night"
+      ],
+      "popularity_score": 89,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Pontocho_by_einalem_in_Kyoto.jpg",
+        "alt": "Gion or Pontocho in Kyoto for kyoto morning night quiet hours guide",
+        "caption": "Kyoto night etiquette is represented by Gion or Pontocho streets.",
+        "license": "CC BY-SA 2.0",
+        "attribution": "einalem from Pontocho street in Nakagyo, Kyoto",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3APontocho_by_einalem_in_Kyoto.jpg",
+        "match_query": "Pontocho Kyoto night"
+      },
+      "sources": [
+        {
+          "name": "Kyoto City Official Guide",
+          "url": "https://kyoto.travel/en/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Use time of day as a crowd tool",
+          "paragraphs": [
+            "Kyoto is often most enjoyable when the schedule respects the city's daily rhythm. Early mornings can make famous streets and temple approaches calmer, while evenings are better for food, river walks, and limited neighborhoods rather than long sightseeing lists.",
+            "Official Kyoto guidance emphasizes responsible travel. That means moving quietly, avoiding private lanes, and not treating residential streets as photo sets."
+          ]
+        },
+        {
+          "heading": "Simple day shape",
+          "bullets": [
+            "Morning: one major temple or historic district.",
+            "Afternoon: cafe, museum, shopping street, or rest.",
+            "Evening: dinner area, river walk, or one compact night district."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "osaka-street-food-shopping-guide",
+      "title": "Osaka Street Food and Shopping Guide",
+      "excerpt": "A first Osaka guide for pairing food streets, shopping districts, castle-area sightseeing, and evening energy.",
+      "seo_title": "Osaka Street Food and Shopping Guide",
+      "meta_description": "Plan Osaka food and shopping around official tourism information, evening areas, castle sightseeing, and Kansai route logic.",
+      "published_at": "2026-06-18T07:30:00+09:00",
+      "category_slugs": [
+        "food",
+        "shopping",
+        "things-to-do"
+      ],
+      "destination_slugs": [
+        "kansai"
+      ],
+      "topic_slugs": [
+        "osaka-food",
+        "osaka-shopping"
+      ],
+      "tag_slugs": [
+        "osaka",
+        "food",
+        "shopping"
+      ],
+      "popularity_score": 90,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg/960px-Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Martin Falbisoner",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Dotonbori,_Osaka,_at_night,_November_2016.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "alt": "Dotonbori image for Osaka Street Food and Shopping Guide",
+        "caption": "Osaka Street Food and Shopping Guide is represented with a matched Wikimedia Commons image of Dotonbori.",
+        "match_query": "Dotonbori"
+      },
+      "sources": [
+        {
+          "name": "OSAKA-INFO Official Tourism Guide",
+          "url": "https://osaka-info.jp/en/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Make Osaka an evening strength",
+          "paragraphs": [
+            "Osaka's first-trip value is strongest when food, shopping, and nightlife are allowed to carry the day. Official tourism information presents the city through events, gourmet food, travel information, and popular districts, which fits a flexible evening-first style.",
+            "Do sightseeing earlier, then keep the evening open for food streets and shopping."
+          ]
+        },
+        {
+          "heading": "Easy pairing",
+          "bullets": [
+            "Osaka Castle or museum area plus Namba evening.",
+            "Shopping afternoon plus Dotonbori food walk.",
+            "Kansai day trip plus late Osaka dinner."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hokkaido-winter-activity-planner",
+      "title": "Hokkaido Winter Activity Planner",
+      "excerpt": "How to plan Hokkaido winter around snow, hot springs, food, transport buffers, and realistic activity choices.",
+      "seo_title": "Hokkaido Winter Activity Planner",
+      "meta_description": "Plan winter Hokkaido with official tourism information for snow activities, food, hot springs, transport, and weather buffers.",
+      "published_at": "2026-06-18T07:40:00+09:00",
+      "category_slugs": [
+        "things-to-do",
+        "guide",
+        "itinerary"
+      ],
+      "destination_slugs": [
+        "hokkaido"
+      ],
+      "topic_slugs": [
+        "hokkaido-winter",
+        "snow-travel"
+      ],
+      "tag_slugs": [
+        "hokkaido",
+        "winter",
+        "snow"
+      ],
+      "popularity_score": 88,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Northern_Japan%2C_especially_the_island_of_Hokkaido%2C_is_home_to_some_of_the_snowiest_cities_in_the_world_%28stormy-snowy-winter-for-hokkaido%29.jpg/1920px-Northern_Japan%2C_especially_the_island_of_Hokkaido%2C_is_home_to_some_of_the_snowiest_cities_in_the_world_%28stormy-snowy-winter-for-hokkaido%29.jpg",
+        "alt": "Hokkaido snow winter for Hokkaido Winter Activity Planner",
+        "caption": "Hokkaido snow winter is used to match the article's destination or travel topic.",
+        "license": "Public domain",
+        "attribution": "Michala Garrison, using MODIS data from NASA EOSDIS LANCE and GIBS/Worldview",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ANorthern_Japan%2C_especially_the_island_of_Hokkaido%2C_is_home_to_some_of_the_snowiest_cities_in_the_world_(stormy-snowy-winter-for-hokkaido).jpg",
+        "match_query": "Hokkaido snow winter"
+      },
+      "sources": [
+        {
+          "name": "HOKKAIDO LOVE! Official Tourism Site",
+          "url": "https://www.visit-hokkaido.jp/en/index.html"
+        },
+        {
+          "name": "Travel Japan: Hokkaido",
+          "url": "https://www.japan.travel/en/destinations/hokkaido/hokkaido/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Winter is a trip style, not just a season",
+          "paragraphs": [
+            "Hokkaido winter planning should start with activity choice: snow festivals, skiing, hot springs, seafood, city stays, or nature scenery. Official tourism information highlights snow and winter activities, but distances and weather still decide how much can fit.",
+            "A strong winter route keeps fewer bases and adds buffer time for weather."
+          ]
+        },
+        {
+          "heading": "Practical winter rules",
+          "bullets": [
+            "Do not chain too many rural transfers in one day.",
+            "Keep warm indoor food or onsen plans as weather backups.",
+            "Check official transport and activity notices close to travel."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "okinawa-useful-information-safety-guide",
+      "title": "Okinawa Useful Information and Safety Guide",
+      "excerpt": "A practical Okinawa guide for first-time island visitors covering transport, weather, shopping, safety, and trip readiness.",
+      "seo_title": "Okinawa Useful Information and Safety Guide",
+      "meta_description": "Use official Okinawa travel information to plan safety, transport, weather, shopping, tourist information, and first-trip island basics.",
+      "published_at": "2026-06-18T07:50:00+09:00",
+      "category_slugs": [
+        "basics",
+        "guide",
+        "shopping"
+      ],
+      "destination_slugs": [
+        "okinawa"
+      ],
+      "topic_slugs": [
+        "okinawa-safety",
+        "island-basics"
+      ],
+      "tag_slugs": [
+        "okinawa",
+        "safety",
+        "weather"
+      ],
+      "popularity_score": 81,
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Okinawa_Island-ISS042.jpg/960px-Okinawa_Island-ISS042.jpg",
+        "license": "Public domain",
+        "attribution": "Image Science and Analysis Laboratory, NASA - Johnson Space Center. \"The Gateway to Astronaut Photography of Earth.\"",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Okinawa_Island-ISS042.jpg",
+        "alt": "Okinawa Island image for Okinawa Useful Information and Safety Guide",
+        "caption": "Okinawa Useful Information and Safety Guide is represented with a matched Wikimedia Commons image of Okinawa Island.",
+        "match_query": "Okinawa Island"
+      },
+      "sources": [
+        {
+          "name": "VISIT OKINAWA JAPAN Useful Information",
+          "url": "https://visitokinawajapan.com/plan-your-trip/useful-information/"
+        },
+        {
+          "name": "VISIT OKINAWA JAPAN Official Travel Guide",
+          "url": "https://visitokinawajapan.com/"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Prepare for island conditions",
+          "paragraphs": [
+            "Okinawa travel is easier when practical information is handled before the trip. Official useful-information pages cover tourist information, shopping, staying safe, and other first-trip essentials.",
+            "The key difference from mainland city travel is that weather, marine conditions, heat, and transport availability can affect the day more strongly."
+          ]
+        },
+        {
+          "heading": "First-trip checklist",
+          "bullets": [
+            "Check weather, typhoon season, and beach safety before outdoor plans.",
+            "Plan transport outside Naha early, especially for resort areas or smaller islands.",
+            "Use official information for shopping, free Wi-Fi, tourist centers, and emergency readiness."
+          ]
+        }
+      ]
+    }
+  ]
+}
