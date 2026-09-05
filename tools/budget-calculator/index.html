@@ -13,14 +13,27 @@
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Japan Travel Budget Calculator","url":"https://japantriptools.com/tools/budget-calculator/","applicationCategory":"TravelApplication","operatingSystem":"All","description":"Estimate Japan trip costs for accommodation, food, local transport, activities, shopping, reserve money, and route-dependent tradeoffs before booking.","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Japan Trip Tools","url":"https://japantriptools.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the estimates live prices?","acceptedAnswer":{"@type":"Answer","text":"No. They are editable planning assumptions, not quotes. Compare the result with real hotel, transport, and activity prices for your dates."}},{"@type":"Question","name":"Why is a reserve included?","acceptedAnswer":{"@type":"Answer","text":"A reserve helps absorb weather changes, missed connections, extra local transport, price variation, or an unplanned meal without breaking the trip budget."}},{"@type":"Question","name":"Should flights be included?","acceptedAnswer":{"@type":"Answer","text":"Treat international flights separately unless you have a confirmed fare. Their price varies too widely by origin, season, baggage, and booking time to hide inside a daily Japan estimate."}},{"@type":"Question","name":"How should families use the calculator?","acceptedAnswer":{"@type":"Answer","text":"Enter the actual number of travelers, then check child fares, room occupancy, attraction pricing, and meal needs separately because not every cost scales evenly."}},{"@type":"Question","name":"What usually changes the budget most?","acceptedAnswer":{"@type":"Answer","text":"Hotel dates and standard, long-distance transport, and major paid activities usually move the total more than small daily savings. Test those decisions first."}},{"@type":"Question","name":"When should I update the estimate?","acceptedAnswer":{"@type":"Answer","text":"Update it after choosing dates and hotel bases, again after pricing transport, and once more before booking to account for current exchange rates and confirmed costs."}}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Japan Trip Tools","item":"https://japantriptools.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://japantriptools.com/tools/"},{"@type":"ListItem","position":3,"name":"Japan Travel Budget Calculator","item":"https://japantriptools.com/tools/budget-calculator/"}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">

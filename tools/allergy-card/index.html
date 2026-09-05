@@ -13,14 +13,27 @@
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Food Allergy Phrase Card","url":"https://japantriptools.com/tools/allergy-card/","applicationCategory":"TravelApplication","operatingSystem":"All","description":"Create a Japan food allergy phrase card in English and Japanese for restaurants and convenience stores.","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Japan Trip Tools","url":"https://japantriptools.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the phrase card guarantee an allergy-safe meal?","acceptedAnswer":{"@type":"Answer","text":"No. It is a communication aid only. Staff may be unable to verify every ingredient or prevent cross-contact, so make decisions based on the response and your own medical plan."}},{"@type":"Question","name":"When should I show the card?","acceptedAnswer":{"@type":"Answer","text":"Show it before ordering and allow time for staff to ask the kitchen. Do not wait until the dish arrives."}},{"@type":"Question","name":"Should severity be included?","acceptedAnswer":{"@type":"Answer","text":"Yes. State the important allergy and severity clearly. Keep the message concise so a preference is not confused with a serious medical restriction."}},{"@type":"Question","name":"Can the card cover cross-contact?","acceptedAnswer":{"@type":"Answer","text":"It can ask about shared oil, grills, utensils, or preparation areas, but it cannot confirm kitchen practice. If staff cannot verify safety, choose another option."}},{"@type":"Question","name":"Can I rely on English menus?","acceptedAnswer":{"@type":"Answer","text":"No. Translated menus may shorten descriptions and omit sauces, stock, garnishes, or processing details. Ask directly when an ingredient matters."}},{"@type":"Question","name":"What else should I prepare?","acceptedAnswer":{"@type":"Answer","text":"Carry prescribed medication, follow your clinician\u0027s advice, know how to seek emergency help, and research suitable food options near each hotel."}}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Japan Trip Tools","item":"https://japantriptools.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://japantriptools.com/tools/"},{"@type":"ListItem","position":3,"name":"Food Allergy Phrase Card","item":"https://japantriptools.com/tools/allergy-card/"}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">

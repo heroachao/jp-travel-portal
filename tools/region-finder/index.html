@@ -13,14 +13,27 @@
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Japan Region Finder","url":"https://japantriptools.com/tools/region-finder/","applicationCategory":"TravelApplication","operatingSystem":"All","description":"Find Japan regions that fit your season, pace, and travel interests using an on-site planning tool.","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Japan Trip Tools","url":"https://japantriptools.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the finder rank every Japanese prefecture?","acceptedAnswer":{"@type":"Answer","text":"No. It identifies useful regional starting points. Open the linked region pages and official tourism sources to refine the exact prefectures and cities."}},{"@type":"Question","name":"How important is the travel month?","acceptedAnswer":{"@type":"Answer","text":"Very important. Heat, snow, rain, daylight, seasonal access, events, and transport demand can change the same region substantially."}},{"@type":"Question","name":"Can I choose more than one region?","acceptedAnswer":{"@type":"Answer","text":"Yes, but check the transfer time and number of hotel changes. Two compatible regions can work well; several distant regions can turn a short trip into repeated transit days."}},{"@type":"Question","name":"What does pace change?","acceptedAnswer":{"@type":"Answer","text":"A slower pace favors compact bases and fewer long transfers. A faster pace can support more stops, but it still needs realistic station, luggage, and check-in time."}},{"@type":"Question","name":"Should first-time visitors always choose Tokyo and Kyoto?","acceptedAnswer":{"@type":"Answer","text":"No. They are convenient first-trip anchors, but season, interests, crowds, mobility, and flight access may make another region a better fit."}},{"@type":"Question","name":"What should I check after receiving a match?","acceptedAnswer":{"@type":"Answer","text":"Check access from your arrival airport, weather for the travel month, a sample itinerary, hotel supply, and the official status of must-do activities."}}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Japan Trip Tools","item":"https://japantriptools.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://japantriptools.com/tools/"},{"@type":"ListItem","position":3,"name":"Japan Region Finder","item":"https://japantriptools.com/tools/region-finder/"}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">

@@ -11,14 +11,27 @@
     <meta property="og:description" content="Compare where to stay in Tokyo, Kyoto, Osaka, Sapporo, Fukuoka, Hiroshima, and other Japan cities by station access, route fit, nightlife, and budget.">        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://japantriptools.com#website","name":"Japan Trip Tools","url":"https://japantriptools.com","description":"Compare where to stay in Tokyo, Kyoto, Osaka, Sapporo, Fukuoka, Hiroshima, and other Japan cities by station access, route fit, nightlife, and budget.","publisher":{"@id":"https://japantriptools.com#organization"},"potentialAction":{"@type":"SearchAction","target":"https://japantriptools.com/search/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://japantriptools.com#organization","name":"Japan Trip Tools","url":"https://japantriptools.com","logo":{"@type":"ImageObject","url":"https://japantriptools.com/images/japan-trip-tools-logo.png"}}</script>
                 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What makes a good hotel base in Japan?","acceptedAnswer":{"@type":"Answer","text":"A good base supports the actual daily route, has manageable station access, and still feels comfortable for dinner or a late return."}},{"@type":"Question","name":"Should I always stay beside a major station?","acceptedAnswer":{"@type":"Answer","text":"Not always. Major stations simplify transfers, but a smaller station on the right line can be calmer and better value. Check the exact route rather than distance on a map."}},{"@type":"Question","name":"Is Shinjuku the best area for every Tokyo visitor?","acceptedAnswer":{"@type":"Answer","text":"No. Shinjuku is useful for western Tokyo and some day trips, while Ueno, Tokyo Station, Asakusa, Ginza, or Shibuya can fit other arrival routes and daily plans better."}},{"@type":"Question","name":"Is Kyoto Station or Gion a better base?","acceptedAnswer":{"@type":"Answer","text":"Kyoto Station is practical for rail and luggage. Gion and downtown can be better for evening walks and some eastern sights. The right choice depends on the itinerary."}},{"@type":"Question","name":"Should I stay in Osaka and visit Kyoto as a day trip?","acceptedAnswer":{"@type":"Answer","text":"It can work for travelers who value Osaka food and nightlife, but sleeping in Kyoto makes early temple visits and quieter evenings easier."}},{"@type":"Question","name":"When is a split stay worth it?","acceptedAnswer":{"@type":"Answer","text":"A split stay is useful when it removes repeated long cross-city travel or supports an early intercity departure. It is not useful when packing takes more time than it saves."}},{"@type":"Question","name":"What should I verify before booking?","acceptedAnswer":{"@type":"Answer","text":"Check the exact address, station exit, walking route, room size, bed setup, cancellation policy, luggage storage, and late check-in rules."}}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">
@@ -350,7 +363,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Beppu vs Yufuin: Which Onsen Base Fits Your Kyushu Trip?</h3>
             <p>Compare Beppu and Yufuin by transport, onsen variety, ryokan style, evening atmosphere, family needs, and onward route before booking an Oita stay.</p>
@@ -366,7 +379,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Wakkanai Base Guide: Cape Soya, Rishiri, or Rebun?</h3>
             <p>Use Wakkanai as a weather-aware northern Hokkaido base, then choose Cape Soya, Rishiri, or Rebun by ferry schedule, season, buffer time, and trip purpose.</p>
@@ -382,7 +395,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>7 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Onsen Day Trip or Ryokan Stay? How to Choose</h3>
             <p>Compare a day-use onsen with an overnight ryokan by bathing access, meals, check-in, privacy, transport, and the experience you actually want.</p>
@@ -398,7 +411,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>Family</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Last Night in Tokyo: Airport Hotel or City Hotel?</h3>
             <p>Choose a final-night hotel for Narita or Haneda by working backward from the flight, terminal, check-in requirement, first usable transport, and luggage.</p>
@@ -414,7 +427,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>7 min</span>
         <span><strong>Best for</strong>Family</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Japan Station Hotel vs Neighborhood Stay: How to Choose</h3>
             <p>Choose between a hotel beside a major station and a quieter neighborhood base by testing real transfers, luggage, arrival time, room size, evening plans, accessibility, and total cost.</p>

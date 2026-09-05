@@ -13,14 +13,27 @@
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"IC Card Checklist","url":"https://japantriptools.com/tools/ic-card-checklist/","applicationCategory":"TravelApplication","operatingSystem":"All","description":"Prepare for IC cards, cash backup, airport arrival, and local transit payments before a Japan trip.","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Japan Trip Tools","url":"https://japantriptools.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is an IC card the same as a rail pass?","acceptedAnswer":{"@type":"Answer","text":"No. An IC card usually stores value for eligible pay-as-you-go transport and purchases; it does not automatically provide unlimited travel or cover every reserved service."}},{"@type":"Question","name":"Can one card be used across several cities?","acceptedAnswer":{"@type":"Answer","text":"Major interoperable cards work widely, but exceptions remain. Check the operator for rural lines, special buses, or routes outside the main compatibility area."}},{"@type":"Question","name":"Should every traveler have a separate card?","acceptedAnswer":{"@type":"Answer","text":"Usually each person needs a separate card for gated transport because one card cannot normally process several passengers through the same gate. Check child-card arrangements separately."}},{"@type":"Question","name":"Is a mobile IC card always available to overseas visitors?","acceptedAnswer":{"@type":"Answer","text":"Compatibility depends on the phone, wallet region, operating system, and payment method. Test setup before relying on it and keep another payment option."}},{"@type":"Question","name":"How much value should I load?","acceptedAnswer":{"@type":"Answer","text":"Start with a practical amount for the first day or two, then top up as needed. Avoid treating a large balance as a travel budget."}},{"@type":"Question","name":"What still needs a separate ticket?","acceptedAnswer":{"@type":"Answer","text":"Reserved seats, some limited express services, Shinkansen arrangements, passes, and non-compatible transport may require a separate ticket or linked reservation."}}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Japan Trip Tools","item":"https://japantriptools.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://japantriptools.com/tools/"},{"@type":"ListItem","position":3,"name":"IC Card Checklist","item":"https://japantriptools.com/tools/ic-card-checklist/"}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">

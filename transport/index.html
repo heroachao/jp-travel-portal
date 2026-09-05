@@ -11,14 +11,27 @@
     <meta property="og:description" content="Plan Japan transport with airport transfer guides, JR Pass checks, IC card advice, luggage forwarding, Shinkansen notes, and city transit links.">        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://japantriptools.com#website","name":"Japan Trip Tools","url":"https://japantriptools.com","description":"Plan Japan transport with airport transfer guides, JR Pass checks, IC card advice, luggage forwarding, Shinkansen notes, and city transit links.","publisher":{"@id":"https://japantriptools.com#organization"},"potentialAction":{"@type":"SearchAction","target":"https://japantriptools.com/search/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://japantriptools.com#organization","name":"Japan Trip Tools","url":"https://japantriptools.com","logo":{"@type":"ImageObject","url":"https://japantriptools.com/images/japan-trip-tools-logo.png"}}</script>
                 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the JR Pass always worth it?","acceptedAnswer":{"@type":"Answer","text":"No. It depends on exact intercity rail legs, travel window, pass price, and whether non-JR transport is needed. Use the checker before buying."}},{"@type":"Question","name":"What transport decision should I make first?","acceptedAnswer":{"@type":"Answer","text":"Start with arrival airport and overnight bases. Those decide whether rail passes, airport trains, buses, taxis, or luggage forwarding matter."}},{"@type":"Question","name":"What should every transport article link to?","acceptedAnswer":{"@type":"Answer","text":"Every transport article should link back to this Transport Hub and to the tool that answers the practical decision."}},{"@type":"Question","name":"Is Narita or Haneda easier for Tokyo?","acceptedAnswer":{"@type":"Answer","text":"Haneda is usually closer to central Tokyo, but Narita can still be practical when the fare is better or the hotel is near a direct train or bus stop."}},{"@type":"Question","name":"Do I need an IC card in Japan?","acceptedAnswer":{"@type":"Answer","text":"Most travelers benefit from one because it simplifies local trains, buses, lockers, vending machines, and small purchases. Keep some cash as a backup."}},{"@type":"Question","name":"When should I use luggage forwarding?","acceptedAnswer":{"@type":"Answer","text":"Use forwarding when you have large suitcases, multiple hotel changes, rural stops, crowded train transfers, or an overnight bag strategy."}}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">
@@ -269,7 +282,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>11 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Japan Airport Arrival: Train, Bus, Taxi, or Airport Hotel?</h3>
             <p>A first-night airport transfer decision guide for Japan arrivals, comparing trains, buses, taxis, airport hotels, luggage, late flights, terminals, and official checks.</p>
@@ -420,7 +433,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>11 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Visit Japan Web QR Code Guide: Customs, Immigration, and Arrival Setup</h3>
             <p>A practical Visit Japan Web QR code guide for first-time travelers, covering what to prepare before flying, customs declaration steps, airport use, paper backup, and official checks.</p>
@@ -436,7 +449,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>Family</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Last Night in Tokyo: Airport Hotel or City Hotel?</h3>
             <p>Choose a final-night hotel for Narita or Haneda by working backward from the flight, terminal, check-in requirement, first usable transport, and luggage.</p>
@@ -452,7 +465,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>Rainy day</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Hokkaido Summer Road Trip: How Far to Drive Each Day</h3>
             <p>Plan Hokkaido driving days by real route time, sightseeing stops, two-hour rest intervals, fuel, road conditions, wildlife risk, and a workable return.</p>
@@ -468,7 +481,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>Winter</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Rural Japan Bus and Taxi Backup Plan</h3>
             <p>Plan rural Japan transport by the last usable bus, cash and IC-card acceptance, taxi availability, reservation rules, weather, and a safe fallback.</p>
@@ -484,7 +497,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Kyoto Bus Crowd Avoidance: A Train-First Transport Plan</h3>
             <p>Reduce Kyoto transport delays by choosing rail or subway first, shifting visit times, using official congestion tools, sending luggage ahead, and treating buses as targeted last-mile links.</p>
@@ -500,7 +513,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>7 min</span>
         <span><strong>Best for</strong>Winter</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Hokkaido Winter Transport: Daily Status and Backup Plan</h3>
             <p>Check JR Hokkaido, airport, bus, road, and weather information in the right order, then protect connections with realistic winter buffers and an overnight fallback.</p>

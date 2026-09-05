@@ -11,14 +11,27 @@
     <meta property="og:description" content="Use free on-site Japan travel tools for itinerary planning, JR Pass checks, budget estimates, airport transfers, packing lists, luggage decisions, and tax-free shopping.">        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://japantriptools.com#website","name":"Japan Trip Tools","url":"https://japantriptools.com","description":"Use free on-site Japan travel tools for itinerary planning, JR Pass checks, budget estimates, airport transfers, packing lists, luggage decisions, and tax-free shopping.","publisher":{"@id":"https://japantriptools.com#organization"},"potentialAction":{"@type":"SearchAction","target":"https://japantriptools.com/search/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://japantriptools.com#organization","name":"Japan Trip Tools","url":"https://japantriptools.com","logo":{"@type":"ImageObject","url":"https://japantriptools.com/images/japan-trip-tools-logo.png"}}</script>
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Japan Travel Tools","itemListElement":[{"@type":"ListItem","position":1,"name":"Japan Trip Planner","url":"https://japantriptools.com/tools/trip-planner/"},{"@type":"ListItem","position":2,"name":"JR Pass Value Checker","url":"https://japantriptools.com/tools/jr-pass-calculator/"},{"@type":"ListItem","position":3,"name":"Airport Transfer Finder","url":"https://japantriptools.com/tools/airport-transfer/"},{"@type":"ListItem","position":4,"name":"Japan Travel Budget Calculator","url":"https://japantriptools.com/tools/budget-calculator/"},{"@type":"ListItem","position":5,"name":"Japan Region Finder","url":"https://japantriptools.com/tools/region-finder/"},{"@type":"ListItem","position":6,"name":"Season and Packing Planner","url":"https://japantriptools.com/tools/season-packing/"},{"@type":"ListItem","position":7,"name":"IC Card Checklist","url":"https://japantriptools.com/tools/ic-card-checklist/"},{"@type":"ListItem","position":8,"name":"Luggage Forwarding Planner","url":"https://japantriptools.com/tools/luggage-planner/"},{"@type":"ListItem","position":9,"name":"Food Allergy Phrase Card","url":"https://japantriptools.com/tools/allergy-card/"},{"@type":"ListItem","position":10,"name":"Japan Tax-Free Shopping Calculator","url":"https://japantriptools.com/tools/tax-free-calculator/"}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">

@@ -13,14 +13,27 @@
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Luggage Forwarding Planner","url":"https://japantriptools.com/tools/luggage-planner/","applicationCategory":"TravelApplication","operatingSystem":"All","description":"Plan Japan luggage movement with hotel changes, train transfers, lockers, forwarding decisions, overnight bags, and station access before booking.","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Japan Trip Tools","url":"https://japantriptools.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How far ahead should luggage be sent?","acceptedAnswer":{"@type":"Answer","text":"Delivery time depends on origin, destination, service, cutoff, weather, and remote-area conditions. Confirm the actual delivery date with the provider before handing over the bag."}},{"@type":"Question","name":"Will every hotel accept forwarded luggage?","acceptedAnswer":{"@type":"Answer","text":"No. Confirm both the sending and receiving property, the reservation name, arrival date, payment method, and any storage limits."}},{"@type":"Question","name":"What should stay in an overnight bag?","acceptedAnswer":{"@type":"Answer","text":"Keep medication, documents, valuables, chargers, weather layers, and everything needed until the forwarded bag is confirmed to arrive."}},{"@type":"Question","name":"Are station lockers a guaranteed backup?","acceptedAnswer":{"@type":"Answer","text":"No. Large lockers can be full, access hours vary, and some stations are difficult to navigate with bags. Identify another staffed storage option when the timing matters."}},{"@type":"Question","name":"Do trains have unlimited luggage space?","acceptedAnswer":{"@type":"Answer","text":"No. Space and reservation rules vary by service and bag size. Check the operator before traveling with oversized baggage."}},{"@type":"Question","name":"When is carrying the bag simplest?","acceptedAnswer":{"@type":"Answer","text":"Carrying can be simplest for one small bag, a direct route, and a hotel close to the station. Reconsider when transfers, stairs, crowds, or oversized-baggage rules add friction."}}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Japan Trip Tools","item":"https://japantriptools.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://japantriptools.com/tools/"},{"@type":"ListItem","position":3,"name":"Luggage Forwarding Planner","item":"https://japantriptools.com/tools/luggage-planner/"}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">

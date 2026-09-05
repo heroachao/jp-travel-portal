@@ -13,14 +13,27 @@
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Season and Packing Planner","url":"https://japantriptools.com/tools/season-packing/","applicationCategory":"TravelApplication","operatingSystem":"All","description":"Create a Japan packing checklist by month, region, weather pattern, activities, laundry plan, luggage limits, and seasonal comfort checks.","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Japan Trip Tools","url":"https://japantriptools.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the packing list a weather forecast?","acceptedAnswer":{"@type":"Answer","text":"No. It is a planning baseline. Check the Japan Meteorological Agency and a reliable local forecast close to departure, especially for storms, heat, snow, or mountain conditions."}},{"@type":"Question","name":"Why do region and elevation matter?","acceptedAnswer":{"@type":"Answer","text":"Temperature, wind, snow, and rain can differ sharply between cities, coasts, and mountains in the same month. Pack for the most demanding confirmed part of the route."}},{"@type":"Question","name":"How can I pack lighter?","acceptedAnswer":{"@type":"Answer","text":"Use compatible layers, plan laundry, repeat outerwear, and avoid packing special items for activities that are not actually booked."}},{"@type":"Question","name":"What should stay in carry-on luggage?","acceptedAnswer":{"@type":"Answer","text":"Keep essential medication, documents, payment access, a charger, and immediate arrival needs with you. Follow airline rules for liquids, batteries, and restricted items."}},{"@type":"Question","name":"Do I need special shoes for Japan?","acceptedAnswer":{"@type":"Answer","text":"Comfortable walking shoes matter more than a specific brand. Consider rain, snow, temple shoe removal, and the actual terrain on your route."}},{"@type":"Question","name":"When should I finalize the list?","acceptedAnswer":{"@type":"Answer","text":"Build the baseline early, then revise it after confirming activities and again a few days before departure using current forecasts and baggage limits."}}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Japan Trip Tools","item":"https://japantriptools.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://japantriptools.com/tools/"},{"@type":"ListItem","position":3,"name":"Season and Packing Planner","item":"https://japantriptools.com/tools/season-packing/"}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">

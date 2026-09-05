@@ -13,14 +13,27 @@
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Airport Transfer Finder","url":"https://japantriptools.com/tools/airport-transfer/","applicationCategory":"TravelApplication","operatingSystem":"All","description":"Find practical Japan airport transfer options by arrival airport, hotel area, luggage level, travel priority, late-night timing, and next-step transport checks.","inLanguage":"en","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Japan Trip Tools","url":"https://japantriptools.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the finder use live timetables?","acceptedAnswer":{"@type":"Answer","text":"No. It organizes route types and priorities. Check the airport and operator websites for the exact terminal, date, last departure, disruptions, and ticket method."}},{"@type":"Question","name":"Is a taxi always easiest with luggage?","acceptedAnswer":{"@type":"Answer","text":"A taxi reduces transfers but can cost much more and travel time can vary with traffic. Compare the complete group cost and hotel access before deciding."}},{"@type":"Question","name":"Why does the hotel area matter?","acceptedAnswer":{"@type":"Answer","text":"Different airport services terminate in different parts of a city. A route that is excellent for Ueno may be inconvenient for Shinjuku or a hotel far from the named station."}},{"@type":"Question","name":"How much arrival buffer should I allow?","acceptedAnswer":{"@type":"Answer","text":"Allow for immigration, baggage, customs, orientation, and ticket collection. Use the current final practical departure as a safety boundary rather than planning around the scheduled landing time."}},{"@type":"Question","name":"Should I buy tickets before flying?","acceptedAnswer":{"@type":"Answer","text":"It depends on the operator, arrival uncertainty, and reservation rules. Check whether advance purchase is useful, changeable, or risky if the flight is delayed."}},{"@type":"Question","name":"What should I verify for a late arrival?","acceptedAnswer":{"@type":"Answer","text":"Confirm terminal hours, final train or bus, the station-to-hotel walk, hotel check-in policy, and a backup route you can afford."}}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Japan Trip Tools","item":"https://japantriptools.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://japantriptools.com/tools/"},{"@type":"ListItem","position":3,"name":"Airport Transfer Finder","item":"https://japantriptools.com/tools/airport-transfer/"}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">

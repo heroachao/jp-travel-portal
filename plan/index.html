@@ -11,14 +11,27 @@
     <meta property="og:description" content="Plan a Japan trip with route tools, itinerary guides, budget checks, transport explainers, and first-time travel planning links.">        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://japantriptools.com#website","name":"Japan Trip Tools","url":"https://japantriptools.com","description":"Plan a Japan trip with route tools, itinerary guides, budget checks, transport explainers, and first-time travel planning links.","publisher":{"@id":"https://japantriptools.com#organization"},"potentialAction":{"@type":"SearchAction","target":"https://japantriptools.com/search/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://japantriptools.com#organization","name":"Japan Trip Tools","url":"https://japantriptools.com","logo":{"@type":"ImageObject","url":"https://japantriptools.com/images/japan-trip-tools-logo.png"}}</script>
                 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What should I decide first when planning Japan?","acceptedAnswer":{"@type":"Answer","text":"Start with trip length, arrival airport, pace, and the number of overnight bases. Those choices control almost every later transport and budget decision."}},{"@type":"Question","name":"Is a first Japan trip better with two or three bases?","acceptedAnswer":{"@type":"Answer","text":"Most first-time travelers do better with two or three overnight bases for 7 to 12 days. More bases can work, but luggage and station transfers start to take over the trip."}},{"@type":"Question","name":"How should I use this hub?","acceptedAnswer":{"@type":"Answer","text":"Open the Trip Planner first, then check budget and transport pages before reading detailed city or regional guides."}},{"@type":"Question","name":"When should I book hotels?","acceptedAnswer":{"@type":"Answer","text":"Book hotels after the main route and arrival city are clear. For cherry blossom, autumn color, ski season, and major holidays, book earlier and keep the route simple."}},{"@type":"Question","name":"How much daily planning is enough?","acceptedAnswer":{"@type":"Answer","text":"Plan one main area or anchor activity per day, then add nearby food and backup ideas. This keeps the trip useful without turning every hour into a schedule."}},{"@type":"Question","name":"Should I start with Tokyo?","acceptedAnswer":{"@type":"Answer","text":"Tokyo is the easiest starting point for many first trips, but Kansai, Hokkaido, Kyushu, and Okinawa can be better when flights, season, or travel style point there."}}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">
@@ -269,7 +282,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>11 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Visit Japan Web QR Code Guide: Customs, Immigration, and Arrival Setup</h3>
             <p>A practical Visit Japan Web QR code guide for first-time travelers, covering what to prepare before flying, customs declaration steps, airport use, paper backup, and official checks.</p>
@@ -284,7 +297,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>10 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Can You Bring Medication to Japan? Prescription and OTC Travel Checklist</h3>
             <p>A first-time Japan checklist for prescription medicine, over-the-counter medicine, ADHD medication, controlled substances, import confirmation, medical devices, and what to verify before flying.</p>
@@ -299,7 +312,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>11 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Japan Airport Arrival: Train, Bus, Taxi, or Airport Hotel?</h3>
             <p>A first-night airport transfer decision guide for Japan arrivals, comparing trains, buses, taxis, airport hotels, luggage, late flights, terminals, and official checks.</p>
@@ -465,7 +478,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>7 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Vegetarian Convenience Store Meal Backup in Japan</h3>
             <p>Build a reliable vegetarian or vegan convenience-store backup meal in Japan by checking dashi, sauces, labels, protein, storage, allergies, and the difference between emergency food and a planned dining strategy.</p>
@@ -511,7 +524,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>7 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Onsen Day Trip or Ryokan Stay? How to Choose</h3>
             <p>Compare a day-use onsen with an overnight ryokan by bathing access, meals, check-in, privacy, transport, and the experience you actually want.</p>
@@ -527,7 +540,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>Family</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Last Night in Tokyo: Airport Hotel or City Hotel?</h3>
             <p>Choose a final-night hotel for Narita or Haneda by working backward from the flight, terminal, check-in requirement, first usable transport, and luggage.</p>
@@ -543,7 +556,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>Winter</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Missed Japan Cherry Blossoms? Build a Better Backup Plan</h3>
             <p>Use bloom stage, tree variety, elevation, latitude, weather, and route cost to find a realistic spring alternative without chasing forecasts across Japan.</p>
@@ -559,7 +572,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Japan Summer Heat: How to Pace a Safe Itinerary</h3>
             <p>Rebuild a summer sightseeing day around current WBGT, shade, indoor recovery, shorter routes, hydration, and a clear stop rule for heat illness symptoms.</p>
@@ -575,7 +588,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Japan Temple and Shrine Etiquette: A First-Visit Guide</h3>
             <p>Visit Japanese temples and shrines respectfully with a practical sequence for gates, purification, prayer, shoes, photography, clothing, and crowded precincts.</p>
@@ -591,7 +604,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>Winter</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Rural Japan Bus and Taxi Backup Plan</h3>
             <p>Plan rural Japan transport by the last usable bus, cash and IC-card acceptance, taxi availability, reservation rules, weather, and a safe fallback.</p>
@@ -607,7 +620,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>7 min</span>
         <span><strong>Best for</strong>Rainy day</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Lost Property or Passport in Japan: What to Do First</h3>
             <p>Follow the right recovery path for an item lost on transport, in a business, or in public, and know when to contact the police, card issuer, phone carrier, insurer, or embassy.</p>
@@ -623,7 +636,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Japan Offline Phone and Navigation Backup Plan</h3>
             <p>Prepare data, power, offline maps, hotel addresses, tickets, translation, and a second-device handoff so one dead phone or weak signal does not break the trip.</p>
@@ -639,7 +652,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>First-time</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Tokyo Museum Rainy-Day Planner: Ueno or Roppongi?</h3>
             <p>Choose one Tokyo museum district for a rainy day, compare Ueno with Roppongi, check exhibition calendars, and build a low-transfer indoor route.</p>
@@ -655,7 +668,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>Family</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Hakone Weather Backup Plan: What to Do When Views Disappear</h3>
             <p>Rebuild a Hakone day around live transport status, museums, onsen, shorter loops, and an early return when rain, wind, fog, or closures remove the views.</p>

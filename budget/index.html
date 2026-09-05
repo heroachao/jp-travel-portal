@@ -11,14 +11,27 @@
     <meta property="og:description" content="Estimate Japan travel costs for hotels, food, rail, local transport, attractions, shopping, tax-free purchases, and first-time trip budgets.">        <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://japantriptools.com#website","name":"Japan Trip Tools","url":"https://japantriptools.com","description":"Estimate Japan travel costs for hotels, food, rail, local transport, attractions, shopping, tax-free purchases, and first-time trip budgets.","publisher":{"@id":"https://japantriptools.com#organization"},"potentialAction":{"@type":"SearchAction","target":"https://japantriptools.com/search/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
             <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://japantriptools.com#organization","name":"Japan Trip Tools","url":"https://japantriptools.com","logo":{"@type":"ImageObject","url":"https://japantriptools.com/images/japan-trip-tools-logo.png"}}</script>
                 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much should I budget for Japan?","acceptedAnswer":{"@type":"Answer","text":"Costs vary by season, hotel standard, cities, and rail distance. Build a range rather than one fixed number, then add a reserve buffer."}},{"@type":"Question","name":"What cost do travelers underestimate?","acceptedAnswer":{"@type":"Answer","text":"Hotel location, airport transfers, luggage movement, long-distance rail, theme park days, and small daily snacks often add more than expected."}},{"@type":"Question","name":"What should every budget page link to?","acceptedAnswer":{"@type":"Answer","text":"Every budget page should link to the Budget Calculator, relevant itinerary, and any transport page that changes cost."}},{"@type":"Question","name":"Is Japan expensive for food?","acceptedAnswer":{"@type":"Answer","text":"Japan can be flexible for food. Convenience stores and casual restaurants keep costs controlled, while sushi counters, kaiseki, ryokan meals, and theme parks raise the average."}},{"@type":"Question","name":"Should I book cheaper hotels farther away?","acceptedAnswer":{"@type":"Answer","text":"Only if the transport time and last-train risk still make sense. A cheaper room far from the route can cost more in time, fatigue, and local fares."}},{"@type":"Question","name":"How should I plan shopping money?","acceptedAnswer":{"@type":"Answer","text":"Separate shopping from daily essentials. If tax-free shopping is a goal, estimate it early so it does not quietly consume the food or transport budget."}}]}</script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP"></script>
-        <script>
+            <script data-site-analytics>
+            const analyticsParams = new URLSearchParams(window.location.search);
+            let analyticsExcluded = analyticsParams.get('analytics') === 'off';
+            try {
+                if (analyticsParams.get('analytics') === 'off') localStorage.setItem('jtt-analytics-excluded', '1');
+                if (analyticsParams.get('analytics') === 'on') localStorage.removeItem('jtt-analytics-excluded');
+                analyticsExcluded = analyticsExcluded || localStorage.getItem('jtt-analytics-excluded') === '1';
+            } catch (_) {}
+            const analyticsHostAllowed = ['japantriptools.com', 'www.japantriptools.com'].includes(location.hostname);
+            if (analyticsHostAllowed && !analyticsExcluded && !navigator.webdriver) {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function () { window.dataLayer.push(arguments); };
             gtag('js', new Date());
             gtag('config', 'G-Z9HW839XRP');
+            const analyticsScript = document.createElement('script');
+            analyticsScript.async = true;
+            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z9HW839XRP';
+            document.head.appendChild(analyticsScript);
+            }
         </script>
-                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-DF4JHjy5.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
+                    <link rel="preload" as="style" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" /><link rel="modulepreload" as="script" href="https://japantriptools.com/build/assets/app-CIcowMN3.js" /><link rel="stylesheet" href="https://japantriptools.com/build/assets/app-BYmWI_jd.css" data-navigate-track="reload" /><script type="module" src="https://japantriptools.com/build/assets/app-CIcowMN3.js" data-navigate-track="reload"></script>    </head>
 <body class="public-shell text-slate-950 antialiased">
     <header class="public-header">
         <div class="public-header-main">
@@ -362,7 +375,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>6 min</span>
         <span><strong>Best for</strong>Rainy day</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Tokyo Stationery and Kitchenware Shopping Route</h3>
             <p>Build a focused Tokyo shopping day around Kappabashi kitchenware and Ginza stationery, with practical checks for knives, fragile goods, tax-free procedures, luggage, and opening hours.</p>
@@ -378,7 +391,7 @@
     <span class="article-card-meta">
         <span><strong>Read time</strong>7 min</span>
         <span><strong>Best for</strong>Family</span>
-                    <span><strong>Updated</strong>August 2026</span>
+                    <span><strong>Updated</strong>August 30, 2026</span>
             </span>
     <h3>Japan Department Store Food Hall Guide: Dinner, Bento, and Gifts</h3>
             <p>Use a Japanese depachika for a practical hotel dinner, train bento, picnic, or food gift with clear timing, allergy checks, storage, payment, waste, and transport planning.</p>
